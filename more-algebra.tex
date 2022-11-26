@@ -34183,8 +34183,17 @@ L^{\otimes -1} = \Hom_R(L, R),
 $$
 because as seen in the proof of Lemma \ref{lemma-invertible}
 the evaluation map $L \otimes_R L^{\otimes -1} \to R$ is an isomorphism.
-Let us denote the Picard group of $R$ by $\Pic(R)$.
-
+Let us denote the Picard group of $R$ by $\Pic(R)$. The Picard group assignment is really a functor
+$$
+\Pic:Ring \to Group.
+$$
+Its action on morphisms is given in the following way: if $R\to S$ is a ring morphism, then
+$$
+\Pic(R)\to\Pic(S)
+$$
+sends an invertible $R$-module $L$ to the $S$-module $L\otimes_RS$. This $S$-module is indeed invertible, for if $N$ is an $R$-module such that $L\otimes_RN\cong R$, then, using \ref{lemma-tensor-with-bimodule}, one can verify that $(N\otimes_RS)\otimes_S(S\otimes_RL)\cong S$ as $S$-modules. On the other hand, if $R\xrightarrow{f} S\xrightarrow{g} T$ are ring morphisms, again using \ref{lemma-tensor-with-bimodule} we have that $(M\otimes_RS)\otimes_ST\cong M\otimes_R(S\otimes_ST)
+\cong M\otimes_RT$
+as $T$-modules. That is, $\Pic(g)\circ\Pic(f)=\Pic(g\circ f)$.
 \begin{lemma}
 \label{lemma-UFD-Pic-trivial}
 Let $R$ be a UFD. Then $\Pic(R)$ is trivial.
@@ -34221,6 +34230,38 @@ with $v$ a unit and $b_j \leq e_j$. For each $j \in J$ we have
 $I_{aa_j} = g R_{aa_j} = g_j R_{aa_j}$, in other words
 $g$ and $g_j$ map to associates in $R_{aa_j}$. By uniqueness
 of factorization this implies that $b_j = c_j$ and the proof is complete.
+\end{proof}
+
+\begin{lemma}
+	\label{lemma-local-ring-Pic-trivial}
+	Let $R$ be a local ring. Then $\Pic(R)$ is trivial.
+\end{lemma}
+\begin{proof}
+	Let $L$ be an invertible $R$-module.
+	
+	\medskip\noindent
+	First proof.
+	By Lemma \ref{lemma-invertible},
+	$L$ is a direct summand of a free module,
+	so $L$ is projective, by Lemma
+	\ref{lemma-characterize-projective}.
+	By Theorem \ref{theorem-projective-free-over-local-ring},
+	$L\cong\bigoplus_{i\in I}R$ is free.
+	Since $L$ is finite locally free of rank 1,
+	there is $f\in R$ such that
+	$R_f\cong L_f\cong\bigoplus_{i\in I}R_f$ as $R_f$-modules.
+	Here we have used that localization commutes
+	with arbitrary direct sums,
+	since localizing at $f$ is the same as tensoring with $R_f$
+	(Lemma \ref{lemma-tensor-localization}),
+	and tensor products commute with arbitrary direct sums.
+	Since the rank of a free module over a
+	commutative ring is well-defined,
+	we deduce that $I$ is a singleton set, so $L\cong R$.
+	
+	\medskip\noindent
+	Second proof.
+	As $L$ is finite locally free of rank 1, there exist $f_1,\dots,f_n\in R$ generating the unit ideal such that $L_{f_i}\cong R_{f_i}$ as $R_{f_i}$-modules, for all $i$. Since the set of non-units is an ideal in a local ring, there must be some $f_i$ that is a unit. But then $R\cong R_{f_i}\cong L_{f_i}\cong L$ as $R$-modules.
 \end{proof}
 
 

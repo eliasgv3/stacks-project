@@ -5236,7 +5236,15 @@ P^{n - 1}
 K^{n - 1} \times_{K^n} \Ker(d^n) =
 K^{n - 1} \times_{\Ker(d_K^n)} \Ker(d^n)
 $$
-with $P^{n - 1}$ in $\mathcal{P}$. This allows us to extend the diagram
+with $P^{n - 1}$ in $\mathcal{P}$.
+In the last equality we have used that given a commutative diagram in an abelian category
+$$
+\xymatrix{
+y\ar[r]\ar[dr]&z'\ar@{^{(}->}[d]&x\ar[l]\ar[dl]\\
+&z
+}
+$$
+($z'\hookrightarrow z$ is an injection) we have $x\times_{z'}y=x\times_zy$. This allows us to extend the diagram
 above to
 $$
 \xymatrix{
@@ -5253,7 +5261,42 @@ K^{n + 2} \ar[r] &
 \ldots
 }
 $$
-The reader easily checks that $IH_{n - 1}$ holds with this choice.
+We have to check that $IH_{n - 1}$ holds with this choice.
+In particular, the fact that $\operatorname{Ker}d^{n-1}\to\operatorname{Ker}d^{n-1}_K$
+is surjective follows from Exercise \ref{exercise-surjective-induced-morphism-between-kernels}.
+We will here show the part of $IH_{n-1}$ that says that $\alpha$
+induces an isomorphism in cohomology in the $n$-th term. In the cartesian square
+\begin{equation}
+	\label{diagram-lemma-subcategory-left-resolution-1}
+	\xymatrix{
+		K^{n-1}\times_{\Ker (d_K^n)}\Ker(d^n)\ar[r]\ar[d]
+		&\Ker d^n\ar[d]\\
+		K^{n-1}\ar[r]&\Ker d_K^n
+	}
+\end{equation}
+the morphism $\Ker d^n\to\Ker d^n_K$ is surjective. Therefore, by Homology, Lemma \ref{lemma-cartesian-cocartesian}, it is also cocartesian and $K^{n-1}\times_{\Ker (d_K^n)}\Ker(d^n)\to K^{n-1}$ is surjective. In particular, $P^{n-1}\to K^{n-1}$ is surjective for it is the composite of two surjections. On the other hand, by Homology, Lemma \ref{lemma-cartesian-kernel}, we deduce that the induced morphism by \eqref{diagram-lemma-subcategory-left-resolution-1} between the cokernels of the horizontal morphisms is an isomorphism. We just have to verify then that this induced map between cokernels equals the induced map between cohomology objects.
+
+By Homology, Lemma \ref{lemma-cohomology-functor}, the induced morphism between cohomology objects arises from application of the cokernel functor to the commutative square
+\begin{equation}
+	\label{diagram-lemma-subcategory-left-resolution-2}
+	\xymatrix{
+		P^{n-1}\ar[r]\ar[d]&\Ker d^n\ar[d]\\
+		K^{n-1}\ar[r]&\Ker d^n_K
+	}
+\end{equation}
+We note the following general fact: Suppose given two morphisms
+$$
+\xymatrix{
+	a_1\ar[r]^a\ar[d]_{f_1}&a_2\ar[d]^{f_2}&&
+	\ar@{}[d]|{\text{\normalsize and}}&&
+	a_2\ar[r]^{a'}\ar[d]_{f_2}&a_3\ar[d]^{f_3}\\
+	b_1\ar[r]_{b}&b_2&&&&
+	b_2\ar[r]_{b'}&b_3
+}
+$$
+in $\operatorname{Arr}(\mathcal{A})$, where $a, a'$ (resp., $b,b'\in\operatorname{Ob}(\operatorname{Arr}(\mathcal{A}))$) are the (co)domains, and $(f_1,f_2)$, $(f_2,f_3)\in\operatorname{Mor}(\operatorname{Arr}(\mathcal{A}))$ are the two morphisms. Then, if $a$ and $b$ are surjective (as maps in $\mathcal{A}$), we have that $\Coker_s((f_1,f_3):a'a\to b'b)=\Coker_s ((f_2,f_3):a'\to b')$ (the functor $\Coker_s$ is explained in Homology, after proof of Lemma \ref{lemma-image-kernel-square-is-a-functor}). This follows from Homology, Lemma \ref{lemma-characterize-injective-post-composition}.
+
+\medskip\noindent Since $P^{n-1}\to K^{n-1}\times_{\Ker (d_K^n)}\Ker(d^n)$ is surjective, it follows then from this general fact that applying the functor $\Coker$ to \eqref{diagram-lemma-subcategory-left-resolution-2} gives the same result as applying the same functor to \eqref{diagram-lemma-subcategory-left-resolution-1}.
 
 \medskip\noindent
 We finish the proof of (1) as follows.

@@ -3835,11 +3835,39 @@ morphism of presheaves of sets.
 \end{enumerate}
 \end{definition}
 
+\noindent The sheaf condition can be cracked into two conditions.
+\begin{lemma}
+\label{lemma-sheaf-basis-sheaf-condition}
+	Let $X$ be a topological space.
+	Let $\mathcal{B}$ be a basis for the topology on $X$.
+	Let $\mathcal{F}$ be a presheaf of sets on $\mathcal{B}$.
+	Then $\mathcal{F}$ is a sheaf of sets on $\mathcal{B}$
+	if and only if the following two conditions hold:
+	\begin{itemize}
+		\item (Locality) For any $U\in\mathcal{B}$,
+		any covering $U=\bigcup_{i\in I}U_i$,
+		and any two sections $s,t\in\mathcal{F}(U)$
+		such that $s|_{U_i}=t|_{U_i}$ for all $i\in I$
+		 we have $s=t$.
+		\item (Gluing) $\mathcal{F}$ satisfies Definition \ref{definition-sheaf-basis},
+		(1) but withdrawing the uniqueness in $(**)$.
+	\end{itemize}
+\end{lemma}
+\begin{proof}
+	($\Rightarrow$) The gluing axiom is clear. For the locality axiom,
+	one can consider any coverings
+	$U_i \cap U_j = \bigcup_{k \in I_{ij}} U_{ijk}$ with
+	$U_{ijk} \in \mathcal{B}$ and use the uniqueness in $(**)$.
+	
+	\medskip\noindent ($\Leftarrow$) The gluing axiom allows to glue
+	sections and the locality axiom provides uniqueness of the gluing.
+\end{proof}
+
 \noindent
-First we explain that it suffices to
+Next we explain that it suffices to
 check the sheaf condition $(**)$
 on a cofinal system of coverings.
-In the situation of the definition, suppose
+In the situation of Definition \ref{definition-sheaf-basis}, suppose
 $U \in \mathcal{B}$. Let us temporarily denote
 $\text{Cov}_\mathcal{B}(U)$ the set of all coverings
 of $U$ by elements of $\mathcal{B}$.
@@ -3886,19 +3914,20 @@ s|_{V_j}
 $$
 for all $j$. Hence by the uniqueness in $(**)$
 for the covering $\mathcal{V}$ we conclude that $s = s'$.
-Thus we have proved the uniqueness part of $(**)$
+Thus we have proved the locality axiom (see
+Lemma \ref{lemma-sheaf-basis-sheaf-condition})
 for our arbitrary covering $\mathcal{U}$.
 
 \medskip\noindent
-Suppose furthermore that $U_i \cap U_{i'} = \bigcup_{k \in I_{ii'}} U_{ii'k}$
+Suppose furthermore that $\mathcal{U}_{ii'}:U_i \cap U_{i'} = \bigcup_{k \in I_{ii'}} U_{ii'k}$
 are arbitrary coverings by $U_{ii'k} \in \mathcal{B}$.
-Let us try to prove the existence part of $(**)$ for the system
-$(\mathcal{U}, \mathcal{U}_{ij})$. Thus let $s_i \in \mathcal{F}(U_i)$
+Let us try to prove the gluing axiom in Lemma \ref{lemma-sheaf-basis-sheaf-condition} for the system
+$(\mathcal{U}, \mathcal{U}_{ii'})$. Thus let $s_i \in \mathcal{F}(U_i)$
 and suppose we have
 $$
 s_i|_{U_{ii'k}} = s_{i'}|_{U_{ii'k}}
 $$
-for all $i, i', k$. Set $t_j = s_{\alpha(j)}|_{V_j}$, where $\mathcal{V}$
+for all $i, i'\in I$, $k\in I_{ii'}$. Set $t_j = s_{\alpha(j)}|_{V_j}$, where $\mathcal{V}$
 and $\alpha$ are as above.
 
 \medskip\noindent
@@ -5052,6 +5081,28 @@ For sheaves of abelian groups, and sheaves of algebraic structures
 you argue in the same manner.
 \end{proof}
 
+\begin{lemma}
+	\label{lemma-pushforward-is-full-for-subspaces}
+	Let $X$ be a topological space. Let $i : Z \to X$ be the inclusion of a any subspace. The functor
+	$$
+	i_*:Sh(Z)\to Sh(X)
+	$$
+	is full.
+\end{lemma}
+\begin{proof}
+	Let $\mathcal{F}$ and $\mathcal{G}$ are sheaves of sets over $Z$.
+	Let $\varphi:i_*\mathcal{F}\to i_*\mathcal{G}$ be a morphism of
+	sheaves over $X$.
+	We define $\psi:\mathcal{F}\to\mathcal{G}$ as follows:
+	for an open set $V\subset Z$,
+	choose $U\subset X$ open such that $U\cap Z=V$.
+	Define
+	$\psi_V=\varphi_U:\mathcal{F}(U\cap Z)\to\mathcal{G}(U\cap Z)$.
+	It is not difficult to verify that $\psi_V$ does not depend
+	on the choice of $U$,
+	that $\psi$ is really a morphism of sheaves over $Z$
+	and that $i_*\psi=\varphi$.
+\end{proof}
 
 \begin{lemma}
 \label{lemma-equivalence-categories-closed}
@@ -5067,7 +5118,9 @@ $\mathcal{G}_x = \{*\}$ for all $x \in X \setminus Z$.
 \end{lemma}
 
 \begin{proof}
-Fully faithfulness follows formally from $i^{-1} i_* = \text{id}$.
+Fullness is Lemma
+\ref{lemma-pushforward-is-full-for-subspaces}, whereas
+faithfulness follows formally from $i^{-1} i_* = \text{id}$.
 We have seen that any sheaf in the image of the functor has
 the property on the stalks mentioned in the lemma. Conversely, suppose
 that $\mathcal{G}$ has the indicated property.

@@ -318,7 +318,7 @@ Similarly, (4) follows from (1).
 \begin{definition}\label{definition-normal-mono-epi}
 	Let $\mathcal{A}$ be a preadditive category and let $f:x\to y$ be a morphism in $\mathcal{A}$. We say that $f$ is a {\it normal monomorphism} if it arises as the kernel of some other morphism. That is, if there is $g:y\to z$ in $\mathcal{A}$ such that $\ker g=f$. Dually, we say that $f$ is a {\it normal epimorphism} if it is a cokernel, i.e., if there is $h:w\to x$ such that $\operatorname{coker} h=f$.
 \end{definition}
-Every normal monomorphism or normal epimorphism is, respectively, indeed monic and epic, by Lemma \ref{lemma-kernel-mono}.
+Every normal monomorphism or normal epimorphism is, respectively, indeed monic and epic, by Lemma \ref{lemma-kernel-mono}. The reason for the terminology ``normal'' is group theory, which says that normal subgroups of a group $G$ are exactly the kernels of group homomorphisms $G\to H$.
 
 \begin{lemma}
 \label{lemma-coim-im-map}
@@ -535,14 +535,14 @@ surjective, then we say that $y$ is a {\it quotient} of $x$.
 \end{definition}
 
 \noindent A morphism $f:x\to y$ in a preabelian category factors canonically through $\Im f$ and through $\Coim f$. This is because the composites $x\xrightarrow{f}y\to\Coker f$ and $\Ker f\to x\xrightarrow{f} y$ are always zero.
-$$
-\xymatrix{
-	x\ar[rr]^f\ar@{-->}[dr]_{\exists!}&&y&&
-	x\ar[rr]^f\ar[dr]&&y\\
-	&\Im f\ar[ru]
-	&&&&\Coim f\ar@{-->}[ru]_{\exists!}&
-}
-$$
+\begin{equation*}
+	\xymatrix{
+		x\ar[rr]^f\ar@{-->}[dr]_{\exists!}&&y&&
+		x\ar[rr]^f\ar[dr]&&y\\
+		&\Im f\ar[ru]
+		&&&&\Coim f\ar@{-->}[ru]_{\exists!}&
+	}
+\end{equation*}
 
 \begin{lemma}
 \label{lemma-characterize-injective}
@@ -626,65 +626,140 @@ The proof of the other equivalences is dual.
 \end{proof}
 
 \noindent
-Recall Definition \ref{definition-normal-mono-epi} of normal monos and epis and the canonical factorization through the (co)image explained before Lemma \ref{lemma-characterize-injective}. We will need the following lemma to after give the characterization of abelian categories.
-\begin{lemma}\label{lemma-all-epis-normal-coim-map-monic}
-	Let $\mathcal{A}$ be a preabelian category and let $f:x\to y$ be a morphism of $\mathcal{A}$. Suppose all epis of $\mathcal{A}$ are normal. Then the canonical map $i:\Coim f\to y$ is monic. Dually, if all monos of $\mathcal{A}$ are normal, then the canonical map $x\to\Im f$ is epic.
+Recall Definition \ref{definition-normal-mono-epi} of normal monos and epis.
+
+\begin{lemma}
+	\label{lemma-characterize-normal-epis-monos}
+	Let $\mathcal{A}$ be preabelian, and $f:x\to y$ be a morphism in $\mathcal{A}$.
+	Then $f$ is a normal monomorphism if and only if
+	$f=\operatorname{ker}(\operatorname{coker} f)$.
+	Dually, $f$ is a normal epimorphism if and only if
+	$f=\operatorname{coker}(\operatorname{ker}f)$.
 \end{lemma}
 \begin{proof}
-	To show that $i$ is a monomorphism, let $g:z\to \Coim f$ be such that $ig=0$.
+	We only prove the first equivalence. The second one is dual.
+	
+	\medskip\noindent
+	The implication to the left is trivial. Suppose now that $f=\operatorname{ker}(g:y\to z)$,
+	and let $q=\operatorname{coker} f$. Then, as $gf=0$, the morphism $g$ factors as $hq$.
 	$$
 	\xymatrix{
-	x\ar[rr]^f\ar@{>>}[rd]_p&&y\\
-	z\ar[r]_(0.4)g&\Coim f\ar@{>>}[r]_q\ar[ru]_i&\Coker g\ar[u]_j
+	&w\ar[d]^k\ar@{-->}[dl]_l&\\
+	x\ar[r]|f&y\ar[r]|g\ar[d]_q&z\\
+	&\Coker f\ar@{-->}_h[ru]
 	}
 	$$
-	Let $q=\operatorname{coker}x$ and let $j:\Coker g\to y$ be the unique map such that $i=jq$. Since $qp$ is epic (epicness is stable under composition), by hypothesis there exists $h:w\to x$ such that $qp=\operatorname{coker}h$.
-	$$
-	\xymatrix@C=8ex{
-	&\Ker f\ar[d]^k&\\
-	w\ar[r]^h\ar[rd]_0
-	\ar[ru]^{h'}
-	&x\ar@{>>}[r]^(0.4){qp=\operatorname{coker}h}
-	\ar@{>>}[d]^p
-	&\Coker g\ar[dl]^{p'}\\
-	&\Coim f&
-	}
-	$$
-	Now $fh=iph=jqph=j0=0$, so $h$ factors uniquely through $\Ker f$, $h=kh'$. This gives that $ph=pkh'=0h'=0$, so $p$ factors as $p=p'(qp)=(p'q)p$. But $p$ is epic (By Lemma \ref{lemma-kernel-mono}), so $p'q=1_{\Coim f}$. That is, $q$ is a split monomorphism and finally $qg=0$ implies that $g=0$. We have shown that $ig=0$ implies $g=0$ and thus $i$ is a monomorphism.
-	
-	The other part is the dual statement.
+	Given $k:w\to y$ with $qk=0$, then also $gk=hqk=0$, so $k$ factors uniquely
+	as $fl$. Then (as $qf=0$) this implies that $f=\operatorname{ker}q$.
 \end{proof}
 
+\noindent In particular, if $\mathcal{A}$ is preabelian, it follows that
+$\operatorname{ker} f=\operatorname{ker}(\operatorname{coim} f)$ and
+$\operatorname{coker} f=\operatorname{coker}(\operatorname{im} f)$
+for all morphisms $f\in\mathcal{A}$.
+
+\medskip\noindent
+Recall the canonical factorization through the (co)image explained
+before Lemma \ref{lemma-characterize-injective}.
+Recall as well the definition of a balanced category in Categories,
+Definition \ref{definition-balanced-category}.
+
 \begin{lemma}\label{lemma-characterize-abelian-categories}
-	A preabelian category is abelian if and only if all its monos and epis are normal.
+	Let $\mathcal{A}$ be a preabelian category. The following are equivalent:
+	\begin{enumerate}
+		\item $\mathcal{A}$ is abelian,
+		\item all monos and epis of $\mathcal{A}$ are normal,
+		\item $f=\operatorname{ker}(\operatorname{coker} f)$ and
+		$g=\operatorname{coker}(\operatorname{ker}g)$ whenever $f$ and $g$ are,
+		respectively, a monomorphism and an epimorphism in $\mathcal{A}$.
+		\item $\mathcal{A}$ is balanced and for every morphism $f:x\to y$ in
+		$\mathcal{A}$, the canonical morphisms $x\to\Im f$ and $\Coim f\to y$ are surjective and injective, respectively.
+	\end{enumerate}
 \end{lemma}
 
 \begin{proof}
-	Let $\mathcal{A}$ be a preabelian category.
-	
-	($\Rightarrow$) Let $f:x\to y$ be a monomorphism of $\mathcal{A}$. By Lemma \ref{lemma-characterize-injective}, $x\to\Coim f$ is an isomorphism. Since the diagram
+	(1)$\Rightarrow$(2). Let $f:x\to y$ be a monomorphism of $\mathcal{A}$.
+	By Lemma \ref{lemma-characterize-injective},
+	$x\to\Coim f$ is an isomorphism. Since the diagram
 	$$
 	\xymatrix{
 	x\ar[r]^f\ar[d]_\cong&y\\
 	\Coim f\ar[r]_\cong&\Im f\ar[u]
 	}
 	$$
-	commutes, we have that the morphisms $f:x\to y$ and $\Im f\to y$ are isomorphic as objects over $y$. Thus $f$ is a kernel. Dually, all epis are normal.
+	commutes, we have that the morphisms $f:x\to y$ and $\Im f\to y$
+	are isomorphic as objects over $y$.
+	Thus $f$ is a kernel. Dually, all epis are normal.
 	
-	($\Leftarrow$) By the uniqueness of the image-coimage factorization of $f$ (given in Lemma \ref{lemma-coim-im-map}),
+	\medskip\noindent
+	The implication (3)$\Rightarrow$(2) is trivial and the implication (2)$\Rightarrow$(3) comes from Lemma \ref{lemma-characterize-normal-epis-monos}.
+	
+	\medskip\noindent
+	(2)$\Rightarrow$(4). We are going to show that if all epis of $\mathcal{A}$ are normal,
+	then $i:\Coim f\to y$ is monic.
+	Let $g:z\to \Coim f$ be such that $ig=0$.
+	$$
+	\xymatrix{
+		x\ar[rr]^f\ar@{>>}[rd]_p&&y\\
+		z\ar[r]_(0.4)g&\Coim f\ar@{>>}[r]_q\ar[ru]_i&\Coker g\ar[u]_j
+	}
+	$$
+	Let $q=\operatorname{coker}x$ and let $j:\Coker g\to y$
+	be the unique map such that $i=jq$.
+	Since $qp$ is epic (epicness is stable under composition),
+	by hypothesis there exists $h:w\to x$ such that
+	$qp=\operatorname{coker}h$.
+	$$
+	\xymatrix@C=8ex{
+		&\Ker f\ar[d]^k&\\
+		w\ar[r]^h\ar[rd]_0
+		\ar[ru]^{h'}
+		&x\ar@{>>}[r]^(0.4){qp=\operatorname{coker}h}
+		\ar@{>>}[d]^p
+		&\Coker g\ar[dl]^{p'}\\
+		&\Coim f&
+	}
+	$$
+	Now $fh=iph=jqph=j0=0$, so $h$ factors uniquely through $\Ker f$,
+	$h=kh'$. This gives that $ph=pkh'=0h'=0$,
+	so $p$ factors as $p=p'(qp)=(p'q)p$.
+	But $p$ is epic (By Lemma \ref{lemma-kernel-mono}), so $p'q=1_{\Coim f}$.
+	That is, $q$ is a split monomorphism and finally $qg=0$ implies that $g=0$.
+	We have shown that $ig=0$ implies $g=0$ and thus $i$ is a monomorphism.
+	
+	Arguing by duality, one shows that if all monos of $\mathcal{A}$ are normal,
+	then the canonical map $x\to\Im f$ is an epimorphism.
+	
+	The fact that $\mathcal{A}$ is balanced follows
+	from the fact that normal epis and monos are regular,
+	and then one uses Categories, Lemma \ref{lemma-characterize-iso}.
+	
+	\medskip\noindent
+	(4)$\Rightarrow$(1). By the uniqueness of the image-coimage
+	factorization of $f$ (given in Lemma \ref{lemma-coim-im-map}),
 	\begin{equation}\label{equation-im-coim-map}
 		\xymatrix{
 			x\ar[r]^f\ar[d]_g&y\\
 			\Coim f\ar[r]_{\overline{f}}&\Im f\ar[u]_h
 		}
 	\end{equation}
-	the canonical morphism $x\to\Im f$ (resp., the canonical morphism $\Coim f\to y$) must coincide with the left-bottom composite (resp., the bottom-right composite) of \eqref{equation-im-coim-map}. By Lemma \ref{lemma-all-epis-normal-coim-map-monic}, the composites $\overline{f}g$ and $h\overline{f}$ are epic and monic, respectively. Thus, by Lemma \ref{lemma-new-mono-epi-from-old}, $\overline{f}$ is also epic and monic. By hypothesis, $\overline{f}$ must be a normal monomorphism and a normal epimorphism, and thus in particular a regular mono and epi. By Lemma \ref{lemma-characterize-iso}, $\overline{f}$ is an isomorphism.
+	the canonical morphism $x\to\Im f$
+	(resp., the canonical morphism $\Coim f\to y$)
+	must coincide with the left-bottom composite
+	(resp., the bottom-right composite) of \eqref{equation-im-coim-map}.
+	Thus, the composites $\overline{f}g$ and $h\overline{f}$
+	are epic and monic, respectively.
+	Hence, by Categories, Lemma \ref{lemma-new-mono-epi-from-old},
+	$\overline{f}$ is also epic and monic.
+	Since $\mathcal{A}$ is balanced, $\overline{f}$ is an isomorphism.
 \end{proof}
-From lemmas \ref{lemma-characterize-injective}, \ref{lemma-characterize-abelian-categories}, and \ref{lemma-characterize-iso}, it follows that in an abelian category a morphism is an isomorphism if and only if it is injective and surjective (i.e., an abelian category is an example of what category theorists call a {\it balanced category}). However, this condition does not characterize abelianity: there exist preabelian categories which are balanced but not abelian. For an example, see \href{https://mathoverflow.net/a/41726/101848}{this}.
+There exist balanced preabelian categories which are not abelian.
+For an example, see \href{https://mathoverflow.net/a/41726/101848}{this}.
 
 The zero map can be detected by the (co)kernel and the (co)image.
 \begin{lemma}\label{lemma-characterize-zero-map}
-	Let $\mathcal{A}$ be a preabelian category and let $f:x\to y$ be a morphism in $\mathcal{A}$. The following are equivalent:
+	Let $\mathcal{A}$ be a preabelian category and let $f:x\to y$ be a morphism in $\mathcal{A}$.
+	The following are equivalent:
 	\begin{enumerate}
 		\item $f$ is the zero map,
 		\item $\Ker f=x$,
@@ -708,21 +783,31 @@ The zero map can be detected by the (co)kernel and the (co)image.
 	
 	(2)$\Rightarrow$(3). Clear.
 	
-	(3)$\Rightarrow$(1). Call $i:\Ker f\to x$ to the inclusion. Then $f\circ i=0$, and since $i$ is an isomorphism, $f=0$.
+	(3)$\Rightarrow$(1). Call $i:\Ker f\to x$ to the inclusion. Then $f\circ i=0$,
+	and since $i$ is an isomorphism, $f=0$.
 	
 	The implications $(1)\Rightarrow (4)\Rightarrow (5)\Rightarrow (1)$ are similar.
 	
-	(5)$\Rightarrow$(6). Since $y\to\Coker f$ is an isomorphism, in particular it is a monomorphism, and, thus, it has trivial kernel by Lemma \ref{lemma-characterize-injective}. That is, $\Im f=0$.
+	(5)$\Rightarrow$(6). Since $y\to\Coker f$ is an isomorphism,
+	in particular it is a monomorphism, and, thus,
+	it has trivial kernel by Lemma \ref{lemma-characterize-injective}.
+	That is, $\Im f=0$.
 	
-	(6)$\Leftrightarrow$(7). It's (1)$\Leftrightarrow$(2) from Lemma \ref{lemma-characterize-injective}.
+	(6)$\Leftrightarrow$(7). It's (1)$\Leftrightarrow$(2)
+	from Lemma \ref{lemma-characterize-injective}.
 	
-	(6)$\Rightarrow$(5). $\Im f=0$ means that $y\to \Coker f$ has trivial kernel, and so it is a monomorphism, by Lemma \ref{lemma-characterize-injective}. But since it is also a regular epimorphism, it is an isomorphism.
+	(6)$\Rightarrow$(5). $\Im f=0$ means that $y\to \Coker f$ has trivial kernel,
+	and so it is a monomorphism, by Lemma \ref{lemma-characterize-injective}.
+	But since it is also a regular epimorphism, it is an isomorphism.
 	
-	(8)$\Leftrightarrow$(9). It's (1')$\Leftrightarrow$(2') from Lemma \ref{lemma-characterize-injective}.
+	(8)$\Leftrightarrow$(9). It's (1')$\Leftrightarrow$(2')
+	from Lemma \ref{lemma-characterize-injective}.
 	
-	(3)$\Rightarrow$(8). By (5')$\Leftrightarrow$(1') from Lemma \ref{lemma-characterize-injective}.
+	(3)$\Rightarrow$(8). By (5')$\Leftrightarrow$(1')
+	from Lemma \ref{lemma-characterize-injective}.
 	
-	(8)$\Rightarrow$(3) We have that $\Ker f\to x$ is a regular monomorphism and also epic. Hence, it is iso.
+	(8)$\Rightarrow$(3) We have that $\Ker f\to x$ is a regular monomorphism
+	and also epic. Hence, it is iso.
 \end{proof}
 
 \noindent
@@ -761,15 +846,51 @@ $x \times_y z = \Ker((a, -b) : x \oplus z \to y)$.
 we have the pushout:
 $x \amalg_y z = \Coker((a, -b) : y \to x \oplus z)$.
 \end{enumerate}
-We can also compute the (co)kernel of the composition in terms of a (co)cartesian diagram: If $x\xrightarrow{f}y\xrightarrow{g}z$ are morphisms in $\mathcal{A}$, then
+We can also compute the (co)kernel of the composition in terms of a (co)cartesian diagram:
+If $x\xrightarrow{f}y\xrightarrow{g}z$ are morphisms in $\mathcal{A}$, then
 \begin{align*}
 	\Ker(gf)&=x\times_y\Ker g\\
 	\Coker(gf)&=z\amalg_y\Coker f.
 \end{align*}
-Using the universal properties of $\Ker g$ and of $x\times_y\Ker g$, it is not difficult to show that $x\times_y\Ker g$ is indeed a kernel of $gf$. By a duality argument, it follows that $\Coker(gf)=z\amalg_y\Coker f$.
-
-In particular, since a (co)kernel can be defined in terms of a (co)cartesian diagram (see comments before Lemma \ref{lemma-additive-cat-biproduct-kernel}), it follows that if $g$ is injective if and only if $\Ker(gf)=\Ker f$ for every morphism $f$ pre-composable with $g$. Dually, we have that $f$ is surjective if and only if $\Coker(gf)=\Coker g$ for every morphism $g$ post-composable with $f$.
+Using the universal properties of $\Ker g$ and of $x\times_y\Ker g$,
+it is not difficult to show that $x\times_y\Ker g$ is indeed a kernel of $gf$.
+By a duality argument, it follows that $\Coker(gf)=z\amalg_y\Coker f$.
 \end{example}
+
+This allows us to deduce the following lemma
+
+\begin{lemma}
+	\label{lemma-characterize-injective-post-composition}
+	Let $\mathcal{A}$ be a preabelian category, and let $g$ be a morphism in $\mathcal{A}$.
+	The following are equivalent:
+	\begin{enumerate}
+		\item[(i)] $g$ is injective,
+		\item[(ii)] $\Ker(gf)=\Ker f$ for every morphism $f$ pre-composable with $g$, and
+		\item[(iii)] $\Coim(gf)=\Coim f$ for every morphism $f$ pre-composable with $g$.
+	\end{enumerate}
+	Now let $f$ be a morphism in $\mathcal{A}$. Dually, the following are equivalent:
+	\begin{enumerate}
+		\item[(i')] $f$ is surjective,
+		\item[(ii')] $\Coker(gf)=\Coker g$ for every morphism $g$ post-composable with $f$, and
+		\item[(iii')] $\Im(gf)=\Im g$ for every morphism $g$ post-composable with $f$.
+	\end{enumerate}
+\end{lemma}
+\begin{proof}
+	(i)$\Rightarrow$(ii) It follows from the description of the (co)kernel of the composition in terms
+	of the pullback/pushout given in Example \ref{example-fibre-product-pushouts},
+	for a (co)kernel can be defined in terms of a (co)cartesian diagram
+	(see comments before Lemma \ref{lemma-additive-cat-biproduct-kernel}).
+	
+	\medskip\noindent
+	(ii)$\Rightarrow$(iii) $\Coim(gf)
+	=\Coker(\Ker(gf))=\Coker(\Ker g)=\Coim g$.
+	
+	\medskip\noindent
+	(iii)$\Rightarrow$(i) Consider the case in which $f$ is the identity of the domain of $g$ and use Lemma \ref{lemma-characterize-injective}.
+	
+	\medskip\noindent
+	The primed equivalences are dual.
+\end{proof}
 
 \begin{definition}
 \label{definition-exact}
@@ -800,7 +921,9 @@ $$
 0 \to A  \to B \to C \to 0.
 $$
 \end{definition}
-Note that in the definition of exact sequence we may drop the complex condition. Indeed, if $x\xrightarrow{f}y\xrightarrow{g}z$ is such that $\Im f=\Ker g$, then, by the factorization of $f$ through its image, we have a commutative diagram
+Note that in the definition of exact sequence we may drop the complex condition.
+Indeed, if $x\xrightarrow{f}y\xrightarrow{g}z$ is such that $\Im f=\Ker g$,
+then, by the factorization of $f$ through its image, we have a commutative diagram
 $$
 \xymatrix{
 x\ar[r]^f\ar[dr]&y\ar[r]^g&z\\
@@ -836,48 +959,593 @@ and so, it follows that $gf=0$ since the composite $\Ker g\to y\xrightarrow{g}z$
 	\end{enumerate}
 \end{remark}
 \noindent
-In an abelian category, using the previous facts, we can also characterize short exact sequences in the following way: a sequence $0\to A\xrightarrow{f} B\xrightarrow{g} C\to 0$ is short exact if and only if $f=\Ker g$ and $g=\Coker f$ and if and only if $f$ is injective, $g$ is surjective and $y/x=z$.
+In an abelian category, using the previous facts, we can also characterize short exact sequences in the following way: a sequence $0\to x\xrightarrow{f} y\xrightarrow{g} z\to 0$ is short exact if and only if $f=\Ker g$ and $g=\Coker f$ and if and only if $f$ is injective, $g$ is surjective and $y/x=z$.
 
 \begin{lemma}\label{lemma-complex-im-subob-ker}
 	\begin{slogan}
 		In a complex from an abelian category, the image of a morphism is a subobject of the kernel of the next morphism.
 	\end{slogan}
-	Let $x\xrightarrow{f}y\xrightarrow{g}z$ be a sequence in a preabelian category. Then the sequence is a complex if and only if there exists a morphism $i':\Im f\to\ker g$ such that the diagram
-	$$
-	\xymatrix{
-	x\ar[r]^f\ar[d]&y\\
-	\Im f\ar[r]^{i'}&\Ker g\ar[u]	
-	}
-	$$
-	is commutative, where $x\to\Im f$ is the canonical morphism. Moreover, if such an $i'$ exists, then it is unique and injective, and we have that $x\xrightarrow{f}y\xrightarrow{g}z$ is exact if and only if $i'$ is an isomorphism.
+	Let $x\xrightarrow{f}y\xrightarrow{g}z$ be a sequence in a abelian category. The following are equivalent:
+	\begin{enumerate}
+		\item $x\xrightarrow{f}y\xrightarrow{g}z$ is a complex.
+		\item There exists a morphism $i:\Im f\to\ker g$ such that the diagram
+		$$
+		\xymatrix{
+			x\ar[r]^f\ar[d]&y\\
+			\Im f\ar[r]^{i}&\Ker g\ar[u]	
+		}
+		$$
+		is commutative, where $x\to\Im f$ is the canonical morphism.
+		\item[(2')] There exists a morphism $p:\Coker f\to\Coim g$ such that the diagram
+		$$
+		\xymatrix{
+			y\ar[d]\ar[r]^g&z\\
+			\Coker f\ar[r]^p&\Coim g\ar[u]
+		}
+		$$
+		is commutative, where $\Coim g\to z$ is the canonical morphism.
+		\item[(3)] There exists a morphism $j:\Coim f\to\Ker g$ such that the diagram
+		$$
+		\xymatrix{
+			x\ar[r]^f\ar[d]&y\\
+			\Coim f\ar[r]^{j}&\Ker g\ar[u]	
+		}
+		$$
+		is commutative.
+		\item[(3')] There exists a morphism $q:\Coker f\to\Im g$ such that the diagram
+		$$
+		\xymatrix{
+			y\ar[d]\ar[r]^g&z\\
+			\Coker f\ar[r]^q&\Im g\ar[u]
+		}
+		$$
+		is commutative.
+	\end{enumerate}
+	Moreover, if any of the previous conditions hold, then the morphisms $i,j$ are unique and injective, and $p,q$ are unique and surjective. Furthermore, the following are equivalent:
+	\begin{enumerate}
+		\item[(i)] The sequence $x\xrightarrow{f}y\xrightarrow{g}z$ is exact,
+		\item[(ii)] at least one of $i,p,j,q$ is an isomorphism, and
+		\item[(iii)] all of $i,p,j,q$ are isomorphisms.
+	\end{enumerate}
 \end{lemma}
-
-\begin{proof}
-	($\Leftarrow$) If there exists such a factorization of $f$, then $gf$ equals the composite $x\to\Im f\to\Ker g\to y\xrightarrow{g}z$. But the composite $\Ker g\to y\xrightarrow{g}z$ is zero.
-	
-	($\Rightarrow$) Suppose the sequence is a complex. Then $g$ factors through $\Coker f$ as $g=g'p$.
-	$$
-	\xymatrix{
-	x\ar[r]^f\ar[d]_{f'}&y\ar[r]^g\ar[dr]^p&z\\
-	\Im f\ar[ru]^i\ar@{-->}[r]_{i'}&\Ker g\ar[u]_j&\Coker f\ar[u]_{g'}
-	}
-	$$
-	We also have $gi=g'pi=g'0=0$. Therefore $i$ factors uniquely as $i=ji'$. Since $i$ is monic (it is a normal monomorphism), by Lemma \ref{lemma-new-mono-epi-from-old} we deduce that $i'$ is also monic.
-	
-	Uniqueness of $i'$ is provided by the universal property of $\ker g$, using the fact that $if'=f$. We've also proven that $i'$ must be a monomorphism, and thus injective.
-	
-	On the other hand, if $x\xrightarrow{f}y\xrightarrow{g}z$ is exact, $\Im f=\Ker g$, then $i'$ must be the identity. And if $i'$ is an isomorphism, then by the factorization $i=ji'$, we have that $\Im f$ and $\Ker g$ are isomorphic as objects over $y$, so $\Im f=\Ker g$.
-\end{proof}
 \begin{remark}
-	Since ``being a complex'' and ``being exact'' are self-dual properties, one can obtain a dual result from the last lemma, which now is stated for a commutative diagram of the form
+	As the proof will show if the reader pays attention, Lemma \ref{lemma-complex-im-subob-ker} is still true for preabelian categories if we take away conditions (3), (3') and the morphisms $q,j$ from its statement.
+\end{remark}
+\begin{proof}
+	Note (2') is the dual of (2) and (3') is the dual of (3).
+	
+	The implication $[(2)\vee(2')\vee(3)\vee(3')]\Rightarrow(1)$ is easy.
+	Alternatively, one can prove $[(2)\vee(3)]\Rightarrow(1)$ and then show
+	$[(2')\vee(3')]\Rightarrow(1)$ arguing by duality.
+	
+	\medskip\noindent
+	(1)$\Rightarrow$(2). Suppose the sequence is a complex. Then $g$ factors through $\Coker f$ as $g=g'p$.
 	$$
 	\xymatrix{
-	x\ar[r]^f&y\ar[d]\ar[r]^g&z\\
-	&\Coker f\ar[r]&\Coim g\ar[u]
+	x\ar[r]^f\ar[d]_{f'}&y\ar[r]^g\ar[dr]^{p'}&z\\
+	\Im f\ar[ru]^{i'}\ar@{-->}[r]_{i}&\Ker g\ar[u]_{j'}&\Coker f\ar[u]_{g'}
 	}
 	$$
-	where $\Coker f\to\Coim g$ is surjective.
-\end{remark}
+	We also have $gi'=g'p'i'=g'0=0$. Therefore $i'$ factors uniquely as $i'=j'i$.
+	Since $i'$ is monic (it is a normal monomorphism),
+	by Lemma \ref{lemma-new-mono-epi-from-old} we deduce that $i$ is also monic.
+	
+	\medskip\noindent
+	Uniqueness of $i$ is provided by the universal property of $\ker g$,
+	using the fact that $i'f'=f$.
+	We've also proven that $i$ must be a monomorphism, and thus injective.
+	
+	\medskip\noindent
+	(2')$\Rightarrow$(1). Dual to (2)$\Rightarrow$(1).
+	
+	\medskip\noindent The implications (3)$\Rightarrow$(1) and (3')$\Rightarrow$(1)
+	follow from implications (2)$\Rightarrow$(1) and (2')$\Rightarrow$(1), respectively,
+	using the fact that in an abelian category we have decompositions
+	$$
+	\xymatrix{
+		x\ar[r]^f\ar[d]_{}&y\ar[d]^{}&&
+		\ar@{}[d]|{\text{\normalsize and}}&&
+		y\ar[r]^{g}\ar[d]_{}&z\ar[d]^{}\\
+		\Coim f\ar[r]_{}&\Im f&&&&
+		\Coim g\ar[r]_{}&\Im g
+	}
+	$$
+	where the bottom morphisms are isomorphisms.
+
+	\medskip\noindent
+	We lastly prove the equivalences (i)$\Leftrightarrow$(ii)$\Leftrightarrow$(iii).
+	Note that if $x\xrightarrow{f}y\xrightarrow{g}z$ is exact, $\Im f=\Ker g$,
+	then $i$ must be the identity. Conversely, if $i$ is an isomorphism,
+	then by the factorization $i'=j'i$, we have that $\Im f$ and $\Ker g$ are
+	isomorphic as objects over $y$, so $\Im f=\Ker g$. Dually, using Lemma
+	\ref{lemma-exact-self-dual}, we have that $x\xrightarrow{f}y\xrightarrow{g}z$
+	is exact if and only if $p$ is an isomorphism. The equivalence
+	``$x\xrightarrow{f}y\xrightarrow{g}z$ is exact if and only if any of $j,q$ is
+	an isomorphism'' follows from the already proven equivalences plus the
+	coimage-image factorization in an abelian category.
+\end{proof}
+
+The last lemma characterizes exactness at a term.
+We can also characterize exactness at two consecutive terms.
+
+\begin{lemma}
+	Let $\mathcal{A}$ be an abelian category and let $x
+	\xrightarrow{f}y
+	\xrightarrow{g}z
+	\xrightarrow{h}w$ be a sequence in $\mathcal{A}$. Then the sequence is a
+	complex if and only if there exists a morphism $\phi:\Coker f\to\Ker h$ making the diagram
+	$$
+	\xymatrix{
+		y\ar[d]\ar[r]^g&z\\
+		\Coker f\ar[r]^\phi&\Ker h\ar[u]
+	}
+	$$
+	commutative. Moreover, such a morphism is unique, and if the sequence is a complex,
+	then $\phi$ is injective if and only if the sequence is exact at $y$ and,
+	dually, $\phi$ is surjective if and only if the sequence is exact at $z$.
+	In particular, if the sequence is a complex,
+	then it is exact if and only if $\phi$ is an isomorphism.
+\end{lemma}
+\begin{proof}
+	Note that the diagram from the statement is self-dual: if we were to consider
+	the analogous diagram in $\mathcal{A}^\text{op}$ and then bring it back to
+	$\mathcal{A}$, we would obtain the same diagram.
+	
+	\medskip\noindent
+	Uniqueness follow from the fact that $y\to\Coker f$ is epic and $\Ker h\to z$ is monic.
+	
+	\medskip\noindent
+	If such a $\phi$ exists, it is easy to see that the sequence must be a complex.
+	Conversely, if the sequence is a complex, one can for example first
+	factor $g$ through $\Coker f$ and then factor the resulting morphism
+	$\Coker f\to z$ through $\Ker h$, to obtain $\phi$.
+	$$
+	\xymatrix{
+		y\ar[d]\ar[r]^g&z\\
+		\Coker f\ar@{-->}[r]_\phi\ar@{-->}[ru]&\Ker h\ar[u]
+	}
+	$$
+	(One could also argue dually and first factor $g$ through $\Ker h$ and then
+	factor the resulting morphism $y\to\Ker h$ through $\Coker f$ to obtain $\phi$.)
+	
+	\medskip\noindent
+	From now on, suppose the sequence is a complex.
+	If the sequence is exact at $y$, then $\Coker f=\Coim g$, by Lemma \ref{lemma-complex-im-subob-ker}.
+	Hence, since $\Coim g\to z$ is injective ($\mathcal{A}$ is abelian),
+	from commutativity of last diagram we deduce that $\phi$ must be injective as well.
+	Conversely, suppose that $\phi$ is injective, and consider the diagram
+	$$
+	\xymatrix{
+	y\ar[rr]^g\ar[dd]&&z\\
+	&\Im g\ar[ru]\ar@{-->}[rd]\\
+	\Coker f\ar[ru]\ar[rr]_\phi&&\Ker h\ar[uu]
+	}
+	$$
+	Here the top left square commutes
+	(Lemma \ref{lemma-complex-im-subob-ker}).
+	Since the morphism $\Im g\to z$ vanishes after
+	post-composition with $h$
+	(we can verify it after pre-composition with
+	$y\to\Coker f\to\Im g$,
+	which is epic for it is the composition of two surjections),
+	we obtain a morphism $\Im g\to\Ker h$ that makes
+	the right triangle of the last diagram commute.
+	Therefore the bottom triangle also commutes
+	(verify it after pre-composition with the epi $y\to\Coker f$
+	and post-composition with the mono $\Ker h\to z$).
+	Thus, $\phi$ injective implies
+	$\Coker f\to\Im g$ injective.
+	By Lemma \ref{lemma-complex-im-subob-ker},
+	since the latter also surjective,
+	it is an isomorphism and the sequence is exact at $y$.
+	
+	\medskip\noindent Dually, $\phi$ is surjective if and only if the sequence is exact at $z$.
+\end{proof}
+In the next two lemmas we shall show that the squares (2) and (2') from Lemma
+\ref{lemma-complex-im-subob-ker} are functorial. This will be necessary to verify
+in Section \ref{section-complexes} that the assignment of the homology object is a functor.
+
+\medskip\noindent
+First, we settle some notation to define the kernel and cokernel functors.
+
+\medskip\noindent
+For any category $\mathcal{C}$, we define $\operatorname{Arr}(\mathcal{C})$, the \emph{category of arrows of} $\mathcal{C}$,
+to be the category whose objects are arrows from $\mathcal{C}$ and whose morphisms are commutative diagrams in $\mathcal{C}$.
+With this notation, if $\mathcal{A}$ is
+a preabelian category, then there are functors $\Ker,\Coker : \operatorname{Arr}(\mathcal{A})\to \mathcal{A}$.
+The functor $\Ker$ sends a morphism in $\mathcal{A}$ to its kernel,
+and sends a commutative square in $\mathcal{A}$ to the unique morphism between
+kernels that extend the square to a commutative rectangle
+\[
+\xymatrix{
+	\Ker f\ar[r]\ar@{-->}[d]&A\ar[r]^f\ar[d]&B\ar[d]\\
+	\Ker f'\ar[r]&A'\ar[r]_{f'}&B'
+}
+\]
+The functor $\Coker$ is defined analogously. Note that $\operatorname{Arr}(\mathcal{A})$ is additive and the (co)kernel functor is additive too.
+\begin{lemma}
+	\label{lemma-im-ker-functor}
+	Let $\mathcal{A}$ be an abelian category, and let
+	\begin{equation}
+		\label{equation-morphism-three-term-complexes}
+		\xymatrix{
+			A\ar[r]^f\ar[d]^a&B\ar[r]^g\ar[d]^{b}&C\ar[d]^c\\
+			A'\ar[r]_{f'}&B'\ar[r]_{g'}\ar[r]&C'
+		}
+	\end{equation}
+	be a commutative diagram in $\mathcal{A}$, where the rows are complexes.
+	There is a unique dashed arrow in the diagram
+	\begin{equation}
+		\label{diagram-definition-homology-functor}
+		\xymatrix{
+			A\ar[rrr]^{f}\ar[dr]\ar[ddd]_{a}
+			&&&B\ar[ddd]^{b}\\
+			&\Im f\ar[r]\ar@{-->}[d]
+			&\Ker g\ar[ur]\ar[d]&\\
+			&\Im f'\ar[r]
+			&\Ker g'\ar[dr]&\\
+			A'\ar[ur]\ar[rrr]_{f'}
+			&&&B'
+		}
+	\end{equation}
+	such that the inner square commutes (the one with the images and kernels). In this diagram, the top and bottom squares come from Lemma \ref{lemma-complex-im-subob-ker}, so they commute, and the right square also commutes because it comes from the application of the kernel functor (see proof of Lemma \ref{lemma-cat-chain-abelian}) to the commutative square
+	\[
+	\xymatrix{
+		B\ar[r]^{g}\ar[d]_{b}&C\ar[d]^{c}\\
+		B'\ar[r]_{g'}&C'
+	}
+	\]
+	Furthermore, such a morphism $\Im f\to\Im f'$ makes the diagram \eqref{diagram-definition-homology-functor} a fully commutative diagram (the left square commutes).
+	
+	Dually, there is a unique dashed arrow in the diagram
+	\begin{equation}
+		\label{diagram-definition-homology-functor-dual}
+		\xymatrix{
+			B\ar[rrr]^{g}\ar[dr]\ar[ddd]_{b}
+			&&&C\ar[ddd]^{c}\\
+			&\Coker f\ar[r]\ar[d]
+			&\Coim g\ar[ur]\ar@{-->}[d]&\\
+			&\Coker f'\ar[r]
+			&\Coim g'\ar[dr]&\\
+			B'\ar[ur]\ar[rrr]_{g'}
+			&&&C'
+		}
+	\end{equation}
+	such that the inner square commutes. Furthermore, the morphism $\Coim g\to\Coim g'$ makes the last diagram fully commutative.
+\end{lemma}
+\begin{proof}
+	We prove only the claims regarding the diagram \eqref{diagram-definition-homology-functor}. The claims regarding the diagram \eqref{diagram-definition-homology-functor-dual} are dual.
+	
+	\medskip\noindent
+	Uniqueness follows from the fact that $\Im f'\to\Ker g'$ is monic (Lemma \ref{lemma-complex-im-subob-ker}).
+	
+	\medskip\noindent
+	We recommend the readers to try do the rest of the proof by themselves, as it is a diagram chasing. Here is the proof in any case:
+	
+	\medskip\noindent
+	We know the composite $\Im f'\to\Ker g'\to B'$ is the kernel of $B'\to\Coker f'$ (see proof of Lemma \ref{lemma-complex-im-subob-ker}). So to define the dashed arrow morphism, we use the universal property of $\Im f'$. We verify that the composite
+	\begin{equation}
+		\label{equation-composite-to-define-dashed-arrow-1}
+		\Im f\to\Ker g\to\Ker g'\to B'
+	\end{equation}
+	vanishes when post-composed with $B'\to\Coker f'$. As $\mathcal{A}$ is abelian, $A\to\Im f$ is epic (Lemma \ref{lemma-characterize-abelian-categories}), so it suffices to verify that the composite
+	\begin{equation}
+		\label{equation-composite-to-define-dashed-arrow-2}
+		A\to\Im f\to\Ker g\to\Ker g'\to B'
+	\end{equation}
+	vanishes after being post-composed with $B'\to\Coker f'$. But this is true since \eqref{equation-composite-to-define-dashed-arrow-2} equals $f'\circ a$, as it may be verified by inspection in \eqref{diagram-definition-homology-functor}. Thus the composite \eqref{equation-composite-to-define-dashed-arrow-1} factors through $\Im f'$: there is a morphism $\Im f\to\Im f'$ such that the composite
+	\[
+	\Im f\to\Im f'\to\Ker g'\to B'
+	\]
+	equals the composite \eqref{equation-composite-to-define-dashed-arrow-1}. Since $\Ker g'\to B'$ is monic, we obtain commutativity of the inner square.
+	
+	\medskip\noindent
+	We now verify the last part. To verify the equality of composites
+	$$
+	(A\to\Im f\to\Im f')
+	=(A\to A'\to \Im f')
+	$$
+	it suffices to verify equality after post-composition with the monomorphism $\Im f'\to\Ker g'\to B'$ (it is monic for it is a composition of monomorphisms). But this can be done again by inspection on \eqref{diagram-definition-homology-functor}.
+\end{proof}
+\begin{lemma}
+	\label{lemma-image-kernel-square-is-a-functor}
+	The inner commutative squares in \eqref{diagram-definition-homology-functor} and
+	in \eqref{diagram-definition-homology-functor-dual} are functorial.
+	Specifically, let $\mathcal{C}_\mathcal{A}$ be the category whose objects are
+	three-term complexes $A\to B\to C$ in $\mathcal{A}$, and where a morphism
+	between three-term complexes is a commutative diagram in the style of
+	\eqref{equation-morphism-three-term-complexes}. Then there is a pair of parallel functors
+	$F,\widetilde{F}:\mathcal{C}_\mathcal{A}\to\operatorname{Arr}(\mathcal{A})$
+	that send a complex $A\xrightarrow{f}B\xrightarrow{g}C$, respectively, to the
+	morphisms $\Im f\to\Ker g$ and $\Coker f\to\Coim g$, that come from Lemma \ref{lemma-complex-im-subob-ker}, and that send a morphism of three-term
+	complexes $(a,b,c)$, respectively, to the inner commutative squares of
+	\eqref{diagram-definition-homology-functor} and of \eqref{diagram-definition-homology-functor-dual}. Moreover, these functors are additive.
+\end{lemma}
+\begin{proof}
+	Again, we only prove the claims regarding $F$,
+	as those regarding $\widetilde{F}$ are dual.
+	Let
+	$$
+	\xymatrix{
+	A\ar[r]^{f}\ar[d]^{a_1}&B\ar[r]^{g}\ar[d]^{b_1}&C\ar[d]^{c_1}\\
+	A'\ar[r]^{f'}\ar[d]^{a_2}&B'\ar[r]^{g'}\ar[d]^{b_2}&C'\ar[d]^{c_1}\\
+	A''\ar[r]^{f''}&B''\ar[r]^{g''}&C''
+	}
+	$$
+	be a commutative diagram in $\mathcal{A}$, where the rows are complexes.
+	Consider the diagram
+	\[
+	\xymatrix{
+		\Im f\ar[r]\ar[d]
+		&\Ker g\ar[r]\ar[d]|{\Ker(b_1,c_1)}
+		&B\ar[r]^{g}\ar[d]^{b_1}
+		&C\ar[d]^{c_1}\\
+		\Im f'\ar[r]\ar[d]
+		&\Ker g'\ar[r]\ar[d]|{\Ker(b_2,c_2)}
+		&B'\ar[r]|{g'}\ar[d]^{b_2}
+		&C'\ar[d]^{c_2}\\
+		\Im f''\ar[r]&\Ker g''\ar[r]&B''\ar[r]_{g''}&C''
+	}
+	\]
+	which is commutative. From functoriality of $\Ker$, commutativity of the left rectangle and uniqueness of the dashed arrow in \eqref{diagram-definition-homology-functor}, the assertion follows.
+	
+	\medskip\noindent
+	On the other hand, additivity of $F$ comes from additivity of the kernel functor plus uniqueness of the dashed arrow in \eqref{diagram-definition-homology-functor}.
+\end{proof}
+
+\begin{lemma}
+	\label{lemma-homology-and-dual-nat-iso}
+	Let $A\xrightarrow{f} B\xrightarrow{g} C$ be a complex
+	in an abelian category $\mathcal{A}$.
+	There is a unique dashed arrow in the diagram
+	$$
+	\xymatrix@C=1em{
+		A\ar[rr]^f\ar[d]&&B\ar[rr]^g\ar[dr]&&C\\
+		\Im f\ar[r]^i&\Ker g\ar[ur]\ar[d]&&\Coker f\ar[r]^p&\Coim g\ar[u]\\
+		&\Coker i\ar@{-->}[rr]&&\Ker p\ar[u]
+	}
+	$$
+	that makes it commutative. The left and right square from this diagram come from Lemma \eqref{lemma-complex-im-subob-ker}. Moreover, the morphism $\Coker i\to\Ker p$ is an isomorphism and it is natural, meaning that given any commutative diagram
+	$$
+	\xymatrix{
+		A\ar[r]^f\ar[d]&B\ar[r]^g\ar[d]&C\ar[d]\\
+		A'\ar[r]^{f'}&B\ar[r]^{g'}&C
+	}
+	$$
+	where the rows are complexes, we have a commutative square
+	$$
+	\xymatrix{
+		\Coker i\ar[r]^{\cong}\ar[d]&\Ker p\ar[d]\\
+		\Coker i'\ar[r]^{\cong}&\Ker p'
+	}
+	$$
+	In this square, the morphisms between cokernels and kernels come, respectively, from the application of the cokernel and kernel functors to the diagrams
+	$$
+	\xymatrix{
+		\Im f\ar[r]^i\ar[d]&\Ker g\ar[d]&&
+		\ar@{}[d]|{\text{\normalsize and}}&&
+		\Coker f\ar[r]^p\ar[d]&\Coim g\ar[d]\\
+		\Im f'\ar[r]^{i'}&\Ker g'&&&&
+		\Coker f'\ar[r]^{p'}&\Coim g'
+	}
+	$$
+\end{lemma}
+\begin{proof}
+	Uniqueness follow from epicness of $\Ker g\to\Coker i$ and monicity of $\Ker p\to\Coker f$. We show existence.
+	
+	\medskip\noindent
+	In the diagram
+	\begin{equation}
+		\label{diagram-proof-homology-dual-isomorphic}
+		\xymatrix@C=1em{
+			A\ar[rr]^f\ar@{->>}[d]&&B\ar[rr]^g\ar[dr]&&C\\
+			\Im f\ar[r]^i&\Ker g\ar[ur]\ar@{->>}[d]&&\Coker f\ar[r]^p&\Coim g\ar@{^{(}->}[u]\\
+			&\Coker i\ar@{-->}[rr]\ar@{-->}[urr]&&\Ker p\ar[u]
+		}
+	\end{equation}
+	the composite $\Im f\xrightarrow{i}\Ker g\to B\to\Coker f$ vanishes (use that $A\to\Im f$ is epic). Thus, there is a unique morphism $\Coker i\to\Coker f$ such that
+	the square
+	$$
+	\xymatrix{
+		\Ker g\ar[r]\ar[d]&B\ar[d]\\
+		\Coker i\ar@{-->}[r]&\Coker f
+	}
+	$$
+	commutes in the diagram \eqref{diagram-proof-homology-dual-isomorphic}. Also in this diagram, the composite $\Coker i\to\Coker f\xrightarrow{p}\Coim g$ vanishes (use epicness of $\Ker g\to\Coker i$ and monicity of $\Coim g\to C$), so there is a unique morphism $\Coker i\to\Ker p$ such that the triangle
+	$$
+	\xymatrix{
+		&\Coker f\\
+		\Coker i\ar@{-->}[r]\ar[ur]&\Ker p\ar[u]
+	}
+	$$
+	commutes in diagram \eqref{diagram-proof-homology-dual-isomorphic}. We have existence.
+	
+	\medskip\noindent
+	We see that the morphism is injective. For this, it suffices to see that $\Coker i\to\Coker f$ is injective; but this morphism is the one induced between cokernels from the commutative square
+	$$
+	\xymatrix{
+		\Im f\ar[r]^i\ar[d]_{1_{\Im f}}&\Ker g\ar[d]\\
+		\Im f\ar[r]^{\operatorname{im}f}&B
+	}
+	$$
+	(We use $\operatorname{coker}(\operatorname{im}f)=\operatorname{coker}f$, see comment after Lemma \ref{lemma-characterize-normal-epis-monos}). Therefore, by Lemma \ref{lemma-iso-induced-coker-morphism-injective}, the induced morphism between cokernels $\Coker i\to\Coker f$ is injective.
+	
+	\medskip\noindent
+	Arguing by duality, one shows that the morphism $\Coker i\to\Ker p$ is also surjective. Thus, it is an isomorphism.
+	
+	\medskip\noindent
+	Finally, we see naturality. Consider the cubic diagram
+	$$
+	\xymatrix{
+		&\Ker g'\ar[rr]\ar@{->>}[dd]&&\Coker f'\\
+		\Ker g\ar[ur]\ar[rr]\ar@{->>}[dd]&&\Coker f\ar[ur]&\\
+		&\Coker i'\ar[rr]&&\Ker p'\ar@{^{(}->}[uu]\\
+		\Coker i\ar[ur]\ar[rr]&&\Ker p\ar@{^{(}->}[uu]\ar[ur]&
+	}
+	$$
+	where $\Ker g\to\Coker f$ equals the composite $\Ker g\to B\to\Coker f$
+	(and analogously for $\Ker g'\to\Coker f'$).
+	We want to show commutativity of the bottom face. For this, it suffices to show commutativity after pre-composition with $\Ker g\to\Coker i$ and post-composition with $\Ker p'\to\Coker f'$. And now commutativity of the bottom face follows from commutativity of all the other faces: the front and back faces commute because we proved it before. The lateral faces commute because they come precisely from application of the (co)kernel functor to the last two diagrams from the statement, and the top face commutes because we can break it down into two commuting subsquares:
+	$$
+	\xymatrix{
+		\Ker g'\ar[r]&B'\ar[r]&\Coker f'\\
+		\Ker g\ar[u]\ar[r]&B\ar[u]\ar[r]&\Coker f\ar[u]
+	}
+	$$
+\end{proof}
+
+\noindent
+In the literature, it is often said that ``a long exact sequence can be broken up into short exact sequences.'' In the next lemma we make precise the meaning of this assertion.
+
+\begin{lemma}
+	\label{lemma-les-breaks-into-ses}
+	\begin{slogan}
+		A long exact sequence breaks up into short exact sequences.
+	\end{slogan}
+	Let $\mathcal{A}$ be an abelian category and let
+	\begin{equation}
+		\label{lemma-les-breaks-into-ses-les}\tag{1}
+		\cdots
+		\to x^{i-1}\xrightarrow{d^{i-1}}
+		x^i\xrightarrow{d^i}
+		x^{i+1}
+		\to\cdots
+	\end{equation}
+	be a complex in $\mathcal{A}$. Then, for each $i\in\mathbb{Z}$, we have complexes
+	$$
+	\xymatrix{
+	(2)&
+	&0\ar[r]
+	&\Coker d^{i-2}\ar[r]^(.65){d^{i-1}}
+	&x^i\ar[r]^{d^i}
+	&\Im d^i\ar[r]
+	&0\\
+	(3)&
+	&0\ar[r]
+	&\Coker d^{i-2}\ar[r]^(.65){d^{i-1}}
+	&x^i\ar[r]^{}
+	&\Coker d^{i-1}\ar[r]
+	&0\\
+	(2')&
+	&0\ar[r]
+	&\Coim d^{i-1}\ar[r]^(0.65){d^{i-1}}
+	&x^i\ar[r]^(0.4){d^i}
+	&\Ker d^{i+1}\ar[r]
+	&0\\
+	(3')&
+	&0\ar[r]
+	&\Ker d^{i}\ar[r]
+	&x^i\ar[r]^(0.4){d^i}
+	&\Ker d^{i+1}\ar[r]
+	&0
+	}
+	$$
+	where we are abusing notation indicating where the maps come from. Moreover, the following are equivalent:
+	\begin{enumerate}
+		\item[(i)] The complex \eqref{lemma-les-breaks-into-ses-les} is exact,
+		\item[(ii)] There is $n\in\{2,2',3,3'\}$ such that $(n)$ is exact for all $i\in\mathbb{Z}$, and
+		\item[(iii)] For each $n\in\{2,2',3,3'\}$ it holds that $(n)$ is exact for all $i\in\mathbb{Z}$.
+	\end{enumerate}
+\end{lemma}
+\begin{proof}
+	Note that (2') is the dual of (2) and that (3') is the dual of (3).
+	
+	\medskip\noindent
+	It is easy to see that all (2), (2'), (3), and (3') are complexes. For example, for (2),
+	consider the commutative diagram
+	$$
+	\xymatrix@C=1em{
+		x^{i-1}\ar[dr]\ar[rr]^{d^{i-1}}&&
+		x^i\ar[dr]\ar[rr]^{d^i}
+		&&x^{i+1}\\
+		&\Coker d^{i-2}\ar[ur]
+		&&\Im d^i\ar[ur]&
+	}
+	$$
+	Vanishing of the composite $\Coker d^{i-2}\to x^i\to\Im d^i$ can be verified after pre-composition with the surjection $x^{i-1}\to\Coker d^{i-2}$ and post-composition with the injection $\Im d^i\to x^{i+1}$.
+	
+	\medskip\noindent
+	Alternatively, arguing by duality one can deduce that (2') and (3') are complexes provided that (2) and (3) are.
+	
+	\medskip\noindent Note that (2) is always exact at its right term ($x\to\Im d^i$ is surjective) since $\mathcal{A}$ is abelian.
+	
+	\medskip\noindent
+	Using Lemma \ref{lemma-characterize-injective-post-composition} we deduce
+	\begin{align*}
+		\Im(\Coker d^{i-2}\to x^i)&=\Im d^{i-1}\\
+		\Ker(x^i\to\Im d^i)&=\Ker d^i.
+	\end{align*}
+	Thus, short exactness of all sequences (2) implies exactness of \eqref{lemma-les-breaks-into-ses-les}.
+	Conversely, if \eqref{lemma-les-breaks-into-ses-les} is exact, then (2) is exact at its middle term (by previous formulas) and at its right term, as we noted before. Exactness at the left term follows from Lemma \ref{lemma-complex-im-subob-ker} and due to the fact that $\mathcal{A}$ is abelian, so $\Coim d^{i-1}\to x^i$ is injective. This shows that \eqref{lemma-les-breaks-into-ses-les} is exact if and only if (2) is exact for all $i\in\mathbb{Z}$.
+	
+	\medskip\noindent
+	The proof of the equivalence ``\eqref{lemma-les-breaks-into-ses-les} is exact if and only if (2') is exact for all $i\in\mathbb{Z}$'' is dual.
+	
+	\medskip\noindent
+	We next show equivalence between exactness of \eqref{lemma-les-breaks-into-ses-les} and exactness of all sequences (3). Before note that the sequence (3) is always exact at its right term, since the map into the cokernel is a surjection and also exact at its middle term, since
+	$$
+	\Im(\Coker d^{i-2}\to x^i)=\Im d^{i-1}=\Ker(x^i\to\Coker d^{i-1}),
+	$$
+	where the first equality was seen before.
+	Suppose that \eqref{lemma-les-breaks-into-ses-les} is exact. Then (2) is in particular exact at its left term, therefore (3) is short exact.
+	
+	\medskip\noindent Conversely, assume that all sequences (3) are short exact, and consider the commutative diagram
+	$$
+	\xymatrix{
+		x^{i-1}\ar[d]\ar[r]^{d^{i-1}}&x^i\\
+		\Coker d^{i-2}\ar[r]_p\ar[ur]&\Coim d^{i-1}\ar[u]
+	}
+	$$
+	Since $\Coker d^{i-2}\to x^i$ is injective, then $p$ is also injective. But by Lemma \ref{lemma-complex-im-subob-ker} $p$ is surjective, and, thus, an isomorphism. By same Lemma it follows that \eqref{lemma-les-breaks-into-ses-les} is exact at $x^{i-1}$.
+	
+	\medskip\noindent The proof of the equivalence ``\eqref{lemma-les-breaks-into-ses-les} is exact if and only if (3') is short exact for all $i\in\mathbb{Z}$'' is dual.
+\end{proof}
+
+Next we have a lemma we will use in the section of Complexes to define the homology object functor
+
+\begin{lemma}
+	\label{lemma-image-postcomposition-injective}
+	Let $\mathcal{A}$ be an abelian category and consider morphisms $x\xrightarrow{f}y\overset{i}{\hookrightarrow} z$, where $i$ is an injection. Then the composite $\Im f\to y\overset{i}{\hookrightarrow}z$ is an image for $if$.
+\end{lemma}
+\begin{proof}
+	We are actually going to show it the other way around. We are going to show that an image for $if$ is an image for $f$.
+	
+	We claim there exists a morphism $k:\Im if\to y$ such that the left triangle in the following diagram commutes
+	\begin{equation}
+		\label{diagram-image-postcomposition-injective}
+		\xymatrix{
+			x\ar[r]^f&y\ar[r]^i&z\ar[dr]\ar[r]&\Coker if\ar[d]\\
+			&&\Im if\ar[u]_j\ar[ul]^k&\Coker i
+		}
+	\end{equation}
+	where $\Coker if\to \Coker i$ is the morphism induced between cokernels, as it is explained in the proof of Lemma \ref{lemma-cat-chain-abelian}, from the commutative square
+	$$
+	\xymatrix{
+		x\ar[r]^{if}\ar[d]_f&z\ar[d]^{1_z}\\
+		y\ar[r]_i&z
+	}
+	$$
+	Thus, by commutativity of the left square in \ref{diagram-image-postcomposition-injective}, the composite $\Im if\xrightarrow{j}z\to\Coker i$ vanishes and there exists $k$ such that $ik=j$ in \ref{diagram-image-postcomposition-injective}. Also the left triangle in \ref{diagram-image-postcomposition-injective} commutes since commutativity can be verified after post-composition with the injective map $i$.
+	
+	\medskip\noindent
+	We now show $k$ is an image for $f$. Consider the diagram
+	\begin{equation}
+		\label{diagram-image-postcomposition-injective-2}
+		\xymatrix{
+			&&\Coker f\ar[dr]\\
+			x\ar[r]^f&y\ar[ur]\ar[r]^i&z\ar[r]&\Coker if\\
+			&w\ar[u]^\ell\ar@{-->}[r]_t&\Im if\ar[lu]|k\ar[u]_j
+		}
+	\end{equation}
+	where the morphism $\Coker f\to\Coker if$ is induced by the commutative square
+	$$
+	\xymatrix{
+	x\ar[r]^f\ar[d]_{1_x}&y\ar[d]^i\\
+	x\ar[r]_{if}&z
+	}
+	$$
+	Suppose $\ell:w\to y$ is such that the composite $w\xrightarrow{\ell}y\to \Coker f$ vanishes. Then, by commutativity of the upper triangle in \ref{diagram-image-postcomposition-injective-2}, the composite $w\xrightarrow{\ell}y\xrightarrow{i}z\to\Coker if$ also vanishes and therefore there exists $t:w\to\Im if$ such that $jt=i\ell$. We want to verify that $\ell=kt$, but we can do this after post-composition with the injective map $i$, which is easy. Uniqueness of $\ell$ follows from the fact that $k$ is a monomorphism as $ik=j$ is a monomorphism.
+\end{proof}
 
 \noindent
 In the following lemma we assume the reader knows what it means
@@ -1386,6 +2054,64 @@ Immediate consequence of
 Lemma \ref{lemma-four-lemma}.
 \end{proof}
 
+The five lemma allows us to prove a partial converse to Lemma \ref{lemma-cartesian-kernel}.
+\begin{lemma}
+	\label{lemma-cartesian-kernel-iso}
+	Let $\mathcal{A}$ be abelian, and suppose
+	$$
+	\xymatrix{
+	0\ar[r]&K\ar[r]^k\ar[d]^u&X\ar[r]^f\ar[d]^v&Y\ar[r]\ar[d]^w&0\\
+	0\ar[r]&K'\ar[r]_{k'}&X'\ar[r]_{f'}&Y'\ar[r]&0
+	}
+	$$
+	is a commutative diagram in $\mathcal{A}$ with exact rows. Then $u$ is an isomorphism if and only if the right square is cartesian. Dually, $w$ is an isomorphism if and only if the left square is cocartesian.
+\end{lemma}
+\begin{proof}
+	Proving that the right square is an isomorphism amounts to prove that the canonical morphism $X\to X'\times_{Y'}Y$ is an isomorphism.
+	
+	\medskip\noindent
+	We have a commutative diagram
+	$$
+	\xymatrix{
+		0\ar[r]&K\ar[r]^k\ar[d]_u&X\ar[r]^f\ar[d]^{(v,f)}&Y\ar[r]\ar[d]^{1_Y}&0\\
+		0\ar[r]&K'\ar[r]^(0.35){(k',0)}\ar[d]_{1_{K'}}&X'\times_{Y'}Y\ar[r]^(0.63){\psi_2}\ar[d]^{\psi_1}&Y\ar[r]\ar[d]^w&0\\
+		0\ar[r]&K'\ar[r]_{k'}&X'\ar[r]_{f'}&Y'\ar[r]&0
+	}
+	$$
+	The middle row is exact at $Y$ since $\psi_2$ is surjective as $f'$ is surjective (Lemma \ref{lemma-epimorphism-universal-abelian-category}). And it is exact at $K'$ and at $X'\times_{Y'}Y$ since $(k',0)$ is the kernel of $\psi_2$, by Lemma \ref{lemma-cartesian-kernel}. Therefore, since the upper row is also exact, by the five lemma (Lemma \ref{lemma-five-lemma}) we get that $u$ is an isomorphism if and only if $(v,f)$ is an isomorphism.
+\end{proof}
+
+\begin{lemma}
+	\label{lemma-iso-induced-coker-morphism-injective}
+	Let $\mathcal{A}$ be an abelian category and let
+	$$
+	\xymatrix{
+	x_1\ar[r]^x\ar[d]_{f_1}&x_2\ar[d]^{f_2}\\
+	y_1\ar[r]_y&y_2
+	}
+	$$
+	be a commutative diagram in $\mathcal{A}$. If $x$ and $y$ are injective,
+	$f_1$ is an isomorphism and $f_2$ is injective (resp., surjective),
+	then $x_2/x_1\to y_2/y_1$ is injective (resp., surjective).
+	Dually, if $x$ and $y$ are surjective,
+	$f_2$ is an isomorphism and $f_1$ is injective (resp., surjective),
+	then $\Ker x\to\Ker y$ is injective (resp., surjective).
+\end{lemma}
+\begin{proof}
+	We prove only the first part. Consider the commutative diagram
+	$$
+	\xymatrix{
+	0\ar[r]&x_1\ar[d]_{f_1}\ar[r]^x&x_2\ar[d]^{f_2}\ar[r]^(0.4){\operatorname{coker}x}&x_2/x_1\ar[d]^{\overline{f}_2}\ar[r]&0\\
+	0\ar[r]&y_1\ar[r]_y&y_2\ar[r]_(0.4){\operatorname{coker}y}&y_2/y_1\ar[r]&0
+	}
+	$$
+	with exact rows.
+	Application of Lemma \ref{lemma-cartesian-kernel-iso} gives that
+	the right square is cartesian. By Lemma \ref{lemma-cartesian-kernel},
+	if $f_2$ is injective then so is $\overline{f}_2$. On the other hand,
+	if $f_2$ is surjective, then $\overline{f}_2\circ\operatorname{coker} x=\operatorname{coker}y\circ f_2$
+	is surjective and, hence, so is $\overline{f}_2$.
+\end{proof}
 
 
 
@@ -1746,6 +2472,8 @@ Let $F : \mathcal{A} \to \mathcal{B}$ be a functor.
 	$0 \to A \to B \to C \to 0$
 	the sequence $0 \to F(A) \to F(B) \to F(C) \to 0$
 	is exact.
+	\item[(\textsc{iv})] $F$ is left exact and preserves surjections, i.e., for every morphism $f$ in $\mathcal{A}$ that is surjective, $Ff$ is surjective.
+	\item[(\textsc{v})] $F$ is right exact and preserves injections, i.e., for every morphism $f$ in $\mathcal{A}$ that is injective, $Ff$ is injective.
 \end{enumerate}
 \end{enumerate}
 \end{lemma}
@@ -1795,7 +2523,7 @@ Hence, by the snake lemma,
 we deduce that $Fi\amalg Fj$ is injective and surjective and,
 thus, an isomorphism
 (abelian categories are balanced,
-see comments after proof of Lemma \ref{lemma-characterize-abelian-categories}). Therefore,
+Lemma \ref{lemma-characterize-abelian-categories}). Therefore,
 by Lemma \ref{lemma-additive-functor}, $F$ is additive.
 Thus, for the rest of the proof we may assume $F$ is additive.
 
@@ -1828,8 +2556,7 @@ Factor $f$ as $A \to I \to B$ with $f' : A \to I$ surjective
 and $i : I \to B$ injective.
 (This is possible by the
 definition of an abelian category.)
-We have $\Ker(f) = \Ker(f')$
-(see last paragraph of Example \ref{example-fibre-product-pushouts}). Also
+We have $\Ker(f) = \Ker(f')$, by Lemma \ref{lemma-characterize-injective-post-composition}. Also
 $0 \to \Ker(f') \to A \to I \to 0$
 and
 $0 \to I \to B \to B/I \to 0$
@@ -1856,10 +2583,86 @@ is also a kernel of $F(f)$, and we win.
 \medskip\noindent
 (\textsc{i})$\Rightarrow$(\textsc{ii}). $F$ preserves finite (co)limits, so it preserves images and kernels.
 
-\noindent
+\medskip\noindent
 (\textsc{ii})$\Rightarrow$(\textsc{iii}). Obvious.
 
-\noindent(\textsc{iii})$\Rightarrow$(\textsc{i}). Follows from (2) and (2').
+\medskip\noindent
+(\textsc{iii})$\Rightarrow$(\textsc{i}). Follows from (2) and (2').
+
+\medskip\noindent
+(\textsc{i})$\Rightarrow$(\textsc{iv}). An exact functor preserves cokernels and zero objects, so if $\Coker f=0$, then $0=F(\Coker f)=\Coker Ff$.
+
+\medskip\noindent
+(\textsc{iv})$\Rightarrow$(\textsc{iii}). If $0\to A\to B\to C\to 0$ is short exact sequence in $\mathcal{A}$, then $0\to F(A)\to F(B)\to F(C)\to 0$ is exact at $F(A)$ and at $F(B)$ for $F$ is left exact, but also exact at $F(C)$ for $F$ preserves surjections.
+
+\medskip\noindent
+The implications (\textsc{i})$\Rightarrow$(\textsc{v}) and (\textsc{v})$\Rightarrow$(\textsc{iii}) are dual to the two last ones we have shown.
+\end{proof}
+
+\begin{lemma}
+	\label{lemma-faithfully-exact}
+	Let $F:\mathcal{A}\to\mathcal{B}$ be an exact functor between abelian categories. The following are equivalent:
+	\begin{enumerate}
+		\item $F$ reflects exact sequences, i.e., for every sequence $A\to B\to C$ in $\mathcal{A}$ such that $F(A)\to F(B)\to F(C)$ is exact, also $A\to B\to C$ is exact,
+		\item For every complex $A\to B\to C$ in $\mathcal{A}$ such that $F(A)\to F(B)\to F(C)$ is exact, also $A\to B\to C$ is exact,
+		\item $F$ reflects short exact sequences, i.e., for every sequence $A\to B\to C$ in $\mathcal{A}$ such that $0\to F(A)\to F(B)\to F(C)\to 0$ is exact, also $0\to A\to B\to C\to 0$ is exact,
+		\item For every complex $A\to B\to C$ in $\mathcal{A}$ such that $0\to F(A)\to F(B)\to F(C)\to 0$ is exact, also $0\to A\to B\to C\to 0$ is exact,
+%		\item $F$ reflects isomorphisms, i.e., for every morphism $f$ in $\mathcal{A}$ such that $Ff$ is an isomorphism, $f$ is an isomorphism,
+		\item $F$ reflects zero objects,
+		\item $F$ reflects zero morphisms,
+		\item $F$ is faithful,
+		\item $F$ reflects monomorphisms and epimorphisms, and
+		\item $F$ reflects isomorphisms.
+	\end{enumerate}
+\end{lemma}
+\begin{definition}
+	\label{definition-faithfully-exact}
+	An exact functor between abelian categories satisfying any of the equivalent conditions of the lemma above is said to be {\it faithfully exact}.
+\end{definition}
+\begin{proof}
+	The implications [(1)$\Rightarrow$(2)+(3)], [(2)$\Rightarrow$(4)], and [(3)$\Rightarrow$(4)] are immediate. In the proof of some of this implications one must use that $F0=0$ (this holds because $F$ is additive, since it is exact).
+	
+	\medskip\noindent
+	(4)$\Rightarrow$(5). If $A$ is an object in $\mathcal{A}$ such that $F(A)=0$, then the complex $0\to A\to 0$ is sent to the short exact sequence $0\to 0\to F(A)\to 0\to 0$, so $0\to 0\to A\to 0\to 0$ is short exact, and it follows that $A=0$ by Lemma \ref{lemma-characterize-zero-map}.
+	
+	\medskip\noindent
+	(5)$\Rightarrow$(6). Given a morphism $f$ in $\mathcal{A}$, we can factor $f=g\circ h$, where $g$ is injective and $h$ is surjective. This follows from the definition of an abelian category. Suppose $Ff=0$. Then $0\circ Fh=Fg\circ Fh$, and since $Fh$ is surjective (exact funtors preserve surjections), we deduce $0=Fg$. As $Fg$ is injective, using lemmas \ref{lemma-characterize-zero-map} and \ref{lemma-characterize-injective}, it follows that $0=\operatorname{dom}Fg=F(\operatorname{dom}g)$, so $0=\operatorname{dom}g$. In particular, $f=0$.
+	
+	\medskip\noindent 
+	(6)$\Rightarrow$(5). If $A$ is an object in $\mathcal{A}$ such that $F(A)=0$, then, by Lemma \ref{lemma-preadditive-zero}, $0=\operatorname{id}_{F(A)}=F(\operatorname{id}_A)$, so $0=\operatorname{id}_A$ and $A=0$ by same lemma.
+	
+	\medskip\noindent
+	(6)$\Leftrightarrow$(7). This is because exact functors are in particular additive, and the map $\mathcal{A}(A,A')\to\mathcal{B}(F(A),F(A'))$, which is a group homomorphism, is injective if and only if its kernel is zero.
+	
+	\medskip\noindent
+	(5)$\Rightarrow$(8).
+%	Since abelian categories are balanced (Lemma \ref{lemma-characterize-abelian-categories}), it suffices to show that $F$ reflects monomorphisms.
+	If $f$ is a morphism in $\mathcal{A}$ such that $Ff$ is a monomorphism, then $0=\Ker Ff=F(\Ker f)$, where we have used that $F$ preserves kernels for it is exact. Thus $0=\Ker f$, so $f$ is injective. Dually, $F$ reflects epimorphisms.
+	
+	\medskip\noindent (8)$\Rightarrow$(9). If $Ff$ is an isomorphism, then $f$ is a monomorphism and a epimorphism, and, thus, also an isomorphism as abelian categories are balanced (Lemma \ref{lemma-characterize-abelian-categories}).
+	
+	\medskip\noindent
+	(9)$\Rightarrow$(2). Suppose $A\to B\to C$ is a complex in $\mathcal{A}$ such that $F(A)\to F(B)\to F(C)$ is exact. By Lemma \ref{lemma-complex-im-subob-ker}, we have a factorization
+	$$
+	\xymatrix{
+		A\ar[r]^f\ar[d]&B\ar[r]^g&C\\
+		\Im f\ar[r]^{i}&\Ker g\ar[u]
+	}
+	$$
+	This commutative diagram is carried to the commutative diagram
+	$$
+	\xymatrix{
+		F(A)\ar[r]^f\ar[d]&F(B)\ar[r]^g&F(C)\\
+		\Im Ff\ar[r]^{Fi}&\Ker Fg\ar[u]
+	}
+	$$
+	where we have used that $F$ preserves (co)kernels and in particular also images. Since $F(A)\to F(B)\to F(C)$ is exact, the map $Fi$ is an isomorphism by Lemma \ref{lemma-complex-im-subob-ker}. Therefore also $i$ is an isomorphism and $A\to B\to C$ is exact, by same lemma.
+
+	\medskip\noindent
+	So far, the already proven implications show also (6)$\Leftrightarrow$(8)$\Leftrightarrow$(9).
+	
+	\medskip\noindent
+	(6)+(9)$\Rightarrow$(1). If $A\to B\to C$ is a sequence in $\mathcal{A}$ such that $F(A)\to F(B)\to F(C)$ is exact, in particular the latter is a complex and therefore the former must be also a complex, for $F$ reflects zero morphisms. Now proceed as in the proof of (9)$\Rightarrow$(2).
 \end{proof}
 
 \begin{lemma}
@@ -3118,27 +3921,128 @@ is exact at $B_i$.
 \end{lemma}
 
 \begin{proof}
-Omitted.
+	Ommited.
+%We only show that $\operatorname{Ch}(\mathcal{A})$ has all (co)kernels if $\mathcal{A}$ has all (co)kernels, because it serves to explain a nice property of (co)kernels, namely, that (co)kernels are functorial.  With the aid of the functors $\Ker$ and $\Coker$, now is easy to guess who is the (co)kernel in $\operatorname{Ch}(\mathcal{A})$. Verifying that the obvious choice is indeed a (co)kernel in $\operatorname{Ch}(\mathcal{A})$ is left as an exercise.
 \end{proof}
 
-\noindent
+\medskip\noindent
+Suppose $\mathcal{C}$ is any preabelian category. Given objects $A:A_1\to A_2$ and $B:B_1\to B_2$ in $\operatorname{Arr}(\mathcal{C})$ and a morphism $f:A\to B$ between them, i.e., a commutative diagram
+$$
+\xymatrix{
+A_1\ar[r]^A\ar[d]_{f_1}&A_2\ar[d]^{f_2}\\
+B_1\ar[r]_B&B_2
+}
+$$
+we say that the morphism $f$ \emph{factors on the first component} (respectively, \emph{lifts on the second component}) if there exists a morphism $g:A_2\to B_1$ such that $f_1=gA$ (resp., such that $f_2=Bg$). If $\mathcal{C}=\mathcal{A}$ is a preabelian category, then the kernel functor (resp., the cokernel functor) sends a morphism that factors on the first component (resp., that lifts on the second component) to the zero map.
+
+\medskip\noindent
 For any $i \in \mathbf{Z}$ the $i$th {\it homology group}
 of a chain complex $A_\bullet$ in an abelian category is defined by
 the following formula
 $$
-H_i(A_\bullet) = \Ker(d_i)/\Im(d_{i + 1}).
+H_i(A_\bullet) = \Ker(d_i)/\Im(d_{i + 1}),
 $$
+where we know that $\Im(d_{i+1})\subset\Ker(d_i)$ thanks to Lemma \ref{lemma-complex-im-subob-ker}.
 If $f : A_\bullet \to B_\bullet$ is a morphism of chain
 complexes of $\mathcal{A}$ then we get an induced
 morphism $H_i(f) : H_i(A_\bullet) \to H_i(B_\bullet)$
 because clearly
 $f_i(\Ker(d_i : A_i \to A_{i - 1})) \subset
 \Ker(d_i : B_i \to B_{i - 1})$, and similarly
-for $\Im(d_{i + 1})$.
-Thus we obtain a functor
+for $\Im(d_{i + 1})$. Let's make this more precise. From Lemma \ref{lemma-image-kernel-square-is-a-functor} we obtain a pair of parallel additive functors $F_i,\widetilde{F}_i:\operatorname{Ch}(\mathcal{A})\to\operatorname{Arr}(\mathcal{A})$ that send a complex $A_\bullet$ in $\mathcal{A}$ to the morphisms $\Im d_{i+1}\to\Ker d_i$ and $\Coker d_{i+1}\to\Coim d_i$, respectively, and that send a chain map $f_\bullet:A_\bullet\to B_\bullet$ to the commutative squares
 $$
-H_i : \text{Ch}(\mathcal{A}) \longrightarrow \mathcal{A}.
+\xymatrix{
+	\Im d^A_{i+1}\ar[r]\ar[d]&\Ker d^A_{i}\ar[d]&&
+	\ar@{}[d]|{\text{\normalsize and}}&&
+	\Coker d^A_{i+1}\ar[r]\ar[d]&\Coim d^A_{i}\ar[d]\\
+	\Im d^B_{i+1}\ar[r]&\Ker d^B_{i}&&&&
+	\Coker d^B_{i+1}\ar[r]&\Coim d^B_{i},
+}
 $$
+respectively. In other words, if $U=(-_{i+1},-_i,-_{i-1}):\operatorname{Ch}(\mathcal{A})\to\mathcal{C}_\mathcal{A}$ is the forgetful functor that only retains the $(i+1)$-th, $i$-th and $(i-1)$-th terms (the notation $\mathcal{C}_\mathcal{A}$ is explained in statement of Lemma \ref{lemma-image-kernel-square-is-a-functor}), then $F_i=F\circ U$ and $\widetilde{F}_i=\widetilde{F}\circ U$.
+
+\medskip\noindent
+We define the $i$-th homology group as the functor
+$$
+H_i=\Coker\circ F_i : \text{Ch}(\mathcal{A}) \longrightarrow \mathcal{A},
+$$
+and we define the ``dual'' $i$-th homology group as the functor
+$$
+\widetilde{H}_i=\Ker\circ \widetilde{F}_i: \text{Ch}(\mathcal{A}) \longrightarrow \mathcal{A}.
+$$
+Both $H_i$ and $\widetilde{H}_i$ are additive, since they are compositions of additive functors.
+
+\medskip\noindent
+It turns out that these two possible ways of defining the homology of a complex are the same.
+
+\begin{lemma}
+	\label{lemma-homology-and-dual-iso}
+	The functors $H_i$ and $\widetilde{H}_i$ are naturally isomorphic.
+\end{lemma}
+\begin{proof}
+	This follows from the definition of these functors plus Lemma \ref{lemma-homology-and-dual-nat-iso}.
+\end{proof}
+
+We are going to explain now how to write $H_n$ in a slightly different way. To explain it, consider the general fact that, in an abelian category, the cokernel of a map is the cokernel of its image (see comment after Lemma \ref{lemma-characterize-normal-epis-monos}). This fact can be expressed functorially: denote $\Ker_s,\Coker_s:\operatorname{Arr}(\mathcal{A})\to\operatorname{Arr}(\mathcal{A})$ to the endofunctors of the arrow category of a preabelian category $\mathcal{A}$ that send the commutative square
+\begin{equation}
+	\label{diagram-morphism-arrow-category}
+	\xymatrix{
+		x\ar[r]^f\ar[d]&y\ar[d]\\
+		x'\ar[r]_{f'}&y'
+	}
+\end{equation}
+respectively to
+$$
+\xymatrix{
+	\Ker f\ar[r]\ar[d]&x\ar[d]&&
+	\ar@{}[d]|{\text{\normalsize and}}&&
+	y\ar[r]\ar[d]&\Coker f\ar[d]\\
+	\Ker f'\ar[r]&x'&&&&
+	y'\ar[r]&\Coker f'
+}
+$$
+where we will agree that the top and bottom morphisms are the source and the target, respectively, and the vertical pair of arrows is the morphism in $\operatorname{Arr}(\mathcal{A})$. The subscript $s$ denotes ``square,'' so we don't mix the $\Ker$ and $\Coker$ functor notation explained before the statement of Lemma \ref{lemma-im-ker-functor}. If for $i=1,2$ we denote $p_i:\operatorname{Arr}(\mathcal{A})\to\mathcal{A}$ to the ``projection on the $i$-th component functor,'' i.e., $p_i$ sends
+\begin{equation}
+	\label{diagram-morphism-arrow-category}
+	\xymatrix{
+		x\ar[r]^f\ar[d]&y\ar[d]\\
+		x'\ar[r]_{f'}&y'
+	}
+\end{equation}
+to $x\to x'$ and $y\to y'\in\mathcal{A}$, respectively for $i=1,2$, then $\Coker=p_2\circ\Coker_s$ and $\Ker=p_1\circ\Ker_s$.
+
+\medskip\noindent
+The functor $\Im_s:=\Ker_s\circ\Coker_s$ sends \eqref{diagram-morphism-arrow-category} to the commutative square
+$$
+\xymatrix{
+\Im f\ar[r]\ar[d]&y\ar[d]\\
+\Im f'\ar[r]&y
+}
+$$
+Now the fact ``the cokernel of a morphism coincides with the cokernel of the image'' we explained before is written as a functor isomorphism $\Coker_s\cong \Coker_s\circ\Im_s$. Let $\mathcal{A}$ be an abelian category and let $G_n:\operatorname{Ch}(\mathcal{A})\to\operatorname{Arr}(\mathcal{A})$ be the functor that sends a morphism of chain complexes $f:A_\bullet\to B_\bullet$ to the commutative square
+$$
+\xymatrix{
+A_{n+1}\ar[r]\ar[d]_{f_{n+1}}&\Ker d_n^A\ar[d]\\
+B_{n+1}\ar[r]&\Ker d_n^B
+}
+$$
+Now it is easy to show the following
+\begin{lemma}
+	\label{lemma-homology-functor}
+	Let $\mathcal{A}$ be an abelian category and let $G_n:\operatorname{Ch}(\mathcal{A})\to\operatorname{Arr}(\mathcal{A})$ the functor explained above. It holds $H_n=\Coker\circ G_n$.
+\end{lemma}
+\begin{proof}
+	Since $\Ker d_n^A\to A_n$ is injective, by Lemma \ref{lemma-image-postcomposition-injective} it follows that $\Im d_{n+1}^A\to\Ker d_n^A$ is an image for $A_{n+1}\to\Ker d_n^A$. Thus, $\Im_s\circ G_n$ sends the last square to the inner commutative square of \ref{diagram-definition-homology-functor}, i.e., it holds $F_n=\Im_s\circ G_n$. Therefore
+	$$
+	\begin{aligned}
+		\operatorname{Coker}\circ G_n
+		&=p_2\circ\operatorname{Coker}_s\circ G_n\\
+		&=p_2\circ\operatorname{Coker}_s\circ\operatorname{Im}_s\circ G_n\\
+		&=\operatorname{Coker}\circ F_n\\
+		&=H_n.
+	\end{aligned}
+	$$
+\end{proof}
 
 \begin{definition}
 \label{definition-quasi-isomorphism}
@@ -3154,6 +4058,13 @@ $H_i(A_\bullet)$ are zero.
 \end{enumerate}
 \end{definition}
 
+\begin{lemma}
+	``Being quasi-isomorphic'' is a self-dual property of $\operatorname{Ch}(\mathcal{A})$. That is, a chain map $f_\bullet:A_\bullet\to B_\bullet$ is a quasi-isomorphism if and only if $f_\bullet^\mathrm{op}:A_\bullet^\mathrm{op}\to B_\bullet^\mathrm{op}$ is a quasi-isomorphism in $\operatorname{Ch}(\mathcal{A}^\mathrm{op})\cong \operatorname{Ch}(\mathcal{A})^\mathrm{op}$.
+\end{lemma}
+\begin{proof}
+	It follows from \ref{lemma-homology-and-dual-iso}, since $H_i$ is the dual construction to $\widetilde{H}_i$.
+\end{proof}
+Lemma \ref{lemma-exact-self-dual} follows as a particular case of last lemma.
 
 \begin{lemma}
 \label{lemma-map-homology-homotopy}
@@ -3168,7 +4079,73 @@ equivalence, then $f$ is a quasi-isomorphism.
 \end{lemma}
 
 \begin{proof}
-Omitted.
+(1) Since $H_i$ is an additive functor, it suffices to see that $H_i(f-g)$ vanishes. Let $h_i:A_i\to B_{i+1}$ be a homotopy between $f$ and $g$, so
+$$
+f_i - g_i = d_{i + 1}^B \circ h_i + h_{i - 1} \circ d_i^A.
+$$
+We study the process that gives rise to $H_i(f-g)$ by steps.
+The kernel functor sends the commutative square
+$$
+\xymatrix{
+A_i\ar[r]\ar[d]_{f_i-g_i}&A_{i-1}\ar[d]^{f_{i-1}-g_{i-1}}\\
+B_i\ar[r]&B_{i-1}
+}
+$$
+to the unique morphism $\varphi:\Ker d_i^A\to\Ker d_i^B$ that makes the square
+$$
+\xymatrix{
+\Ker d_i^A\ar[r]\ar[d]_\varphi&A_i\ar[d]^{d_{i+1}^Bh_i+h_{i-1}d_i^A}\\
+\Ker d_i^B\ar[r]&B_i
+}
+$$
+commutative. Equivalently, to the unique morphism $\varphi$ that makes
+$$
+\xymatrix{
+	\Ker d_i^A\ar[r]\ar[d]_\varphi&A_i\ar[d]^{d_{i+1}^Bh_i}\\
+	\Ker d_i^B\ar[r]&B_i
+}
+$$
+commutative, since precomposition with $\Ker d_i^A\to A_i$ makes the second term in $d_{i+1}^Bh_i+h_{i-1}d_i^A$ vanish. The morphism $H_i(f-g)$ then equals the application of the Coker functor to the commutative square
+$$
+\xymatrix{
+\Im d_{i+1}^A\ar[r]\ar[d]&\Ker d_i^A\ar[d]^\varphi\\
+\Im d_{i+1}^B\ar[r]&\Ker d_i^B
+}
+$$
+
+To see that $H_i(f-g)$ vanishes, it suffices to see that this last  commutative square, regarded as a morphism in $\operatorname{Arr}(\mathcal{A})$, lifts on the second component, by the comments after proof of Lemma \ref{lemma-cat-chain-abelian} about ``morphisms that lift on the second component.''
+
+\medskip\noindent
+Consider then commutative diagram
+$$
+\xymatrix{
+\Im d_{i+1}^A\ar[r]\ar[d]
+&\Ker d_i^A\ar[d]^\varphi\ar[r]
+&A_i\ar[d]^{d_{i+1}^Bh_i}\\
+\Im d_{i+1}^B\ar[r]
+&\Ker d_i^B\ar[r]
+&B_i
+}
+$$
+The bottom composite is the image of $d_{i+1}^B$ (see proof of Lemma \ref{lemma-complex-im-subob-ker}). Therefore, since the composite $\Ker d_i^A\to A_i\xrightarrow{d_{i+1}^Bh_i}B_i$ vanishes after post-composition with $B_i\to\Coker d_{i+1}^B$, by application of the universal property of $\Im d_{i+1}^B$ we get a morphism $\Ker d_i^A\to\Im d_{i+1}^B$ such that the diagram
+$$
+\xymatrix{
+&\Ker d_i^A\ar[r]\ar[dl]&A_i\ar[d]^{d_{i+1}^Bh_i}\\
+\Im d_{i+1}^B\ar[r]&\Ker d_i^B\ar[r]& B_i
+}
+$$
+commutes. Now, to see commutativity of
+$$
+\xymatrix{
+&\Ker d_i^A\ar[d]^\varphi\ar[dl]\\
+\Im d_{i+1}^B\ar[r]&\Ker d_i^B
+}
+$$
+it suffices to see equality of the sides of this triangle after post-composition with the monomorphism $\Ker d_i^B\to B_i$. But this holds by commutativity of the last two diagrams before the triangle.
+
+\medskip\noindent
+(2) Easy.
+
 \end{proof}
 
 \begin{lemma}
@@ -3363,6 +4340,21 @@ $$
 H^i : \text{CoCh}(\mathcal{A}) \longrightarrow \mathcal{A}.
 $$
 
+\medskip\noindent
+Let $\mathcal{A}$ be an abelian category and let $G^n:\operatorname{CoCh}(\mathcal{A})\to\operatorname{Arr}(\mathcal{A})$ be the functor that sends a morphism of cochain complexes $f:A^\bullet\to B^\bullet$ to the commutative square
+$$
+\xymatrix{
+	A^{n-1}\ar[r]\ar[d]_{f^{n-1}}&\Ker d^n_A\ar[d]\\
+	B^{n-1}\ar[r]&\Ker d^n_B
+}
+$$
+\begin{lemma}
+	\label{lemma-cohomology-functor}
+	Let $\mathcal{A}$ be an abelian category and let $G^n:\operatorname{CoCh}(\mathcal{A})\to\operatorname{Arr}(\mathcal{A})$ the functor explained above. It holds $H^n=\Coker\circ G^n$.
+\end{lemma}
+\begin{proof}
+	Omitted.
+\end{proof}
 \begin{definition}
 \label{definition-quasi-isomorphism-cochain}
 Let $\mathcal{A}$ be an abelian category.

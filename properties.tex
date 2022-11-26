@@ -1219,7 +1219,73 @@ of chains of specializations
 $$
 \xi_n \leadsto \xi_{n - 1} \leadsto \ldots \leadsto \xi_0
 $$
-of points of $X$.
+of points of $X$. See comments after Topology,
+Definition \ref{definition-generic-point}.
+
+%\begin{definition}
+%	\label{definition-Krull}
+%	Let $X$ be a Kolmogorov topological space.
+%	\begin{enumerate}
+%		\item A {\it chain of strict specializations} of $X$
+%		is a sequence $x_0 \leadsto x_1 \leadsto \ldots \leadsto x_n$
+%		of specializations in $X$ such that $x_{i+1}\not\leadsto x_i$ for
+%		$0\leq i<n$. Since $X$ is Kolmogorov, this is equivalent to $x_{i+1}\neq x_i$ for all $0\leq i<n$ and also equivalent to $x_i\neq x_j$ for all $0\leq i,j\leq n$, $i\neq j$.
+%		\item The {\it length} of a chain
+%		$x_0 \leadsto x_1 \leadsto \ldots \leadsto x_n$
+%		of specializations of $X$ is the
+%		integer $n$.
+%		\item The {\it specialization dimension}\footnote{This is likely nonstandard notation.}
+%		$\operatorname{sdim}(X)$ of $X$ is the element of
+%		$\{-\infty, 0, 1, 2, 3, \ldots, \infty\}$ defined by the formula:
+%		$$
+%		\operatorname{sdim}(X) =
+%		\sup \{\text{lengths of strict chains of specializations}\}
+%		$$
+%		Thus $\operatorname{sdim}(X) = -\infty$ if and only if $X$ is the empty space.
+%	\end{enumerate}
+%\end{definition}
+%\begin{lemma}
+%\label{lemma-specialization-dim-open-cover}
+%Let $X$ be a Kolmogorov space and let $X=\bigcup U_i$ be an open cover. Then $\operatorname{sdim}(X)=\sup_i\operatorname{sdim}(U_i)$.
+%\end{lemma}
+%\begin{proof}
+%	($\geq$). It suffices to see that if $Y\subset X$ is any subspace then $\operatorname{sdim}(Y)\leq\operatorname{sdim}(X)$. But this is immediate from the fact that continuity preserves the specialization order (the inclusion $Y\to X$ is continuous).
+%	
+%	\medskip\noindent
+%	($\leq$). Let $x_0\leadsto\cdots\leadsto x_n$ be a sequence of strict specializations in $X$. There is $i$ such that $x_n\in U_i$. Since open sets are stable under generalizations (see Topology, Lemma \ref{lemma-open-closed-specialization}), we conclude that $x_k\in U_i$ for all $0\leq k\leq n$. Since we have
+%	$$
+%	\overline{\{x_0\}}\supset\cdots\supset\overline{\{x_n\}},
+%	$$
+%	where the closures are taken in $X$, we deduce
+%	$$
+%	\overline{\{x_0\}}\cap U\supset\cdots\supset\overline{\{x_n\}}\cap U,
+%	$$
+%	where $\overline{\{x_k\}}\cap U$ equals the closure of $\{x_k\}$ in $U$. That is, $x_0\leadsto\cdots\leadsto x_n$ is a sequence of strict specializations in $U$.
+%\end{proof}
+%
+%\begin{lemma}
+%	\label{lemma-locally-spectral-equality-krull-specialization-dim}
+%	Let $X$ be a locally spectral space, i.e.,
+%	a topological space such that every point has an
+%	open neighborhood homeomorphic to an spectral space.
+%	Then $X$ is Kolmogorov and $\dim(X)=\operatorname{sdim}(X)$.
+%\end{lemma}
+%\begin{proof}
+%	Every locally spectral space is locally sober
+%	(since spectral spaces are sober by definition),
+%	and thus, also sober, by Topology,
+%	Lemma \ref{lemma-sober-local} (3).
+%	Therefore, $X$ is Kolmogorov, by the comments after Topology,
+%	Definition \ref{definition-generic-point}.
+%	On the other hand, by Lemma \ref{lemma-specialization-dim-open-cover}
+%	and by Topology, Lemma \ref{lemma-krull-dim-sup-cover},
+%	it suffices to show
+%	$\dim(X)=\operatorname{sdim}(X)$ for $X=\Spec A$.
+%	Since $x\leadsto y$ if and only if
+%	$\mathfrak{p}_x\subset\mathfrak{p}_y$ in $\Spec A$,
+%	the equality $\dim X=\operatorname{sdim}(X)$
+%	follows from Exercises, Exercise \ref{exercise-spec-sober}.
+%\end{proof}
 
 \begin{lemma}
 \label{lemma-dimension}
@@ -1246,6 +1312,10 @@ $x$. Thus $\sup_{x \in X} \dim_x(X) \geq \dim(X)$. On the other hand,
 it is clear that $\sup_{x \in X} \dim_x(X) \leq \dim(X)$
 as $\dim(U) \leq \dim(X)$ for any open subset of $X$.
 \end{proof}
+
+A direct proof of the equality $\dim(X)=\sup_{x\in X}\dim_x(X)$ is also
+given in Topology,
+Lemma \ref{lemma-dimension-supremum-local-dimensions}.
 
 \begin{lemma}
 \label{lemma-codimension-local-ring}

@@ -2510,6 +2510,50 @@ Namely, we have
 as desired.
 \end{proof}
 
+We now study how base change interacts with localization.
+\begin{lemma}
+	Let $f:A\to B$ be a ring homomorphism, let $M$ be an $A$-module, and let $N$ be an $(A,B)$-bimodule. Suppose $T\subset B$ is a multiplicative subset of $B$. Then $S=f^{-1}(T)$ is a multiplicative subset of $A$, the ring $T^{-1}B$ is a $S^{-1}A$-algebra, and we have
+	$$
+	T^{-1}(M\otimes_AN)
+	\cong M\otimes_AT^{-1}N
+	\cong S^{-1}M\otimes_{S^{-1}A}T^{-1}N.
+	$$
+\end{lemma}
+\begin{proof}
+	By the universal property of the localization, the map $A\to B$ induces a ring morphism
+	$$
+	\xymatrix@R=5pt{
+		A\ar[r]\ar[ddd]&B\ar[ddd]\\
+		\\
+		\\
+		S^{-1}A\ar@{-->}[r]&T^{-1}B\\
+		\frac{a}{s}\ar@{|->}[r]&\frac{f(a)}{f(s)}
+	}
+	$$
+	So $T^{-1}N$ is a $S^{-1}A$-module by restriction of scalars. We have
+	\begin{align*}
+		T^{-1}(M\otimes_A N)
+		&\cong(M\otimes_A N)\otimes_B T^{-1}B
+		&\text{by Lemma \ref{lemma-tensor-localization},}\\
+		&\cong M\otimes_A(N\otimes_B T^{-1}B)
+		&\text{by Lemma \ref{lemma-tensor-with-bimodule},}\\
+		&\cong M\otimes_A T^{-1}N
+		&\text{by Lemma \ref{lemma-tensor-localization},}\\
+		&\cong M\otimes_A(S^{-1}A\otimes_{S^{-1}A} T^{-1}N)
+		&\text{by Lemma \ref{lemma-flip-tensor-product},}\\
+		&\cong(M\otimes_A S^{-1}A)\otimes_{S^{-1}A} T^{-1}N
+		&\text{by Lemma \ref{lemma-tensor-with-bimodule}}\\
+		&\cong S^{-1}M\otimes_{S^{-1}A}T^{-1}N
+		&\text{by Lemma \ref{lemma-tensor-localization}.}
+	\end{align*}
+\end{proof}
+In particular, if $N=B$ and $T=B\setminus\mathfrak{q}$, where $\mathfrak{q}\subset B$ is a prime ideal, then $S=A\setminus\mathfrak{p}$, where $\mathfrak{p}=f^{-1}(\mathfrak{q})$, and we have
+$$
+(M\otimes_A B)_\mathfrak{q}
+\cong M\otimes_AB_\mathfrak{q}
+\cong M_{\mathfrak{p}}\otimes_{A_\mathfrak{p}} B_\mathfrak{q}.
+$$
+
 
 
 
@@ -8497,7 +8541,10 @@ $N \mapsto M \otimes_R N$ {\it is right exact}.
 See Categories, Section \ref{categories-section-exact-functor}
 and Homology, Section \ref{homology-section-functors}.
 An $R$-module $M$ is flat if $N \mapsto N \otimes_R M$ is also left exact,
-i.e., if it is exact. Here is the precise definition.
+i.e., if it is exact.
+An $R$-module $M$ is faithfully flat if $N\mapsto N\otimes_RM$ is faithfully exact,
+see Homology, Definition \ref{definition-faithfully-exact}.
+Here are the precise definitions of these concepts.
 
 \begin{definition}
 \label{definition-flat}
@@ -8988,6 +9035,8 @@ we have $\alpha = 0$ if and only if $\alpha \otimes \text{id}_M = 0$.
 \end{lemma}
 
 \begin{proof}
+This is just Homology, Lemma \ref{lemma-faithfully-exact}.
+But we give here a proof for $R$-modules.
 If $M$ is faithfully flat, then
 $0 \to \Ker(\alpha) \to N \to N'$ is exact if and only if the same holds
 after tensoring with $M$. This proves (1) implies (2).
@@ -9022,10 +9071,12 @@ is nonzero.
 \end{lemma}
 
 \begin{proof}
+The equivalence (1)$\Leftrightarrow$(2) is given in Homology, Lemma \ref{lemma-faithfully-exact}.
+But we shall see here a proof independent of this lemma.
 Assume $M$ faithfully flat and $N \not = 0$. By Lemma \ref{lemma-easy-ff}
 the nonzero map $1 : N \to N$ induces a nonzero map
 $M \otimes_R N \to M \otimes_R N$, so $M \otimes_R N \not = 0$.
-Thus (1) implies (2). The imlpications (2) $\Rightarrow$ (3) $\Rightarrow$ (4)
+Thus (1) implies (2). The implications (2) $\Rightarrow$ (3) $\Rightarrow$ (4)
 are immediate.
 
 \medskip\noindent

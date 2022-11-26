@@ -1215,7 +1215,7 @@ and hence it is a neighbourhood of $x$ in $X$. This proves the lemma.
 Let $X$ be a topological space.
 \begin{enumerate}
 \item A {\it chain of irreducible closed subsets} of $X$
-is a sequence $Z_0 \subset Z_1 \subset \ldots \subset Z_n \subset X$
+is a sequence $\emptyset\neq Z_0 \subset Z_1 \subset \ldots \subset Z_n \subset X$
 with $Z_i$ closed irreducible and $Z_i \not = Z_{i + 1}$ for
 $i = 0, \ldots, n - 1$.
 \item The {\it length} of a chain
@@ -1268,6 +1268,17 @@ inclusions are strict (details omitted; hint: the closure of $U \cap Z_i$
 is $Z_i$).
 In this way we see that $\dim_x(X) \geq n$ which proves the other
 inequality.
+\end{proof}
+
+\begin{lemma}
+	\label{lemma-krull-dim-sup-cover}
+	Let $X$ be a topological space and let $X=\bigcup U_i$ be an open cover. Then $\dim(X)=\sup_i\dim(U_i)$.
+\end{lemma}
+\begin{proof}
+	($\geq$) It suffices to prove that if $Y\subset X$ is any subspace then $\dim(Y)\leq\dim(X)$. But this follows from the fact that the closure of an irreducible subspace is irreducible: if $\emptyset\neq Z_0\subset\cdots\subset Z_n$ is a chain of irreducible closed subsets of $Y$, then $\overline{Z}_0\subset\cdots\subset\overline{Z}_n$ is a chain of irreducible closed subsets of $X$. The inclusions in the latter are indeed strict since intersecting with $Y$ brings us back to the original chain.
+	
+	\medskip\noindent
+	($\leq$) Let $\emptyset\neq Z_0\subset\cdots\subset Z_n$ be a chain of irreducible closed subsets of $X$. Let $U$ be one of the $U_i$ such that there is $z_0\in Z_0\cap U_i$. We want to see that $Z_k\cap U$ is a chain of irreducible subsets of $U$. On the one hand, these sets are irreducible since an open subset of an irreducible space needs to be irreducible. On the other hand, the inclusion $Z_k\cap U\subset Z_{k+1}\cap U$ must be strict: Suppose that instead it were an equality. Then $Z_k$ and $Z_{k+1}\setminus U$ covers $Z_{k+1}$, so one of equals $Z_{k+1}$, and that has to be $Z_k$ since $z_0\notin Z_{k+1}\setminus U$.
 \end{proof}
 
 \begin{example}
