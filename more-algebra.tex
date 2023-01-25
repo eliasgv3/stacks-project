@@ -8626,7 +8626,7 @@ the completion $M^\wedge$ is always complete.
 \begin{definition}[Topological rings]
 \label{definition-topological-ring}
 \begin{reference}
-\cite[Sections 7.1 and 7.2]{EGA1}
+\cite[Chapter 0, Sections 7.1 and 7.2]{EGA1}
 \end{reference}
 Let $R$ be a ring and let $M$ be an $R$-module.
 \begin{enumerate}
@@ -10105,7 +10105,7 @@ Algebra, Lemma \ref{algebra-lemma-geometrically-regular}.
 
 \begin{lemma}[Composition of regular maps]
 \label{lemma-regular-composition}
-Let $A \to B \to C$ be regular ring maps.
+Let $A \to B$ and $B \to C$ be regular ring maps.
 If the fibre rings of $A \to C$ are Noetherian, then
 $A \to C$ is regular.
 \end{lemma}
@@ -14498,13 +14498,16 @@ A \ar[r] & A' \\
 R \ar[r] \ar[u] & R' \ar[u]
 }
 $$
-of rings. Given an object $K$ of $D(A)$ we can consider its restriction
-to an object of $D(R)$. We can then consider take the derived change of
-rings of $K$ to an object of $D(A')$ and $D(R')$.
+of rings. Given an object $K$ of $D(A)$ we can consider its derived
+base change $K \otimes_A^\mathbf{L} A'$ to an object of $D(A')$.
+Or we can take the restriction of $K$ to an object of $D(R)$ and
+consider the derived base change of this to an object of $D(R')$,
+denoted $K \otimes_R^\mathbf{L} R'$
 We claim there is a functorial comparison map
 \begin{equation}
 \label{equation-comparison-map}
-K \otimes_R^{\mathbf{L}} R' \longrightarrow
+K \otimes_R^{\mathbf{L}} R'
+\longrightarrow
 K \otimes_A^{\mathbf{L}} A'
 \end{equation}
 in $D(R')$. To construct this comparison map choose a K-flat
@@ -15096,25 +15099,25 @@ $H^i(\beta)$ is an isomorphism for $i > m$ and
 surjective for $i = m$. By
 Derived Categories,
 Lemma \ref{derived-lemma-lift-map}
-we can find a map $\alpha : P^\bullet \to E^\bullet$ such that the diagram
+we can find a map $\gamma : P^\bullet \to E^\bullet$ such that the diagram
 $$
 \xymatrix{
 K^\bullet \ar[r] & L^\bullet \\
-P^\bullet \ar[u] \ar[r]^\alpha & E^\bullet \ar[u]
+P^\bullet \ar[u] \ar[r]^\gamma & E^\bullet \ar[u]_\beta
 }
 $$
-is commutative in $D(R)$. The cone $C(\alpha)^\bullet$ is a bounded
+is commutative in $D(R)$. The cone $C(\gamma)^\bullet$ is a bounded
 complex of finite free $R$-modules, and the commutativity of the
 diagram implies that there exists a morphism of distinguished triangles
 $$
-(P^\bullet, E^\bullet, C(\alpha)^\bullet)
+(P^\bullet, E^\bullet, C(\gamma)^\bullet)
 \longrightarrow
 (K^\bullet, L^\bullet, M^\bullet).
 $$
 It follows from the induced map on long exact cohomology sequences and
 Homology, Lemmas \ref{homology-lemma-four-lemma} and
 \ref{homology-lemma-five-lemma}
-that $C(\alpha)^\bullet \to M^\bullet$ induces an isomorphism
+that $C(\gamma)^\bullet \to M^\bullet$ induces an isomorphism
 on cohomology in degrees $> m$ and a surjection in degree $m$.
 Hence $M^\bullet$ is $m$-pseudo-coherent.
 
@@ -19583,7 +19586,7 @@ $$
 \pi :
 L^\bullet
 \longrightarrow
-(\bigoplus\nolimits_{\lambda \in \Lambda \setminus \Lambda'} R)[-i]
+(\bigoplus\nolimits_{\lambda \in \Lambda \setminus \Lambda'} R)[-c]
 $$
 given by the projection onto the factors corresponding to
 $\Lambda \setminus \Lambda'$ in degree $i$.
@@ -32680,7 +32683,7 @@ Let $K_1/K$ be a finite extension. Using the notation of
 Remark \ref{remark-construction}
 assume $e$ divides the ramification index of $A \subset (A_1)_{\mathfrak m_i}$
 for some $i$. Then $(A_1)_{\mathfrak m_i} \subset (B_1)_{\mathfrak m_{ij}}$
-is formally smooth $\mathfrak m_{ij}$-adic topology
+is formally smooth in the $\mathfrak m_{ij}$-adic topology
 for all $j = 1, \ldots, m_i$.
 \end{lemma}
 
@@ -36233,7 +36236,7 @@ $$
 B = \bigoplus\nolimits_{i \in I} R/f_iR \longrightarrow P
 $$
 which sends the element $r$ in the summand $R/f_iR$ to $\varphi_i(r)$ in $P$.
-Let $A = \Ker(F \to P)$. Then we see that (1) is true if the sequence
+Let $A = \Ker(B \to P)$. Then we see that (1) is true if the sequence
 $$
 0 \to A \to B \to P \to 0
 $$
@@ -36247,9 +36250,9 @@ in $P$. Hence there is an $i_0 \in I$ such that $f_{i_0} = f$ and
 $\varphi_{i_0}(1) = \sum \varphi_i(r_i)$. Let $x_{i_0} \in R/f_{i_0}R$
 be the class of $1$. Then we see that
 $$
-a = (r_i)_{i \in I} - (0, \ldots, 0, x_{i_0}, 0, \ldots )
+a' = (r_i)_{i \in I} - (0, \ldots, 0, x_{i_0}, 0, \ldots )
 $$
-is an element of $A$ and $fa = b$ as desired.
+is an element of $A$ and $fa' = a$ as desired.
 \end{proof}
 
 \begin{lemma}[Generalized valuation rings]

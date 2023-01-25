@@ -309,7 +309,7 @@ is commutative:
 $$
 \xymatrix{
 G \times_S G \ar[r]_-{f \times f} \ar[d]_m &
-G' \times_S G' \ar[d]^m \\
+G' \times_S G' \ar[d]^{m'} \\
 G \ar[r]^f & G'
 }
 $$
@@ -1591,7 +1591,8 @@ look there. There are many equivalent definitions; here is one.
 \begin{definition}
 \label{definition-abelian-variety}
 Let $k$ be a field. An {\it abelian variety} is a group scheme over
-$k$ which is also a proper, geometrically integral variety over $k$.
+$k$ which is also a proper, geometrically integral variety over
+$k$\footnote{For equivalent definitions see Remark \ref{remark-16-equivalent}.}.
 \end{definition}
 
 \noindent
@@ -1845,6 +1846,7 @@ $\text{d}[d]$ is given by multiplication by $d$ on $T_{A/k, e}$.
 \begin{lemma}
 \label{lemma-abelian-variety-multiplication-by-p}
 Let $k$ be a field of characteristic $p > 0$. Let $A$ be an abelian variety
+of dimension $g$
 over $k$. The fibre of $[p] : A \to A$ over $0$ has at most
 $p^g$ distinct points.
 \end{lemma}
@@ -1960,6 +1962,38 @@ The proof of (8) proceeds in exactly the same way, using that
 Lemma \ref{lemma-abelian-variety-multiplication-by-p} gives
 $A(k)[p] \cong (\mathbf{Z}/p\mathbf{Z})^{\oplus f}$ for some $0 \leq f \leq g$.
 \end{proof}
+
+\begin{remark}
+\label{remark-16-equivalent}
+Let $k$ be a field. There are $2 \times 4 \times 2 = 16$ equivalent
+definitions of abelian varieties. Let
+\begin{itemize}
+\item projective, proper,
+\item geometrically irreducible, irreducible, geometrically connected,
+connected,
+\item smooth, geometrically reduced
+\end{itemize}
+be three sets of properties, pick one from each of them, and let $A$
+be a group scheme over $k$ with the chosen properties over $k$.
+Then $A$ is an abelian variety.
+If we pick the options ``proper, geometrically irreducible, geometrically
+reduced'', then we recover Definition \ref{definition-abelian-variety}
+(use Varieties, Lemma \ref{varieties-lemma-geometrically-integral}).
+The weakest possible options would be ``proper, connected,
+and geometrically reduced'', see for example
+Morphisms, Lemma \ref{morphisms-lemma-locally-projective-proper} and
+Varieties, Lemma \ref{varieties-lemma-smooth-geometrically-normal}.
+So say $A$ is a proper, connected,
+and geometrically reduced group scheme over $k$.
+Then $A$ is geometrically irreducible by
+Lemmas \ref{lemma-connected-group-scheme-over-field-irreducible} and
+\ref{lemma-group-scheme-field-geometrically-irreducible}
+and hence an abelian variety.
+Finally, if $A/k$ is an abelian variety, then it is projective
+and smooth over $k$ (Proposition
+\ref{proposition-review-abelian-varieties}), whence satisfies
+the strongest possible options "projective, geometrically irreducible, smooth".
+\end{remark}
 
 
 
@@ -2185,10 +2219,11 @@ For example:
 If $S$ is the spectrum of a field, then the answer to (1) is yes
 because then $\{X \to S\}$ is a fpqc covering trivializing $X$.
 If $G \to S$ is affine, then the answer to (2) is yes
-(insert future reference here).
+(this follows from Descent, Lemma \ref{descent-lemma-affine}).
 If $G = \text{GL}_{n, S}$ then the answer to (3) is yes
 and in fact any $\text{GL}_{n, S}$-torsor is locally trivial
-(insert future reference here).
+(this follows from
+Descent, Lemma \ref{descent-lemma-finite-locally-free-descends}).
 \end{remark}
 
 

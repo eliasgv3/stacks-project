@@ -380,7 +380,7 @@ for $x \in X$ we have
 $\delta(x) \leq i \leq \delta(x) + \dim(\text{Supp}(\mathcal{F}_x))$,
 \item $\dim(\text{Supp}(\mathcal{E}^{i + \delta(x)}_x)) \leq i$,
 \item $\text{depth}(\mathcal{F}_x)$ is the smallest integer
-$i \geq 0$ such that $\mathcal{E}^{i + \delta(x)} \not = 0$, and
+$i \geq 0$ such that $\mathcal{E}_x^{i + \delta(x)} \not = 0$, and
 \item we have
 $x \in \text{Supp}(\bigoplus_{j \leq i} \mathcal{E}^j)
 \Leftrightarrow
@@ -4961,7 +4961,7 @@ $$
 Rf_*R\SheafHom_{\mathcal{O}_X}(K, \omega_X^\bullet) =
 R\SheafHom_{\mathcal{O}_Y}(Rf_*K, \omega_Y^\bullet)
 $$
-for $K$ in $D^-_{\textit{Coh}}(\mathcal{O}_Y)$,
+for $K$ in $D^-_{\textit{Coh}}(\mathcal{O}_X)$,
 \end{enumerate}
 \item if $f : X \to Y$ is a closed immersion in $\textit{FTS}_S$,
 then $f^!(-) = R\SheafHom(\mathcal{O}_X, -)$,
@@ -6342,7 +6342,7 @@ at $f(x)$, then $g \circ f$ is Gorenstein at $x$.
 \item If $f$ and $g$ are Gorenstein, then $g \circ f$ is Gorenstein.
 \item If $g \circ f$ is Gorenstein at $x$ and $f$ is flat at $x$,
 then $f$ is Gorenstein at $x$ and $g$ is Gorenstein at $f(x)$.
-\item If $f \circ g$ is Gorenstein and $f$ is flat, then
+\item If $g \circ f$ is Gorenstein and $f$ is flat, then
 $f$ is Gorenstein and $g$ is Gorenstein at every point in
 the image of $f$.
 \end{enumerate}
@@ -6379,7 +6379,7 @@ Let $x' \in X'$ be a point with image $x \in X$.
 \begin{enumerate}
 \item If $f$ is Gorenstein at $x$, then
 $f' : X' \to Y'$ is Gorenstein at $x'$.
-\item If $f$ is flat and $x$ and $f'$ is Gorenstein at $x'$, then $f$
+\item If $f$ is flat at $x$ and $f'$ is Gorenstein at $x'$, then $f$
 is Gorenstein at $x$.
 \item If $Y' \to Y$ is flat at $f'(x')$ and $f'$ is Gorenstein at
 $x'$, then $f$ is Gorenstein at $x$.

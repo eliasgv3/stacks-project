@@ -2527,7 +2527,7 @@ $$
 be a diagram of morphisms of complexes commuting up to homotopy.
 If $f$ is a termwise split injection, then $b$ is homotopic to a
 morphism which makes the diagram commute.
-If $g$ is a split surjection, then $a$ is homotopic to a
+If $g$ is a termwise split surjection, then $a$ is homotopic to a
 morphism which makes the diagram commute.
 \end{lemma}
 
@@ -5526,7 +5526,7 @@ Let $0 \to A \to B \to C \to 0$ be a short exact sequence of $\mathcal{A}$.
 By
 Lemma \ref{lemma-derived-canonical-delta-functor}
 we obtain a distinguished triangle
-$(A[0], B[0], C[0], a, b, c)$ in $K^{+}(\mathcal{A})$.
+$(A[0], B[0], C[0], a, b, c)$ in $D^{+}(\mathcal{A})$.
 From the long exact cohomology sequence (and the vanishing for $i < 0$
 proved above) we deduce that $0 \to R^0F(A) \to R^0F(B) \to R^0F(C)$
 is exact. Hence $R^0F$ is left exact. Of course this also proves that if
@@ -9012,19 +9012,28 @@ Omitted.
 \begin{lemma}
 \label{lemma-DBA-map-K}
 Let $\mathcal{B}$ be a weak Serre subcategory of the abelian category
-$\mathcal{A}$. Then there are canonical maps
+$\mathcal{A}$. There is a canonical isomorphisms
 $$
 K_0(\mathcal{B}) \longrightarrow
-K_0(D^b_\mathcal{B}(\mathcal{A})) \longrightarrow
-K_0(\mathcal{B})
+K_0(D^b_\mathcal{B}(\mathcal{A})),\quad
+[B] \longmapsto [B[0]]
 $$
-whose composition is zero. The second arrow
-sends the class $[X]$ of the object $X$ to the element
-$\sum (-1)^i[H^i(X)]$ of $K_0(\mathcal{B})$.
+The inverse sends the class $[X]$ of $X$
+to the element $\sum (-1)^i[H^i(X)]$.
 \end{lemma}
 
 \begin{proof}
-Omitted.
+We omit the verification that the rule for the inverse gives a well defined
+map $K_0(D^b_\mathcal{B}(\mathcal{A})) \to K_0(\mathcal{B})$.
+It is immediate that the composition
+$K_0(\mathcal{B}) \to
+K_0(D^b_\mathcal{B}(\mathcal{A})) \to
+K_0(\mathcal{B})$ is the identity. On the other hand, using the
+distinguished triangles of
+Remark \ref{remark-truncation-distinguished-triangle} and an
+induction argument the reader may show that the displayed arrow
+in the statement of the lemma is surjective (details omitted).
+The lemma follows.
 \end{proof}
 
 \begin{lemma}
@@ -9381,7 +9390,7 @@ where $RF$ and $LG$ are defined.
 \end{lemma}
 
 \begin{proof}
-Since $RF$ is defined at $K$, we see that the rule which assigns to a
+Since $RF$ is defined at $K$, we see that the rule which assigns to an
 $s : K \to I$ in $S$ the object $F(I)$ is essentially
 constant as an ind-object of $(S')^{-1}\mathcal{D}'$ with value $RF(K)$.
 Similarly, the rule which assigns to a $t : P \to M$ in $S'$
@@ -11805,7 +11814,8 @@ be a complex in $\mathcal{D}$. A {\it Postnikov system} is defined
 inductively as follows.
 \begin{enumerate}
 \item If $n = 0$, then it is an isomorphism $Y_0 \to X_0$.
-\item If $n = 1$, then it is a choice of a distinguished triangle
+\item If $n = 1$, then it is a choice of an isomorphism $Y_0 \to X_0$ and
+a choice of a distinguished triangle
 $$
 Y_1 \to X_1 \to Y_0 \to Y_1[1]
 $$

@@ -672,7 +672,7 @@ Let $f: B \to A$ be a ring map in $\mathcal{C}_\Lambda$.
 Notation as in (\ref{equation-sequence-functorial}).
 \begin{enumerate}
 \item The equivalent conditions of
-Lemma \ref{lemma-essential-surjection-mod-squares}
+Lemma \ref{lemma-surjective}
 characterizing when $f$ is surjective are also equivalent to
 \begin{enumerate}
 \item $\Im(\text{d}_B) \to \Im(\text{d}_A)$ is surjective, and
@@ -681,7 +681,8 @@ characterizing when $f$ is surjective are also equivalent to
 \end{enumerate}
 \item The following are equivalent
 \begin{enumerate}
-\item $f$ is an essential surjection,
+\item $f$ is an essential surjection
+(see Lemma \ref{lemma-essential-surjection-mod-squares}),
 \item the map $\Im(\text{d}_B) \to \Im(\text{d}_A)$ is an
 isomorphism, and
 \item the map $\Omega_{B/\Lambda} \otimes_B k \to
@@ -1050,7 +1051,7 @@ Set $E_n = (J_{N_n} + \mathfrak m_R^n)/\mathfrak m_R^n$.
 Set $E = \lim E_n \subset \lim R/\mathfrak m_R^n = R$.
 Note that $E \subset J$ as for any $f \in E$ and any $m$
 we have $f \in J_m + \mathfrak m_R^n$ for all $n \gg 0$, so
-$f \in J_m$ by Artin-Rees, see
+$f \in J_m$ by Krull's intersection theorem, see
 Algebra, Lemma \ref{algebra-lemma-intersect-powers-ideal-module-zero}.
 Since the transition maps $E_n \to E_{n - 1}$ are all surjective,
 we see that $J$ surjects onto $E_n$. Hence for $N = N_n$ works.
@@ -3953,7 +3954,7 @@ $$
 \vcenter{
 \xymatrix{
             &  y \ar[d] \\
-\eta \ar[r]  &  x
+\xi \ar[r]  &  x
 }
 }
 \quad\text{lying over}\quad
@@ -4012,7 +4013,7 @@ $p_1$ is an essential surjection. Recall that $S = R[[X_1, \ldots, X_r]]$
 and that we chose $R$ such that $\underline{R}|_{\mathcal{C}_\Lambda}$
 is smooth. Hence there exists a map $h : R \to B$ lifting the map
 $R \to S \to S/J_n \to A$. By the universal property of a power series
-ring there is an $R$-algebra map $h : S = R[[X_1, \ldots, X_2]] \to B$
+ring there is an $R$-algebra map $h : S = R[[X_1, \ldots, X_r]] \to B$
 lifting the given map $S \to S/J_n \to A$. This induces a map
 $g: S \to S/J_n \times_A B$ making the solid square in the diagram
 $$
