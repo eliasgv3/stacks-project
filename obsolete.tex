@@ -531,6 +531,32 @@ The original version of this lemma, which had additional
 assumptions, was superseded by the this theorem.
 \end{proof}
 
+\begin{lemma}
+\label{lemma-fully-faithful-simple-one}
+Let $A$ be a Noetherian ring. Let $f \in \mathfrak a$ be an element of
+an ideal of $A$. Let $U = \Spec(A) \setminus V(\mathfrak a)$. Assume
+\begin{enumerate}
+\item $A$ has a dualizing complex and is complete with respect to $f$,
+\item $A_f$ is $(S_2)$ and for every minimal prime $\mathfrak p \subset A$,
+$f \not \in \mathfrak p$ and
+$\mathfrak q \in V(\mathfrak p) \cap V(\mathfrak a)$ we have
+$\dim((A/\mathfrak p)_\mathfrak q) \geq 3$.
+\end{enumerate}
+Then the completion functor
+$$
+\textit{Coh}(\mathcal{O}_U)
+\longrightarrow
+\textit{Coh}(U, I\mathcal{O}_U),
+\quad
+\mathcal{F} \longmapsto \mathcal{F}^\wedge
+$$
+is fully faithful on the full subcategory of finite locally free objects.
+\end{lemma}
+
+\begin{proof}
+This lemma is a special case of Algebraic and Formal Geometry, Lemma
+\ref{algebraization-lemma-fully-faithful-simple-two}.
+\end{proof}
 
 
 
@@ -962,7 +988,79 @@ equal to $1$ and almost surely the diagram doesn't commute.
 \label{section-cohomology}
 
 \noindent
-Remarks on K-flat complexes which are obsoleted by stronger results.
+Obsolete lemmas about cohomology.
+
+\begin{lemma}
+\label{lemma-ML-general}
+Let $I$ be an ideal of a ring $A$. Let $X$ be a scheme over $\Spec(A)$. Let
+$$
+\ldots \to \mathcal{F}_3 \to \mathcal{F}_2 \to \mathcal{F}_1
+$$
+be an inverse system of $\mathcal{O}_X$-modules
+such that $\mathcal{F}_n = \mathcal{F}_{n + 1}/I^n\mathcal{F}_{n + 1}$.
+Assume
+$$
+\bigoplus\nolimits_{n \geq 0} H^1(X, I^n\mathcal{F}_{n + 1})
+$$
+satisfies the ascending chain condition as a graded
+$\bigoplus_{n \geq 0} I^n/I^{n + 1}$-module.
+Then the inverse system $M_n = \Gamma(X, \mathcal{F}_n)$ satisfies the
+Mittag-Leffler condition.
+\end{lemma}
+
+\begin{proof}
+This is a special case of the more general
+Cohomology, Lemma \ref{cohomology-lemma-ML-general}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-ML-general-better}
+Let $I$ be an ideal of a ring $A$. Let $X$ be a scheme over $\Spec(A)$. Let
+$$
+\ldots \to \mathcal{F}_3 \to \mathcal{F}_2 \to \mathcal{F}_1
+$$
+be an inverse system of $\mathcal{O}_X$-modules
+such that $\mathcal{F}_n = \mathcal{F}_{n + 1}/I^n\mathcal{F}_{n + 1}$.
+Given $n$ define
+$$
+H^1_n =
+\bigcap\nolimits_{m \geq n}
+\Im\left(
+H^1(X, I^n\mathcal{F}_{m + 1}) \to H^1(X, I^n\mathcal{F}_{n + 1})
+\right)
+$$
+If $\bigoplus H^1_n$ satisfies the ascending chain condition as a graded
+$\bigoplus_{n \geq 0} I^n/I^{n + 1}$-module, then the inverse system
+$M_n = \Gamma(X, \mathcal{F}_n)$ satisfies the Mittag-Leffler condition.
+\end{lemma}
+
+\begin{proof}
+This is a special case of the more general
+Cohomology, Lemma \ref{cohomology-lemma-ML-general-better}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-topology-I-adic-general}
+Let $I$ be a finitely generated ideal of a ring $A$.
+Let $X$ be a scheme over $\Spec(A)$. Let
+$$
+\ldots \to \mathcal{F}_3 \to \mathcal{F}_2 \to \mathcal{F}_1
+$$
+be an inverse system of $\mathcal{O}_X$-modules such that
+$\mathcal{F}_n = \mathcal{F}_{n + 1}/I^n\mathcal{F}_{n + 1}$. Assume
+$$
+\bigoplus\nolimits_{n \geq 0} H^0(X, I^n\mathcal{F}_{n + 1})
+$$
+satisfies the ascending chain condition as a graded
+$\bigoplus_{n \geq 0} I^n/I^{n + 1}$-module.
+Then the limit topology on $M = \lim \Gamma(X, \mathcal{F}_n)$
+is the $I$-adic topology.
+\end{lemma}
+
+\begin{proof}
+This is a special case of the more general
+Cohomology, Lemma \ref{cohomology-lemma-topology-I-adic-general}.
+\end{proof}
 
 \begin{lemma}
 \label{lemma-pullback-K-flat}

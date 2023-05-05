@@ -892,13 +892,12 @@ Hence $F(0)$ is the zero object of $\mathcal{D}'$. This also implies
 that $F$ applied to any zero morphism is zero (since a morphism in
 an additive category is zero if and only if it factors through the
 zero object). Next, using that
-$(X, X \oplus Y, Y, (1, 0), (0, 1), 0)$ is a distinguished triangle,
-we see that $(F(X), F(X \oplus Y), F(Y), F(1, 0), F(0, 1), 0)$ is
-one too. This implies that the map
-$F(1, 0) \oplus F(0, 1) : F(X) \oplus F(Y) \to F(X \oplus Y)$
-is an isomorphism, see
-Lemma \ref{lemma-split}.
-We omit the rest of the argument.
+$(X, X \oplus Y, Y, (1, 0), (0, 1), 0)$ is a distinguished triangle by
+Lemma \ref{lemma-split} part (3), we see that
+$(F(X), F(X \oplus Y), F(Y), F(1, 0), F(0, 1), 0)$ is
+one too. This implies that the map $F(X) \oplus F(Y) \to F(X \oplus Y)$
+is an isomorphism by Lemma \ref{lemma-split} part (2). To finish we apply
+Homology, Lemma \ref{homology-lemma-additive-functor}.
 \end{proof}
 
 \begin{lemma}
@@ -1674,12 +1673,12 @@ and
 $(s_4, s'_4, s''_4) : (X_2, Y_2, Z_2, f_2, g_2, h_2) \to
 (X_3, Y_3, Z_3, f_3, g_3, h_3)$ in $\mathcal{I}$.
 We would be done if the compositions
-$X' \to X_1 \to X_3$ and $X' \to X_1 \to X_3$ where equal
+$X' \to X_1 \to X_3$ and $X' \to X_2 \to X_3$ where equal
 (see displayed equation in 
 Categories, Definition \ref{categories-definition-cofinal}).
 If not, then, because $X/S$ is filtered, we can choose
 a morphism $X_3 \to X_4$ in $S$ such that the compositions
-$X' \to X_1 \to X_3 \to X_4$ and $X' \to X_1 \to X_3 \to X_4$ are equal.
+$X' \to X_1 \to X_3 \to X_4$ and $X' \to X_2 \to X_3 \to X_4$ are equal.
 Then we finally complete $X_3 \to X_4$ to a morphism
 $(X_3, Y_3, Z_3) \to (X_4, Y_4, Z_4)$ in $\mathcal{I}$
 and compose with that morphism to see that the result is true.
@@ -6517,7 +6516,7 @@ Recall that $\text{Comp}^{+}(\mathcal{A})$ is an
 abelian category, see
 Homology, Lemma \ref{homology-lemma-cat-cochain-abelian}.
 Hence we may form the pushout along
-the injective map $A^\bullet \to I^\bullet$ to get
+the map $A^\bullet \to I^\bullet$ to get
 $$
 \xymatrix{
 0 \ar[r] &
@@ -6532,6 +6531,9 @@ C^\bullet \ar[r] &
 0
 }
 $$
+Because of the $5$-lemma and the last assertion of
+Homology, Lemma \ref{homology-lemma-long-exact-sequence-cochain}
+the map $B^\bullet \to A^\bullet$ is a quasi-isomorphism.
 Note that the lower short exact sequence is termwise split, see
 Homology, Lemma \ref{homology-lemma-characterize-injectives}.
 Hence it suffices to prove the lemma when
@@ -9012,7 +9014,7 @@ Omitted.
 \begin{lemma}
 \label{lemma-DBA-map-K}
 Let $\mathcal{B}$ be a weak Serre subcategory of the abelian category
-$\mathcal{A}$. There is a canonical isomorphisms
+$\mathcal{A}$. There is a canonical isomorphism
 $$
 K_0(\mathcal{B}) \longrightarrow
 K_0(D^b_\mathcal{B}(\mathcal{A})),\quad

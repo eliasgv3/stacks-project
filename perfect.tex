@@ -1794,7 +1794,7 @@ is an isomorphism in $D(\mathcal{O}_Y)$. To see this by
 Lemma \ref{lemma-acyclicity-lemma}
 it suffices to show that $\mathcal{I}^n$ is right
 $f_*$-acyclic for all $n \in \mathbf{Z}$.
-This is true because $f_*\mathcal{I}^n$ is flasque by
+This is true because $\mathcal{I}^n$ is flasque by
 Lemma \ref{lemma-injective-quasi-coherent-sheaf-Noetherian}
 and flasque modules are right $f_*$-acyclic by
 Cohomology, Lemma \ref{cohomology-lemma-flasque-acyclic-pushforward}.
@@ -2737,20 +2737,20 @@ Lemmas \ref{lemma-coherent-internal-hom} and
 
 \begin{lemma}
 \label{lemma-perfect-on-regular}
-Let $X$ be a Noetherian regular scheme. Then
-every object of $D^b_{\textit{Coh}}(\mathcal{O}_X)$ is perfect
-and conversely every perfect object of $D(\mathcal{O}_X)$
-is in $D^b_{\textit{Coh}}(\mathcal{O}_X)$.
+Let $X$ be a locally Noetherian regular scheme. Then
+every object of $D^b_{\textit{Coh}}(\mathcal{O}_X)$ is perfect.
+If $X$ is quasi-compact, i.e., Noetherian regular,
+then conversely every perfect object of
+$D(\mathcal{O}_X)$ is in $D^b_{\textit{Coh}}(\mathcal{O}_X)$.
 \end{lemma}
 
 \begin{proof}
-Since $X$ is Noetherian, it is in particular quasi-compact.
-Hence being bounded can be checked on the members of a finite
-affine open covering of $X$. This remark, plus similar remarks
-on having coherent cohomology sheaves and being perfect, shows
-that it suffices to prove the lemma when $X$ is affine.
-This case translated via Lemma \ref{lemma-perfect-affine}
-into More on Algebra, Lemma \ref{more-algebra-lemma-regular-perfect}.
+Let $K$ be an object of $D^b_{\textit{Coh}}(\mathcal{O}_X)$.
+To check that $K$ is perfect, we may work affine locally on $X$
+(see Cohomology, Section \ref{cohomology-section-perfect}).
+Then $K$ is perfect by Lemma \ref{lemma-perfect-affine} and
+More on Algebra, Lemma \ref{more-algebra-lemma-regular-perfect}.
+The converse is Lemma \ref{lemma-perfect-on-noetherian}.
 \end{proof}
 
 
@@ -7940,7 +7940,7 @@ is locally constant on $S$. This is Lemma \ref{lemma-chi-locally-constant}.
 
 \begin{lemma}
 \label{lemma-open-where-cohomology-in-degree-i-rank-r-geometric}
-Let $f : X \to S$ be a flat, proper morphism of finite presentation.
+Let $f : X \to S$ be a proper morphism of finite presentation.
 Let $\mathcal{F}$ be an $\mathcal{O}_X$-module of finite presentation,
 flat over $S$. Fix $i, r \in \mathbf{Z}$.
 Then there exists an open subscheme

@@ -247,13 +247,13 @@ Lemma \ref{lemma-criterion-baer}.
 In it, we can form the \emph{push-out}
 $$
 \xymatrix{
-\mathfrak{a} \ar[d]  \ar[r] &  Q \ar[d] \\
-R \ar[r] &  R \oplus_{\mathfrak{a}} Q.
+\mathfrak{a} \ar[d]  \ar[r] &  M \ar[d] \\
+R \ar[r] &  R \oplus_{\mathfrak{a}} M.
 }
 $$
 Here the vertical map is injective, and the diagram commutes. The point is
-that we can extend $\mathfrak{a} \to Q$ to $R$ \emph{if} we extend $Q$ to the
-larger module $R \oplus_{\mathfrak{a}} Q$.
+that we can extend $\mathfrak{a} \to M$ to $R$ \emph{if} we extend $M$ to the
+larger module $R \oplus_{\mathfrak{a}} M$.
 
 \medskip\noindent
 The key point of Baer's argument is to repeat this procedure
@@ -1574,7 +1574,7 @@ Let $\mathcal{A}$ be a Grothendieck abelian category with generator $U$.
 Let $c$ be the function on cardinals defined by
 $c(\kappa) = |\bigoplus_{\alpha \in \kappa} U|$. If $\pi : M \to N$ is a
 surjection then there exists a subobject $M' \subset M$ which surjects
-onto $N$ with $|N'| \leq c(|N|)$.
+onto $N$ with $|M'| \leq c(|N|)$.
 \end{lemma}
 
 \begin{proof}
@@ -1582,11 +1582,11 @@ For every proper subobject $N' \subset N$ choose a morphism
 $\varphi_{N'} : U \to M$ such that $U \to M \to N$ does not factor
 through $N'$. Set
 $$
-N' = \Im\left(
+M' = \Im\left(
 \bigoplus\nolimits_{N' \subset N} \varphi_{N'} :
 \bigoplus\nolimits_{N' \subset N} U \longrightarrow M\right)
 $$
-Then $N'$ works.
+Then $M'$ works.
 \end{proof}
 
 \begin{lemma}

@@ -2451,7 +2451,7 @@ maps with $f \bmod I = g \bmod I$. Choose an idempotent $e \in B \otimes_A B$
 generating the kernel of the multiplication map $B \otimes_A B \to B$,
 see Algebra, Lemmas \ref{algebra-lemma-diagonal-unramified}
 and \ref{algebra-lemma-unramified} (to see that \'etale is unramified).
-Then $(f \otimes g)(e) \in IB$. Since $IB$ is locally nilpotent
+Then $(f \otimes g)(e) \in IB'$. Since $IB'$ is locally nilpotent
 (Algebra, Lemma \ref{algebra-lemma-locally-nilpotent}) this implies
 $(f \otimes g)(e) = 0$ by Algebra, Lemma \ref{algebra-lemma-lift-idempotents}.
 Thus $f = g$.
@@ -3284,19 +3284,37 @@ Sections \ref{section-lifting} and \ref{section-henselian-pairs}.
 
 \begin{lemma}
 \label{lemma-lift-finite-projective-module}
-Let $(R, I)$ be a henselian pair. Let $\overline{P}$ be a finite
-projective $R/I$-module. Then there exists a
-finite projective $R$-module $P$ such that $P/IP \cong \overline{P}$.
+Let $(R, I)$ be a henselian pair. The map
+$$
+P \longrightarrow P/IP
+$$
+induces a bijection between the sets of isomorphism classes of finite
+projective $R$-modules and finite projective $R/I$-modules. In particular,
+any finite projective $R/I$-module is isomorphic to $P/IP$
+for some finite projective $R$-module $P$.
 \end{lemma}
 
 \begin{proof}
-This follows from the fact that we can lift the finite projective
-$R/I$-module $\overline{P}$ to a finite projective module $P'$ over some $R'$
-\'etale over $R$ with $R/I = R'/IR'$, see
+We first prove the final statement. Let $\overline{P}$ be a finite
+projective $R/I$-module. We can find a finite projective module $P'$
+over some $R'$ \'etale over $R$ with $R/I = R'/IR'$ such that
+$P'/IP'$ is isomorphic to $\overline{P}$, see
 Lemma \ref{lemma-lift-projective-module}.
 Then, since $(R, I)$ is a henselian pair, the \'etale ring map $R \to R'$ has
 a section $\tau : R' \to R$ (Lemma \ref{lemma-characterize-henselian-pair}).
-Setting $P = P' \otimes_{R', \tau} R$ finishes the proof.
+Setting $P = P' \otimes_{R', \tau} R$ we conclude that $P/IP$
+is isomorphic to $\overline{P}$. Of course, this tells us that
+the map in the statement of the lemma is surjective.
+
+\medskip\noindent
+Injectivity. Suppose that $P_1$ and $P_2$ are finite projective $R$-modules such
+that $P_1/IP_1 \cong P_2/IP_2$ as $R/I$-modules. Since $P_1$ is projective,
+we can find an $R$-module map $u : P_1 \to P_2$ lifting the given isomorphism.
+Then $u$ is surjective by Nakayama's lemma
+(Algebra, Lemma \ref{algebra-lemma-NAK}).
+We similarly find a surjection $v : P_2 \to P_1$.
+By Algebra, Lemma \ref{algebra-lemma-fun} the map $v \circ u$
+is an isomorphism and we conclude $u$ is an isomorphism.
 \end{proof}
 
 \begin{lemma}
@@ -6134,7 +6152,7 @@ is zero for all $n \geq c$.
 
 \begin{proof}
 Proof for $p = 1$. Choose a short exact sequence
-$0 \to K \to R^{\oplus t} \to M \to 0$. Then
+$0 \to K \to A^{\oplus t} \to M \to 0$. Then
 $\text{Tor}_1^A(M, A/I^n) = K \cap (I^n)^{\oplus t}/I^nK$.
 By Artin-Rees (Algebra, Lemma \ref{algebra-lemma-Artin-Rees})
 there is a constant $c \geq 0$ such that
@@ -15032,7 +15050,7 @@ R^{\oplus a_n} \to R^{\oplus a_{n - 1}} \to \ldots \to R^{\oplus a_0} \to
 M \to 0
 \end{equation}
 by finite free $R$-modules. A module is called {\it pseudo-coherent}
-of we can find such a resolution for every $n$. Here is the formal
+if we can find such a resolution for every $n$. Here is the formal
 definition.
 
 \begin{definition}
@@ -16517,7 +16535,7 @@ Algebra, Definition \ref{algebra-definition-finite-proj-dim}.
 \label{definition-projective-dimension}
 Let $R$ be a ring. Let $K$ be an object of $D(R)$. We say $K$ has
 {\it finite projective dimension} if $K$ can be represented by a
-bounded complex of projective modules. We say $K$ as
+bounded complex of projective modules. We say $K$ has
 {\it projective-amplitude in $[a, b]$} if  $K$ is quasi-isomorphic
 to a complex
 $$
@@ -18218,10 +18236,9 @@ for those results.
 
 \begin{lemma}
 \label{lemma-flat-descent-perfect}
-Let $R$ be a ring. Let $a, b \in \mathbf{Z}$. Let $K^\bullet$
-be a complex of $R$-modules. Let $R \to R'$ be a faithfully flat
-ring map. If the complex $K^\bullet \otimes_R R'$ is perfect, then
-$K^\bullet$ is perfect.
+Let $R$ be a ring. Let $K^\bullet$ be a complex of $R$-modules.
+Let $R \to R'$ be a faithfully flat ring map. If the complex
+$K^\bullet \otimes_R R'$ is perfect, then $K^\bullet$ is perfect.
 \end{lemma}
 
 \begin{proof}
@@ -22153,8 +22170,24 @@ In fact, the proof of Derived Categories, Lemma
 proceeds by proving assertions (4) and (5).
 \end{proof}
 
+\begin{lemma}
+\label{lemma-six-term-Rlim}
+Let
+$$
+0 \to (A_i) \to (B_i) \to (C_i) \to 0
+$$
+be a short exact sequence of inverse systems of abelian groups.
+Then there is an associated $6$ term exact sequence
+$0 \to \lim A_i \to \lim B_i \to \lim C_i \to
+R^1\lim A_i \to R^1\lim B_i \to R^1\lim C_i \to 0$.
+\end{lemma}
+
+\begin{proof}
+Follows from the vanishing in Lemma \ref{lemma-compute-Rlim}.
+\end{proof}
+
 \noindent
-We give two simple applications. The first is the ``correct'' formulation of
+Here is the ``correct'' formulation of
 Homology, Lemma \ref{homology-lemma-apply-Mittag-Leffler-again}.
 
 \begin{lemma}
@@ -25844,14 +25877,103 @@ $$
 describing $H^0(M^\wedge)$. We have $H^1(M^\wedge) = R^1\lim M/f^nM = 0$
 as the transition maps are surjective (Lemma \ref{lemma-compute-Rlim-modules}).
 All the other cohomologies of $M^\wedge$ are zero for trivial reasons.
-We claim that for $K \in D(A)$ there are short exact sequences
+Finally, for $K \in D(A)$ and $p \in \mathbf{Z}$ there is a short exact
+sequence
 $$
-0 \to H^0(H^n(K)^\wedge) \to H^n(K^\wedge) \to T_f(H^{n + 1}(K)) \to 0
+0 \to H^0(H^p(K)^\wedge) \to H^p(K^\wedge) \to T_f(H^{p + 1}(K)) \to 0
 $$
-Namely this follows from the spectral
-sequence of Example \ref{example-derived-completion-spectral-sequence}
-because it degenerates at $E_2$ (as only $i = -1, 0$ give nonzero terms).
+This follows from the spectral sequence of
+Example \ref{example-derived-completion-spectral-sequence}
+because it degenerates at $E_2$ (as only $i = -1, 0$ give nonzero terms);
+the next lemma gives more information.
 \end{example}
+
+\begin{lemma}
+\label{lemma-compare-completion-derived-completion}
+Let $A$ be a ring and let $f \in A$. Let $K$ be an object of $D(A)$.
+Denote $K_n = K \otimes_A^\mathbf{L} (A \xrightarrow{f^n} A)$.
+For all $p \in \mathbf{Z}$ there is a commutative diagram
+$$
+\xymatrix{
+& 0 & 0 \\
+0 \ar[r] &
+\widehat{H^p(K)} \ar[r] \ar[u] &
+\lim H^p(K_n) \ar[r] \ar[u] &
+T_f(H^{p + 1}(K)) \ar[r] &
+0 \\
+0 \ar[r] &
+H^0(H^p(K)^\wedge) \ar[r] \ar[u] &
+H^p(K^\wedge) \ar[r] \ar[u] &
+T_f(H^{p + 1}(K)) \ar[r] \ar@{=}[u] &
+0 \\
+&
+R^1\lim H^p(K)[f^n] \ar[u] \ar[r]^\cong &
+R^1\lim H^{p - 1}(K_n) \ar[u] \\
+& 0 \ar[u] & 0 \ar[u]
+}
+$$
+with exact rows and columns where $\widehat{H^p(K)} = \lim H^p(K)/f^nH^p(K)$
+is the usual $f$-adic completion. The left vertical short exact sequence
+and the middle horizontal short exact sequence are taken from
+Example \ref{example-spectral-sequence-principal}
+The middle vertical short exact sequence is the one from
+Lemma \ref{lemma-break-long-exact-sequence-modules}.
+\end{lemma}
+
+\begin{proof}
+To construct the top horizontal short exact sequence, observe that
+we have the following inverse system short exact sequences
+$$
+0 \to H^p(K)/f^nH^p(K) \to H^p(K_n) \to H^{p + 1}(K)[f^n] \to 0
+$$
+coming from the construction of $K_n$ as a shift of the
+cone on $f^n : K \to K$. Taking the inverse limit of these
+we obtain the top horizontal short exact sequence, see
+Homology, Lemma \ref{homology-lemma-Mittag-Leffler}.
+
+\medskip\noindent
+Let us prove that we have a commutative diagram as in the lemma.
+We consider the map $L = \tau_{\leq p}K \to K$.
+Setting $L_n = L \otimes_A^\mathbf{L} (A \xrightarrow{f^n} A)$
+we obtain a map $(L_n) \to (K_n)$ of inverse systems which
+induces a map of short exact sequences
+$$
+\xymatrix{
+0 & 0 \\
+\lim H^p(L_n) \ar[r] \ar[u] &
+\lim H^p(K_n) \ar[u] \\
+H^p(L^\wedge) \ar[r] \ar[u] &
+H^p(K^\wedge) \ar[u] \\
+R^1\lim H^{p - 1}(L_n) \ar[r] \ar[u] &
+R^1\lim H^{p - 1}(K_n) \ar[u] \\
+0 \ar[u] & 0 \ar[u]
+}
+$$
+Since $H^i(L) = 0$ for $i > p$ and $H^p(L) = H^p(K)$,
+a computation using the references in the statement of the lemma
+shows that $H^p(L^\wedge) = H^0(H^p(K)^\wedge)$
+and that $H^p(L_n) = H^p(K)/f^nH^p(K)$. On the other hand,
+we have $H^{p - 1}(L_n) = H^{p - 1}(K_n)$ and hence we see that
+we get the isomorphism as indicated in the statement of the lemma
+since we already know the kernel of
+$H^0(H^p(K)^\wedge) \to \widehat{H^p(K)}$ is equal
+to $R^1\lim H^p(K)[f^n]$. We omit the verification
+that the rightmost square in the diagram commutes if we
+define the top row by the construction in the first paragraph
+of the proof.
+\end{proof}
+
+\begin{remark}
+\label{remark-ML-condition}
+With notation as in Lemma \ref{lemma-compare-completion-derived-completion}
+we also see that the inverse system $H^p(K_n)$ has ML if and only if
+the inverse system $H^{p + 1}(K)[f^n]$ has ML. This follows from the inverse
+system of short exact sequences
+$0 \to H^p(K)/f^nH^p(K) \to H^p(K_n) \to H^{p + 1}(K)[f^n] \to 0$
+(see proof of the lemma) combined with
+Homology, Lemma \ref{homology-lemma-Mittag-Leffler} and
+Lemma \ref{lemma-Mittag-Leffler}.
+\end{remark}
 
 \begin{lemma}[Bhatt]
 \label{lemma-torsion-and-derived-complete}
@@ -25974,6 +26096,7 @@ a finitely generated ideal $I$. Then $A$ is $I$-adically complete.
 Follows from Lemma \ref{lemma-kernel-to-completion-nilpotent} and
 Proposition \ref{proposition-derived-complete-modules}.
 \end{proof}
+
 
 
 
@@ -31323,7 +31446,7 @@ $P = \prod_{\sigma \in G} (T - \sigma(a))$.
 Let $R$ be a ring. Let $G$ be a finite group acting on $R$. Let $I \subset R$
 be an ideal such that $\sigma(I) \subset I$ for all $\sigma \in G$.
 Then $R^G/I^G \subset (R/I)^G$ is an integral extension of rings which
-induces homeomorphisms on spectra and purely inseparable extensions of
+induces a homeomorphism on spectra and purely inseparable extensions of
 residue fields.
 \end{lemma}
 
@@ -31335,52 +31458,90 @@ applies.
 \end{proof}
 
 \begin{lemma}
+\label{lemma-pol-in-ideal}
+Let $G$ be a finite group of order $n$ acting on a ring $R$.
+Let $J \subset R^G$ be an ideal. For $x \in JR$
+we have $\prod_{\sigma \in G} (T - \sigma(x)) =
+T^n + a_1 T^{n - 1} + \ldots + a_n$ with $a_i \in J$.
+\end{lemma}
+
+\begin{proof}
+Observe that the polynomial is indeed monic and has coefficients in $R^G$.
+We can write $x = f_1 b_1 + \ldots + f_m b_m$ with $f_j \in J$ and $b_j \in R$.
+Thus, arguing by induction on $m$, we may assume that $x = y - fb$ with
+$f \in J$, $b \in R$, and $y \in JR$ such that the result holds for $y$.
+Then we see that
+$$
+\prod\nolimits_{\sigma \in G} (T - \sigma(x)) =
+\prod\nolimits_{\sigma \in G} (T - \sigma(y) + f\sigma(b)) =
+\prod\nolimits_{\sigma \in G} (T - \sigma(y)) +
+\sum_{i = 1, \ldots, n} f^i a_i
+$$
+where we have
+$$
+a_i =
+\sum\nolimits_{S \subset G,\ |S| = i}
+\prod\nolimits_{\sigma \in S} \sigma(b)
+\prod\nolimits_{\sigma \not \in S} (T - \sigma(y))
+$$
+A computation we omit shows that $a_i \in R^G$ (hint: the given expression
+is symmetric). Thus the polynomial
+of the statement of the lemma
+for $x$ is congruent modulo $J$ to the polynomial for $y$
+and this proves the induction step.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-invariants-modulo-bis}
+Let $R$ be a ring. Let $G$ be a finite group of order $n$ acting on $R$.
+Let $J \subset R^G$ be an ideal. Then $R^G/J \to (R/JR)^G$ is ring map
+such that
+\begin{enumerate}
+\item for $b \in (R/JR)^G$ there is a monic polynomial
+$P \in R^G/J[T]$ whose image in $(R/JR)^G[T]$ is $(T - b)^n$,
+\item for $a \in \Ker(R^G/J \to (R/JR)^G)$
+we have $(T - a)^n = T^n$ in $R^G/J[T]$.
+\end{enumerate}
+In particular, $R^G/J \to (R/JR)^G$ is an integral ring map which
+induces homeomorphisms on spectra and purely inseparable extensions of
+residue fields.
+\end{lemma}
+
+\begin{proof}
+Part (1) follow from Lemma \ref{lemma-pol-lifting} with $I = JR$.
+If $a$ is as in part (2), then $a$ is the image of $x \in R^G \cap JR$.
+Hence $(T - x)^n = \prod_{\sigma \in G} (T - \sigma(x))$
+is congruent to $T^n$ modulo $J$ by Lemma \ref{lemma-pol-in-ideal}.
+This proves part (2). To see the final statement we may apply
+Algebra, Lemma \ref{algebra-lemma-universally-bijective}.
+\end{proof}
+
+\begin{remark}
+\label{remark-when-iso}
+In Lemma \ref{lemma-invariants-modulo-bis}
+we see that the map $R^G/J \to (R/JR)^G$
+is an isomorphism if $n$ is invertible in $R$.
+\end{remark}
+
+\begin{lemma}
 \label{lemma-functor-invariants-tensor}
 Let $R$ be a ring. Let $G$ be a finite group of order $n$ acting on $R$.
 Let $A$ be an $R^G$-algebra.
 \begin{enumerate}
 \item for $b \in (A \otimes_{R^G} R)^G$ there exists a monic polynomial
 $P \in A[T]$ whose image in $(A \otimes_{R^G} R)^G[T]$ is $(T - b)^n$,
-\item for $a \in A$ mapping to zero in $(A \otimes_{R^G} R)^G$ we have
-$(T - a)^{n^2} = T^{n^2}$ in $A[T]$.
+\item for $a \in \Ker(A \to (A \otimes_{R^G} R)^G)$ we have
+$(T - a)^n = T^n$ in $A[T]$.
 \end{enumerate}
 \end{lemma}
 
 \begin{proof}
-Write $A$ as the quotient of a polynomial algebra $P$ over $R^G$.
-Then $(P \otimes_{R^G} R)^G = P$ because $P$ is free as an $R^G$-module.
-Hence part (1) follows from Lemma \ref{lemma-pol-lifting}.
-
-\medskip\noindent
-Let $J = \Ker(P \to A)$. Lift $a$ as in (2) to an element $f \in P$.
-Then $f \otimes 1$ maps to zero in $A \otimes_{R^G} R$.
-Hence $f \otimes 1$ is in $(J')^G$ where $J' \subset P \otimes_{R^G} R$
-is the image of the map $J \otimes_{R^G} R \to P \otimes_{R^G} R$.
-Apply Lemma \ref{lemma-pol-lifting} to $f \otimes 1$
-and the surjective ring map
-$$
-\text{Sym}^*_{R^G}(J) \otimes_{R^G} R
-\longrightarrow
-A' \subset \text{Sym}^*_{R^G}(P) \otimes_{R^G} R
-$$
-which defines $A'$. We obtain
-$P \in (\text{Sym}^*_{R^G}(J) \otimes_{R^G} R)^G[T]$
-mapping to $(T - f \otimes 1)^n$ in $A'[T]$.
-Apply part (1) to see that there exists a
-$P' \in \text{Sym}^*_{R^G}(J)[T, T']$ whose image
-is $(T' - P)^n$. Since $\text{Sym}_{R^G}^*(P)$ is still
-free over $R^G$ we conclude that $P'$ maps to $(T' - (T - f)^n)^n$
-in $\text{Sym}_{R^G}^*(P)$. On the other hand, tracing through
-the construction of the polynomials $P$ and $P'$ in
-Lemma \ref{lemma-pol-lifting}
-we see that $P'$ is congruent to $(T' - T^n)^n$ modulo
-the irrelevant ideal of the graded ring $\text{Sym}^*_{R^G}(J)$.
-It follows that
-$$
-(T' - (T - a)^n)^n = (T' - T^n)^n
-$$
-in $A[T', T]$. Setting $T' = 0$ for example we obtain the statement
-of the lemma.
+Choose a surjection $E \to A$ where $E$ is a polynomial algebra over $R^G$.
+Then $(E \otimes_{R^G} R)^G = E$ because $E$ is free as an $R^G$-module.
+Denote $J = \Ker(E \to A)$. Since tensor product is right exact we see
+that $A \otimes_{R^G} R$ is the quotient of $E \otimes_{R^G} R$
+by the ideal generated by $J$. In this way we see that our lemma
+is a special case of Lemma \ref{lemma-invariants-modulo-bis}.
 \end{proof}
 
 \begin{lemma}
@@ -31396,12 +31557,15 @@ induces purely inseparable residue field extensions.
 \end{lemma}
 
 \begin{proof}
-The first statement follows from Lemma \ref{lemma-functor-invariants-tensor}
-and Algebra, Lemma \ref{algebra-lemma-universally-bijective}.
-To see the second consider the
+To see the first statement consider the
 exact sequence $0 \to R^G \to R \to \bigoplus_{\sigma \in G} R$
-where the second map sends $x$ to $(\sigma(x) - x)$. Tensoring with
-$A$ the sequence remains exact if $R^G \to A$ is flat.
+where the second map sends $x$ to $(\sigma(x) - x)_{\sigma \in G}$.
+Tensoring with $A$ the sequence remains exact if $R^G \to A$ is flat.
+Thus $A$ is the $G$-invariants in $(A \otimes_{R^G} R)^G$.
+
+\medskip\noindent
+The second statement follows from Lemma \ref{lemma-functor-invariants-tensor}
+and Algebra, Lemma \ref{algebra-lemma-universally-bijective}.
 \end{proof}
 
 \begin{lemma}
@@ -31461,7 +31625,7 @@ $\mathfrak q = \mathfrak q_1, \mathfrak q_2, \ldots, \mathfrak q_m$
 and they form a single orbit for $G$.
 By the Chinese remainder theorem
 (Algebra, Lemma \ref{algebra-lemma-chinese-remainder}) the map
-$R \to \prod_{j = 1, \ldots, m} R/\sigma(\mathfrak q_j)$ is surjective.
+$R \to \prod_{j = 1, \ldots, m} R/\mathfrak q_j$ is surjective.
 
 \medskip\noindent
 First we prove that the extension is normal. Pick an element
@@ -31483,14 +31647,15 @@ Since $\kappa(\mathfrak q)/\kappa(\mathfrak p)$ is normal we may assume
 $\kappa(\mathfrak q) = \kappa_1 \otimes_{\kappa(\mathfrak p)} \kappa_2$
 with $\kappa_1/\kappa(\mathfrak p)$ purely inseparable and
 $\kappa_2/\kappa(\mathfrak p)$ Galois, see
-Fields, Lemma \ref{fields-lemma-normal-case}.
+Fields, Lemma \ref{fields-lemma-normal-case}. Pick
 $\alpha \in \kappa_2$ which generates $\kappa_2$ over $\kappa(\mathfrak p)$
 if it is finite and a subfield of degree $> |G|$ if it is infinite
 (to get a contradiction).
 This is possible by Fields, Lemma \ref{fields-lemma-primitive-element}.
 Pick $a$, $P$, and $Q$ as in the previous paragraph.
-If $\alpha' \in \kappa_2$
-is a Galois conjugate of $\alpha$, then the above shows there exists a
+If $\alpha' \in \kappa_2$ is a Galois conjugate of $\alpha$ over
+$\kappa(\mathfrak p)$, then the fact that $P$ divides the
+image of $P$ in $\kappa(\mathfrak p)[T]$ shows there exists a
 $\sigma \in G$ such that $\sigma(a)$ maps to $\alpha'$. By our choice of
 $a$ (vanishing at other maximal ideals) this implies $\sigma \in D$ and
 that the image of $\sigma$ in

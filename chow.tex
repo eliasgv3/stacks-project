@@ -3921,7 +3921,7 @@ $$
 is a finite morphism as each $i_j : W_j \to X$ is a closed immersion
 and the family of $W_j$ is locally finite in $X$. Hence we may use
 Lemma \ref{lemma-finite-cycles-k-group} to reduce to the case of $W$.
-Since $W$ is a disjoint union of intregral scheme, we reduce
+Since $W$ is a disjoint union of integral scheme, we reduce
 to the case discussed in the next paragraph.
 
 \medskip\noindent
@@ -4005,7 +4005,7 @@ $$
 K_0(\textit{Coh}(X)/\textit{Coh}_{\leq k - 1}(X)).
 $$
 We have not been able to find a statement or conjecture in the
-literature as to whether this map is should be injective or not.
+literature as to whether this map should be injective or not.
 It seems reasonable to expect the kernel of this map to be torsion.
 We will return to this question (insert future reference).
 \end{remark}
@@ -4203,8 +4203,7 @@ Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
 Let $X$, $Y$ be locally of finite type over $S$. Assume $X$, $Y$
 are integral and $n = \dim_\delta(Y)$.
 Let $\mathcal{L}$ be an invertible $\mathcal{O}_Y$-module.
-Let $f : X \to Y$ be a flat morphism of relative dimension $r$.
-Let $\mathcal{L}$ be an invertible sheaf on $Y$. Then
+Let $f : X \to Y$ be a flat morphism of relative dimension $r$. Then
 $$
 f^*(c_1(\mathcal{L}) \cap [Y]) = c_1(f^*\mathcal{L}) \cap [X]
 $$
@@ -5278,7 +5277,7 @@ D \ar[r]^i & X
 $$
 as in Remark \ref{remark-pullback-pairs}.
 For any $(k + 1)$-cycle $\alpha$ on $X$ we have
-$(i')^*f^*\alpha = g^*i^*\alpha$ in $\CH_{k + r}(D)$
+$(i')^*f^*\alpha = g^*i^*\alpha$ in $\CH_{k + r}(D')$
 (this makes sense as $f^*$ is defined on the level of cycles).
 \end{lemma}
 
@@ -5948,7 +5947,7 @@ $f : X \to Y$ be a morphism of schemes. Assume every $y \in Y$
 is contained in an open $V \subset Y$ such that
 $f^{-1}(V) \cong V \times \mathbf{A}^r$ as schemes over $V$.
 In this remark we sketch a proof of the fact that
-$f^* : \CH_k(Y) \to \CH_k(X)$ is an isomorphism.
+$f^* : \CH_k(Y) \to \CH_{k + r}(X)$ is an isomorphism.
 First, by Lemma \ref{lemma-pullback-affine-fibres-surjective}
 the map is surjective. Let $\alpha \in \CH_k(Y)$ with $f^*\alpha = 0$.
 We will prove that $\alpha = 0$.
@@ -9007,9 +9006,10 @@ Follows from the corresponding result for Chern classes
 \label{section-pre-derived}
 
 \noindent
-In this section we define the total Chern class of an object
-of the derived category which may be represented globally
-by a finite complex of finite locally free modules.
+In this section we define the total Chern class of a perfect object $E$
+of the derived category of a scheme $X$, under the assumption that $E$
+may be represented by a finite complex of finite locally free modules
+on an envelope of $X$.
 
 \medskip\noindent
 Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
@@ -9182,12 +9182,12 @@ $f : Y \to X$ (Definition \ref{definition-envelope})
 such that $Lf^*E$ is isomorphic in $D(\mathcal{O}_Y)$
 to a locally bounded complex $\mathcal{E}^\bullet$ of finite locally free
 $\mathcal{O}_Y$-modules. Then there exists unique bivariant classes
-$c(E) \in A^*(X)$, $ch(E) \in A^*(X) \otimes \mathbf{Q}$, and
+$c(E) \in \prod_{p \geq 0} A^p(X)$,
+$ch(E) \in \prod_{p \geq 0} A^p(X) \otimes \mathbf{Q}$, and
 $P_p(E) \in A^p(X)$, independent of the choice of $f : Y \to X$
 and $\mathcal{E}^\bullet$, such that the restriction of these classes
-to $Y$ are equal to $c(\mathcal{E}^\bullet) \in A^*(Y)$,
-$ch(\mathcal{E}^\bullet) \in A^*(Y) \otimes \mathbf{Q}$, and
-$P_p(\mathcal{E}^\bullet) \in A^p(Y)$.
+to $Y$ are equal to $c(\mathcal{E}^\bullet)$,
+$ch(\mathcal{E}^\bullet)$, and $P_p(\mathcal{E}^\bullet)$.
 \end{lemma}
 
 \begin{proof}
@@ -10655,7 +10655,7 @@ of the following is true:
 (b) $X$ has quasi-compact irreducible components,
 (c) there exists a locally bounded complex of finite locally free
 $\mathcal{O}_X$-modules representing $E$, or
-(c) there exists a morphism $X \to X'$ of schemes locally of finite type
+(d) there exists a morphism $X \to X'$ of schemes locally of finite type
 over $S$ such that $E$ is the pullback of a perfect object on $X'$ and
 the irreducible components of $X'$ are quasi-compact.
 \end{enumerate}
@@ -10762,7 +10762,7 @@ and we define the {\it localized Chern character} by the formula
 $$
 ch(Z \to X, E) =
 \sum\nolimits_{p = 0, 1, 2, \ldots} \frac{P_p(Z \to X, E)}{p!}
-\quad\text{in}\quad A^*(Z \to X) \otimes \mathbf{Q}
+\quad\text{in}\quad \prod\nolimits_{p \geq 0} A^p(Z \to X) \otimes \mathbf{Q}
 $$
 \item If the restriction $E|_{X \setminus Z}$ is isomorphic to a
 finite locally free $\mathcal{O}_{X \setminus Z}$-module of rank $< p$
@@ -11326,7 +11326,7 @@ resp.\ isomorphic to a finite locally free $\mathcal{O}_{X \setminus Z}$-module
 of rank $< p_1 + p_3$. Thus the statement makes sense.
 
 \medskip\noindent
-Let $f : Y \to X$ be an envelope. Expaing the left and right hand sides
+Let $f : Y \to X$ be an envelope. Expanding the left and right hand sides
 of the formula in the statement of the lemma we see that we have to prove
 some equalities of classes in $A^*(X)$ and in $A^*(Z \to X)$. By the
 uniqueness in Lemma \ref{lemma-envelope-bivariant} it suffices to prove the
@@ -11517,7 +11517,8 @@ $$
 ch(Z_1 \cap Z_2 \to X, F_1 \otimes_{\mathcal{O}_X}^\mathbf{L} F_2) =
 ch(Z_1 \to X, F_1) ch(Z_2 \to X, F_2)
 $$
-in $A^*(Z_1 \cap Z_2 \to X) \otimes \mathbf{Q}$. More precisely, we have
+in $\prod_{p \geq 0} A^p(Z_1 \cap Z_2 \to X) \otimes \mathbf{Q}$.
+More precisely, we have
 $$
 P_p(Z_1 \cap Z_2 \to X, F_1 \otimes_{\mathcal{O}_X}^\mathbf{L} F_2) =
 \sum\nolimits_{p_1 + p_2 = p}
@@ -12940,8 +12941,7 @@ cohomology sheaves.
 \begin{remark}
 \label{remark-perf-Z-regular}
 Let $X$, $Z$, $D_{Z, perf}(\mathcal{O}_X)$ be as in
-Remark \ref{remark-perf-Z-cohomology-K}.
-Assume $X$ is Noetherian regular of finite dimension.
+Remark \ref{remark-perf-Z-cohomology-K}. Assume $X$ is regular.
 Then there is a canonical map
 $$
 K_0(\textit{Coh}(Z)) \longrightarrow K_0(D_{Z, perf}(\mathcal{O}_X))
@@ -12965,7 +12965,7 @@ with apologies for the horrendous notation.
 
 \begin{lemma}
 \label{lemma-perf-Z-regular}
-Let $X$ be a Noetherian regular scheme of finite dimension.
+Let $X$ be a Noetherian regular scheme.
 Let $Z \subset X$ be a closed subscheme. The maps constructed
 in Remarks \ref{remark-perf-Z-cohomology-K} and
 \ref{remark-perf-Z-regular} are mutually inverse and we get
@@ -12981,9 +12981,12 @@ K_0(\textit{Coh}(Z))
 $$
 is the identity map. Thus it suffices to show the first arrow is
 surjective. Let $E$ be an object of $D_{Z, perf}(\mathcal{O}_X)$.
-We are going to use without further mention that $E$ is bounded
-with coherent cohomology and that any such complex is a perfect complex.
-Using the distinguished triangles of canonical truncations the
+Recall that $D_{perf}(\mathcal{O}_X) = D^b_{\textit{Coh}}(\mathcal{O}_X)$
+by Derived Categories of Schemes, Lemma
+\ref{perfect-lemma-perfect-on-regular}.
+Hence the cohomologies $H^i(E)$ are coherent, can be viewed
+as objects of $D_{Z, perf}(\mathcal{O}_X)$, and only a finite number
+are nonzero. Using the distinguished triangles of canonical truncations the
 reader sees that
 $$
 [E] = \sum (-1)^i[H^i(E)[0]]
@@ -13031,8 +13034,7 @@ Let $X$ be locally of finite type over $S$.
 Let $Z \subset X$ be a closed subscheme and let
 $D_{Z, perf}(\mathcal{O}_X)$ be as in
 Remark \ref{remark-perf-Z-cohomology-K}.
-If $X$ is quasi-compact (or more generally the irreducible
-components of $X$ are quasi-compact), then
+If the irreducible components of $X$ are quasi-compact, then
 the localized Chern character defines a canonical additive
 and multiplicative map
 $$
@@ -13041,7 +13043,7 @@ ch(Z \to X, -) : K_0(D_{Z, perf}(\mathcal{O}_X)) \longrightarrow
 $$
 by sending a generator $[E]$ on the left hand side to
 $ch(Z \to X, E)$ and extending additively.
-The quasi-compactness condition on $X$ guarantees that the
+Namely, the condition on the irreducible components of $X$ guarantees that the
 localized chern character is defined (Situation \ref{situation-loc-chern} and
 Definition \ref{definition-localized-chern})
 and that these localized chern characters
@@ -13053,6 +13055,9 @@ $K_0(D_{Z, perf}(X))$ is defined using derived tensor product
 (Derived Categories of Schemes, Remark \ref{perfect-remark-perf-Z})
 hence $ch(Z \to X, \alpha \beta) = ch(Z \to X, \alpha) ch(Z \to X, \beta)$ by
 Lemma \ref{lemma-loc-chern-tensor-product}.
+If $X$ is quasi-compact, then the map $ch(Z \to X, -)$ has
+image contained in $A^*(Z \to X) \otimes \mathbf{Q}$; we omit
+the details.
 \end{remark}
 
 \begin{remark}
@@ -13150,13 +13155,12 @@ $[\mathcal{O}_Z]$ on the right hand side.
 \label{proposition-K-tensor-Q}
 Let $(S, \delta)$ be as in Situation \ref{situation-setup}. Assume given a
 closed immersion $X \to Y$ of schemes locally of finite type over $S$
-with $Y$ regular, quasi-compact, and
-$\delta_{Y/S} : Y \to \mathbf{Z}$ bounded. Then the composition
+with $Y$ regular and quasi-compact. Then the composition
 $$
 K'_0(X) \to
 K_0(D_{X, perf}(\mathcal{O}_Y)) \to
-A^*(X \to Y) \to
-\CH_*(X)
+A^*(X \to Y) \otimes \mathbf{Q} \to
+\CH_*(X) \otimes \mathbf{Q}
 $$
 of the map $\mathcal{F} \mapsto \mathcal{F}[0]$ from
 Remark \ref{remark-perf-Z-regular}, the map $ch(X \to Y, -)$ from
@@ -13178,7 +13182,7 @@ $k \in \mathbf{Z}$.
 \end{proposition}
 
 \begin{proof}
-Since $Y$ is regular of finite dimension, the construction in
+Since $Y$ is regular, the construction in
 Remark \ref{remark-perf-Z-regular} applies.
 Since $Y$ is quasi-compact, the construction in
 Remark \ref{remark-localized-chern-character-K} applies.
@@ -15568,7 +15572,7 @@ of a finite $R$-module $M$ of dimension $1$ such that
 $\varphi(\psi(M)) = \psi(\varphi(M))$. In
 Subsection \ref{subsection-length-determinant}
 we relate Herbrand quotients and determinants.
-An easy to state version of main the main result
+An easy to state version of the main result
 (Proposition \ref{proposition-length-determinant-periodic-complex})
 is the formula
 $$
