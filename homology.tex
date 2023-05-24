@@ -756,6 +756,43 @@ Definition \ref{definition-balanced-category}.
 There exist balanced preabelian categories which are not abelian.
 For an example, see \href{https://mathoverflow.net/a/41726/101848}{this}.
 
+\medskip\noindent
+In an abelian category, the (co)image factorization can be characterized in the following way:
+\begin{lemma}
+	\label{lemma-im-coim-fact-intrinsic}
+	\begin{slogan}
+	    A morphism in an abelian category factors in a unique way as a surjection followed by an injection.
+	\end{slogan}
+	Let $\mathcal{A}$ be an abelian category, and suppose that we have a commutative triangle
+	\[
+	\xymatrix@R=1pc@C=1pc{
+		x \ar@{->}[rr]^{f} \ar@{->}[rd]_{g} &  & y \\
+		& z \ar@{->}[ru]_{h} & 
+	}
+	\]
+	in $\mathcal{A}$. Then this triangle is the (co)image factorization of $f$ if and only if $g$ is surjective and $h$ is injective. Moreover, for $f$ there is a unique such commutative triangle, up to unique isomorphism of commutative triangles (a morphism of commutative triangles $(x\xrightarrow{g}z\xrightarrow{h}y)\to(x\xrightarrow{g'}z'\xrightarrow{h'}y)$ is a morphism $k:z\to z'$ such that $k\circ g=g'$, $h=h'\circ k$).
+\end{lemma}
+
+\begin{proof}
+	$(\Rightarrow)$ It follows from
+	Lemma \ref{lemma-characterize-abelian-categories}.
+	
+	\medskip\noindent
+	$(\Leftarrow)$
+	It suffices to show that the triangle is the image factorization
+	(the case for the coimage factorization is deduced by a duality argument).
+	First note that the composite $z\to y\to\Coker f$ vanishes
+	since it vanishes after precomposition with the epimorphism $g$;
+	thus, $h$ factors through $\Im f\to y$ by a map $h':z\to\Im f$.
+	Since $h$ is injective, so is $h'$.
+	By Lemma \ref{lemma-characterize-abelian-categories},
+	it suffices to see that $h'$ is surjective. In turn,
+	it suffices to see that $h'\circ g$ is surjective.
+	But this map is the unique map $x\to\Im f$ that
+	factors $f$ through $\Im f\to y$, and is onto
+	by Lemma \ref{lemma-characterize-abelian-categories}.
+\end{proof}
+
 The zero map can be detected by the (co)kernel and the (co)image.
 \begin{lemma}\label{lemma-characterize-zero-map}
 	Let $\mathcal{A}$ be a preabelian category and let $f:x\to y$ be a morphism in $\mathcal{A}$.
@@ -1412,6 +1449,10 @@ In the literature, it is often said that ``a long exact sequence can be broken u
 		\to\cdots
 	\end{equation}
 	be a complex in $\mathcal{A}$. Then, for each $i\in\mathbb{Z}$, we have complexes
+%	I don't have the time to add the proof right now, but I think another s.e.s. that could be added to the following list is:
+%\xymatrix{
+%	0 \ar@{->}[r] & \Im d^{i-1} \ar@{->}[r] & x^i \ar@{->}[r] & \Im d^i \ar@{->}[r] & 0
+%}
 	$$
 	\xymatrix{
 	(2)&
