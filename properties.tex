@@ -258,21 +258,36 @@ implies (2). The lemma is proved.
 
 \begin{lemma}
 \label{lemma-characterize-integral}
-A scheme $X$ is integral if and only if it is reduced and irreducible.
+Let $X$ be a scheme. The following are equivalent:
+\begin{enumerate}
+	\item $X$ is integral,
+	\item $X$ is reduced and irreducible, and
+	\item for all open $U\subset X$, the ring $\mathcal{O}_X(U)$
+	is an integral domain.
+\end{enumerate} 
 \end{lemma}
 
 \begin{proof}
-If $X$ is irreducible, then every affine open $\Spec(R) = U \subset X$
-is irreducible. If $X$ is reduced, then $R$ is reduced, by
-Lemma \ref{lemma-characterize-reduced} above. Hence $R$ is reduced
-and $(0)$ is a prime ideal, i.e., $R$ is an integral domain.
-
-\medskip\noindent
+(1)$\Rightarrow$(2).
 If $X$ is integral, then for every nonempty affine open
 $\Spec(R) = U \subset X$ the ring $R$ is reduced
 and hence $X$ is reduced by Lemma \ref{lemma-characterize-reduced}.
 Moreover, every nonempty affine open is irreducible.
 Hence $X$ is irreducible, see Lemma \ref{lemma-characterize-irreducible}.
+
+\medskip\noindent
+(2)$\Rightarrow$(3).
+Since any open subscheme $U\subset X$ is reduced and irreducible,
+it  to show that $R=\Gamma(X,\mathcal{O}_X)$ is an integral domain.
+Suppose $f,g\in R$ are such that $fg=0$. Then $X=V(f)\cup V(g)$.
+By irreducibility of $X$, we have $X=V(f)$, for example.
+We want to show that $f=0$. Since this is a local condition,
+we can assume $X$ is affine. But then $f$ belongs to all prime
+ideals of $R$ and therefore to its nilradical.
+But $R$ is reduced (Lemma \ref{lemma-characterize-reduced}), so $f=0$.
+
+\medskip\noindent
+(3)$\Rightarrow$(1). Clear.
 \end{proof}
 
 \noindent
