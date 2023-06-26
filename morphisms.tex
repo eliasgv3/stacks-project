@@ -14234,7 +14234,7 @@ $W = \Spec(B)$, with $g|_W$ given by $\varphi : A \to B$.
 We will use the results of Lemma \ref{lemma-description-normalization} freely.
 Let $\mathfrak p_1, \ldots, \mathfrak p_t$ be the minimal primes of $A$.
 As $Z$ is normal, we see that $B$ is a normal
-ring, in particular reduced. Moreover, by assumption any minimal
+ring, in particular reduced. Moreover, by assumption for any minimal
 prime $\mathfrak q \subset B$ we have that $\varphi^{-1}(\mathfrak q)$
 is a minimal prime of $A$. Hence if $x \in A$ is a nonzerodivisor, i.e.,
 $x \not \in \bigcup \mathfrak p_i$, then $\varphi(x)$ is a nonzerodivisor
@@ -14245,7 +14245,18 @@ Hence we see that the integral closure $A' \subset Q(A)$ of $A$
 maps into $B$ via the canonical map $Q(A) \to Q(B)$.
 Since $\nu^{-1}(U) = \Spec(A')$ this gives the canonical
 factorization $W \to \nu^{-1}(U) \to U$ of $\nu|_W$.
-We omit the verification that it is unique.
+Next, we see uniqueness. Suppose we have a morphism $Z\to X^\nu$ such that
+$Z\to X$ equals the composite $Z\to X^\nu\to X$.
+To see that $Z\to X^\nu$ is uniquely determined by $X^\nu\to X$,
+we can verify it locally,
+so we assume $X=\Spec A$, $Z=\Spec B$.
+Then $Z\to X$ corresponds to a ring morphism $\varphi:A\to B$ that factors as
+$A\to A'\xrightarrow{\psi}B$, where $A'\subset Q(A)$ is the integral
+closure of $A$ in $Q(A)$. We want to show that $\psi$ is uniquely
+determined by $\varphi$.
+Let $\frac{x}{y}\in A'$, where $x,y\in A$ and $y$ is a nonzerodivisor.
+Then $\varphi(y)$ is a nonzerodivisor in $B$ and we have
+$\varphi(y)\psi(\frac{x}{y})=\psi(y\frac{x}{y})=\varphi(x)$, as we sought to prove.
 \end{proof}
 
 \begin{lemma}
