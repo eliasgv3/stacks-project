@@ -1796,61 +1796,61 @@ Constructions, Lemma \ref{constructions-lemma-spec-properties} part (2).
 \end{proof}
 
 \begin{lemma}
-	\label{lemma-quasi-coherence-scalar-restriction}
-	Let $S$ be a scheme and let $\mathcal{A}$ be a quasi-coherent $\mathcal{O}_S$-algebra. An $\mathcal{A}$-module is
-	quasi-coherent as an $\mathcal{O}_S$-module if and only if
-	it is quasi-coherent as an $\mathcal{A}$-module.
+\label{lemma-quasi-coherence-scalar-restriction}
+Let $S$ be a scheme and let $\mathcal{A}$ be a quasi-coherent $\mathcal{O}_S$-algebra. An $\mathcal{A}$-module is
+quasi-coherent as an $\mathcal{O}_S$-module if and only if
+it is quasi-coherent as an $\mathcal{A}$-module.
 \end{lemma}
 
 \begin{proof}
-	Let $\mathcal{F}$ be an $\mathcal{A}$-module.
-	Assume first $\mathcal{A}$-quasi-coherence,
-	and choose an open $U\subset S$ and an exact sequence
-	$$
-	0\to
-	\bigoplus_J\mathcal{A}|_U\to
-	\bigoplus_I\mathcal{A}|_U\to
-	\mathcal{F}|_U
-	$$
-	of $\mathcal{A}|_U$-modules.
-	Then this is also an exact sequence of $\mathcal{O}_U$-modules.
-	Hence, $\mathcal{F}|_U$ is the cokernel of a morphism
-	of quasi-coherent $\mathcal{O}_U$-modules on a scheme and,
-	thus, $\mathcal{O}_U$-quasi-coherent.
-	
-	\medskip\noindent
-	Conversely, assume $\mathcal{F}$ is $\mathcal{O}_X$-quasi-coherent.
-	Pick an open affine $\Spec R=U\subset S$. We have isomorphisms of
-	$\mathcal{O}_U$-modules $\mathcal{A}|_U\cong\widetilde{A}$ and
-	$\mathcal{F}|_U\cong\widetilde{M}$, for some $R$-algebra $A$
-	and some $R$-module $M$. Since $\mathcal{F}|_U$ is also an
-	$\mathcal{A}|_U$-module, the second isomorphism induces an
-	$\mathcal{A}|_U$-module structure on $\widetilde{M}$ such that
-	$\mathcal{F}|_U\cong\widetilde{M}$ promotes to an isomorphism of
-	$\mathcal{A}|_U$-modules. In particular, $M$ is an $A$-module,
-	and we can choose an exact sequence
-	$$
-	0\to
-	\bigoplus_J A\to
-	\bigoplus_I A\to
-	M
-	$$
-	of $A$-modules.
-	Since localization is exact, for every distinguished open
-	$D(f)\subset U$, $f\in R$,
-	the last sequence induces an exact sequence
-	$$
-	0\to\bigoplus_J A_f\to\bigoplus_I A_f\to M_f
-	$$
-	of $A_f$-modules. Hence we obtain an exact sequence
-	$$
-	0\to
-	\bigoplus_J \widetilde{A}\to
-	\bigoplus_I \widetilde{A}\to
-	\widetilde{M}
-	$$
-	of $\widetilde{A}$-modules. This means that
-	$\mathcal{F}$ is $\mathcal{A}$-quasi-coherent.
+Let $\mathcal{F}$ be an $\mathcal{A}$-module.
+Assume first $\mathcal{A}$-quasi-coherence,
+and choose an open $U\subset S$ and an exact sequence
+$$
+0\to
+\bigoplus_J\mathcal{A}|_U\to
+\bigoplus_I\mathcal{A}|_U\to
+\mathcal{F}|_U
+$$
+of $\mathcal{A}|_U$-modules.
+Then this is also an exact sequence of $\mathcal{O}_U$-modules.
+Hence, $\mathcal{F}|_U$ is the cokernel of a morphism
+of quasi-coherent $\mathcal{O}_U$-modules on a scheme and,
+thus, $\mathcal{O}_U$-quasi-coherent.
+
+\medskip\noindent
+Conversely, assume $\mathcal{F}$ is $\mathcal{O}_X$-quasi-coherent.
+Pick an open affine $\Spec R=U\subset S$. We have isomorphisms of
+$\mathcal{O}_U$-modules $\mathcal{A}|_U\cong\widetilde{A}$ and
+$\mathcal{F}|_U\cong\widetilde{M}$, for some $R$-algebra $A$
+and some $R$-module $M$. Since $\mathcal{F}|_U$ is also an
+$\mathcal{A}|_U$-module, the second isomorphism induces an
+$\mathcal{A}|_U$-module structure on $\widetilde{M}$ such that
+$\mathcal{F}|_U\cong\widetilde{M}$ promotes to an isomorphism of
+$\mathcal{A}|_U$-modules. In particular, $M$ is an $A$-module,
+and we can choose an exact sequence
+$$
+0\to
+\bigoplus_J A\to
+\bigoplus_I A\to
+M
+$$
+of $A$-modules.
+Since localization is exact, for every distinguished open
+$D(f)\subset U$, $f\in R$,
+the last sequence induces an exact sequence
+$$
+0\to\bigoplus_J A_f\to\bigoplus_I A_f\to M_f
+$$
+of $A_f$-modules. Hence we obtain an exact sequence
+$$
+0\to
+\bigoplus_J \widetilde{A}\to
+\bigoplus_I \widetilde{A}\to
+\widetilde{M}
+$$
+of $\widetilde{A}$-modules. This means that
+$\mathcal{F}$ is $\mathcal{A}$-quasi-coherent.
 \end{proof}
 
 \begin{lemma}
@@ -1877,7 +1877,12 @@ $$
 \end{lemma}
 
 \begin{proof}
-In the proof of \ref{lemma-characterize-affine} it was argued that affine morphisms are quasi-compact and quasi-separated. Hence, $f_*\mathcal{F}$ is a quasi-coherent $\mathcal{O}_S$-module by Schemes, Lemma \ref{lemma-push-forward-quasi-coherent} (in particular, $f_*\mathcal{O}_X$ is a quasi-coherent $\mathcal{O}_S$-algebra). By Lemma \ref{lemma-quasi-coherence-scalar-restriction}, $f_*\mathcal{F}$ is $\mathcal{A}$-quasi-coherent.
+In the proof of \ref{lemma-characterize-affine} it was argued that affine morphisms
+are quasi-compact and quasi-separated. Hence, $f_*\mathcal{F}$ is a quasi-coherent
+$\mathcal{O}_S$-module by Schemes, Lemma \ref{lemma-push-forward-quasi-coherent}
+(in particular, $f_*\mathcal{O}_X$ is a quasi-coherent $\mathcal{O}_S$-algebra).
+By Lemma \ref{lemma-quasi-coherence-scalar-restriction}, $f_*\mathcal{F}$ is
+$\mathcal{A}$-quasi-coherent.
 
 \medskip\noindent
 We see the fully faithfulness of the
@@ -1886,13 +1891,13 @@ $\Hom_{\mathcal{O}_X}(\mathcal{F},\mathcal{G})\to
 \Hom_{f_*\mathcal{O}_X}(f_*\mathcal{F},f_*\mathcal{G})$ is bijective.
 It suffices to see that the morphism of sheaves on $S$ 
 \begin{equation}
-	\label{map-affine-equivalence-modules}
-	\Hom_{\mathcal{O}_{f^{-1}(-)}}
-	(\mathcal{F}|_{f^{-1}(-)},
-	\mathcal{G}|_{f^{-1}(-)})\to
-	\mathcal{H}om_{f_*\mathcal{O}_X}
-	(f_*\mathcal{F},
-	f_*\mathcal{G})
+\label{map-affine-equivalence-modules}
+\Hom_{\mathcal{O}_{f^{-1}(-)}}
+(\mathcal{F}|_{f^{-1}(-)},
+\mathcal{G}|_{f^{-1}(-)})\to
+\mathcal{H}om_{f_*\mathcal{O}_X}
+(f_*\mathcal{F},
+f_*\mathcal{G})
 \end{equation}
 is an isomorphism. In turn, it suffices to see that
 $$
@@ -1943,13 +1948,13 @@ $D(f^\sharp(g))=f^{-1}(D(g))\xrightarrow{f} D(g)$,
 we have that the diagram
 \[
 \xymatrix{
-	\Hom_{f_*\mathcal{O}_X}(f_*\widetilde{M},f_*\widetilde{N})
-	\ar@{->}[r] \ar@{->}[rd]
-	& \Hom_{\mathcal{O}_X}(\widetilde{M},\widetilde{N})
-	\ar@{->}[r]
-	& \Hom_{f_*\mathcal{O}_X}(f_*\widetilde{M},f_*\widetilde{N})
-	\ar@{->}[ld] \\
-	& \Hom_A(M,N) & 
+\Hom_{f_*\mathcal{O}_X}(f_*\widetilde{M},f_*\widetilde{N})
+\ar@{->}[r] \ar@{->}[rd]
+& \Hom_{\mathcal{O}_X}(\widetilde{M},\widetilde{N})
+\ar@{->}[r]
+& \Hom_{f_*\mathcal{O}_X}(f_*\widetilde{M},f_*\widetilde{N})
+\ar@{->}[ld] \\
+& \Hom_A(M,N) & 
 }
 \]
 commutes.
@@ -2025,13 +2030,13 @@ f_{U,*}(\mathcal{G}|_{f^{-1}(U)})
 \]
 For $V\subset U\subset S$ open affine, we have
 \begin{align*}
-	(f_{U,*}\theta_U\circ\varphi_U^{-1})|_V
-	&=f_{U,*}\theta_U|_V\circ\varphi_U^{-1}|_V\\
-	&=f_{V,*}(\theta_U|_{f^{-1}(V)})\circ\varphi_U^{-1}|_V\\
-	&=f_{V,*}(\theta_V\circ\theta^U_V)\circ\varphi_U^{-1}|_V\\
-	&=f_{V,*}\theta_V\circ f_{V,*}\theta^U_V\circ\varphi_U^{-1}|_V\\
-	&=f_{V,*}\theta_V\circ \varphi^U_V\circ\varphi_U^{-1}|_V\\
-	&=f_{V,*}\theta_V\circ\varphi_V^{-1}.
+(f_{U,*}\theta_U\circ\varphi_U^{-1})|_V
+&=f_{U,*}\theta_U|_V\circ\varphi_U^{-1}|_V\\
+&=f_{V,*}(\theta_U|_{f^{-1}(V)})\circ\varphi_U^{-1}|_V\\
+&=f_{V,*}(\theta_V\circ\theta^U_V)\circ\varphi_U^{-1}|_V\\
+&=f_{V,*}\theta_V\circ f_{V,*}\theta^U_V\circ\varphi_U^{-1}|_V\\
+&=f_{V,*}\theta_V\circ \varphi^U_V\circ\varphi_U^{-1}|_V\\
+&=f_{V,*}\theta_V\circ\varphi_V^{-1}.
 \end{align*}
 Hence, these isomorphisms glue to an isomorphism of
 $\mathcal{A}$-modules $\mathcal{F}\cong f_*\mathcal{G}$
