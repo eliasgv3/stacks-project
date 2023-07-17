@@ -12665,7 +12665,9 @@ irreducible components. We say a morphism $f : X \to Y$ is
 \begin{enumerate}
 \item $f$ induces a bijection between the set of generic points
 of irreducible components of $X$ and the set of generic points
-of the irreducible components of $Y$, and
+of the irreducible components of $Y$
+(see also Topology, Lemma
+\ref{topology-lemma-characterize-bijection-irreducible-components-sober}), and
 \item for every generic point $\eta \in X$ of an irreducible component
 of $X$ the local ring map
 $\mathcal{O}_{Y, f(\eta)} \to \mathcal{O}_{X, \eta}$
@@ -12679,6 +12681,23 @@ over generic points are singletons. Moreover, we will see that
 in most cases one encounters in practice the existence a birational morphism
 between irreducible schemes $X$ and $Y$ implies
 $X$ and $Y$ are birational schemes.
+
+\begin{lemma}
+\label{lemma-birational-local-target}
+\begin{slogan}
+	Birationality is local on the target.
+\end{slogan}
+Let $f:X\to Y$ be a morphism of schemes that
+have finitely many irreducible components.
+For all open covers $Y=\bigcup V_i$, it holds that $f$ is birational
+if and only if $f^{-1}(V_i)\to V_i$ is birational for every $i$.
+\end{lemma}
+
+\begin{proof}
+It follows from Topology, Lemmas
+\ref{topology-lemma-bijection-irreducible-components-local-target}
+and \ref{topology-lemma-correspondence-sober-generic-points-open}.
+\end{proof}
 
 \begin{lemma}
 \label{lemma-birational-dominant}
@@ -14244,11 +14263,14 @@ closed (Lemma \ref{lemma-integral-universally-closed}) this implies that
 $\nu$ is surjective. This proves (2).
 
 \medskip\noindent
-Suppose that $\alpha : X' \to X$ is as in (3). It is clear that
+Suppose that $\alpha : X' \to X$ is as in (3). By Properties,
+Lemma \ref{properties-lemma-characterize-locally-finitely-many-irred-comp},
 $X'$ satisfies the assumptions under which the normalization
 is defined. Let $f' : Y' \to X'$ be the morphism
 (\ref{equation-generic-points}) constructed starting with $X'$.
-As $\alpha$ is birational it is clear that $Y' = Y$ and $f = \alpha \circ f'$.
+As $\alpha$ is locally birational
+(similar proof as that of Lemma \ref{lemma-birational-local-target})
+it is clear that $Y' = Y$ and $f = \alpha \circ f'$.
 Hence the factorization $X^\nu \to X' \to X$ exists
 and $X^\nu \to X'$ is the normalization of $X'$ by
 Lemma \ref{lemma-characterize-normalization}. This proves (3).
