@@ -508,6 +508,27 @@ $f^*G(f^{-1}(V))$ from Lemma \ref{lemma-pullback-section}.
 \end{definition}
 
 \begin{lemma}
+\label{lemma-pullback-section-germ}
+Let $f : (X, \mathcal{O}_X) \to (Y, \mathcal{O}_Y)$ be a morphism of
+ringed spaces. Let $\mathcal{G}$ be a sheaf of
+$\mathcal{O}_Y$-modules.
+Let $V\subset Y$ be and open subset.
+Let $s\in\mathcal{G}(V)$ be a section.
+Let $x\in X$ be a point.
+By means of the isomorphism in
+Sheaves, Lemma \ref{sheaves-lemma-stalk-pullback-modules},
+we can identify $(f^*s)_x=s_{f(x)}\otimes 1$.
+\end{lemma}
+
+\begin{proof}
+Without loss of generality, assume $V=Y$.
+Let $\mathcal{O}_Y\to\mathcal{G}$ be the
+$\mathcal{O}_Y$-linear map sending the global section $1$ to $s$.
+The result follows by studying the map on stalks at
+$x$ induced by $f^*\mathcal{O}_Y\to f^*\mathcal{G}$.
+\end{proof}
+
+\begin{lemma}
 \label{lemma-pullback-section-morphism}
 Let $f : (X, \mathcal{O}_X) \to (Y, \mathcal{O}_Y)$
 be a morphism of ringed spaces.
