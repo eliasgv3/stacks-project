@@ -2656,6 +2656,9 @@ Let $\mathcal{L}$ be an invertible sheaf on $X$.
 A global section $s \in \Gamma(X, \mathcal{L})$ is called a
 {\it regular section} if the map $\mathcal{O}_X \to \mathcal{L}$,
 $f \mapsto fs$ is injective.
+Let $U\subset X$ be open.
+A local section $s\in\mathcal{L}(U)$ is called a
+{\it regular section} if it is a regular global section of $\mathcal{L}|_U$.
 \end{definition}
 
 \begin{lemma}
@@ -5838,6 +5841,55 @@ We sometimes denote $f^*(s) = f^\sharp(s)$ for a
 section $s \in \Gamma(Y, \mathcal{K}_Y)$.
 
 \begin{lemma}
+\label{lemma-regular-sections-pullback}
+Let $f:(X,\mathcal{O}_X)\to(Y,\mathcal{O}_Y)$ be a morphism
+locally ringed spaces. Let $\mathcal{L}$ be a line bundle over $Y$.
+The following are equivalent:
+\begin{enumerate}
+\item $\mathcal{O}_{Y,f(x)}\to\mathcal{O}_{X,x}$ sends germs
+of regular local sections of $\mathcal{O}_Y$ to nonzerodivisors,
+for all $x\in X$,
+\item $\mathcal{O}_{Y,f(x)}\to\mathcal{O}_{X,x}$ sends germs
+of regular local sections of $\mathcal{O}_Y$ to germs of regular
+local sections of $\mathcal{O}_X$, for all $x\in X$,
+\item pullbacks of meromorphic functions are defined for $f$, and
+%		For all regular local sections $s$ of $\mathcal{O}_Y$, the pullback
+%		section $f^\sharp s$ is a regular local section of $\mathcal{O}_X$.
+\item for all regular
+local sections $s$ of $\mathcal{L}$, the pullback section $f^*s$
+is a regular local section of $f^*\mathcal{L}$
+(see Definition \ref{definition-regular-section}).
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}	
+4$\Rightarrow$3. Let $s$ be a regular local section of $\mathcal{O}_Y$.
+We must show that $f^\sharp s$ is a regular section.
+Restricting $f$ if necessary, we can assume that $s$ is a global section.
+Let $x\in X$. There is an open neighborhood $V$ of $f(x)$
+such that $\mathcal{L}|_V\cong\mathcal{O}_Y$.
+By means of this isomorphism, $s|_V$ can be regarded
+as a regular section of $\mathcal{L}|_V$. Hence,
+$f^*(s|_V)=f^\sharp(s|_V)=(f^\sharp s)|_{f^{-1}(V)}$ is regular.
+
+\medskip\noindent
+3$\Rightarrow$2$\Rightarrow$1. Trivial.
+
+\medskip\noindent
+1$\Rightarrow$2. Let $x\in X$. Let $V\subset Y$ be an open neighborhood
+of $f(x)$. Let $s$ be a regular section of $\mathcal{O}_Y$ over $V$.
+Since $f^\sharp_x(s_{f(x)})=(f^\sharp s)_x$, it suffices to show that
+$f^\sharp s$ is a regular section of $\mathcal{O}_X$ over $f^{-1}(V)$.
+This is if and only if $(f^\sharp s)_{z}=f^\sharp_{z}(s_{f(z)})$
+is a nonzerodivisor in $\mathcal{O}_{X,z}$, for all $z\in f^{-1}(V)$;
+but the latter is true by hypothesis.
+
+\medskip\noindent
+2$\Rightarrow$4. Since the condition of being a regular section is local,
+we can assume $\mathcal{L}\cong\mathcal{O}_Y$ and the implication follows. 
+\end{proof}
+
+\begin{lemma}
 \label{lemma-pullback-meromorphic-sections-defined}
 Let $f : X \to Y$ be a morphism of schemes.
 In each of the following cases pullbacks of meromorphic
@@ -6017,14 +6069,56 @@ There is a canonical pullback map
 $f^* : \Gamma(Y, \mathcal{K}_Y(\mathcal{F})) \to
 \Gamma(X, \mathcal{K}_X(f^*\mathcal{F}))$
 for meromorphic sections of $\mathcal{F}$.
-\item Let $\mathcal{L}$ be an invertible $\mathcal{O}_X$-module.
+\item Let $\mathcal{L}$ be an invertible $\mathcal{O}_Y$-module.
 A regular meromorphic section $s$ of $\mathcal{L}$ pulls back
 to a regular meromorphic section $f^*s$ of $f^*\mathcal{L}$.
 \end{enumerate}
 \end{lemma}
 
 \begin{proof}
-Omitted.
+We have a composite:
+$$
+\mathcal{F}\otimes_{\mathcal{O}_Y}\mathcal{K}_Y
+\to f_*f^*\mathcal{F}\otimes_{f_*\mathcal{O}_X}f_*\mathcal{K}_X
+\to f_*(f^*\mathcal{F}\otimes_{\mathcal{O}_X}\mathcal{K}_X).
+$$
+The first map is the tensor of the unit of the adjunction between $f_*$
+and $f^*$ with the canonical map $\mathcal{K}_Y\to f_*\mathcal{K}_X$.
+The second map is obtained from the following general phenomenon:
+if $\mathcal{G},\mathcal{H}$ are $\mathcal{O}_X$-modules,
+then there is a canonical $f_*\mathcal{O}_X$-linear map
+$f_*\mathcal{G}\otimes_{f_*\mathcal{O}_X}f_*\mathcal{H}
+\to f_*(\mathcal{G}\otimes_{\mathcal{O}_X}\mathcal{H})$.
+Taking global sections of the composite gives the desired map in (1).
+
+\medskip\noindent
+We now prove (2). We note that $\mathcal{K}_X(f^*\mathcal{L})$
+(resp., the morphism $f^* : \Gamma(Y, \mathcal{K}_Y(\mathcal{L}))
+\to
+\Gamma(X, \mathcal{K}_X(f^*\mathcal{L}))$ of part (1)) is the pullback
+(resp., pullback of sections) of $\mathcal{K}_Y(\mathcal{L})$
+with respect to the morphism of ringed spaces
+$(X,\mathcal{K}_X)\to(Y,\mathcal{K}_Y)$.
+Hence, by Lemma \ref{lemma-regular-sections-pullback}, given $x\in X$,
+it suffices to show that $\mathcal{K}_{Y,f(x)}\to\mathcal{K}_{X,x}$
+maps germs of $\mathcal{K}_Y$-regular local sections of $\mathcal{K}_Y$
+to nonzerodivisors. Germs in
+$\mathcal{K}_{Y,f(x)}
+\cong \mathcal{S}^{-1}_{Y,f(x)}\mathcal{O}_{Y,f(x)}$
+are of the form $g=t_{f(x)}/s_{f(x)}$,
+with $t_{f(x)}\in\mathcal{O}_{Y,f(x)}$ and
+$s_{f(x)}\in \mathcal{S}_{Y,f(x)}$. If $g$ is the germ of a
+$\mathcal{K}_Y$-regular local section of $\mathcal{K}_Y$,
+then $t/s$ (wherever defined) is a $\mathcal{K}_Y$-regular
+local section of $\mathcal{K}_Y$ as well.
+In particular, $t/s$ is $\mathcal{O}_Y$-regular.
+Therefore, $t$ is a regular local section of $\mathcal{O}_Y$.
+By hypothesis, $f^\sharp t$ is a regular local section of $\mathcal{O}_X$.
+Hence, $f^\sharp_x(t_{f(x)})\in\mathcal{O}_{X,x}$ is a nonzerodivisor.
+Finally, the image of $t_{f(x)}/s_{f(x)}$ through
+$\mathcal{K}_{Y,f(x)}\to\mathcal{K}_{X,x}$ equals
+$f^\sharp_x(t_{f(x)})/f_x^\sharp(s_{f(x)})$,
+a nonzerodivisor in $\mathcal{K}_{X,x}$.
 \end{proof}
 
 \begin{lemma}
