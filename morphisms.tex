@@ -1797,7 +1797,8 @@ Constructions, Lemma \ref{constructions-lemma-spec-properties} part (2).
 
 \begin{lemma}
 \label{lemma-quasi-coherence-scalar-restriction}
-Let $S$ be a scheme and let $\mathcal{A}$ be a quasi-coherent $\mathcal{O}_S$-algebra. An $\mathcal{A}$-module is
+Let $S$ be a scheme and let $\mathcal{A}$ be a quasi-coherent
+$\mathcal{O}_S$-algebra. An $\mathcal{A}$-module is
 quasi-coherent as an $\mathcal{O}_S$-module if and only if
 it is quasi-coherent as an $\mathcal{A}$-module.
 \end{lemma}
@@ -1877,10 +1878,14 @@ $$
 \end{lemma}
 
 \begin{proof}
-In the proof of \ref{lemma-characterize-affine} it was argued that affine morphisms
-are quasi-compact and quasi-separated. Hence, $f_*\mathcal{F}$ is a quasi-coherent
-$\mathcal{O}_S$-module by Schemes, Lemma \ref{lemma-push-forward-quasi-coherent}
-(in particular, $f_*\mathcal{O}_X$ is a quasi-coherent $\mathcal{O}_S$-algebra).
+In the proof of Lemma \ref{lemma-characterize-affine}
+it was argued that affine morphisms
+are quasi-compact and quasi-separated.
+Hence, $f_*\mathcal{F}$ is a quasi-coherent
+$\mathcal{O}_S$-module by Schemes,
+Lemma \ref{schemes-lemma-push-forward-quasi-coherent}
+(in particular, $f_*\mathcal{O}_X$ is a quasi-coherent
+$\mathcal{O}_S$-algebra).
 By Lemma \ref{lemma-quasi-coherence-scalar-restriction}, $f_*\mathcal{F}$ is
 $\mathcal{A}$-quasi-coherent.
 
@@ -1920,7 +1925,7 @@ $f_*\widetilde{M}\to f_*\widetilde{N}$,
 then taking the $A$-linear map on global sections $M\to N$
 and then after considering the induced
 $\mathcal{O}_X$-linear map $\widetilde{M}\to\widetilde{N}$
-(Schemes, Lemma \ref{lemma-compare-constructions}).
+(Schemes, Lemma \ref{schemes-lemma-compare-constructions}).
 We note that the resulting map
 $\Hom_{f_*\mathcal{O}_X}(f_*\widetilde{M},f_*\widetilde{N})\to
 \Hom_{\mathcal{O}_X}(\widetilde{M},\widetilde{N})$
@@ -1933,7 +1938,7 @@ $\Hom_{\mathcal{O}_X}(\widetilde{M},\widetilde{N})\to
 \Hom_{f_*\mathcal{O}_X}(f_*\widetilde{M},f_*\widetilde{N})\to
 \Hom_{\mathcal{O}_X}(\widetilde{M},\widetilde{N})$
 is the identity by
-Schemes, Lemma \ref{lemma-compare-constructions}.
+Schemes, Lemma \ref{schemes-lemma-compare-constructions}.
 On the other hand, to see that the composite
 $\Hom_{f_*\mathcal{O}_X}(f_*\widetilde{M},f_*\widetilde{N})\to
 \Hom_{\mathcal{O}_X}(\widetilde{M},\widetilde{N})\to
@@ -1962,7 +1967,7 @@ commutes.
 \medskip\noindent
 It is left to see essential surjectivity.
 For this, we are going to use Constructions,
-Lemma \ref{lemma-relative-glueing-sheaves}
+Lemma \ref{constructions-lemma-relative-glueing-sheaves}
 (note that its proof allows us to take $i_U=\text{id}_{f^{-1}(U)}$).
 Let $\mathcal{F}$ be a quasi-coherent $\mathcal{A}=f_*\mathcal{O}_X$-module.
 By Lemma \ref{lemma-quasi-coherence-scalar-restriction},
@@ -2005,10 +2010,10 @@ $\theta^U_V:(\rho^U_V)^*\widetilde{M^U}
 =\widetilde{M^U}|_{f^{-1}(V)}
 \to\widetilde{M^V}$
 such that $f_{V,*}\theta^U_V=\varphi^U_V$
-(Schemes, Lemma \ref{lemma-compare-constructions}).
+(Schemes, Lemma \ref{schemes-lemma-compare-constructions}).
 By the functoriality of $\varphi^U_V$ explained before
 and the (fully) faithfulness of $f_{W,*}$,
-we deduce condition (d) of Lemma \ref{lemma-relative-glueing-sheaves}.
+we deduce condition (d) of Lemma \ref{constructions-lemma-relative-glueing-sheaves}.
 Hence, the sheaves $\widetilde{M^U}$ glue to a sheaf
 $\mathcal{G}$ over $X$ for which there are isomorphisms
 $\theta_U:\widetilde{M^U}\to \mathcal{G}|_{f^{-1}(U)}$
@@ -2040,8 +2045,8 @@ For $V\subset U\subset S$ open affine, we have
 \end{align*}
 Hence, these isomorphisms glue to an isomorphism of
 $\mathcal{A}$-modules $\mathcal{F}\cong f_*\mathcal{G}$
-(use Sheaves, Lemmas \ref{lemma-mapping-property-glue}
-or \ref{lemma-restrict-basis-equivalence-modules}),
+(use Sheaves, Lemmas \ref{sheaves-lemma-mapping-property-glue}
+or \ref{sheaves-lemma-restrict-basis-equivalence-modules}),
 and we win.
 \end{proof}
 
