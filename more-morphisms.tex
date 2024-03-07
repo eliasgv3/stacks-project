@@ -5165,6 +5165,26 @@ which contradicts our assumption that $y \in \text{Ass}_{X/S}(\mathcal{F})$.
 \end{proof}
 
 \begin{lemma}
+\label{lemma-relative-dimension-support-flat}
+Let $f : X \to S$ be a morphism of schemes which is locally of finite type.
+Let $\mathcal{F}$ be a finite type, quasi-coherent $\mathcal{O}_X$-module
+flat over $S$. Assume $S$ is irreducible with generic point $\eta$.
+If $\dim(\text{Supp}(\mathcal{F}_\eta)) \leq r$ then for all $s \in S$
+we have $\dim(\text{Supp}(\mathcal{F}_s)) \leq r$.
+\end{lemma}
+
+\begin{proof}
+Let $x \in \text{Supp}(\mathcal{F}_s)$ be a generic point of an irreducible
+component of $\text{Supp}(\mathcal{F}_s)$. By
+Algebra, Lemma \ref{algebra-lemma-going-down-flat-module}
+we can find a specialization $y \leadsto x$ in $\text{Supp}(\mathcal{F})$
+with $f(y) = \eta$. Of course we may assume $y$ is a generic point
+of an irreducible component of $\text{Supp}(\mathcal{F}_\eta)$.
+We conclude from Lemma \ref{lemma-associated-point-specializes}
+that the dimension of $\overline{\{x\}}$ is at most $r$.
+\end{proof}
+
+\begin{lemma}
 \label{lemma-flat-associated-equidimensional}
 Let $f : X \to S$ be a morphism of schemes which is locally of finite type.
 Let $\mathcal{F}$ be a quasi-coherent $\mathcal{O}_X$-module of finite type.
@@ -15442,6 +15462,453 @@ to finish the proof.
 
 
 
+
+\section{Generic flatness stratification}
+\label{section-generic-flatness-stratification}
+
+\noindent
+We can use generic flatness to construct a
+stratification of the base such that a given module
+becomes flat over the strata.
+
+\begin{lemma}[Generic flatness stratification]
+\label{lemma-generic-flatness-stratification}
+Let $f : X \to S$ be a morphism of finite presentation between quasi-compact
+and quasi-separated schemes. Let $\mathcal{F}$ be an $\mathcal{O}_X$-module
+of finite presentation. Then there exists a $t \geq 0$ and closed
+subschemes
+$$
+S \supset S_0 \supset S_1 \supset \ldots \supset S_t = \emptyset
+$$
+such that $S_i \to S$ is defined by a finite type ideal sheaf,
+$S_0 \subset S$ is a thickening, and $\mathcal{F}$ pulled back to
+$X \times_S (S_i \setminus S_{i + 1})$ is flat over $S_i \setminus S_{i + 1}$.
+\end{lemma}
+
+\begin{proof}
+We can find a cartesian diagram
+$$
+\xymatrix{
+X \ar[d] \ar[r] & X_0 \ar[d] \\
+S \ar[r] & S_0
+}
+$$
+and a finitely presented $\mathcal{O}_{X_0}$-module $\mathcal{F}_0$
+which pulls back to $\mathcal{F}$ such that $X_0$ and $S_0$ are of
+finite type over $\mathbf{Z}$. See
+Limits, Proposition \ref{limits-proposition-approximate} and
+Lemmas \ref{limits-lemma-descend-finite-presentation} and
+\ref{limits-lemma-descend-modules-finite-presentation}.
+Thus we may assume $X$ and $S$ are of finite type over $\mathbf{Z}$
+and $\mathcal{F}$ is a coherent $\mathcal{O}_X$-module.
+
+\medskip\noindent
+Assume $X$ and $S$ are of finite type over $\mathbf{Z}$
+and $\mathcal{F}$ is a coherent $\mathcal{O}_X$-module.
+In this case every quasi-coherent ideal is of finite type, hence
+we do not have to check the condition that $S_i$ is cut out
+by a finite type ideal. Set $S_0 = S_{red}$ equal to the reduction of $S$.
+By generic flatness as stated in Morphisms, Proposition
+\ref{morphisms-proposition-generic-flatness-reduced}
+there is a dense open $U_0 \subset S_0$ such that $\mathcal{F}$
+pulled back to $X \times_S U_0$ is flat over $U_0$.
+Let $S_1 \subset S_0$ be the reduced closed subscheme whose
+underlying closed subset is $S \setminus U_0$. We continue in this
+way, provided $S_1 \not = \emptyset$, to find
+$S_0 \supset S_1 \supset \ldots$. Because $S$
+is Noetherian any descending chain of closed subsets stabilizes
+hence we see that $S_t = \emptyset$ for some $t \geq 0$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-generic-flatness-stratification-scheme}
+Let $f : X \to S$ be a morphism of finite presentation between quasi-compact
+and quasi-separated schemes. Then there exists a $t \geq 0$ and closed
+subschemes
+$$
+S \supset S_0 \supset S_1 \supset \ldots \supset S_t = \emptyset
+$$
+such that $S_i \to S$ is defined by a finite type ideal sheaf,
+$S_0 \subset S$ is a thickening, and
+$X \times_S (S_i \setminus S_{i + 1})$ is flat over $S_i \setminus S_{i + 1}$.
+\end{lemma}
+
+\begin{proof}
+Apply Lemma \ref{lemma-generic-flatness-stratification}
+with $\mathcal{F} = \mathcal{O}_X$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-cokernel-flat}
+Let $R$ be a Noetherian domain. Let $R \to A \to B$ be finite type ring maps.
+Let $M$ be a finite $A$-module and let $N$ a finite $B$-module.
+Let $M \to N$ be an $A$-linear map. There exists an nonzero $f \in R$
+such that the cokernel of $M_f \to N_f$ is a flat $R_f$-module.
+\end{lemma}
+
+\begin{proof}
+By replacing $M$ by the image of $M \to N$, we may assume $M \subset N$.
+Choose a filtration $0 = N_0 \subset N_1 \subset \ldots \subset N_t = N$
+such that $N_i/N_{i - 1} = B/\mathfrak q_i$ for some prime ideal
+$\mathfrak q_i \subset B$, see
+Algebra, Lemma \ref{algebra-lemma-filter-Noetherian-module}.
+Set $M_i = M \cap N_i$. Then $Q = N/M$ has a filtration by the submodules
+$Q_i = N_i/M_i$. It suffices to prove $Q_i/Q_{i - 1}$ becomes flat
+after localizing at a nonzero element of $f$ (since extensions of
+flat modules are flat by Algebra, Lemma \ref{algebra-lemma-flat-ses}).
+Since $Q_i/Q_{i - 1}$ is isomorphic to the  cokernel
+of the map $M_i/M_{i - 1} \to N_i/N_{i - 1}$, we reduce to the
+case discussed in the next paragraph.
+
+\medskip\noindent
+Assume $B$ is a domain and $M \subset N = B$. After replacing $A$ by the
+image of $A$ in $B$ we may assume $A \subset B$. By generic flatness,
+we may assume $A$ and $B$ are flat over $R$
+(Algebra, Lemma \ref{algebra-lemma-generic-flatness-Noetherian}).
+It now suffices to show $M \to B$ becomes $R$-universally
+injective after replacing $R$ by a principal localization
+(Algebra, Lemma \ref{algebra-lemma-ui-flat-domain}).
+By generic freeness, we can find a nonzero $g \in A$ such that
+$B_g$ is a free $A_g$-module
+(Algebra, Lemma \ref{algebra-lemma-generic-flatness-Noetherian}).
+Thus we may choose a direct summand $M' \subset B_g$ as an $A_g$-module,
+which is finite free as an $A_g$-module, and
+such that $M \to B \to B_g$ factors through $M'$.
+Clearly, it suffices to show that $M \to M'$
+becomes $R$-universally injective after replacing
+$R$ by a principal localization.
+
+\medskip\noindent
+Say $M' = A_g^{\oplus n}$. Since $M \subset M'$ is a finite $A$-module,
+we see that $M$ is contained in $(1/g^m)A^{\oplus n}$ for some $m \geq 0$.
+After changing our basis for $M'$ we may assume $M \subset A^{\oplus n}$.
+Then it suffices to show that $A^{\oplus n}/M$ and $A_g/A$ become
+$R$-flat after replacing $R$ by a principal localization. Namely, then
+$M' \to A^{\oplus n}$ and $A^{\oplus n} \to A_g^{\oplus n}$ are
+universally injective by Algebra, Lemma \ref{algebra-lemma-flat-tor-zero}
+and consequently so is the composition $M \to M' = A_g^{\oplus n}$.
+
+\medskip\noindent
+By generic flatness (see reference above), we may assume the
+module $A^{\oplus n}/M$ is $R$-flat. For the quotient $A_g/A$
+we use the fact that
+$$
+A_g/A = \colim (1/g^m)A/A \cong \colim A/g^mA
+$$
+and the module $A/g^mA$ has a filtration of length $m$ whose
+succesive quotients are isomorphic to $A/gA$. Again by generic
+flatness we may assume $A/gA$ is $R$-flat and hence each $A/g^mA$
+is $R$-flat, and hence so is $A_g/A$.
+\end{proof}
+
+\noindent
+Let $f : X \to Y$ be a morphism of schemes over a base scheme $S$.
+Let $Z \subset Y$ be the scheme theoretic image of $f$, see
+Morphisms, Section \ref{morphisms-section-scheme-theoretic-image}.
+Let $g : S' \to S$ be a morphism of schemes and let
+$f' : X \times_S S' \to Y \times_S S'$ be the base change of $f$ by $g$.
+It is not always true that $Z \times_S S' \subset Y \times_S S'$
+is the scheme theoretic image of $f'$.
+Let us say that {\it formation of the scheme theoretic image of $f/S$
+commutes with arbitrary base change} if for every $g$ as above
+the scheme theoretic image of $f'$ is equal to $Z \times_S S'$.
+
+\begin{lemma}
+\label{lemma-base-change-scheme-theoretic-image}
+Let $S$ be a quasi-compact and quasi-separated scheme.
+Let $f : X \to Y$ be a morphism of schemes over $S$ with
+both $X$ and $Y$ of finite presentation over $S$.
+Then there exists a $t \geq 0$ and closed subschemes
+$$
+S \supset S_0 \supset S_1 \supset \ldots \supset S_t = \emptyset
+$$
+with the following properties:
+\begin{enumerate}
+\item $S_i \to S$ is defined by a finite type ideal sheaf,
+\item $S_0 \subset S$ is a thickening, and
+\item with $T_i = S_i \setminus S_{i + 1}$ and $f_i$ the base
+change of $f$ to $T_i$ we have:
+formation of the scheme theoretic image of $f_i/T_i$
+commutes with arbitrary base change (see discussion above the lemma).
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+We can find a commutative diagram
+$$
+\xymatrix{
+X \ar[d] \ar[r] & Y \ar[d] \ar[r] & S \ar[d] \\
+U \ar[r] & V \ar[r] & W
+}
+$$
+with cartesian squares such that $U$, $V$, $W$
+are of finite type over $\mathbf{Z}$. Namely, first write $S$
+as a cofiltered limit of finite type schemes over $\mathbf{Z}$
+with affine transition morphisms
+using Limits, Proposition \ref{limits-proposition-approximate}
+and then descend the morphism $X \to Y$ using
+Limits, Lemma \ref{limits-lemma-descend-finite-presentation}.
+This reduces us to the case discussed in the next paragraph.
+
+\medskip\noindent
+Assume $S$ is Noetherian.  In this case every quasi-coherent ideal
+is of finite type, hence we do not have to check the condition that
+$S_i$ is cut out by a finite type ideal. Set $S_0 = S_{red}$ equal
+to the reduction of $S$. Let $\eta \in S_0$ be a generic point
+of an irreducible component of $S_0$. By Noetherian induction on
+the underlying topological space of $S_0$, we may assume the result
+holds for any closed subscheme of $S_0$ not containing $\eta$.
+Thus it suffices to show that there exists an open neighbourhood
+$U_0 \subset S_0$ such that the base change $f_0$ of $f$ to $U_0$
+has property (3).
+
+\medskip\noindent
+Let $R$ be a Noetherian domain. Let $f : X \to Y$ be a morphism
+of finite type schemes over $R$. By the discussion in the previous paragraph
+it suffices to show that after replacing $R$ by $R_g$ for some $g \in R$
+nonzero and $X$, $Y$ by their base changes to $R_g$,
+formation of the scheme theoretic image of $f/R$ commutes
+with arbitrary base change.
+
+\medskip\noindent
+Let $Y = V_1 \cup \ldots V_n$ be an affine open covering.
+Let $U_i = f^{-1}(V_i)$. If the statement is true for each of the
+morphisms $U_i \to V_i$ over $R$, then it holds for $f$.
+Namely, the scheme theoretic image of $U_i \to V_i$
+is the intersection of $V_i$ with the scheme theoretic
+image of $f : X \to Y$ by Morphisms, Lemma
+\ref{morphisms-lemma-quasi-compact-scheme-theoretic-image}.
+Thus we may assume $Y$ is affine.
+
+\medskip\noindent
+Let $X = U_1 \cup \ldots U_n$ be an affine open covering.
+Then the scheme theoretic image of $X \to Y$ is the same as
+the scheme theoretic imge of $\coprod U_i \to Y$.
+Thus we may assume $X$ is affine.
+
+\medskip\noindent
+Say $X = \Spec(A)$ and $Y = \Spec(B)$ and $f$ corresponds
+to the $R$-algebra map $\varphi : A \to B$.
+Then the scheme theoretic image of $f$ is $\Spec(A/\Ker(\varphi))$
+and similarly after base change (by an affine morphism, but it is
+enough to check for those).
+Thus formation of the scheme theoretic image commutes
+with base change if $\Ker(\varphi \otimes_R R') = \Ker(\varphi) \otimes_R R'$
+for all ring maps $R \to R'$.
+
+\medskip\noindent
+After replacing $R$, $A$, $B$ by $R_g$, $A_g$, $B_g$ for a suitable
+nonzero $g$ in $R$, we may assume $A$ and $B$ are flat over $R$.
+By Lemma \ref{lemma-cokernel-flat}
+we may also assume $B/A$ is a flat $R$-module.
+Then $0 \to \Ker(\varphi) \to A \to B \to B/A \to 0$
+is an exact sequence of flat $R$-modules, which implies
+the desired base change statement.
+\end{proof}
+
+
+
+
+
+
+\section{Stratifying a morphism}
+\label{section-stratifying-morphisms}
+
+\noindent
+Let $f : X \to S$ be a finitely presented morphism of quasi-compact
+and quasi-separated schemes.
+In Section \ref{section-generic-flatness-stratification}
+we have seen that we can stratify $S$ such that $X$ is flat
+over the strata. In this section look for stratifications of both $S$
+and $X$ such that we obtain smooth strata; this won't quite work and
+we'll need a base change by finite locally free morphisms as well.
+
+\begin{lemma}
+\label{lemma-smoothness-stratification-at-generic-point}
+Let $f : X \to S$ be a morphism of schemes of finite presentation.
+Let $\eta \in S$ be a generic point of an irreducible component of $S$.
+Assume $S$ is reduced. Then there exist
+\begin{enumerate}
+\item an open subscheme $U \subset S$ containing $\eta$,
+\item a surjective, universally injective, finite locally free
+morphism $V \to U$,
+\item a $t \geq 0$ and closed subschemes
+$$
+X \times_S V \supset Z_0 \supset Z_1 \supset \ldots \supset Z_t = \emptyset
+$$
+such that $Z_i \to X \times_S V$ is defined by a finite type ideal sheaf,
+$Z_0 \subset X \times_S V$ is a thickening, and such that the morphism
+$Z_i \setminus Z_{i + 1} \to V$ is smooth.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+It is clear that we may replace $S$ by an open neighbourhood of $\eta$
+and $X$ by the restriction to this open.
+Thus we may assume $S = \Spec(A)$ where $A$ is a reduced ring
+and $\eta$ corresponds to a minimal prime ideal $\mathfrak p$.
+Recall that the local ring $\mathcal{O}_{S, \eta} = A_\mathfrak p$
+is equal to $\kappa(\mathfrak p)$ in this case, see
+Algebra, Lemma \ref{algebra-lemma-minimal-prime-reduced-ring}.
+
+\medskip\noindent
+Apply Varieties, Lemma \ref{varieties-lemma-smooth-stratification}
+to the scheme $X_\eta$ over $k = \kappa(\eta)$.
+Denote $k'/k$ the purely inseparable field extension this produces.
+In the next paragraph we reduce to the case $k' = k$.
+(This step corresponds to finding the morphism $V \to U$ in
+the statement of the lemma; in particular we can take $V = U$
+if the characteristic of $\kappa(\mathfrak p)$ is zero.)
+
+\medskip\noindent
+If the characteristic of $k = \kappa(\mathfrak p)$ is zero, then
+$k' = k$. If the characteristic of $k = \kappa(\mathfrak p)$
+is $p > 0$, then $p$ maps to zero in $A_\mathfrak p = \kappa(\mathfrak p)$.
+Hence after replacing $A$ by a principal localization (i.e.,
+shrinking $S$) we may assume $p = 0$ in $A$. If $k' \not = k$, then
+there exists an $\beta \in k'$, $\beta \not \in k$
+such that $\beta^p \in k$. After replacing $A$ by a principal
+localization we may assume there exists an $a \in A$ such
+that $\beta^p = a$. Set $A' = A[x]/(x^p - a)$.
+Then $S' = \Spec(A') \to \Spec(A) = S$ is finite locally free,
+surjective, and universally injective. Moreover, if $\mathfrak p' \subset A'$
+denotes the unique prime ideal lying over $\mathfrak p$,
+then $A'_{\mathfrak p'} = k(\beta)$ and $k'/k(\beta)$
+has smaller degree. Thus after replacing $S$ by $S'$
+and $\eta$ by the point $\eta'$ corresponding to $\mathfrak p'$
+we see that the degree of $k'$ over the residue field of $\eta$
+has decreased. Continuing like this, by induction we reduce
+to the case $k' = \kappa(\mathfrak p) = \kappa(\eta)$.
+
+\medskip\noindent
+Thus we may assume $S$ is affine, reduced, and that we have a $t \geq 0$
+and closed subschemes
+$$
+X_\eta \supset Z_{\eta, 0} \supset Z_{\eta, 1}
+\supset \ldots \supset Z_{\eta, t} = \emptyset
+$$
+such that $Z_{\eta, 0} = (X_\eta)_{red}$ and
+$Z_{\eta, i} \setminus Z_{\eta, i + 1}$
+is smooth over $\eta$ for all $i$.
+Recall that $\kappa(\eta) = \kappa(\mathfrak p) = A_\mathfrak p$ is
+the filtered colimit of $A_a$ for $a \in A$, $a \not \in \mathfrak p$.
+See Algebra, Lemma \ref{algebra-lemma-localization-colimit}.
+Thus we can descend the diagram above to a corresponding diagram
+over $\Spec(A_a)$ for some $a \in A$, $a \not \in \mathfrak p$.
+More precisely, after replacing $S$ by $\Spec(A_a)$
+we may assume we have a $t \geq 0$ and closed subschemes
+$$
+X \supset Z_0 \supset Z_1 \supset \ldots \supset Z_t = \emptyset
+$$
+such that $Z_i \to X$ is a closed immersion of finite presentation,
+such that $Z_0 \to X$ is a thickening, and such that $Z_i \setminus Z_{i + 1}$
+is smooth over $S$. In other words, the lemma holds.
+More precisely, we first use
+Limits, Lemma \ref{limits-lemma-descend-finite-presentation}
+to obtain morphisms
+$$
+Z_t \to Z_{t - 1} \to \ldots \to Z_0 \to X
+$$
+over $S$, each of finite presentation, and whose
+base change to $\eta$ produces the inclusions between the given
+closed subschemes above. After shrinking $S$ further we may assume
+each of the morphisms is a closed immersion, see
+Limits, Lemma
+\ref{limits-lemma-descend-closed-immersion-finite-presentation}.
+After shrinking $S$ we may assume $Z_0 \to X$ is surjective
+and hence a thickening, see
+Limits, Lemma \ref{limits-lemma-descend-surjective}.
+After shrinking $S$ once more we may assume
+$Z_i \setminus Z_{i + 1} \to S$ is smooth, see
+Limits, Lemma \ref{limits-lemma-descend-smooth}.
+This finishes the proof.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-smoothness-stratification}
+Let $f : X \to S$ be a morphism of finite presentation between quasi-compact
+and quasi-separated schemes. Then there exists a $t \geq 0$ and closed
+subschemes
+$$
+S \supset S_0 \supset S_1 \supset \ldots \supset S_t = \emptyset
+$$
+such that
+\begin{enumerate}
+\item $S_i \to S$ is defined by a finite type ideal sheaf,
+\item $S_0 \subset S$ is a thickening,
+\item for each $i$ there exists a surjective finite locally free
+morphism $T_i \to S_i \setminus S_{i + 1}$,
+\item for each $i$ there exists a $t_i \geq 0$ and closed subschemes
+$$
+X_i = X \times_S T_i \supset Z_{i, 0}
+\supset Z_{i, 1} \supset \ldots \supset Z_{i, t_i} = \emptyset
+$$
+such that $Z_{i, j} \to X_i$ is defined by a finite type ideal sheaf,
+$Z_{i, 0} \subset X_i$ is a thickening, and such that the morphism
+$Z_{i, j} \setminus Z_{i, j + 1} \to T_i$ is smooth.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+We can find a cartesian diagram
+$$
+\xymatrix{
+X \ar[d] \ar[r] & X_0 \ar[d] \\
+S \ar[r] & S_0
+}
+$$
+such that $X_0$ and $S_0$ are of finite type over $\mathbf{Z}$. See
+Limits, Proposition \ref{limits-proposition-approximate} and
+Lemma \ref{limits-lemma-descend-finite-presentation}.
+Thus we may assume $X$ and $S$ are of finite type over $\mathbf{Z}$.
+Namely, a solution of the problem posed by the lemma for $X_0 \to S_0$
+will base change to a solution over $S$; details omitted.
+
+\medskip\noindent
+Assume $X$ and $S$ are of finite type over $\mathbf{Z}$.
+In this case every quasi-coherent ideal is of finite type, hence
+we do not have to check the condition that $S_i$ is cut out
+by a finite type ideal. Set $S_0 = S_{red}$ equal to the reduction of $S$.
+Let $\eta \in S_0$ be a generic point of an irreducible component.
+By Lemma \ref{lemma-smoothness-stratification-at-generic-point}
+we can find an open subscheme $U \subset S_0$, 
+a surjective, universally injective, finite locally free
+morphism $V \to U$, a $t_0 \geq 0$ and closed subschemes
+$$
+X \times_S V \supset Z_{0, 0} \supset Z_{0, 1} \supset \ldots \supset
+Z_{0, t_0} = \emptyset
+$$
+such that $Z_{0, i} \to X \times_S V$ is defined by a finite type ideal sheaf,
+$Z_{0, 0} \subset X \times_S V$ is a thickening, and such that the morphism
+$Z_{0, i} \setminus Z_{0, i + 1} \to V$ is smooth.
+Then we let $S_1 \subset S_0$ be the reduced induced subscheme structure
+on $S_0 \setminus U$. By Noetherian induction on the underlying
+topological space of $S$, we may assume that the lemma holds for
+$X \times_S S_1 \to S_1$. This produces $t \geq 1$ and
+$$
+S_1 = S_1 \supset S_2 \supset \ldots \supset S_t = \emptyset
+$$
+and $t_i$ and $Z_{i, j}$ as in the statement of the lemma.
+This proves the lemma.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \section{Improving morphisms of relative dimension one}
 \label{section-make-good-curves}
 
@@ -15622,8 +16089,6 @@ Since $\nu$ is finite and surjective, it then follows
 that $W = \nu(\nu^{-1}(W))$ is dense in all fibres
 of $X \to S$ too.
 \end{proof}
-
-
 
 
 
@@ -21870,7 +22335,7 @@ In the proof below we will use Lemmas \ref{lemma-weighting-open} and
 We will also use elementary properties of constructible subsets
 of schemes and topological spaces, see
 Topology, Section \ref{topology-section-constructible} and
-Properties of Schemes, Section \ref{properties-section-constructible}.
+Properties, Section \ref{properties-section-constructible}.
 Using this the reader sees question is local on $X$ and $Y$;
 details omitted. Hence we may assume $X$ and $Y$ are affine.
 If we can find a surjective morphism $Y' \to Y$

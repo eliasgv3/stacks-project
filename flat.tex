@@ -4227,8 +4227,8 @@ We conclude by Algebra, Lemma
 \ref{algebra-lemma-finitely-presented-over-subring}.
 \end{proof}
 
-\begin{remark}[Finite type version of Theorem \ref{theorem-finite-type-flat}]
-\label{remark-finite-type-flat}
+\begin{lemma}[Finite type version of Theorem \ref{theorem-finite-type-flat}]
+\label{lemma-finite-type-flat}
 Let $f : X \to S$ be a morphism of schemes.
 Let $\mathcal{F}$ be a quasi-coherent $\mathcal{O}_X$-module.
 Assume
@@ -4242,12 +4242,33 @@ is open in $X$ and $\mathcal{F}|_U$ is flat over $S$ and locally
 finitely presented relative to $S$ (see
 More on Morphisms, Definition
 \ref{more-morphisms-definition-relatively-finitely-presented-sheaf}).
-If we ever need this result in the Stacks project we will convert
-this remark into a lemma with a proof.
-\end{remark}
+\end{lemma}
 
-\begin{remark}[Algebra version of Remark \ref{remark-finite-type-flat}]
-\label{remark-finite-type-flat-algebra}
+\begin{proof}
+The question is local on $X$ and $S$. Thus we may assume $X$ and $S$ are affine.
+Then we may choose a closed immersion $i : X \to \mathbf{A}^n_S$.
+We apply Theorem \ref{theorem-finite-type-flat} to $X' = \mathbf{A}^n_S \to S$
+and the quasi-coherent module $\mathcal{F}' = i_*\mathcal{F}$ of finite type
+and we find that
+$$
+U' = \{x' \in X' \mid \mathcal{F}'\text{ flat at }x'\text{ over }S\}
+$$
+is open in $X'$ and that $\mathcal{F}'|_{U'}$ is of finite presentation.
+Since $\mathcal{F}'$ restricts to zero on $X' \setminus i(X)$ and
+since $\mathcal{F}'_{i(x)} \cong \mathcal{F}_x$ for all $x \in X$ we see that
+$$
+U' = i(U) \amalg (X' \setminus i(X))
+$$
+Hence $U = i^{-1}(U')$ is open. Moreover, it is clear that
+$\mathcal{F}'|_{U'} = (i|_U)_*(\mathcal{F}|_U)$.
+Hence we conclude that $\mathcal{F}|_U$ is finitely presented
+relative to $S$ by More on Morphisms, Lemmas
+\ref{more-morphisms-lemma-relative-finite-presentation} and
+\ref{more-morphisms-lemma-finite-morphism-relative-finite-presentation}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-finite-type-flat-algebra-bis}
 Let $R \to S$ be a ring map of finite type.
 Let $M$ be a finite $S$-module.
 Assume $\text{WeakAss}_R(R)$ is finite.
@@ -4260,9 +4281,11 @@ $D(g) \subset U$ the localization $M_g$ is flat over $R$ and
 an $S_g$-module finitely presented relative to $R$ (see
 More on Algebra, Definition
 \ref{more-algebra-definition-relatively-finitely-presented}).
-If we ever need this result in the Stacks project we will convert
-this remark into a lemma with a proof.
-\end{remark}
+\end{lemma}
+
+\begin{proof}
+This is Lemma \ref{lemma-finite-type-flat} translated into algebra.
+\end{proof}
 
 
 
@@ -6445,7 +6468,10 @@ Lemma \ref{lemma-flat-dimension-n}).
 \label{section-flattening}
 
 \noindent
-Just the definitions and an important baby case.
+Just the definitions. The reader looking for a
+``generic flatness stratification'', should consult
+More on Morphisms, Section
+\ref{more-morphisms-section-generic-flatness-stratification}.
 
 \begin{definition}
 \label{definition-flattening}
@@ -6525,60 +6551,6 @@ $X = S$ and $\mathcal{F}$ is a finitely presented $\mathcal{O}_S$-module,
 then the flattening stratification exists and is given by the Fitting ideals
 of $\mathcal{F}$, see
 Divisors, Lemma \ref{divisors-lemma-finite-presentation-module}.
-
-\medskip\noindent
-We end this section showing that if we do not insist on a canonical
-stratification, then we can use generic flatness to construct some
-stratification such that our sheaf is flat over the strata.
-
-\begin{lemma}[Generic flatness stratification]
-\label{lemma-generic-flatness-stratification}
-Let $f : X \to S$ be a morphism of finite presentation between quasi-compact
-and quasi-separated schemes. Let $\mathcal{F}$ be an $\mathcal{O}_X$-module
-of finite presentation. Then there exists a $t \geq 0$ and closed
-subschemes
-$$
-S \supset S_0 \supset S_1 \supset \ldots \supset S_t = \emptyset
-$$
-such that $S_i \to S$ is defined by a finite type ideal sheaf,
-$S_0 \subset S$ is a thickening, and $\mathcal{F}$ pulled back to
-$X \times_S (S_i \setminus S_{i + 1})$ is flat over $S_i \setminus S_{i + 1}$.
-\end{lemma}
-
-\begin{proof}
-We can find a cartesian diagram
-$$
-\xymatrix{
-X \ar[d] \ar[r] & X_0 \ar[d] \\
-S \ar[r] & S_0
-}
-$$
-and a finitely presented $\mathcal{O}_{X_0}$-module $\mathcal{F}_0$
-which pulls back to $\mathcal{F}$ such that $X_0$ and $S_0$ are of
-finite type over $\mathbf{Z}$. See
-Limits, Proposition \ref{limits-proposition-approximate} and
-Lemmas \ref{limits-lemma-descend-finite-presentation} and
-\ref{limits-lemma-descend-modules-finite-presentation}.
-Thus we may assume $X$ and $S$ are of finite type over $\mathbf{Z}$
-and $\mathcal{F}$ is a coherent $\mathcal{O}_X$-module.
-
-\medskip\noindent
-Assume $X$ and $S$ are of finite type over $\mathbf{Z}$
-and $\mathcal{F}$ is a coherent $\mathcal{O}_X$-module.
-In this case every quasi-coherent ideal is of finite type, hence
-we do not have to check the condition that $S_i$ is cut out
-by a finite type ideal. Set $S_0 = S_{red}$ equal to the reduction of $S$.
-By generic flatness as stated in Morphisms, Proposition
-\ref{morphisms-proposition-generic-flatness-reduced}
-there is a dense open $U_0 \subset S_0$ such that $\mathcal{F}$
-pulled back to $X \times_S U_0$ is flat over $U_0$.
-Let $S_1 \subset S_0$ be the reduced closed subscheme whose
-underlying closed subset is $S \setminus U_0$. We continue in this
-way, provided $S_1 \not = \emptyset$, to find
-$S_0 \supset S_1 \supset \ldots$. Because $S$
-is Noetherian any descending chain of closed subsets stabilizes
-hence we see that $S_t = \emptyset$ for some $t \geq 0$.
-\end{proof}
 
 
 
@@ -7453,7 +7425,8 @@ We may assume that $B$ is the localization of a finitely presented
 $A$-algebra $B_0$ and that $N$ is the localization of a
 finitely presented $B_0$-module $M_0$, see
 Lemma \ref{lemma-reduce-finite-type-injective-into-flat-mod-m}.
-By Lemma \ref{lemma-generic-flatness-stratification}
+By More on Morphisms, Lemma
+\ref{more-morphisms-lemma-generic-flatness-stratification}
 there exists a ``generic flatness stratification''
 for $\widetilde{M_0}$ on $\Spec(B_0)$ over $\Spec(A)$.
 Translating back to $N$ we find a sequence of closed subschemes
@@ -10119,7 +10092,8 @@ Choose a generic flatness stratification
 $$
 X = S \supset S_0 \supset S_1 \supset \ldots \supset S_t = \emptyset
 $$
-as in Lemma \ref{lemma-generic-flatness-stratification}
+as in More on Morphisms, Lemma
+\ref{more-morphisms-lemma-generic-flatness-stratification-scheme}
 for the finitely presented morphism
 $$
 \coprod\nolimits_{i = 1, \ldots, n} f_i :
@@ -10202,7 +10176,9 @@ Lemma \ref{lemma-equivalence-h-v-locally-finite-presentation} is satisfied.
 \end{definition}
 
 \noindent
-For Noetherian schemes we recover Voevodsky's notion.
+For Noetherian schemes this is the same thing as a ph covering
+(we record this in Lemma \ref{lemma-Noetherian-h-ph} below) and
+we recover Voevodsky's notion.
 
 \begin{lemma}
 \label{lemma-Noetherian-h-covering}
@@ -10232,7 +10208,8 @@ Choose a generic flatness stratification
 $$
 X = S \supset S_0 \supset S_1 \supset \ldots \supset S_t = \emptyset
 $$
-as in Lemma \ref{lemma-generic-flatness-stratification}
+as in More on Morphisms, Lemma
+\ref{more-morphisms-lemma-generic-flatness-stratification-scheme}
 for the finitely presented morphism
 $$
 \coprod\nolimits_{i = 1, \ldots, n} f_i :
@@ -10298,6 +10275,22 @@ $\{X'_i \to X'\}$ is an fppf covering. But an fppf covering is a ph covering
 (More on Morphisms, Lemma \ref{more-morphisms-lemma-fppf-ph}).
 Since $X' \to X$ is proper surjective, we conclude
 that $\{X'_i \to X\}$ is a ph covering and the proof is complete.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-Noetherian-h-ph}
+Let $X$ be a locally Noetherian scheme. A family of morphisms
+$\{f_i : X_i \to X\}_{i \in I}$ with target $X$ is an h covering
+if and only if it is a ph covering.
+\end{lemma}
+
+\begin{proof}
+By Definition \ref{definition-h-covering} a h covering is a ph covering.
+Conversely, if $\{f_i : X_i \to X\}$ is a ph covering, then the morphisms
+$f_i$ are locally of finite type (Topologies, Definition
+\ref{topologies-definition-ph-covering}). Since $X$ is locally Noetherian,
+each $f_i$ is locally of finite presentation and we see that we have
+a h covering by definition.
 \end{proof}
 
 \noindent
@@ -11386,7 +11379,9 @@ in $(\Sch/S)_h$ with $Y$ affine. Choose a generic flatness stratification
 $$
 Y \supset Y_0 \supset Y_1 \supset \ldots \supset Y_t = \emptyset
 $$
-as in Lemma \ref{lemma-generic-flatness-stratification} for $f : X \to Y$.
+as in More on Morphisms, Lemma
+\ref{more-morphisms-lemma-generic-flatness-stratification-scheme}
+for $f : X \to Y$.
 We are going to use all the properties of the stratification
 without further mention. Set $X_0 = X \times_Y Y_0$.
 By the Interlude B we have $\mathcal{F}(Y_0) = \mathcal{F}(Y)$,
