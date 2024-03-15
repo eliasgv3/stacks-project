@@ -179,39 +179,37 @@ The axioms TR1-TR4 are self-dual.
 	\label{lemma-opposite-triangulated-category}
 	Let $(\mathcal{D},[\ ],\mathcal{T})$
 	be the data in Definition \ref{definition-triangulated-category}.
-	Denote $\Theta:\mathcal{D}\to\mathcal{D}^\text{opp}$
-	to the assignment that sends an object to itself
-	and a morphism $f:X\to Y$ to the opposite morphism $f^\text{opp}:Y\to X$.
-	For each $n\in\mathbb{Z}$, define $[n]^\text{opp}=\Theta\circ [-n]\circ \Theta^{-1}$
-	(in other words, $[n]^\text{opp}$ is the opposite functor to $[-n]:\mathcal{D}\to\mathcal{D}$);
+%	Denote $\Theta:\mathcal{D}\to\mathcal{D}^\text{opp}$
+%	to the assignment that sends an object to itself
+%	and a morphism $f:X\to Y$ to the opposite morphism $f^\text{opp}:Y\to X$.
+	For each $n\in\mathbb{Z}$, define $[n]'= [-n]^\mathrm{op}:\mathcal{D}^\mathrm{op}\to\mathcal{D}^\mathrm{op}$;
 	for each triangle $(X,Y,Z,f,g,h)$ of $\mathcal{D}$, define
-	$(X,Y,Z,f,g,h)^\text{opp}
-	=(Z,Y,X,g^\text{opp},f^\text{opp},(-h[-1])^\text{opp})$
-	(whence $(-h[-1])^\text{opp}=-h^\text{opp}[1]^\text{opp}$)
-	and define $\mathcal{T}^\text{opp}
-	=\{\Delta^\text{opp}\mid\Delta\in\mathcal{T}\}$.
+	$(X,Y,Z,f,g,h)^\mathrm{op}
+	=(Z,Y,X,g^\mathrm{op},f^\mathrm{op},(-h[-1])^\mathrm{op})$
+	and define $\mathcal{T}^\mathrm{op}
+	=\{\Delta^\mathrm{op}\mid\Delta\in\mathcal{T}\}$.
 	Then $(\mathcal{D},[\ ],\mathcal{T})$ is a (pre-)triangulated category
-	if and only if $(\mathcal{D},[\ ],\mathcal{T})^\text{opp}
-	:=(\mathcal{D}^\text{opp},[\ ]^\text{opp},\mathcal{T}^\text{opp})$ is.
+	if and only if $(\mathcal{D},[\ ],\mathcal{T})^\mathrm{op}
+	:=(\mathcal{D}^\mathrm{op},[\ ]',\mathcal{T}^\mathrm{op})$ is.
 \end{lemma}
 
 \begin{proof}
 	It suffices to show that $(\mathcal{D},[\ ],\mathcal{T})$ (pre-)triangulated
-	implies $(\mathcal{D},[\ ],\mathcal{T})^\text{opp}$ (pre-)triangulated,
-	for $((\mathcal{D},[\ ],\mathcal{T})^\text{opp})^\text{opp}
+	implies $(\mathcal{D},[\ ],\mathcal{T})^\text{op}$ (pre-)triangulated,
+	for $((\mathcal{D},[\ ],\mathcal{T})^\text{op})^\text{op}
 	=(\mathcal{D},[\ ],\mathcal{T})$.
 	
 	\medskip\noindent
 	Suppose that $(\mathcal{D},[\ ],\mathcal{T})$ is a pre-triangulated category.
-	Then $(\mathcal{D},[\ ],\mathcal{T})^\text{opp}$ satisfies TR2,
+	Then $(\mathcal{D},[\ ],\mathcal{T})^\text{op}$ satisfies TR2,
 	since if we consider the opposite sequence of \eqref{equation-rotate} in
-	$(\mathcal{D}^\text{opp},[\ ]^\text{opp})$,
-	then any four consecutive terms form a distinguished triangle of $\mathcal{T}^\text{opp}$.
+	$(\mathcal{D}^\text{op},[\ ]')$,
+	then any four consecutive terms form a distinguished triangle of $\mathcal{T}^\text{op}$.
 	Using again the opposite sequence of \eqref{equation-rotate},
-	we deduce TR1 for $(\mathcal{D},[\ ],\mathcal{T})^\text{opp}$.
-	Lastly, TR3 for $(\mathcal{D},[\ ],\mathcal{T})^\text{opp}$ follows from TR3 for
+	we deduce TR1 for $(\mathcal{D},[\ ],\mathcal{T})^\text{op}$.
+	Lastly, TR3 for $(\mathcal{D},[\ ],\mathcal{T})^\text{op}$ follows from TR3 for
 	$(\mathcal{D},[\ ],\mathcal{T})$ plus TR2 for
-	$(\mathcal{D},[\ ],\mathcal{T})^\text{opp}$.
+	$(\mathcal{D},[\ ],\mathcal{T})^\text{op}$.
 	
 	\medskip\noindent
 	We omit the verification that $(\mathcal{D},[\ ],\mathcal{T})$
