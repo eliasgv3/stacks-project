@@ -1409,22 +1409,23 @@ $S^{-1}\mathcal{D}$.
 \end{proposition}
 
 \begin{proof}
-For the uniqueness, first note that the preadditive structure on
+For the uniqueness, first note that since $Q$ is exact implies $Q$ is additive (Lemma \ref{lemma-exact-functor-additive}), the preadditive structure on
 $S^{-1}\mathcal{D}$ is fully determined by that of $\mathcal{D}$,
-by Homology, Lemma \ref{lemma-localization-preadditive}.
+by Homology, Lemma \ref{homology-lemma-localization-preadditive}.
 The class of distinguished triangles in $S^{-1}\mathcal{D}$ is also
 fully determined by that of $\mathcal{D}$,
 by Lemma \ref{lemma-localization-dist-triangle}.
-On the other hand, the action on objects of the translation in
-$S^{-1}\mathcal{D}$ is uniquely determined.
-But so is the action on morphisms,
-since funtoriality implies
-$(s^{-1}f)[1]
-=(Q(s)^{-1}\circ Q(f))[1]
-=(Q(s)[1])^{-1}\circ(Q(f)[1])
-=Q(s[1])^{-1}\circ Q(f[1])
-=(s[1])^{-1}(f[1])$.
-By induction, one obtains $(s^{-1}f)[n]=(s[n])^{-1}(f[n])$.
+On the other hand, thanks to MS5 the translation $[1]:S^{-1}\mathcal{D}\to S^{-1}\mathcal{D}$ exists and is uniquely determined by Categories, Lemma \ref{categories-lemma-properties-left-localization}.
+%On the other hand, the action on objects of the translation in
+%$S^{-1}\mathcal{D}$ is uniquely determined.
+%But so is the action on morphisms,
+%since funtoriality implies
+%$(s^{-1}f)[1]
+%=(Q(s)^{-1}\circ Q(f))[1]
+%=(Q(s)[1])^{-1}\circ(Q(f)[1])
+%=Q(s[1])^{-1}\circ Q(f[1])
+%=(s[1])^{-1}(f[1])$.
+%By induction, one obtains $(s^{-1}f)[n]=(s[n])^{-1}(f[n])$.
 	
 \medskip\noindent
 It is left to show existence.
