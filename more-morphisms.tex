@@ -5599,14 +5599,14 @@ The following are equivalent
 \item $f$ is regular,
 \item $f$ is flat and its fibres are geometrically regular schemes,
 \item for every pair of affine opens $U \subset X$, $V \subset Y$
-with $f(U) \subset V$ the ring map $\mathcal{O}(V) \to \mathcal{O}(U)$
+with $f(U) \subset V$ the ring map $\mathcal{O}_Y(V) \to \mathcal{O}_X(U)$
 is regular,
 \item there exists an open covering $Y = \bigcup_{j \in J} V_j$
 and open coverings $f^{-1}(V_j) = \bigcup_{i \in I_j} U_i$ such
 that each of the morphisms $U_i \to V_j$ is regular, and
 \item there exists an affine open covering $Y = \bigcup_{j \in J} V_j$
 and affine open coverings $f^{-1}(V_j) = \bigcup_{i \in I_j} U_i$ such
-that the ring maps $\mathcal{O}(V_j) \to \mathcal{O}(U_i)$ are regular.
+that the ring maps $\mathcal{O}_Y(V_j) \to \mathcal{O}_X(U_i)$ are regular.
 \end{enumerate}
 \end{lemma}
 
@@ -5903,7 +5903,7 @@ Then
 \begin{enumerate}
 \item $W = \{x \in X \mid \mathcal{O}_{X_{f(x)}, x}\text{ is Cohen-Macaulay}\}$,
 \item $W$ is open in $X$,
-\item $W$ dense in every fibre of $X \to S$,
+\item $W$ is dense in every fibre of $X \to S$,
 \item the formation of $W$ commutes with arbitrary base change of $f$:
 For any morphism $g : S' \to S$, consider
 the base change $f' : X' \to S'$ of $f$ and the
@@ -15058,6 +15058,13 @@ that $h|_X$ is a nilpotent section, i.e., $h^n|X = 0$ for some $n > 0$.
 But $A = \Gamma(X, \mathcal{O}_X)$, hence $h^n = 0$.
 In other words $I$ is contained in the Jacobson radical ideal of $A$
 and we conclude that $V(I) = S'$ as desired.
+
+\medskip\noindent
+By Cohomology of Schemes, Lemma \ref{coherent-lemma-flat-base-change-cohomology}
+we see that formation of $f_*\mathcal{O}_X$ commutes with flat base change.
+Formation of the relative spectrum commutes with any base change by
+Constructions, Lemma \ref{constructions-lemma-spec-properties}.
+Thus formation of the factorization commutes with flat base change.
 \end{proof}
 
 \begin{lemma}

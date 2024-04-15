@@ -135,10 +135,12 @@ on an object of $D_\QCoh(\mathcal{O}_X)$.
 \begin{lemma}
 \label{lemma-nice-K-injective}
 Let $X$ be a scheme. Let $E$ be an object of
-$D_\QCoh(\mathcal{O}_X)$. Then the canonical map
-$E \to R\lim \tau_{\geq -n}E$ is an isomorphism\footnote{In particular,
-$E$ has a K-injective representative as in
-Cohomology, Lemma \ref{cohomology-lemma-K-injective}.}.
+$D_\QCoh(\mathcal{O}_X)$. Then the map $E \to R\lim \tau_{\geq -n}E$ of
+Derived Categories, Remark
+\ref{derived-remark-map-into-derived-limit-truncations}
+is an isomorphism\footnote{In particular,
+$E$ has a K-injective representative by
+Derived Categories, Lemma \ref{derived-lemma-difficulty-K-injectives}.}.
 \end{lemma}
 
 \begin{proof}
@@ -596,6 +598,8 @@ $$
 $$
 is an isomorphism. We will show it induces an isomorphism on
 cohomology sheaves in degree $0$ which will imply the lemma.
+To prove this we may work locally on $S$, hence we may and do
+assume that $S$ is quasi-compact.
 Choose an integer $N$ as in Lemma \ref{lemma-quasi-coherence-direct-image}.
 Then $R^0f_*E = R^0f_*\tau_{\geq -N}E$ and
 $R^0f_*E_i = R^0f_*\tau_{\geq -N}E_i$ by the lemma cited. Observe that
@@ -759,7 +763,7 @@ Thus it suffice to show that
 $$
 g^*g_*\mathcal{F} \to \mathcal{F}
 \quad\text{and}\quad
-\mathcal{G} \to g_*g^*\mathcal{F}
+\mathcal{G} \to g_*g^*\mathcal{G}
 $$
 are isomorphisms where $\mathcal{F}$ is
 a quasi-coherent $\mathcal{O}_X$-module and $\mathcal{G}$ is
@@ -5989,7 +5993,7 @@ such that the differentials
 $d^i_\mathcal{F} : \mathcal{F}^i \to \mathcal{F}^{i + 1}$
 are differential operators on $X/S$ of finite order, see
 Morphisms, Section \ref{morphisms-section-differential-operators}.
-Simlarly, on $Y$ let $\mathcal{G}^\bullet$ be a complex of sheaves
+Similarly, on $Y$ let $\mathcal{G}^\bullet$ be a complex of sheaves
 of abelian groups whose terms are quasi-coherent $\mathcal{O}_Y$-modules
 such that the differentials
 $d^j_\mathcal{G} : \mathcal{G}^j \to \mathcal{G}^{j + 1}$

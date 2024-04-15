@@ -2819,6 +2819,39 @@ Sites, Lemma \ref{sites-lemma-coproduct-quasi-compact}.
 \end{remark}
 
 \begin{lemma}
+\label{lemma-higher-direct-image-colimit}
+Let $f : \mathcal{C} \to \mathcal{D}$ be a morphism of sites
+corresponding to the continuous functor $u : \mathcal{D} \to \mathcal{C}$.
+Let $(\mathcal{F}_i, \varphi_{ii'})$ be a system of
+abelian sheaves on $\mathcal{C}$. Set $\mathcal{F} = \colim \mathcal{F}_i$.
+Let $p \geq 0$ be an integer. Denote $\mathcal{B}$ the set of
+$V \in \Ob(\mathcal{D})$ such that
+$H^p(u(V), \mathcal{F}) = \colim H^p(u(V), \mathcal{F}_i)$.
+If every object of $\mathcal{D}$ has a covering by elements of $\mathcal{B}$,
+then $R^pf_*\mathcal{F} = \colim R^pf_*\mathcal{F}_i$.
+\end{lemma}
+
+\begin{proof}
+Recall that $R^pf_*\mathcal{F}$ is the sheafification of the presheaf
+$\mathcal{G}$ sending $V$ to $H^p(u(V), \mathcal{F})$, see
+Lemma \ref{lemma-higher-direct-images}. Similarly, 
+$R^pf_*\mathcal{F}_i$ is the sheafification of the presheaf
+$\mathcal{G}_i$ sending $V$ to $H^p(u(V), \mathcal{F}_i)$.
+Recall that sheafification is the left adjoint to the inclusion
+from sheaves to presheaves, see Sites, Section
+\ref{sites-section-sheafification}. Hence sheafification commutes
+with colimits, see Categories, Lemma \ref{categories-lemma-adjoint-exact}.
+Hence it suffices to show that the map of presheaves (with colimit
+in the category of presheaves)
+$$
+\colim \mathcal{G}_i \longrightarrow \mathcal{G}
+$$
+induces an isomorphism on sheafifications. This follows from
+Sites, Lemma \ref{sites-lemma-isomorphism-sheafifications} and
+our assumption on $\mathcal{B}$.
+\end{proof}
+
+\begin{lemma}
 \label{lemma-colim-sites-injective}
 Let $\mathcal{I}$ be a cofiltered index category and let
 $(\mathcal{C}_i, f_a)$ be an inverse system of sites over $\mathcal{I}$
@@ -5296,7 +5329,9 @@ $$
 for all $\{V_i \to V\} \in \text{Cov}_V$ and all integers $p, m$
 satisfying $p > p(V, m)$.
 \end{enumerate}
-Then the canonical map $E \to R\lim \tau_{\geq -n} E$
+Then the map $E \to R\lim \tau_{\geq -n} E$ of
+Derived Categories, Remark
+\ref{derived-remark-map-into-derived-limit-truncations}
 is an isomorphism in $D(\mathcal{O})$.
 \end{lemma}
 
@@ -5364,7 +5399,9 @@ H^p(V_i, H^q(E)) = 0 \text{ for }
 \{V_i \to V\} \in \text{Cov}_V,\ p > d_V, \text{ and }q < 0
 $$
 \end{enumerate}
-Then the canonical map $E \to R\lim \tau_{\geq -n} E$
+Then the map $E \to R\lim \tau_{\geq -n} E$ of
+Derived Categories, Remark
+\ref{derived-remark-map-into-derived-limit-truncations}
 is an isomorphism in $D(\mathcal{O})$.
 \end{lemma}
 
@@ -5383,7 +5420,9 @@ and a subset $\mathcal{B} \subset \Ob(\mathcal{C})$ such that
 elements of $\mathcal{B}$,
 \item $H^p(V, H^{m - p}(E)) = 0$ for $p > p(m)$ and $V \in \mathcal{B}$.
 \end{enumerate}
-Then the canonical map $E \to R\lim \tau_{\geq -n} E$
+Then the map $E \to R\lim \tau_{\geq -n} E$ of
+Derived Categories, Remark
+\ref{derived-remark-map-into-derived-limit-truncations}
 is an isomorphism in $D(\mathcal{O})$.
 \end{lemma}
 
@@ -5404,7 +5443,9 @@ and a subset $\mathcal{B} \subset \Ob(\mathcal{C})$ such that
 elements of $\mathcal{B}$,
 \item $H^p(V, H^q(E)) = 0$ for $p > d$, $q < 0$, and $V \in \mathcal{B}$.
 \end{enumerate}
-Then the canonical map $E \to R\lim \tau_{\geq -n} E$
+Then the map $E \to R\lim \tau_{\geq -n} E$ of
+Derived Categories, Remark
+\ref{derived-remark-map-into-derived-limit-truncations}
 is an isomorphism in $D(\mathcal{O})$.
 \end{lemma}
 
@@ -5558,7 +5599,7 @@ Then (\ref{equation-into-candidate-K-injective}) is a quasi-isomorphism.
 
 \begin{proof}
 By Derived Categories, Lemma \ref{derived-lemma-difficulty-K-injectives}
-it suffices to show that the canonical map
+it suffices to show that the map
 $\mathcal{F}^\bullet \to R\lim \tau_{\geq -n} \mathcal{F}^\bullet$
 is an isomorphism. This follows from Lemma \ref{lemma-is-limit-dimension}.
 \end{proof}
@@ -5667,8 +5708,10 @@ hypotheses; it is the analogue of \cite[Proposition 3.13]{Spaltenstein}
 for sites.
 \end{reference}
 In Situation \ref{situation-olsson-laszlo} for any
-$E \in D_\mathcal{A}(\mathcal{O})$ the canonical map
-$E \to R\lim \tau_{\geq -n} E$
+$E \in D_\mathcal{A}(\mathcal{O})$ the map
+$E \to R\lim \tau_{\geq -n} E$ of
+Derived Categories, Remark
+\ref{derived-remark-map-into-derived-limit-truncations}
 is an isomorphism in $D(\mathcal{O})$.
 \end{lemma}
 
@@ -12663,6 +12706,12 @@ strictly perfect.
 An object $E$ of $D(\mathcal{O})$ is {\it perfect}
 if it can be represented by a perfect complex of $\mathcal{O}$-modules.
 \end{definition}
+
+\noindent
+If $\Sh(\mathcal{C})$ is quasi-compact
+(Sites, Section \ref{sites-section-quasi-compact}),
+then a perfect object of $D(\mathcal{O})$
+is in $D^b(\mathcal{O})$. But this need not be the case otherwise.
 
 \begin{lemma}
 \label{lemma-perfect-independent-representative}

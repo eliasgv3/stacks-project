@@ -2148,7 +2148,7 @@ $s_i \in \mathcal{F}(U_i)$ such that
 \item $s|_{U_i} = \theta^2(s_i)$, and
 \item for every $i, j$ there exists a covering
 $\{U_{ijk} \to U_i \times_U U_j\}$ of $\mathcal{C}$ such that
-the pullback of $s_i$ and $s_j$ to each $U_{ijk}$ agree.
+the pullbacks of $s_i$ and $s_j$ to each $U_{ijk}$ agree.
 \end{enumerate}
 Conversely, given any covering $\{U_i \to U\}$, elements
 $s_i \in \mathcal{F}(U_i)$ such that (2) holds, then there
@@ -2160,9 +2160,53 @@ that (1) holds.
 Omitted.
 \end{proof}
 
+\begin{lemma}
+\label{lemma-isomorphism-sheafifications}
+Let $\mathcal{C}$ be a site. Let $\mathcal{F} \to \mathcal{G}$ be a map
+of presheaves of sets on $\mathcal{C}$. Denote $\mathcal{B}$ the set of
+$U \in \Ob(\mathcal{C})$ such that $\mathcal{F}(U) \to \mathcal{G}(U)$
+is bijective. If every object of $\mathcal{C}$ has a covering by elements
+of $\mathcal{B}$, then $\mathcal{F}^\# \to \mathcal{G}^\#$ is an isomorphism.
+\end{lemma}
 
-
-
+\begin{proof}
+Let $U \in \Ob(\mathcal{C})$.
+Let us prove that $\mathcal{F}^\#(U) \to \mathcal{G}^\#(U)$ is
+surjective. To do this we will use Lemma \ref{lemma-sections-sheafification}
+without further mention. For any $s \in \mathcal{G}^\#(U)$ there exists
+a covering $\{U_i \to U\}$ and sections $s_i \in \mathcal{G}(U_i)$ such that
+\begin{enumerate}
+\item $s|_{U_i}$ is the image of $s_i$ via $\mathcal{G} \to \mathcal{G}^\#$,
+and
+\item for every $i, j$ there exists a covering
+$\{U_{ijk} \to U_i \times_U U_j\}$ of $\mathcal{D}$ such that
+the pullbacks of $s_i$ and $s_j$ to each $U_{ijk}$ agree.
+\end{enumerate}
+By assumption, for each $i$ we may choose a covering $\{U_{i, a} \to U_i\}$
+with $U_{i, a} \in \mathcal{B}$. Then $\{U_{i, a} \to U\}$ is a covering.
+Denoting $s_{i, a}$ the image of $s_i$ in $\mathcal{G}(U_{i, a})$
+we see that the pullbacks of $s_{i, a}$ and $s_{j, b}$ to the members
+of the covering
+$$
+\{(U_{i, a} \times_U U_{j, b}) \times_{U_i \times_U U_j} U_{ijk}
+\to U_{i, a} \times_U U_{j, b}\}
+$$
+agree. Hence we may assume that $U_i \in \mathcal{B}$. Repeating
+the argument, we may also assume $U_{ijk} \in \mathcal{B}$ for
+all $i, j, k$ (details omitted).
+Then since $\mathcal{F}(U_i) \to \mathcal{G}(U_i)$
+is bijective by our definition of $\mathcal{B}$ in the statement
+of the lemma, we get unique $t_i \in \mathcal{F}(U_i)$
+mapping to $s_i$. The pullbacks of $t_i$ and $t_j$
+to each $U_{ijk}$ agree in $\mathcal{F}(U_{ijk})$ because
+$U_{ijk} \in \mathcal{B}$ and because we have the agreement
+for $t_i$ and $t_j$.
+Then the lemma tells us there exists a unique
+$t \in \mathcal{F}^\#(U)$ such that $t|_{U_i}$ is the image of $t_i$.
+It follows that $t$ maps to $s$.
+We omit the proof that $\mathcal{F}^\#(U) \to \mathcal{G}^\#(U)$
+is injective.
+\end{proof}
 
 
 
@@ -7105,27 +7149,31 @@ we will show that $g^{-1} \circ u_s = f^{-1}$. Namely, then since $g^{-1}$
 is an equivalence and $f^{-1}$ is exact we will conclude.
 Because $g^{-1}$ is adjoint to $g_*$, and $u_s$ is adjoint to
 $u^s$, and $f^{-1}$ is adjoint to $f_*$ it also suffices to prove that
-$u^s \circ g_* = f_*$.
-Let $U$ be an object of $\mathcal{C}$ and let
-$V$ be an object of $\mathcal{D}$. Then
+$u^s \circ g_* = f_*$. Let $\mathcal{F}$ be a sheaf on $\mathcal{C}$
+and let $V$ be an object of $\mathcal{D}$. Then
 \begin{align*}
-(u^sg_*h_U^\#)(V)
+(u^s g_{\ast}\mathcal{F})(V)
 & =
-g_*h_U^\#(f^{-1}h_V^\#) \\
+(g_{\ast}\mathcal{F})(f^{-1}h_V^\#) \\
 & =
-\Mor_{\Sh(\mathcal{C})}(f^{-1}h_V^\#, h_U^\#) \\
+\Mor_{Sh(\mathcal{C}')}(h_{f^{-1}h_V^\#},g_{\ast}\mathcal{F}) \\
 & =
-\Mor_{\Sh(\mathcal{D})}(h_V^\#, f_*h_U^\#) \\
-& = f_*h_U^\#(V)
+\Mor_{Sh(\mathcal{C})}(g^{-1}h_{f^{-1}h_V^\#},\mathcal{F}) \\
+& =
+\Mor_{Sh(\mathcal{C})}(f^{-1}h_V^\#,\mathcal{F}) \\
+& =
+\Mor_{Sh(\mathcal{D})}(h_V^\#,f_{\ast}\mathcal{F}) \\
+& =
+f_{\ast}\mathcal{F}(V)
 \end{align*}
-The first equality because $u^s = u^p$. The second equality
-by Lemma \ref{lemma-special-equivalence} (5). The third equality
-by adjointness of $f_*$ and $f^{-1}$ and the final equality by
-properties of sheafification and the Yoneda lemma.
-We omit the verification that these identities are functorial in $U$
-and $V$. Hence we see that
-we have $u^s \circ g_* = f_*$ for sheaves of the form $h_U^\#$.
-This implies that $u^s \circ g_* = f_*$ and we win (some details omitted).
+The first equality because $u^s = u^p$.
+The second equality is the Yoneda lemma.
+The third equality by adjointness of $g^{-1}$ and $g_*$.
+The fourth equality is by Lemma \ref{lemma-special-equivalence} (4).
+The fifth equality by adjointness of $f^{-1}$ and $f_*$.
+The sixth equality by the Yoneda lemma.
+Hence $u^s g_*\mathcal{F} = f_*\mathcal{F}$ and
+this finishes the proof of the lemma.
 \end{proof}
 
 \begin{remark}
@@ -8971,15 +9019,18 @@ products, etc. We will also use that injective maps are the monomorphisms
 and the surjective maps are the epimorphisms.
 A map of sheaves $\varphi : \mathcal{F} \to \mathcal{G}$
 is injective if and only if
-$\mathcal{F} \to \mathcal{F} \times_\mathcal{G}\mathcal{F}$
+$\mathcal{F} \to \mathcal{F} \times_\mathcal{G} \mathcal{F}$
 is an isomorphism. Hence (1).
 Similarly, $\varphi : \mathcal{F} \to \mathcal{G}$
 is surjective if and only if
 $\mathcal{G} \amalg_\mathcal{F} \mathcal{G} \to \mathcal{G}$
 is an isomorphism. Hence (2).
 The maps $a, b : \mathcal{F} \to \mathcal{G}$
-are equal if and only if $\mathcal{F} \times_{a, \mathcal{G}, b}\mathcal{F}
-\to \mathcal{F} \times \mathcal{F}$ is an isomorphism. Hence (3).
+are equal if and only if
+$\text{Equalizer}(a, b : \mathcal{F} \to \mathcal{G}) \to \mathcal{F}$
+is an isomorphism\footnote{The equalizer can be expressed
+in terms of products and fibre products, see proof of
+Categories, Lemma \ref{categories-lemma-finite-limits-exist}.}. Hence (3).
 The assertions (4) and (5) follow immediately from the definitions
 and the remarks at the start of this proof.
 \end{proof}

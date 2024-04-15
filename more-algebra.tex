@@ -1510,6 +1510,13 @@ are $\text{Fit}_k(M) = 0$ for $k < n$ and $\text{Fit}_k(M) = R$
 for $k \geq n$.
 \end{example}
 
+\begin{example}
+\label{example-laurent}
+Let $R$ be a ring and let $I, J\subset R$ be ideals.
+Then $\text{Fit}_0(R/I) = I$, $\text{Fit}_0(R/I \oplus R/J) = IJ$,
+$\text{Fit}_1(R/I\oplus R/J) = I+J$.
+\end{example}
+
 \begin{lemma}
 \label{lemma-fitting-ideal-generate-locally}
 Let $R$ be a ring. Let $M$ be a finite $R$-module. Let $k \geq 0$.
@@ -5132,8 +5139,8 @@ Then $\varphi$ is injective.
 \begin{proof}
 Let $\mathfrak p$ be an associated prime of $\Ker(\varphi)$.
 Then there exists an element $x \in M_\mathfrak p$ which is
-in the kernel of $M_\mathfrak p \to N_\mathfrak p$ and is
-annihilated by $\mathfrak pR_\mathfrak p$
+in the kernel of $M_\mathfrak p \to N_\mathfrak p$ and whose
+annihilator is $\mathfrak pR_\mathfrak p$
 (Algebra, Lemma \ref{algebra-lemma-associated-primes-localize}).
 This is impossible in both cases. Hence
 $\text{Ass}(\Ker(\varphi)) = \emptyset$ and we conclude $\Ker(\varphi) = 0$ by
@@ -6189,7 +6196,7 @@ $$
 as $M_n$ is flat over $A/I^n$. By Lemma \ref{lemma-tor-strictly-pro-zero}
 we see that this system is essentially constant (with value $0$).
 It follows from Homology, Lemma \ref{homology-lemma-apply-Mittag-Leffler-again}
-that $\lim Q \otimes_A A/I^n =
+that $\lim Q \otimes_A M_n =
 \Coker(\lim F_1 \otimes_A M_n \to \lim F_0 \otimes_A M_n)$.
 Since $F_i$ is finite free this equals
 $\Coker(F_1 \otimes_A M \to F_0 \otimes_A M) = Q \otimes_A M$.
@@ -23227,6 +23234,35 @@ from Derived Categories, Remark
 \ref{derived-remark-truncation-distinguished-triangle}. Details omitted.
 \end{proof}
 
+\begin{lemma}
+\label{lemma-torsion-completion}
+\begin{reference}
+Slight generalization of \cite[Lemme~1]{Beauville-Laszlo}.
+\end{reference}
+Let $R \to R'$ be a ring map. Let $I \subset R$ be an ideal such that
+$R/I^n \to R'/I^nR'$ is an isomorphism for $n > 0$.
+For any $I$-power torsion $R$-module $M$ the map $M \to M \otimes_R R'$
+is an isomorphism.
+For example, if $I$ is finitely generated and $R^\wedge$ is the completion
+of $R$ with respect to $I$, then we have $M \cong M \otimes_R R^\wedge$.
+\end{lemma}
+
+\begin{proof}
+If $M$ is annihilated by $I^n$, then
+$$
+M \otimes_R R' \cong
+M \otimes_{R/I^n} R'/I^n R' \cong
+M \otimes_{R/I^n} R/I^n \cong M.
+$$
+If $M$ is $I$-power torsion, then $M = \bigcup M[I^n]$.
+Since tensor products commute with direct limits
+(Algebra, Lemma \ref{algebra-lemma-tensor-products-commute-with-limits}),
+we obtain the desired isomorphism. The last statement is a special
+case of the first statement by Algebra, Lemma
+\ref{algebra-lemma-hathat-finitely-generated}.
+\end{proof}
+
+
 
 
 
@@ -24145,32 +24181,6 @@ $$
 M[f^\infty] = \bigcup\nolimits_{n = 1}^\infty M[f^n] = \Ker(M \to M_f).
 $$
 If $M = M[f^\infty]$, we say that $M$ is an $f$-power torsion module.
-
-\begin{lemma}
-\label{lemma-torsion-completion}
-\begin{reference}
-Slight generalization of \cite[Lemme~1]{Beauville-Laszlo}.
-\end{reference}
-Let $R$ be a ring, let $f \in R$ be an element, and let $R \to R'$ be a ring
-map which induces isomorphisms $R/f^nR \to R'/f^nR'$ for $n > 0$.
-For any $f$-power torsion $R$-module $M$ the map $M \to M \otimes_R R'$
-is an isomorphism.
-For example, we have $M \cong M \otimes_R R^\wedge$.
-\end{lemma}
-
-\begin{proof}
-If $M$ is annihilated by $f^n$, then
-$$
-M \otimes_R R' \cong
-M \otimes_{R/f^nR} R'/f^n R' \cong
-M \otimes_{R/f^nR} R/f^n R \cong M.
-$$
-Since $M = \bigcup M[f^n]$ and since tensor products commute
-with direct limits
-(Algebra, Lemma \ref{algebra-lemma-tensor-products-commute-with-limits}),
-we obtain the desired isomorphism. The last statement is a special
-case of the first statement by Lemma \ref{lemma-same-quotients}.
-\end{proof}
 
 \begin{lemma}
 \label{lemma-BL-faithful}
@@ -32919,7 +32929,7 @@ in the next paragraph.
 Assume $K_1 = K[\pi^{1/e}]$ and set $\theta = \pi^{1/e}$. Let $\pi_B$ be a
 uniformizer for $B$ and write $\pi = w \pi_B^e$ for some unit $w$ of $B$.
 Then we see that $L_1 = L \otimes_K K_1$ is obtained by adjoining
-$\pi_B/\theta$ which is an $e$th root of the unit $w$. Thus
+$\theta / \pi_B$ which is an $e$th root of the unit $w$. Thus
 $B \subset B_1$ is finite \'etale. Thus for any maximal ideal
 $\mathfrak m \subset B_1$ consider the commutative diagram
 $$
