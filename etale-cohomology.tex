@@ -457,16 +457,17 @@ listed in Categories, Remark \ref{categories-remark-big-categories}.)
 
 \begin{example}
 \label{example-representable-presheaf}
-Given an object $X \in \Ob(\mathcal{C})$, we consider the functor
+Given an object $X \in \Ob(\mathcal{C})$, we consider the rule
 $$
 \begin{matrix}
-h_X : & \mathcal{C}^{opp} & \longrightarrow & \textit{Sets} \\
-& U & \longmapsto & h_X(U) = \Mor_\mathcal{C}(U, X) \\
-& V \xrightarrow{\varphi} U & \longmapsto &
-\varphi \circ - : h_X(U) \to h_X(V).
+U & \longmapsto & h_X(U) = \Mor_\mathcal{C}(U, X) \\
+V \xrightarrow{\varphi} U & \longmapsto &
+(\psi \mapsto \psi \circ \varphi) : h_X(U) \to h_X(V).
 \end{matrix}
 $$
-It is a presheaf, called the {\it representable presheaf associated to $X$.}
+This defines a functor $h_X : \mathcal{C}^{opp} \to \textit{Sets}$
+and hence a presheaf. This is called the
+{\it representable presheaf associated to $X$.}
 It is not true that representable presheaves are sheaves in every topology on
 every site.
 \end{example}
@@ -4336,11 +4337,11 @@ Let $t \in T$ and $s \in S$ be their images.
 Then we obtain a canonical commutative diagram
 $$
 \xymatrix{
-\Spec(\mathcal{O}^h_{T, t}) \ar[r] \ar[d] &
 \Spec(\mathcal{O}^{sh}_{T, \overline{t}}) \ar[r] \ar[d] &
+\Spec(\mathcal{O}^h_{T, t}) \ar[r] \ar[d] &
 T \ar[d]^f \\
-\Spec(\mathcal{O}^h_{S, s}) \ar[r] &
 \Spec(\mathcal{O}^{sh}_{S, \overline{s}}) \ar[r] &
+\Spec(\mathcal{O}^h_{S, s}) \ar[r] &
 S
 }
 $$
@@ -12688,7 +12689,7 @@ By More on Algebra, Lemma \ref{more-algebra-lemma-henselization-normal}
 we see that $\mathcal{O}^{sh}_{X, \overline{x}}$ is a normal domain.
 Hence $\Spec(K) \times_X \Spec(\mathcal{O}^{sh}_{X, \overline{x}})$
 is irreducible. It follows that
-the stalk $(g_*\underline{E}_{\underline{x}}$ is equal to $E$,
+the stalk $(g_*\underline{E})_{\overline{x}}$ is equal to $E$,
 see Theorem \ref{theorem-higher-direct-images}.
 
 \medskip\noindent

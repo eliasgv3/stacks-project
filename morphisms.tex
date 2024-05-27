@@ -813,7 +813,7 @@ Let $\mathcal{I} = \Ker(\mathcal{O}_Y \to f_*\mathcal{O}_X)$.
 If $\mathcal{I}$ is quasi-coherent then we just take $Z$ to be the
 closed subscheme determined by $\mathcal{I}$, see
 Lemma \ref{lemma-closed-immersion-bijection-ideals}. This works by
-Schemes, Lemma \ref{schemes-lemma-characterize-closed-subspace}.
+Lemma \ref{lemma-closed-immersion-ideals}.
 In general the same lemma requires us to show that there exists
 a largest quasi-coherent sheaf of ideals $\mathcal{I}'$ contained in
 $\mathcal{I}$.
@@ -5379,6 +5379,7 @@ dimension $0$.
 \end{lemma}
 
 \begin{proof}
+First proof.
 If $f$ is quasi-finite at $x$ then $\kappa(x)$ is a finite extension of
 $\kappa(s)$ (by
 Lemma \ref{lemma-residue-field-quasi-finite})
@@ -5395,6 +5396,13 @@ Lemma \ref{lemma-algebraic-residue-field-extension-closed-point-fibre}
 and by
 Lemma \ref{lemma-quasi-finite-at-point-characterize} (3)
 we conclude that $f$ is quasi-finite at $x$.
+
+\medskip\noindent
+Second proof. The fibre $X_s$ is a scheme locally of finite type over a field,
+hence locally Noetherian (Lemma \ref{lemma-finite-type-noetherian}).
+The result now follows from
+Lemma \ref{lemma-quasi-finite-at-point-characterize}
+and Properties, Lemma \ref{properties-lemma-isolated-dim-0-locally-noetherian}.
 \end{proof}
 
 \begin{lemma}
@@ -6365,6 +6373,8 @@ Lemma \ref{lemma-functoriality-differentials}.
 \begin{proof}
 This is the sheafified version of
 Algebra, Lemma \ref{algebra-lemma-exact-sequence-differentials}.
+Alternatively, there is a general version for morphisms of ringed
+spaces, see Modules, Lemma \ref{modules-lemma-triangle-differentials}.
 \end{proof}
 
 \begin{lemma}
@@ -10578,9 +10588,9 @@ then the corresponding surjection $\mathcal{O}_S^{\oplus n} \to \mathcal{E}$
 induces a closed immersion
 $$
 \mathbf{P}(\mathcal{E}) \longrightarrow
-\mathbf{P}(\mathcal{O}_S^{\oplus n}) = \mathbf{P}^n_S
+\mathbf{P}(\mathcal{O}_S^{\oplus n}) = \mathbf{P}^{n - 1}_S
 $$
-as desired. In general, let $\mathcal{L}$ be an invertible sheaf on $S$.
+as desired. In general, let $\mathcal{L}$ be an ample invertible sheaf on $S$.
 By Properties, Proposition \ref{properties-proposition-characterize-ample}
 there exists an integer $n$ such that
 $\mathcal{E} \otimes_{\mathcal{O}_S} \mathcal{L}^{\otimes n}$
@@ -10971,9 +10981,28 @@ $$
 f^*f_*\mathcal{O}_X \longrightarrow \mathcal{O}_X
 $$
 coming from the adjunction map $f^*f_* \to \text{id}$. Then $\sigma$
-is a closed immersion by
-Schemes, Lemma \ref{schemes-lemma-section-immersion} and
-Constructions, Lemma \ref{constructions-lemma-projective-bundle-separated}.
+is a closed immersion. Namely, affine locally on $S$ we can write
+$X = \Spec(A)$ and $S = \Spec(R)$. Since $X$ is finite over $S$
+we may choose $a_1, \ldots, a_n \in A$ generating $A$ as an $R$-module.
+Then the $R$-algebra map $R[T_0, T_1, \ldots, T_n] \to \text{Sym}_R^*(A)$
+sending $T_0$ to $1$ and $T_i$ to $a_i$ for $1 \leq i \leq n$ is surjective.
+Whence $\mathbf{P}(f_*\mathcal{O}_X)$ is a closed subscheme of
+$\mathbf{P}^n_S$ by Constructions, Lemma
+\ref{constructions-lemma-surjective-graded-rings-map-proj}.
+Thus it suffices to prove that the induced morphism
+$X \to \mathbf{P}^n_S$ is a closed immersion
+(see for example, Lemma \ref{lemma-closed-immersion-ideals}).
+The reader checks that $X \to \mathbf{P}^n_S$ has image contained
+in the open $D_+(T_0) \cong \mathbf{A}^n_S$ and that $X \to \mathbf{A}^n_S$
+corresponds to the surjective $R$-algebra map
+$R[x_1, \ldots, x_n] \to \text{Sym}_R^*(A)$ sending $x_i$ to $a_i$.
+Whence $X \to \mathbf{P}^n_S$ is an immersion (as a composition
+of a closed immersion and an open immersion). Since
+$X$ is finite over $S$ the image of this immersion is closed
+(this uses Lemma \ref{lemma-finite-proper},
+Lemma \ref{lemma-image-proper-scheme-closed}, and
+Constructions, Lemma \ref{constructions-lemma-projective-space-separated}).
+We conclude by Schemes, Lemma \ref{schemes-lemma-immersion-when-closed}.
 \end{proof}
 
 
@@ -11995,7 +12024,7 @@ Let $X$ be a scheme. The following are equivalent
 \item $X$ is seminormal,
 \item $X$ is equal to its own seminormalization, i.e., the morphism
 $X^{sn} \to X$ is an isomorphism,
-\item if $\pi : Y \to X$ is a universal homomorphism inducing isomorphisms
+\item if $\pi : Y \to X$ is a universal homeomorphism inducing isomorphisms
 on residue fields with $Y$ reduced, then $\pi$ is an isomorphism.
 \end{enumerate}
 \end{lemma}
@@ -12006,7 +12035,7 @@ Lemma \ref{lemma-seminormalization}. If (3) holds, then $X^{sn} \to X$
 is an isomorphism and we see that (2) holds.
 
 \medskip\noindent
-Assume (2) holds and let $\pi : Y \to X$ be a universal homomorphism
+Assume (2) holds and let $\pi : Y \to X$ be a universal homeomorphism
 inducing isomorphisms on residue fields with $Y$ reduced. Then there exists
 a factorization $X \to Y \to X$ of $\text{id}_X$ by
 Lemma \ref{lemma-seminormalization}. Then $X \to Y$ is a closed immersion
@@ -12024,7 +12053,7 @@ Let $X$ be a scheme. The following are equivalent
 \item $X$ is absolutely weakly normal,
 \item $X$ is equal to its own absolute weak normalization, i.e., the morphism
 $X^{awn} \to X$ is an isomorphism,
-\item if $\pi : Y \to X$ is a universal homomorphism with $Y$ reduced, then
+\item if $\pi : Y \to X$ is a universal homeomorphism with $Y$ reduced, then
 $\pi$ is an isomorphism.
 \end{enumerate}
 \end{lemma}
@@ -13677,12 +13706,16 @@ separated as an affine morphism) we see that $f'(Y)$ is dense in $X'$.
 Hence $f'$ is dominant.
 
 \medskip\noindent
+Observe that $g$ is quasi-compact and quasi-separated by
+Schemes, Lemmas \ref{schemes-lemma-compose-after-separated} and
+\ref{schemes-lemma-quasi-compact-permanence}. Thus the last statement
+of the lemma makes sense.
 The morphism $h$ in (2) is integral by Lemma \ref{lemma-finite-permanence}.
 Given a factorization $g = \pi' \circ g'$ with $\pi' : Z' \to Z$
 integral, we get a factorization $f = (\pi \circ \pi') \circ g'$ and
 we get a morphism $h' : X' \to Z'$. Uniqueness implies that
 $\pi' \circ h' = h$. Hence the characterization (1), (2) applies
-to the morphism $h : X' \to Z$ which gives the last statement of the lemma.
+to the morphism $h : X' \to Z$ which gives the final assertion of the lemma.
 \end{proof}
 
 \begin{lemma}

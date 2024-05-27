@@ -916,7 +916,7 @@ Immediate from the definitions.
 \begin{lemma}
 \label{lemma-integral-normal}
 Let $X$ be an integral scheme.
-Then $X$ is normal if and only if for every affine open
+Then $X$ is normal if and only if for every nonempty affine open
 $U \subset X$ the ring $\mathcal{O}_X(U)$ is a normal domain.
 \end{lemma}
 
@@ -1021,7 +1021,7 @@ $\mathcal{O}_X(U)$ which is integral over $\mathcal{O}_X(U)$
 (because we can use the same polynomial
 $f^d + \sum_{i = 0, \ldots, d - 1} a_i|_U f^i = 0$ on $U$).
 Since $\mathcal{O}_X(U)$ is a normal domain
-(Lemma \ref{lemma-locally-normal}), we see that
+(Lemma \ref{lemma-integral-normal}), we see that
 $f_U = (a|_U)/(b|_U) \in \mathcal{O}_X(U)$. It is clear
 that $f_U|_V = f_V$ whenever $V \subset U \subset X$ are
 nonempty affine open. Hence the local sections $f_U$ glue to an element
@@ -1365,6 +1365,23 @@ $U = (U_1 \setminus U_2) \amalg (U_1 \cap U_2) \amalg (U_2 \setminus U_1)$
 and the arguments above show that each of the pieces is affine.
 \end{proof}
 
+\begin{lemma}
+\label{lemma-isolated-dim-0-locally-noetherian}
+Let $x$ be a point of a locally Noetherian scheme $X$.
+Then $\dim_x(X) = 0$ if and only if $x$ is an isolated point of $X$.
+\end{lemma}
+
+\begin{proof}
+If $x$ is an isolated point, then $\{x\}$ is an open subset of $X$
+(Topology, Definition \ref{topology-definition-isolated-point})
+and hence $\dim_x(X) = \dim(\{x\}) = 0$ by definition. Conversely, if
+$\dim_x(X) = 0$, then there exists an open neighbourhood $U \subset X$
+of $x$ such that $\dim(U) = 0$
+(Topology, Definition \ref{topology-definition-Krull}).
+By Lemma \ref{lemma-locally-Noetherian-dimension-0}
+we see that the topology on $U$ is discrete and hence
+$x$ is an isolated point.
+\end{proof}
 
 
 
@@ -1992,7 +2009,7 @@ The following lemma implies that $\mathcal{F}$ is of finite type
 (see Modules, Definition \ref{modules-definition-finite-type})
 if and only if $\mathcal{F}$ is
 on each open affine $\Spec(A) = U \subset X$
-of the form $\widetilde M$ for some finite type $A$-module $M$.
+of the form $\widetilde M$ for some finite $A$-module $M$.
 Similarly, $\mathcal{F}$ is of finite presentation
 (see Modules, Definition \ref{modules-definition-finite-presentation})
 if and only if $\mathcal{F}$ is
@@ -4689,7 +4706,8 @@ denote $s' = i^*s$ the pullback of $s$ to $X'$. Note that
 $s'$ is a section of $(i^*\mathcal{L})^{\otimes d}$. By
 Proposition \ref{proposition-characterize-ample}
 the opens $X_s$, for $s \in \Gamma(X, \mathcal{L}^{\otimes d})$,
-form a basis for the topology on $X$. Since $X'_{s'} = i^{-1}(X_s)$
+form a basis for the topology on $X$. Since $X'_{s'} = i^{-1}(X_s)$ by
+Modules, Remark \ref{modules-remark-pullback-s-open}
 and since $X' \to i(X')$ is a homeomorphism, we conclude
 the opens $X'_{s'}$ form a basis for the topology of $X'$. Hence
 $i^*\mathcal{L}$ is ample by

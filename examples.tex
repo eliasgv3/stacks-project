@@ -822,7 +822,7 @@ and flatness of $R[x] \to R[[x]]$ implies that $S^{-1}R[x] \to R[[x]]$
 is faithfully flat (details omitted; hint: use Algebra, Lemma
 \ref{algebra-lemma-ff-rings}). Hence
 $$
-S^{-1}R/(ax - b)S^{-1}R \to R[[x]]/(ax - b)R[[x]]
+S^{-1}R[x]/(ax - b)S^{-1}R[x] \to R[[x]]/(ax - b)R[[x]]
 $$
 is injective. We conclude that
 $h rb = (ax - b) g$ for some $h \in S$ and $g \in R[x]$.
@@ -968,6 +968,38 @@ formal algebraic space.
 \begin{proof}
 See discussion above.
 \end{proof}
+
+
+
+
+
+\section{Nonsplit locally split sequence}
+\label{section-nonsplit-locally-split}
+
+\noindent
+Consider the short exact sequence
+$$
+0 \to M \to
+\bigoplus\nolimits_{p\text{ prime}} \mathbf{Z}_{(p)} \to \mathbf{Q} \to 0
+$$
+where $M$ is the kernel of the map on the right which uses the inclusion
+$\mathbf{Z}_{(p)} \to \mathbf{Q}$ on each summand. This sequence of
+$\mathbf{Z}$-modules is nonsplit because there are no nonzero
+homomorphisms $\mathbf{Q} \to \mathbf{Z}_{(p)}$. On the other hand, if
+we localize at any prime $p$, then the sequence becomes split.
+
+\begin{lemma}
+\label{lemma-nonsplit-locally-split}
+There exists a ring $R$ and a nonsplit sequence of modules
+which becomes split Zariski locally.
+\end{lemma}
+
+\begin{proof}
+See discussion above.
+\end{proof}
+
+
+
 
 
 \section{Regular sequences and base change}
@@ -1386,7 +1418,7 @@ $$
 R = k[x, z_1, z_2, z_3, \ldots ] \subset k[[x]].
 $$
 Consider the ideals $\mathfrak m = (x)$ and
-$\mathfrak n = (x - 1, z_1, z_2, \ldots)$ of $R$.
+$\mathfrak n = (x - 1, z_1, z_2 + a_1, z_3 + a_1 + a_2, \ldots)$ of $R$.
 
 \medskip\noindent
 We have $xz_{j + 1} + a_j = z_j$. Hence $R/\mathfrak m = k$

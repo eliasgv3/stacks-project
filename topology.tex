@@ -1161,6 +1161,9 @@ the ``soberification''.
 
 \begin{lemma}
 \label{lemma-make-sober}
+\begin{reference}
+\cite[Page 68 ff]{EGA1-second}
+\end{reference}
 Let $X$ be a topological space. There is a canonical continuous map
 $$
 c : X \longrightarrow X'
@@ -4003,7 +4006,14 @@ dense sets is a nowhere dense set.
 \end{lemma}
 
 \begin{proof}
-Omitted.
+It suffices to prove the lemma for two nowhere dense sets as the result in
+general will follow by induction. Let $A,B \subset X$ be nowhere dense subsets.
+We have $\overline{A \cup B} = \overline{A} \cup \overline{B}$.
+Hence, if $U \subset \overline{A \cup B}$ is an open subset of $X$, then
+$U \setminus U \cap \overline{B}$ is an open subset of $U$ and of $X$
+and contained in $\overline{A}$ and hence empty. Similarly
+$U \setminus U \cap \overline{A}$ is empty. Thus $U = \emptyset$
+as desired.
 \end{proof}
 
 \begin{lemma}
@@ -4055,7 +4065,12 @@ and $T$ is nowhere dense in $X$, then also $f(T)$ is nowhere dense in $Y$.
 \end{lemma}
 
 \begin{proof}
-Omitted.
+Because $f(X)$ is closed in $Y$ and $f$ is a homeomorphism of $X$
+onto $f(X)$, we see that the closure of $f(T)$ in $Y$ equals $f(\overline{T})$.
+Hence if $V \subset Y$ is open and contained in the closure of $f(T)$,
+then $U = f^{-1}(V)$ is open and contained in $\overline{T}$.
+Hence $U = \emptyset$, which in turn shows that $V = \emptyset$
+as desired.
 \end{proof}
 
 \begin{lemma}
@@ -5328,9 +5343,10 @@ proper closed subset $E \subset X$ such that $X = E \cup f(E)$.
 Pick $p \in X$ with $f(p) \not = p$. Choose disjoint open neighbourhoods
 $p \in U$, $f(p) \in V$ and set $E = X \setminus U \cap f^{-1}(V)$.
 Then $p \not \in E$ hence $E$ is a proper closed subset.
-If $x \in X$, then either $x \in E$, or if not, then $x \in U \cap f^{-1}(V)$
-and writing $x = f(y)$ (possible as $f$ is surjective) we find
-$y \in V \subset E$ and $x \in f(E)$.
+If $x \in X$, then either $x \in E$, or if not, then $x \in U \cap f^{-1}(V)$.
+Writing $x = f(y)$ (possible as $f$ is surjective). If $y \in U \cap f^{-1}(V)$
+then we would have $x = f(y) \in V$ which is a contradiction with
+$x \in U$. Hence $y \in E$ and $x \in f(E)$.
 \end{proof}
 
 \begin{example}

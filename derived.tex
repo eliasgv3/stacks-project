@@ -1594,7 +1594,7 @@ is a triangle as in (7).
 
 \begin{lemma}
 \label{lemma-limit-triangles}
-Let $\mathcal{D}$ be a triangulated category.
+Let $\mathcal{D}$ be a pre-triangulated category.
 Let $S$ be a saturated multiplicative system in $\mathcal{D}$
 that is compatible with the triangulated structure.
 Let $(X, Y, Z, f, g, h)$ be a distinguished triangle in $\mathcal{D}$.
@@ -1723,11 +1723,11 @@ and
 $(s_4, s'_4, s''_4) : (X_2, Y_2, Z_2, f_2, g_2, h_2) \to
 (X_3, Y_3, Z_3, f_3, g_3, h_3)$ in $\mathcal{I}$.
 We would be done if the compositions
-$X' \to X_1 \to X_3$ and $X' \to X_2 \to X_3$ where equal
+$X' \to X_1 \to X_3$ and $X' \to X_2 \to X_3$ were equal
 (see displayed equation in 
 Categories, Definition \ref{categories-definition-cofinal}).
 If not, then, because $X/S$ is filtered, we can choose
-a morphism $X_3 \to X_4$ in $S$ such that the compositions
+a morphism $X_3 \to X_4$ in $X/S$ such that the compositions
 $X' \to X_1 \to X_3 \to X_4$ and $X' \to X_2 \to X_3 \to X_4$ are equal.
 Then we finally complete $X_3 \to X_4$ to a morphism
 $(X_3, Y_3, Z_3) \to (X_4, Y_4, Z_4)$ in $\mathcal{I}$
@@ -4879,10 +4879,12 @@ $RF : \mathcal{E} \longrightarrow \mathcal{D}'$
 of triangulated categories.
 \item Elements of $S$ with either source or target
 in $\mathcal{E}$ are morphisms of $\mathcal{E}$.
-\item The functor $S_\mathcal{E}^{-1}\mathcal{E} \to S^{-1}\mathcal{D}$
-is a fully faithful exact functor of triangulated categories.
 \item Any element of $S_\mathcal{E} = \text{Arrows}(\mathcal{E}) \cap S$
 is mapped to an isomorphism by $RF$.
+\item The set $S_\mathcal{E}$ is a saturated multiplicative system in
+$\mathcal{E}$ compatible with the triangulated structure.
+\item The functor $S_\mathcal{E}^{-1}\mathcal{E} \to S^{-1}\mathcal{D}$
+is a fully faithful exact functor of triangulated categories.
 \item We obtain an exact functor
 $$
 RF : S_\mathcal{E}^{-1}\mathcal{E} \longrightarrow \mathcal{D}'.
@@ -4896,24 +4898,26 @@ A similar result holds for $LF$.
 \begin{proof}
 Since $S$ is saturated it contains all isomorphisms (see remark
 following Categories, Definition
-\ref{categories-definition-saturated-multiplicative-system}). Hence
-(1) follows from Lemmas \ref{lemma-derived-inverts},
-\ref{lemma-2-out-of-3-defined}, and
-\ref{lemma-derived-shift}. We get (2) from
-Lemmas \ref{lemma-derived-functor}, \ref{lemma-derived-shift}, and
-\ref{lemma-2-out-of-3-defined}. We get (3) from
-Lemma \ref{lemma-derived-inverts}. The fully faithfulness in (4) follows
-from (3) and the definitions. The fact that
-$S_\mathcal{E}^{-1}\mathcal{E} \to S^{-1}\mathcal{D}$ is exact
-follows from the fact that a triangle in $S_\mathcal{E}^{-1}\mathcal{E}$
-is distinguished if and only if it is isomorphic to the image of a
+\ref{categories-definition-saturated-multiplicative-system}).
+Hence (1) follows from Lemmas \ref{lemma-derived-inverts},
+\ref{lemma-2-out-of-3-defined}, and \ref{lemma-derived-shift}.
+We get (2) from Lemmas \ref{lemma-derived-functor}, \ref{lemma-derived-shift},
+and \ref{lemma-2-out-of-3-defined}.
+We get (3) from Lemma \ref{lemma-derived-inverts}.
+Part (4) follows from Lemma \ref{lemma-derived-inverts}.
+Part (5) follows from the definitions and part (3).
+The fully faithfulness in (6) follows from (3) and
+the definitions. The fact that
+$S_\mathcal{E}^{-1}\mathcal{E} \to S^{-1}\mathcal{D}$
+is exact follows from the fact that a triangle in
+$S_\mathcal{E}^{-1}\mathcal{E}$ is distinguished
+if and only if it is isomorphic to the image of a
 distinguished triangle in $\mathcal{E}$, see proof of
 Proposition \ref{proposition-construct-localization}.
-Part (5) follows from Lemma \ref{lemma-derived-inverts}.
 The factorization of $RF : \mathcal{E} \to \mathcal{D}'$
 through an exact functor $S_\mathcal{E}^{-1}\mathcal{E} \to \mathcal{D}'$
 follows from Lemma \ref{lemma-universal-property-localization}.
-Part (7) follows from Lemma \ref{lemma-direct-sum-defined}.
+Finally, part (8) follows from Lemma \ref{lemma-direct-sum-defined}.
 \end{proof}
 
 \noindent
@@ -5019,22 +5023,27 @@ $X$ and $Y$ compute $RF$. Similarly for $LF$.
 If $X \oplus Y$ computes $RF$, then $RF(X \oplus Y) = F(X) \oplus F(Y)$.
 In the proof of Lemma \ref{lemma-direct-sum-defined} we have seen that
 the functor $X/S \times Y/S \to (X \oplus Y)/S$, $(s, s') \mapsto s \oplus s'$
-is cofinal. We will use this without further mention. Let $s : X \to X'$ be
-an element of $S$. Then $F(X) \to F(X')$ has a section, namely,
+is cofinal. Thus by Categories, Lemma
+\ref{categories-lemma-cofinal-essentially-constant} and by
+characterization (4) of Categories, Lemma
+\ref{categories-lemma-characterize-essentially-constant-ind}
+we know that for any object $W$ in $\mathcal{D}'$ the map
 $$
-F(X') \to F(X' \oplus Y) \to RF(X' \oplus Y) =
-RF(X \oplus Y) = F(X) \oplus F(Y) \to F(X).
+\Hom_{\mathcal{D}'}(F(X \oplus Y), W)
+\longrightarrow
+\colim_{s : X \to X', s' : Y \to Y'} \Hom_{\mathcal{D}'}(F(X' \oplus Y'), W)
 $$
-where we have used Lemma \ref{lemma-derived-inverts}.
-Hence $F(X') = F(X) \oplus E$ for some object $E$ of $\mathcal{D}'$
-such that $E \to F(X' \oplus Y) \to RF(X'\oplus Y) = RF(X \oplus Y)$
-is zero (Lemma \ref{lemma-when-split}).
-Because $RF$ is defined at $X' \oplus Y$ with value
-$F(X) \oplus F(Y)$ we can find a morphism $t : X' \oplus Y \to Z$
-of $S$ such that $F(t)$ annihilates $E$. We may assume
-$Z = X'' \oplus Y''$ and $t = t' \oplus t''$ with $t', t'' \in S$.
-Then $F(t')$ annihilates $E$. It follows that $F$ is essentially constant
-on $X/S$ with value $F(X)$ as desired.
+is bijective. Since this arrow is clearly compatible with direct sum
+decompositions on both sides, we conclude that the map
+$$
+\Hom_{\mathcal{D}'}(F(X), W)
+\longrightarrow
+\colim_{s : X \to X'} \Hom_{\mathcal{D}'}(F(X'), W)
+$$
+is bijective (minor detail omitted). Thus by 
+Categories, Lemma \ref{categories-lemma-characterize-essentially-constant-ind}
+we conclude $RF$ is defined at $X$ with value $F(X)$.
+Similarly for $Y$.
 \end{proof}
 
 \begin{lemma}
@@ -5304,7 +5313,7 @@ K^{n + 2} \ar[r] &
 $$
 is commutative, such that $d^{j + 1} \circ d^j = 0$ for $j \geq n$,
 such that $\alpha$ induces isomorphisms
-$H^j(K^\bullet) \to \Ker(d^j)/\Im(d^{j - 1})$
+$\Ker(d^j)/\Im(d^{j - 1}) \to H^j(K^\bullet)$
 for $j > n$, and such that $\alpha : \Ker(d^n) \to \Ker(d_K^n)$
 is surjective. Then we choose a surjection
 $$
@@ -5388,12 +5397,15 @@ Then every object of $\mathcal{I}$ is acyclic for $RF$.
 \end{lemma}
 
 \begin{proof}
-We may add $0$ to $\mathcal{I}$ if necessary. Pick $A \in \mathcal{I}$.
-Let $A[0] \to K^\bullet$ be a quasi-isomorphism with $K^\bullet$
+Pick $A \in \mathcal{I}$. Let $A[0] \to K^\bullet$
+be a quasi-isomorphism with $K^\bullet$
 bounded below. Then we can find a quasi-isomorphism
 $K^\bullet \to I^\bullet$ with $I^\bullet$ bounded below and
 each $I^n \in \mathcal{I}$, see
-Lemma \ref{lemma-subcategory-right-resolution}.
+Lemma \ref{lemma-subcategory-right-resolution}\footnote{By (1)
+we see that $\mathcal{I}$ is nonempty. Pick $P$ in $\mathcal{I}$.
+Then the short exact sequence $0 \to P \to P \to 0 \to 0$ and assumption (2)
+shows that $0$ is in $\mathcal{I}$. Thus the lemma applies.}.
 Hence we see that these resolutions are cofinal in the category
 $A[0]/\text{Qis}^{+}(\mathcal{A})$. To finish the proof it therefore
 suffices to show that for any quasi-isomorphism
@@ -5473,14 +5485,18 @@ for all $i \leq a$.
 
 \begin{proof}
 Assume $K^\bullet$ satisfies the assumptions of (1).
-Let $K^\bullet \to L^\bullet$ be any quasi-isomorphism.
+Let $s : K^\bullet \to L^\bullet$ be any quasi-isomorphism.
 Then it is also true that $K^\bullet \to \tau_{\geq a}L^\bullet$
 is a quasi-isomorphism by our assumption on $K^\bullet$.
 Hence in the category $K^\bullet/\text{Qis}^{+}(\mathcal{A})$ the
-quasi-isomorphisms $s : K^\bullet \to L^\bullet$ with $L^n = 0$ for $n < a$
-are cofinal. Thus $RF$ is the value of the essentially constant
-ind-object $F(L^\bullet)$ for these $s$ it follows that
-$H^i(RF(K^\bullet)) = 0$ for $i < a$.
+quasi-isomorphisms $s : K^\bullet \to L^\bullet$ with $L^n = 0$
+for $n < a$ are cofinal. From Categories, Lemma
+\ref{categories-lemma-cofinal-essentially-constant}
+we deduce that $RF$ is the value of the essentially constant
+ind-object $F(L^\bullet)$ for these $s$. This means that
+$\text{id} : RF(K^\bullet) \to RF(K^\bullet)$ factors through
+$F(L^\bullet)$ for some complex $L^\bullet$ with $L^n = 0$
+for $n < a$. It follows that $H^i(RF(K^\bullet)) = 0$ for $i < a$.
 
 \medskip\noindent
 To prove (2) we use the distinguished triangle
@@ -5536,20 +5552,8 @@ only if $F$ is left exact.
 \end{lemma}
 
 \begin{proof}
-Let $A$ be an object of $\mathcal{A}$. Let $A[0] \to K^\bullet$
-be any quasi-isomorphism. Then it is also true that
-$A[0] \to \tau_{\geq 0}K^\bullet$ is a quasi-isomorphism.
-Hence in the category $A[0]/\text{Qis}^{+}(\mathcal{A})$ the
-quasi-isomorphisms $s : A[0] \to K^\bullet$ with $K^n = 0$ for $n < 0$
-are cofinal. Thus it is clear that $H^i(RF(A[0])) = 0$ for $i < 0$.
-Moreover, for such an $s$ the sequence
-$$
-0 \to A \to K^0 \to K^1
-$$
-is exact. Hence if $F$ is left exact, then $0 \to F(A) \to F(K^0) \to F(K^1)$
-is exact as well, and we see that $F(A) \to H^0(F(K^\bullet))$ is an
-isomorphism for every $s : A[0] \to K^\bullet$ as above which implies
-that $H^0(RF(A[0])) = F(A)$.
+Let $A$ be an object of $\mathcal{A}$. By Lemma \ref{lemma-negative-vanishing}
+we have $H^i(RF(A[0]) = 0$ for $i < 0$. This proves (1).
 
 \medskip\noindent
 Let $0 \to A \to B \to C \to 0$ be a short exact sequence of $\mathcal{A}$.
@@ -5561,6 +5565,30 @@ From the long exact cohomology sequence (and the vanishing for $i < 0$
 proved above) we deduce that $0 \to R^0F(A) \to R^0F(B) \to R^0F(C)$
 is exact. Hence $R^0F$ is left exact. Of course this also proves that if
 $F \to R^0F$ is an isomorphism, then $F$ is left exact.
+
+\medskip\noindent
+Assume $F$ is left exact. Recall that $RF(A[0])$ is the value of the
+essentially constant system $F(K^\bullet)$ for $s : A[0] \to K^\bullet$
+quasi-isomorphisms. It follows that $R^0F(A)$ is the value of the essentially
+constant system $H^0(F(K^\bullet))$ for $s : A[0] \to K^\bullet$
+quasi-isomorphisms, see Categories, Lemma
+\ref{categories-lemma-image-essentially-constant}.
+But if $s : A[0] \to K^\bullet$ is a quasi-isomorphism, then
+$A[0] \to \tau_{\geq 0}K^\bullet$ is a quasi-isomorphism.
+Hence in the category $A[0]/\text{Qis}^{+}(\mathcal{A})$ the
+quasi-isomorphisms $s : A[0] \to K^\bullet$ with $K^n = 0$ for $n < 0$
+are cofinal. It follows from
+Categories, Lemma \ref{categories-lemma-cofinal-essentially-constant}
+that we may restrict to such $s$.
+Moreover, for such an $s$ the sequence
+$$
+0 \to A \to K^0 \to K^1
+$$
+is exact. Since $F$ is left exact we see that
+$0 \to F(A) \to F(K^0) \to F(K^1)$ is exact as well.
+It follows that $F(A) \to H^0(F(K^\bullet))$ is an isomorphism
+and the system is actually constant with value $F(A)$.
+We conclude $R^0F = F$ as desired.
 \end{proof}
 
 \begin{lemma}
@@ -5612,7 +5640,7 @@ is a short exact sequence of $\mathcal{B}$.
 By
 Lemma \ref{lemma-derived-canonical-delta-functor}
 we obtain a distinguished triangle
-$(A[0], B[0], C[0], a, b, c)$ in $K^{+}(\mathcal{A})$.
+$(A[0], B[0], C[0], a, b, c)$ in $D^{+}(\mathcal{A})$.
 As $RF$ is an exact functor and since
 $R^iF = 0$ for $i < 0$ and $R^0F = F$
 (Lemma \ref{lemma-left-exact-higher-derived})
@@ -5681,7 +5709,8 @@ Let $A^\bullet$ be a bounded complex of right $F$-acyclic objects.
 We claim that $RF$ is defined at $A^\bullet$ and that
 $F(A^\bullet) \to RF(A^\bullet)$ is an isomorphism in $D^+(\mathcal{B})$.
 Namely, it holds for complexes with at most one nonzero right $F$-acyclic
-object for example by Lemma \ref{lemma-F-acyclic}. Next, suppose that
+object by Definition \ref{definition-derived-functor}.
+Next, suppose that
 $A^n = 0$ for $n \not \in [a, b]$. Using the ``stupid'' truncations we obtain
 a termwise split short exact sequence of complexes
 $$
@@ -5725,7 +5754,7 @@ $$
 Since $RF$ is defined at $A^\bullet$ (by assumption)
 and at $\sigma_{\leq i + 1}A^\bullet$ (by the first paragraph)
 we see that $RF$ is defined at $\sigma_{\geq i + 1}A^\bullet$
-and we get a distinghuished triangle
+and we get a distinguished triangle
 $$
 (RF(\sigma_{\geq i + 2} A^\bullet), RF(A^\bullet),
 RF(\sigma_{\leq i + 1} A^\bullet))
@@ -5756,7 +5785,7 @@ Lemma \ref{lemma-negative-vanishing}.
 \begin{proposition}
 \label{proposition-enough-acyclics}
 \begin{slogan}
-A functor on an Abelian categories is extended to the (bounded below or above)
+A functor on Abelian categories is extended to the (bounded below or above)
 derived category by resolving with a complex that is acyclic for that functor.
 \end{slogan}
 Let $F : \mathcal{A} \to \mathcal{B}$ be an additive functor of
@@ -5807,27 +5836,21 @@ for $n \geq n_0$. These sequences induce distinguished triangles
 $(J^n, I^{n + 1}, J^{n + 1})$ in $D^+(\mathcal{A})$ by
 Lemma \ref{lemma-derived-canonical-delta-functor}.
 For each $k \in \mathbf{Z}$ denote $H_k$ the assertion:
-For all $n \leq k$ the right derived functor
-$RF$ is defined at $J^n$ and $R^iF(J^n) = 0$ for $i \not = 0$.
-Then $H_k$ holds trivially for $k \leq n_0$. If $H_n$ holds,
-then, using Proposition \ref{proposition-derived-functor},
-we see that $RF$ is defined at $J^{n + 1}$ and
-$(RF(J^n), RF(I^{n + 1}), RF(J^{n + 1}))$ is a distinguished
-triangle of $D^+(\mathcal{B})$. Thus the long exact cohomology sequence
+For all $n \leq k$ the object $J^n$ is in $\mathcal{I}$.
+Then $H_k$ holds trivially for $k < n_0$. If $H_n$ holds,
+then Lemma \ref{lemma-2-out-of-3-computes} shows that
+$J^{n + 1}$ is in $\mathcal{I}$ and we have $H_{n + 1}$.
+By Proposition \ref{proposition-derived-functor} we have a
+distinguished triangle $(RF(J^n), RF(I^{n + 1}), RF(J^{n + 1}))$.
+Since $J^n, I^{n + 1}, J^{n + 1}$ are in $\mathcal{I}$
+the long exact cohomology sequence
 (\ref{equation-long-exact-cohomology-sequence-D})
-associated to this triangle gives an exact sequence
+associated to this distinguished triangle collapses
+to an exact sequence
 $$
-0 \to R^{-1}F(J^{n + 1}) \to R^0F(J^n) \to
-F(I^{n + 1}) \to R^0F(J^{n + 1}) \to 0
+0 \to F(J^n) \to F(I^{n + 1}) \to F(J^{n + 1}) \to 0
 $$
-and gives that $R^iF(J^{n + 1}) = 0$ for $i \not \in \{-1, 0\}$.
-By Lemma \ref{lemma-negative-vanishing} we see that $R^{-1}F(J^{n + 1}) = 0$.
-This proves that $H_{n + 1}$ is true hence $H_k$ holds for all $k$.
-We also conclude that
-$$
-0 \to R^0F(J^n) \to F(I^{n + 1}) \to R^0F(J^{n + 1}) \to 0
-$$
-is short exact for all $n$. This in turn proves that $F(I^\bullet)$ is exact.
+This in turn proves that $F(I^\bullet)$ is exact.
 
 \medskip\noindent
 The proof in the case of $LF$ is dual.
@@ -6267,29 +6290,37 @@ Any morphism $K^\bullet \to I^\bullet$ is homotopic to zero.
 
 \begin{proof}
 Let $\alpha : K^\bullet \to I^\bullet$ be a morphism of
-complexes. Assume that $\alpha^j = 0$ for $j < n$.
-We will show that there exists a morphism $h : K^{n + 1} \to I^n$
-such that $\alpha^n = h \circ d$. Thus $\alpha$ will be homotopic
-to the morphism of complexes $\beta$ defined by
-$$
-\beta^j =
-\left\{
-\begin{matrix}
-0 & \text{if} & j \leq n \\
-\alpha^{n + 1} - d \circ h & \text{if} & j = n + 1 \\
-\alpha^j & \text{if} & j > n + 1
-\end{matrix}
-\right.
-$$
-This will clearly prove the lemma (by induction).
-To prove the existence of $h$ note that
-$\alpha^n|_{d^{n - 1}(K^{n - 1})} = 0$ since
-$\alpha^{n - 1} = 0$. Since $K^\bullet$ is acyclic we
-have $d^{n - 1}(K^{n - 1}) = \Ker(K^n \to K^{n + 1})$.
-Hence we can think of $\alpha^n$ as a map into $I^n$ defined
-on the subobject $\Im(K^n \to K^{n + 1})$ of $K^{n + 1}$.
-By injectivity of the object $I^n$ we can extend this to
-a map $h : K^{n + 1} \to I^n$ as desired.
+complexes. Note that $\alpha^j = 0$ for $j \ll 0$ as $I^\bullet$
+is bounded below. In particular, we can find an $n$ such that
+there exist $h^j :  K^j \to I^{j - 1}$ for $j \leq n$ such that
+$\alpha^j = d^{j - 1} \circ h^j + h^{j + 1} \circ d^j$
+for $j < n$. We will show that there exists a morphism
+$h^{n + 1} : K^{n + 1} \to I^n$
+such that $\alpha^n = d^{n - 1} \circ h^n + h^{n + 1} \circ d^n$.
+Note that
+\begin{align*}
+(\alpha^n - d^{n - 1} \circ h^{n - 1}) \circ d^{n - 1}
+& =
+\alpha^{n - 1} \circ d^{n - 1} - d^{n - 1} \circ h^{n - 1} \circ d^{n - 1} \\
+& =
+d^{n - 1} \circ \alpha^{n - 1} - d^{n - 1} \circ h^{n - 1} \circ d^{n - 1} \\
+& =
+d^{n - 1} \circ (d^{n - 2} \circ h^{n - 1} + h^n \circ d^{n - 1})
+- d^{n - 1} \circ h^{n - 1} \circ d^{n - 1} \\
+& = 0
+\end{align*}
+Since $K^\bullet$ is acyclic we have
+$d^{n - 1}(K^{n - 1}) = \Ker(K^n \to K^{n + 1})$.
+Hence we can think of $\alpha^n -  d^{n - 1} \circ h^{n - 1}$
+as a map into $I^n$ defined on the subobject $\Im(K^n \to K^{n + 1})$
+of $K^{n + 1}$. By injectivity of the object $I^n$ we can extend this to
+a map $h^{n + 1} : K^{n + 1} \to I^n$. With this choice the reader
+checks that we indeed have
+$\alpha^n = d^{n - 1} \circ h^n + h^{n + 1} \circ d^n$.
+
+\medskip\noindent
+By induction on $n$ we conclude we can find $h  = (h^j)_{j \in \mathbf{Z}}$
+which forms a homotopy between $\alpha$ and $0$ as desired.
 \end{proof}
 
 \begin{remark}
@@ -8824,6 +8855,39 @@ This is the case $i = 1$ of
 Lemma \ref{lemma-yoneda-extension}.
 \end{proof}
 
+\noindent
+Given an abelian category $\mathcal{A}$ and objects $X, Y, Z$ of
+$D(\mathcal{A})$, there are bilinear and associative composition laws
+$$
+\Ext^j_\mathcal{A}(Y, Z) \times \Ext^i_\mathcal{A}(X, Y)
+\longrightarrow
+\Ext^{i + j}_\mathcal{A}(X, Z),\quad
+(\eta, \xi) \longmapsto \eta \circ \xi
+$$
+Namely, if $\xi : X \to Y[i]$ and $\eta : Y \to Z[j]$, then
+we define $\eta \circ \xi$ as the composition of $\xi$ by
+$\eta[i] : Y[i] \to Z[i + j]$. If $A, B, C$ are objects of
+$\mathcal{A}$, then this composition law
+$$
+\Ext^j_\mathcal{A}(B, C) \times \Ext^i_\mathcal{A}(A, B)
+\longrightarrow
+\Ext^{i + j}_\mathcal{A}(A, C)
+$$
+can be described in terms of Yoneday extensions as follows: the
+composition of
+$$
+0 \to A \to Z_{i - 1} \to Z_{i - 2} \to \ldots \to Z_0 \to B \to 0
+$$
+and
+$$
+0 \to B \to Z'_{j - 1} \to Z'_{j - 2} \to \ldots \to Z'_0 \to C \to 0
+$$
+is the Yoneda extension
+$$
+0 \to A \to Z_{i - 1} \to Z_{i - 2} \to \ldots \to Z_0 \to 
+Z'_{j - 1} \to Z'_{j - 2} \to \ldots \to Z'_0 \to C \to 0
+$$
+
 \begin{lemma}
 \label{lemma-cup-ext-1-zero}
 Let $\mathcal{A}$ be an abelian category. Let
@@ -8869,7 +8933,7 @@ out what it means for a $2$-extension class to be zero.
 Or you can use that if $[Z] \circ [Z'] \in \Ext^2_\mathcal{A}(C, A)$
 is zero, then by the long exact cohomology sequence
 of $\Ext$ the element $[Z] \in \Ext^1(B, A)$ is the
-image of some element in $\Ext^1(W', A)$.
+image of some element in $\Ext^1(Z', A)$.
 \end{proof}
 
 \begin{lemma}
@@ -8887,7 +8951,7 @@ $$
 E : 0 \to A \to Z_{i - 1} \to Z_{i - 2} \to \ldots \to Z_0 \to B \to 0
 $$
 This is possible by Lemma \ref{lemma-yoneda-extension}.
-Set $C = \Ker(Z_{p - 1} \to Z_p) = \Im(Z_p \to Z_{p - 1})$.
+Set $C = \Ker(Z_{p - 1} \to Z_{p - 2}) = \Im(Z_p \to Z_{p - 1})$.
 Then $\delta(E)$ is the composition of $\delta(E')$ and $\delta(E'')$
 where
 $$
@@ -10964,7 +11028,7 @@ Let $\mathcal{D}$ be a triangulated category. Let $E$ be an object
 of $\mathcal{D}$. Let $T$ be a property of objects of $\mathcal{D}$.
 Suppose that
 \begin{enumerate}
-\item if $K_i \in D(A)$, $i = 1, \ldots, r$ with
+\item if $K_i \in \mathcal{D}$, $i = 1, \ldots, r$ with
 $T(K_i)$ for $i = 1, \ldots, r$, then $T(\bigoplus K_i)$,
 \item if $K \to L \to M \to K[1]$ is a distinguished triangle and
 $T$ holds for two, then $T$ holds for the third object,

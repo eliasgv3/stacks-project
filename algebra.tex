@@ -481,17 +481,17 @@ Finite modules have filtrations such that successive quotients are
 cyclic modules.
 \end{slogan}
 Let $R$ be a ring, and let $M$ be a finite $R$-module.
-There exists a filtration by $R$-submodules
+There exists a filtration by finite $R$-submodules
 $$
 0 = M_0 \subset M_1 \subset \ldots \subset M_n = M
 $$
-such that each quotient $M_i/M_{i-1}$ is isomorphic
+such that each quotient $M_i/M_{i - 1}$ is isomorphic
 to $R/I_i$ for some ideal $I_i$ of $R$.
 \end{lemma}
 
 \begin{proof}
 By induction on the number of generators of $M$. Let
-$x_1, \ldots, x_r \in M$ be a minimal number of generators.
+$x_1, \ldots, x_r \in M$ be generators.
 Let $M' = Rx_1 \subset M$. Then $M/M'$ has $r - 1$ generators
 and the induction hypothesis applies. And clearly $M' \cong R/I_1$
 with $I_1 = \{f \in R \mid fx_1 = 0\}$.
@@ -1283,7 +1283,7 @@ sending $x/s\in S'^{-1}A$ to $x/s \in (SS')^{-1}A$, by universal
 property. The image of the elements in $\overline{S}$ are invertible
 in $(SS')^{-1}A$. By the universal property we get a map
 $f : \overline{S}^{-1}(S'^{-1}A) \to (SS')^{-1}A$ which maps
-$(x/t')/(s/s')$ to $(x/t')\cdot(s/s')^{-1}$.
+$(x/s')/(s/1)$ to $x/ss'$.
 
 \medskip\noindent
 On the other hand, the map from $A$ to $\overline{S}^{-1}(S'^{-1}A)$
@@ -3168,7 +3168,7 @@ $$
 $$
 where the topology on the right hand side is that induced from the
 Zariski topology on $\Spec(R)$. The inverse map is given
-by $\mathfrak p \mapsto S^{-1}\mathfrak p$.
+by $\mathfrak p \mapsto S^{-1}\mathfrak p = \mathfrak p(S^{-1}R)$.
 \end{lemma}
 
 \begin{proof}
@@ -3245,77 +3245,6 @@ is $D(f) \cap V(I)$, and hence the map is a homeomorphism.
 
 
 
-\begin{remark}
-\label{remark-fundamental-diagram}
-A fundamental commutative diagram associated to a ring map
-$\varphi : R \to S$, a prime $\mathfrak q \subset S$ and
-the corresponding prime $\mathfrak p = \varphi^{-1}(\mathfrak q)$
-of $R$ is the following
-$$
-\xymatrix{
-\kappa(\mathfrak q) = S_{\mathfrak q}/{\mathfrak q}S_{\mathfrak q}
-&
-S_{\mathfrak q} \ar[l]
-&
-S \ar[r] \ar[l]
-&
-S/\mathfrak q \ar[r]
-&
-\kappa(\mathfrak q)
-\\
-\kappa(\mathfrak p) \otimes_R S =
-S_{\mathfrak p}/{\mathfrak p}S_{\mathfrak p} \ar[u]
-&
-S_{\mathfrak p} \ar[u] \ar[l]
-&
-S \ar[u] \ar[r] \ar[l]
-&
-S/\mathfrak pS \ar[u] \ar[r]
-&
-(R \setminus \mathfrak p)^{-1}S/\mathfrak pS \ar[u]
-\\
-\kappa(\mathfrak p) =
-R_{\mathfrak p}/{\mathfrak p}R_{\mathfrak p} \ar[u]
-&
-R_{\mathfrak p} \ar[u] \ar[l]
-&
-R \ar[u] \ar[r] \ar[l]
-&
-R/\mathfrak p \ar[u] \ar[r]
-&
-\kappa(\mathfrak p) \ar[u]
-}
-$$
-In this diagram the arrows in the outer left and outer right columns
-are identical. The horizontal maps induce on the associated spectra
-always a homeomorphism onto the image. The lower two rows
-of the diagram make sense without assuming $\mathfrak q$ exists.
-The lower squares induce fibre squares of topological spaces.
-This diagram shows that $\mathfrak p$ is in the image
-of the map on Spec if and only if $S \otimes_R \kappa(\mathfrak p)$
-is not the zero ring.
-\end{remark}
-
-\begin{lemma}
-\label{lemma-in-image}
-Let $\varphi : R \to S$ be a ring map. Let $\mathfrak p$
-be a prime of $R$. The following are equivalent
-\begin{enumerate}
-\item $\mathfrak p$ is in the image of
-$\Spec(S) \to \Spec(R)$,
-\item $S \otimes_R \kappa(\mathfrak p) \not = 0$,
-\item $S_{\mathfrak p}/\mathfrak p S_{\mathfrak p} \not = 0$,
-\item $(S/\mathfrak pS)_{\mathfrak p} \not = 0$, and
-\item $\mathfrak p = \varphi^{-1}(\mathfrak pS)$.
-\end{enumerate}
-\end{lemma}
-
-\begin{proof}
-We have already seen the equivalence of the first two
-in Remark \ref{remark-fundamental-diagram}. The others
-are just reformulations of this.
-\end{proof}
-
 \begin{lemma}
 \label{lemma-quasi-compact}
 \begin{slogan}
@@ -3379,10 +3308,13 @@ Local rings are the bread and butter of algebraic geometry.
 \begin{definition}
 \label{definition-local-ring}
 A {\it local ring} is a ring with exactly one maximal ideal.
-The maximal ideal is often denoted $\mathfrak m_R$ in this case.
-We often say ``let $(R, \mathfrak m, \kappa)$ be a local ring''
-to indicate that $R$ is local, $\mathfrak m$ is its unique maximal
-ideal and $\kappa = R/\mathfrak m$ is its residue field.
+If $R$ is a local ring, then the maximal ideal is often denoted
+$\mathfrak m_R$ and the field $R/\mathfrak m_R$ is called the
+{\it residue field} of the local ring $R$.
+We often say ``let $(R, \mathfrak m)$ be a local ring''
+or ``let $(R, \mathfrak m, \kappa)$ be a local ring''
+to indicate that $R$ is local, $\mathfrak m$ is its unique
+maximal ideal and $\kappa = R/\mathfrak m$ is its residue field.
 A {\it local homomorphism of local rings} is a ring map
 $\varphi : R \to S$ such that $R$ and $S$ are local rings and such
 that $\varphi(\mathfrak m_R) \subset \mathfrak m_S$.
@@ -3392,8 +3324,41 @@ is a local homomorphism of local rings.
 \end{definition}
 
 \noindent
-A field is a local ring. Any ring map between fields is a local homomorphism
-of local rings.
+A field is a local ring. Any ring map between fields is a local
+homomorphism of local rings.
+
+\medskip\noindent
+The localization $R_\mathfrak p$ of a ring $R$ at a prime $\mathfrak p$
+is a local ring with maximal ideal $\mathfrak p R_\mathfrak p$. Namely, by
+Lemma \ref{lemma-spec-localization} every prime ideal of $R_\mathfrak p$
+is contained in the prime ideal $\mathfrak p R_\mathfrak p$
+(hence this is a maximal ideal and the only maximal ideal of $R_\mathfrak p$).
+The residue field of $R_\mathfrak p$ is denoted $\kappa(\mathfrak p)$;
+we call it the {\it residue field of $\mathfrak p$}; by
+Proposition \ref{proposition-localize-quotient} we may identify
+$\kappa(\mathfrak p)$ with the field of fractions of the domain $R/\mathfrak p$.
+Via the composition
+$$
+\Spec(\kappa(\mathfrak p)) \to \Spec(R_\mathfrak p) \to \Spec(R)
+$$
+the unique point of the source maps to the point $\mathfrak p$ of the target.
+
+\medskip\noindent
+Let $\varphi : R \to S$ be a ring map. Let $\mathfrak q \subset S$ be a prime
+and consider the prime $\mathfrak p = \varphi^{-1}(\mathfrak q)$ of $R$.
+Since $\varphi(\mathfrak p) \subset \mathfrak q$ the induced ring map
+$$
+R_\mathfrak p \to S_\mathfrak q,\quad r/g \mapsto \varphi(r)/\varphi(g)
+$$
+is a local ring map and we obtain an induced map of residue fields
+$\kappa(\mathfrak p) \to \kappa(\mathfrak q)$.
+
+
+\begin{example}
+\label{example-not-local}
+If $R$ is a local ring and $\mathfrak p \subset R$ is a non-maximal
+prime ideal, then $R \to R_\mathfrak p$ is not a local homomorphism.
+\end{example}
 
 \begin{lemma}
 \label{lemma-characterize-local-ring}
@@ -3428,13 +3393,6 @@ This element $x$ is not invertible and neither is $1 - x$ which is
 a contradiction. Thus (4) and (1) are equivalent.
 \end{proof}
 
-\noindent
-The localization $R_\mathfrak p$ of a ring $R$ at a prime $\mathfrak p$
-is a local ring with maximal ideal $\mathfrak p R_\mathfrak p$. Namely,
-the quotient $R_\mathfrak p/\mathfrak pR_\mathfrak p$ is the fraction
-field of the domain $R/\mathfrak p$ and every element of $R_\mathfrak p$
-which is not contained in $\mathfrak pR_\mathfrak p$ is invertible.
-
 \begin{lemma}
 \label{lemma-characterize-local-ring-map}
 Let $\varphi : R \to S$ be a ring map. Assume $R$ and $S$ are local rings.
@@ -3457,10 +3415,110 @@ $\varphi^{-1}(\mathfrak m_S) = \mathfrak m_R$. Finally, (4) is the
 contrapositive of (2) by Lemma \ref{lemma-characterize-local-ring}.
 \end{proof}
 
-\noindent
-Let $\varphi : R \to S$ be a ring map. Let $\mathfrak q \subset S$ be a prime
-and set $\mathfrak p = \varphi^{-1}(\mathfrak q)$. Then the induced ring
-map $R_\mathfrak p \to S_\mathfrak q$ is a local ring map.
+\begin{remark}
+\label{remark-fundamental-diagram}
+A fundamental commutative diagram associated to a ring map
+$\varphi : R \to S$ and a prime $\mathfrak p \subset R$ is the following
+$$
+\xymatrix{
+\kappa(\mathfrak p) \otimes_R S =
+S_{\mathfrak p}/{\mathfrak p}S_{\mathfrak p}
+&
+S_{\mathfrak p} \ar[l]
+&
+S \ar[r] \ar[l]
+&
+S/\mathfrak pS \ar[r]
+&
+(R \setminus \mathfrak p)^{-1}S/\mathfrak pS
+\\
+\kappa(\mathfrak p) =
+R_{\mathfrak p}/{\mathfrak p}R_{\mathfrak p} \ar[u]
+&
+R_{\mathfrak p} \ar[u] \ar[l]
+&
+R \ar[u] \ar[r] \ar[l]
+&
+R/\mathfrak p \ar[u] \ar[r]
+&
+\kappa(\mathfrak p) \ar[u]
+}
+$$
+In this diagram the outer left and outer right columns are identical.
+On spectra the horizontal maps induce homeomorphisms
+onto their images and the squares induce fibre squares of topological spaces
+(see Lemmas \ref{lemma-spec-localization} and \ref{lemma-spec-closed}).
+This shows that $\mathfrak p$ is in the image of the map on Spec if and
+only if $S \otimes_R \kappa(\mathfrak p)$ is not the zero ring.
+If there does exist a prime $\mathfrak q \subset S$ lying over
+$\mathfrak p$, i.e., with $\mathfrak p = \varphi^{-1}(\mathfrak q)$
+then we can extend the diagram to the following diagram
+$$
+\xymatrix{
+\kappa(\mathfrak q) = S_{\mathfrak q}/{\mathfrak q}S_{\mathfrak q}
+&
+S_{\mathfrak q} \ar[l]
+&
+S \ar[r] \ar[l]
+&
+S/\mathfrak q \ar[r]
+&
+\kappa(\mathfrak q)
+\\
+\kappa(\mathfrak p) \otimes_R S =
+S_{\mathfrak p}/{\mathfrak p}S_{\mathfrak p} \ar[u]
+&
+S_{\mathfrak p} \ar[u] \ar[l]
+&
+S \ar[u] \ar[r] \ar[l]
+&
+S/\mathfrak pS \ar[u] \ar[r]
+&
+(R \setminus \mathfrak p)^{-1}S/\mathfrak pS \ar[u]
+\\
+\kappa(\mathfrak p) =
+R_{\mathfrak p}/{\mathfrak p}R_{\mathfrak p} \ar[u]
+&
+R_{\mathfrak p} \ar[u] \ar[l]
+&
+R \ar[u] \ar[r] \ar[l]
+&
+R/\mathfrak p \ar[u] \ar[r]
+&
+\kappa(\mathfrak p) \ar[u]
+}
+$$
+In this diagram it is still the case that the outer left and outer right
+columns are identical and that on spectra the horizontal maps induce
+homeomorphisms onto their image.
+\end{remark}
+
+\begin{lemma}
+\label{lemma-in-image}
+Let $\varphi : R \to S$ be a ring map. Let $\mathfrak p$
+be a prime of $R$. The following are equivalent
+\begin{enumerate}
+\item $\mathfrak p$ is in the image of
+$\Spec(S) \to \Spec(R)$,
+\item $S \otimes_R \kappa(\mathfrak p) \not = 0$,
+\item $S_{\mathfrak p}/\mathfrak p S_{\mathfrak p} \not = 0$,
+\item $(S/\mathfrak pS)_{\mathfrak p} \not = 0$, and
+\item $\mathfrak p = \varphi^{-1}(\mathfrak pS)$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+We have already seen the equivalence of the first two
+in Remark \ref{remark-fundamental-diagram}. The others
+are just reformulations of this.
+\end{proof}
+
+
+
+
+
+
+
 
 
 
@@ -5602,7 +5660,7 @@ $\Spec(R_c)$.
 Let us assume we have $T = D(f) \cap V(g_1, \ldots, g_m)$
 as above, with $\deg(g_1) \leq \deg(g_2) \leq \ldots \leq \deg(g_m)$.
 We are going to use induction on $m$, and on the
-degrees of the $g_i$. Let $d = \deg(g_1)$, i.e., $g_1 = c x^{d_1} + l.o.t$
+degrees of the $g_i$. Let $d_1 = \deg(g_1)$, i.e., $g_1 = c x^{d_1} + l.o.t$
 with $c \in R$ not zero. Cutting $R$ up into the pieces
 $R/(c)$ and $R_c$ we either lower the degree of $g_1$ (and this
 is covered by induction)
@@ -7370,7 +7428,7 @@ $P(y) = P(y) \cdot 1 = P(\varphi)(1) = 0$.
 
 \begin{lemma}
 \label{lemma-finite-is-integral}
-A finite ring extension is integral.
+A finite ring map is integral.
 \end{lemma}
 
 \begin{proof}
@@ -8088,7 +8146,9 @@ is a normal domain.
 \end{lemma}
 
 \begin{proof}
-This follows easily from the fact that for any domain $R$ we have
+We deduce (1) $\Rightarrow$ (2) from Lemma \ref{lemma-localize-normal-domain}.
+The implication (2) $\Rightarrow$ (3) is immediate. The implication
+(3) $\Rightarrow$ (1) follows from the fact that for any domain $R$ we have
 $$
 R = \bigcap\nolimits_{\mathfrak m} R_{\mathfrak m}
 $$
@@ -11866,7 +11926,7 @@ has the following properties:
 \begin{enumerate}
 \item $v(a) = 0 \Leftrightarrow a \in A^*$,
 \item $v(ab) = v(a) + v(b)$,
-\item $v(a + b) \geq \min(v(a), v(b))$.
+\item $v(a + b) \geq \min(v(a), v(b))$ provided $a + b \not = 0$.
 \end{enumerate}
 \end{lemma}
 
@@ -11934,7 +11994,8 @@ Let $(\Gamma, \geq)$ be a totally ordered abelian group.
 An {\it ideal of $\Gamma$} is a subset $I \subset \Gamma$ such
 that all elements of $I$ are $\geq 0$ and $\gamma \in I$,
 $\gamma' \geq \gamma$ implies $\gamma' \in I$. We say that such
-an ideal is {\it prime} if $\gamma + \gamma' \in I, \gamma, \gamma' \geq 0
+an ideal is {\it prime} if $0 \not \in I$ and if
+$\gamma + \gamma' \in I, \gamma, \gamma' \geq 0
 \Rightarrow \gamma \in I \text{ or } \gamma' \in I$.
 
 \begin{lemma}
@@ -15276,11 +15337,15 @@ $\text{Ass}_R(M) \cap \Spec(S^{-1}R) \subset \text{Ass}_R(S^{-1}M)$, and
 \end{lemma}
 
 \begin{proof}
-The first equality follows, since if $m \in S^{-1}M$, then the annihilator
-of $m$ in $R$ is the intersection of the annihilator of $m$ in $S^{-1}R$
-with $R$.
-The displayed inclusion and equality in the Noetherian case follows from
-Lemma \ref{lemma-associated-primes-localize}
+For $m \in S^{-1}M$, let $I \subset R$ and $J \subset S^{-1}R$ be the
+annihilators of $m$. Then $I$ is the inverse image of $J$ by the map
+$R \to S^{-1}R$ and $J = S^{-1}I$. The equality in (1) follows by the
+description of the map $\Spec(S^{-1}R) \to \Spec(R)$ in
+Lemma \ref{lemma-spec-localization}.
+For $m \in M$, let $I \subset R$ be the annihilator of $m$ in $R$
+and let $J \subset S^{-1}R$ be the annihilator of $m/1 \in S^{-1}M$.
+We have $J = S^{-1}I$ which implies (2). The equality in the
+Noetherian case follows from Lemma \ref{lemma-associated-primes-localize}
 since for $\mathfrak p \in R$, $S \cap \mathfrak p = \emptyset$ we have
 $M_{\mathfrak p} = (S^{-1}M)_{S^{-1}\mathfrak p}$.
 \end{proof}
@@ -16082,7 +16147,7 @@ The ring $S_{\mathfrak p}$ is semi-local with maximal ideals
 $\mathfrak q_i S_{\mathfrak p}$ by going up for finite ring maps, see
 Lemma \ref{lemma-integral-going-up}.
 If $f \in \mathfrak pR_{\mathfrak p}$ then some power of $f$ ends
-up in $JS_{\mathfrak q}$ hence for some $n > 0$ we see that
+up in $JS_{\mathfrak q}$ hence for some $t > 0$ we see that
 $f^t ym$ maps to zero in $M_{\mathfrak q}$. As $ym$ vanishes at the
 other maximal ideals of $S_{\mathfrak p}$ we conclude that $f^t ym$ is zero
 in $M_{\mathfrak p}$, see
@@ -16887,7 +16952,7 @@ because that will show that
 $\bigoplus_{n \geq 0}
 \overline{J}^n\overline{M}/\overline{J}^{n + 1}\overline{M}$
 is the quotient of
-$\bigoplus_{n \geq 0} J^nM/J^{n + 1} \cong M/JM[X_1, \ldots, X_c]$
+$\bigoplus_{n \geq 0} J^nM/J^{n + 1}M \cong M/JM[X_1, \ldots, X_c]$
 by $X_1$. Actually, we have $J^nM \cap f_1M = f_1J^{n - 1}M$.
 Namely, if $m \not \in J^{n - 1}M$, then $f_1m \not \in J^nM$
 because $\bigoplus J^nM/J^{n + 1}M$ is the polynomial algebra
@@ -21536,13 +21601,13 @@ Let $\varphi : N \to M$ satisfy the assumptions of (2). First,
 $\Im(\varphi)$ is finite,
 hence coherent by (1). In particular $\Im(\varphi)$ is finitely presented,
 so applying Lemma \ref{lemma-extension} to the exact sequence
-$0\to \Ker(\varphi)\to N\to\Im(\varphi)\to0$ we see that $\Ker(\varphi)$
+$0 \to \Ker(\varphi) \to N \to \Im(\varphi) \to 0$ we see that $\Ker(\varphi)$
 is finite.
 To prove that  $\Coker(\varphi)$ is coherent, let $E \subset \Coker(\varphi)$
-be a finite subomdule, and let $E'$ be its inverse image in $M$.
+be a finite submodule, and let $E'$ be its inverse image in $M$.
 From the exact
-sequence $0 \to \Ker(\varphi) \to E' \to E \to 0$ and since $\Ker(\varphi)$
-is finite we conclude by Lemma \ref{lemma-extension} that $E'\subset M$ is
+sequence $0 \to \Im(\varphi) \to E' \to E \to 0$ and since $\Ker(\varphi)$
+is finite we conclude by Lemma \ref{lemma-extension} that $E' \subset M$ is
 finite,
 hence finitely presented because $M$ is coherent. The same exact sequence
 then shows that $E$ is finitely presented, whence our claim.
@@ -22262,7 +22327,7 @@ subset of the $Q_i$.
 
 \medskip\noindent
 For $\alpha = 0$ let $M_0 = 0$.  If $\alpha$ is a limit ordinal and $M_{\beta}$
-has been defined for all $\beta < \alpha$, then define $M_{\beta} =
+has been defined for all $\beta < \alpha$, then define $M_\alpha =
 \bigcup_{\beta < \alpha} M_{\beta}$.  Since each $M_{\beta} \otimes_R S$ for
 $\beta < \alpha$ is a direct sum of a subset of the $Q_i$, the same will be
 true of $M_{\alpha} \otimes_R S$.  If $\alpha + 1$ is a successor ordinal and
@@ -23055,8 +23120,8 @@ Lemma \ref{lemma-hathat-finitely-generated}, so is $M$.
 \label{lemma-limit-complete}
 Let $I \subset A$ be a finitely generated ideal of a ring.
 Let $(M_n)$ be an inverse system of $A$-modules with
-$M_n = M_{n + 1}/I^nM_{n + 1}$. Then $M/I^nM = M_n$ and $M$ is
-$I$-adically complete.
+$M_n = M_{n + 1}/I^nM_{n + 1}$. Set $M = \lim M_n$.
+Then $M/I^nM = M_n$ and $M$ is $I$-adically complete.
 \end{lemma}
 
 \begin{proof}
@@ -23477,43 +23542,28 @@ is exact. Combining this with the above we conclude that
 $\text{Tor}_1^R(N, M) = 0$ for any $R$-module $N$ annihilated by $I$.
 
 \medskip\noindent
-In particular, if we apply this to the
-module $I/I^2$, then we conclude that the sequence
+Let us prove (2) by induction on $m$. The case $m = 1$ was
+done in the previous paragraph. For $N$ annihilated by $I^m$
+for $m > 1$ we may choose an exact sequence
+$0 \to N' \to N \to N'' \to 0$ with $N'$ and $N''$ annihilated
+by $I^{m - 1}$. For example one can take $N' = IN$ and $N'' = N/IN$.
+Then the exact sequence
 $$
-0 \to I^2 \otimes_R M \to I \otimes_R M  \to I/I^2 \otimes_R M \to 0
+\text{Tor}_1^R(N', M) \to
+\text{Tor}_1^R(N, M) \to
+\text{Tor}_1^R(N'', M)
 $$
-is short exact. This implies that $I^2 \otimes_R M \to M$ is injective
-and it implies that $I/I^2 \otimes_{R/I} M/IM = IM/I^2M$.
+and induction prove the vanishing we want.
 
 \medskip\noindent
-Let us prove that $M/I^2M$ is flat over $R/I^2$. Let $I^2 \subset J$
-be an ideal. We have to show that
-$J/I^2 \otimes_{R/I^2} M/I^2M \to M/I^2M$ is injective, see
-Lemma \ref{lemma-flat}.
-As $M/IM$ is flat over $R/I$ we know that the map
-$(I + J)/I \otimes_{R/I} M/IM \to M/IM$ is injective.
-The sequence
-$$
-(I \cap J)/I^2 \otimes_{R/I^2} M/I^2M \to
-J/I^2 \otimes_{R/I^2} M/I^2M \to
-(I + J)/I \otimes_{R/I} M/IM \to 0
-$$
-is exact, as you get it by tensoring the exact sequence
-$0 \to (I \cap J) \to J \to (I + J)/I \to 0$ by $M/I^2M$.
-Hence suffices to prove the injectivity of the map
-$(I \cap J)/I^2 \otimes_{R/I} M/IM \to IM/I^2M$. However, the map
-$(I \cap J)/I^2 \to I/I^2$ is injective and as $M/IM$
-is flat over $R/I$ the map
-$(I \cap J)/I^2 \otimes_{R/I} M/IM \to I/I^2 \otimes_{R/I} M/IM$
-is injective. Since we have previously seen that
-$I/I^2 \otimes_{R/I} M/IM = IM/I^2M$ we obtain the desired injectivity.
-
-\medskip\noindent
-Hence we have proven that the assumptions imply:
-(a) $\text{Tor}_1^R(N, M) = 0$ for all $N$ annihilated by $I$,
-(b) $I^2 \otimes_R M \to M$ is injective, and (c) $M/I^2M$ is flat
-over $R/I^2$. Thus we can continue by induction to get the
-same results for $I^n$ for all $n \geq 1$.
+Finally, we prove (1). Given $n \geq 1$ we have to show that $M/I^nM$
+is flat over $R/I^n$. In other words, we have to show that the functor
+$N \mapsto N \otimes_{R/I^n} M/I^nM$ is exact on the category of $R$-modules
+$N$ annihilated by $I^n$. However, for such $N$ we have
+$N \otimes_{R/I^n} M/I^nM = N \otimes_R M$. By the vanishing of
+$\text{Tor}_1$ in (2) we see that the functor $N \mapsto N \otimes_R M$
+is exact on the category of $N$ annihilated by some power of $I$
+and we conclude.
 \end{proof}
 
 \begin{lemma}
@@ -23542,7 +23592,7 @@ The second statement follows in the same manner using induction
 on $n$ to show that $M/I^{n + 1}M$ is flat over $R/I^{n + 1}$ for
 $n = 1, \ldots, k$. Here we use that
 $$
-\text{Tor}_1^{R/I^{n + 1}}(M/I^{n + 1}M, R/I) =
+\text{Tor}_1^{R/I^{n + 1}}(M/I^{n + 1}M, R/I^n) =
 \Ker(M \otimes_R I^n/I^{n + 1} \to I^nM/I^{n + 1}M)
 $$
 for every $n$.
@@ -23629,11 +23679,15 @@ By assumption $M/IM$ is flat over $R/I$. Hence it suffices to check
 that $\text{Tor}_1^R(M, R/I)$ is zero on localization at $\mathfrak q$. By
 Remark \ref{remark-Tor-ring-mod-ideal}
 this Tor group is equal to $K = \Ker(I \otimes_R M \to M)$.
-We know for each $n \geq 1$ that the kernel
-$\Ker(I/I^n \otimes_{R/I^n} M/I^nM \to M/I^nM)$ is zero.
-Since there is a module map
-$I/I^n \otimes_{R/I^n} M/I^nM \to (I \otimes_R M)/I^{n - 1}(I \otimes_R M)$
-we conclude that $K \subset I^{n - 1}(I \otimes_R M)$ for each $n$.
+We know that the kernel of
+$I/I^n \otimes_{R/I^n} M/I^nM \to M/I^nM$ is zero for all $n \geq 1$.
+Hence an element of $K$ maps to zero in $I/I^n \otimes_{R/I^n} M/I^nM$.
+Since
+$$
+I/I^n \otimes_{R/I^n} M/I^nM = I/I^n \otimes_R M =
+(I \otimes_R M)/I^{n - 1}(I \otimes_R M)
+$$
+we conclude that $K \subset I^{n - 1}(I \otimes_R M)$ for all $n \geq 1$.
 By the Artin-Rees lemma, and more precisely
 Lemma \ref{lemma-intersection-powers-ideal-module}
 we conclude that $K_{\mathfrak q} = 0$, as desired.
@@ -27173,8 +27227,8 @@ with equality if $R$ is universally catenary.
 \end{lemma}
 
 \begin{proof}
-Suppose that $R \subset S' \subset S$ is a finitely generated $R$-subalgebra
-of $S$. In this case set $\mathfrak q' = S' \cap \mathfrak q$.
+Suppose that $R \subset S' \subset S$, where $S'$ is a finitely generated
+$R$-subalgebra of $S$. In this case set $\mathfrak q' = S' \cap \mathfrak q$.
 The lemma for the ring maps $R \to S'$ and $S' \to S$ implies the
 lemma for $R \to S$ by additivity of transcendence degree in towers
 of fields (Fields, Lemma \ref{fields-lemma-transcendence-degree-tower}).
@@ -33596,7 +33650,7 @@ of elements in the lower right corner. Thus, modifying
 $\eta$ and $\theta$ by substracting the images of these
 elements, we may assume $\theta = \sum s_l'[r_l']$.
 In other words, we see $\sum \varphi(s_i)[\varphi(a_i)]$ is of the form
-$\sum s'_l [\beta(r'_l)]$. Pick $a' \in S'$.
+$\sum s'_l [\beta(r'_l)]$.
 Next, we may assume that we have some $a' \in S'$
 such that $a' = \varphi(a_i)$ for all $i$ and $a' = \beta(r_l')$
 for all $l$. This is clear from the direct sum decomposition
@@ -34669,7 +34723,7 @@ $$
 P_\bullet \longrightarrow S
 $$
 The cotangent complex $L_{S/R}$ of $S$ over $R$ is defined as the chain
-complex associated to the cosimplicial module
+complex associated to the simplicial module
 $$
 \Omega_{P_\bullet/R} \otimes_{P_\bullet} S
 $$
@@ -37534,7 +37588,8 @@ is a projective $S$-module. Thus (6) follows.
 \medskip\noindent
 Finally, let's prove that (6) implies (1). The assumption means that
 the complex $J/J^2 \to \Omega_{P/R} \otimes S$ where $P = R[S]$ and
-$P \to S$ is the canonical surjection (\ref{equation-canonical-presentation}).
+$P \to S$ is the canonical surjection (\ref{equation-canonical-presentation})
+is quasi-isomorphic to a projective $S$-module placed in degree $0$.
 Hence Lemma \ref{lemma-characterize-formally-smooth-again} shows that $S$
 is formally smooth over $R$.
 \end{proof}
@@ -37703,7 +37758,11 @@ $\sigma : S \to R[x_1, \ldots, x_n]/I^2$
 to the projection to $S$ as in
 Lemma \ref{lemma-characterize-formally-smooth}.
 Choose $h_i \in R[x_1, \ldots, x_n]$ such that
-$\sigma(x_i \bmod I) = h_i \bmod I^2$.
+$\sigma(x_i \bmod I) = h_i \bmod I^2$. Since $x_i - h_i \in I$, there
+exist $b_{ij} \in R[x_1, \ldots, x_n]$ such that
+$$
+x_i - h_i = \sum\nolimits_j b_{ij} f_j
+$$
 The fact that $\sigma$ is an $R$-algebra homomorphism
 $R[x_1, \ldots, x_n]/I \to R[x_1, \ldots, x_n]/I^2$
 is equivalent to the condition that
@@ -37712,12 +37771,15 @@ f_j(h_1, \ldots, h_n) = \sum\nolimits_{j_1 j_2} a_{j_1 j_2} f_{j_1} f_{j_2}
 $$
 for certain $a_{kl} \in R[x_1, \ldots, x_n]$.
 Let $R_0 \subset R$ be the subring generated over $\mathbf{Z}$
-by all the coefficients of the polynomials $f_j, h_i, a_{kl}$.
+by all the coefficients of the polynomials $f_j, h_i, a_{kl}, b_{ij}$.
 Set $S_0 = R_0[x_1, \ldots, x_n]/(f_1, \ldots, f_m)$,
-with $I_0 = (f_1, \ldots, f_m)$.
-Let $\sigma_0 : S_0 \to R_0[x_1, \ldots, x_n]/I_0^2$ defined by
-the rule $x_i \mapsto h_i \bmod I_0^2$; this works since the
-$a_{lk}$ are defined over $R_0$ and satisfy the same relations.
+with $I_0 = (f_1, \ldots, f_m)$. Since the second displayed equation
+holds in $R_0[x_1, \ldots, x_n]$ we can let
+$\sigma_0 : S_0 \to R_0[x_1, \ldots, x_n]/I_0^2$
+be the $R_0$-algebra map defined by the rule $x_i \mapsto h_i \bmod I_0^2$.
+Since the first displayed equation holds in $R_0[x_1, \ldots, x_n]$
+we see that $\sigma_0$ is a right inverse to the projection
+$R_0[x_1, \ldots, x_n] / I_0^2 \to R_0[x_1, \ldots, x_n] / I_0 = S_0$.
 Thus by Lemma \ref{lemma-characterize-formally-smooth}
 the ring $S_0$ is formally smooth over $R_0$.
 \end{proof}
@@ -38905,7 +38967,7 @@ polynomial of the element $\alpha$. Since $k'$ is separable over $k$
 we have $\gcd(f, f') = 1$. This
 implies that $\text{d} : k'\cdot f \to k' \cdot \text{d}x$
 is an isomorphism. Hence $k \to k'$ is \'etale. Thus if $S$
-is a finite product of finite separable extension of $k$, then
+is a finite product of finite separable extensions of $k$, then
 $S$ is \'etale over $k$.
 
 \medskip\noindent
@@ -41520,10 +41582,10 @@ $g_0 = \overline{g}$ and $h_0 = \overline{h}$ and
 moreover $\deg_T(g) = \deg_T(g_0)$,
 \item for any \'etale ring map $R \to S$ and prime $\mathfrak q$ of $S$
 lying over $\mathfrak m$ with $\kappa = \kappa(\mathfrak q)$
-there exists a section $\tau : S \to R$ of $R \to S$,
+there exists a retraction $\tau : S \to R$ of $R \to S$,
 \item for any \'etale ring map $R \to S$ and prime $\mathfrak q$ of $S$
 lying over $\mathfrak m$ with $\kappa = \kappa(\mathfrak q)$
-there exists a section $\tau : S \to R$ of $R \to S$ with
+there exists a unique retraction $\tau : S \to R$ of $R \to S$ such that
 $\mathfrak q = \tau^{-1}(\mathfrak m)$,
 \item any finite $R$-algebra is a product of local rings,
 \item any finite $R$-algebra is a finite product of local rings,
@@ -41563,17 +41625,18 @@ be a prime ideal such that $\kappa(\mathfrak q) \cong \kappa$. By
 Proposition \ref{proposition-etale-locally-standard}
 we can find a $g \in S$, $g \not \in \mathfrak q$ such that
 $R \to S_g$ is standard \'etale. After replacing $S$ by $S_g$ we may assume
-that $S = R[t]_g/(f)$ is standard \'etale. Since the prime $\mathfrak q$
-has residue field $\kappa$ it corresponds to a root $a_0$ of
-$\overline{f}$ which is not a root of $\overline{g}$. By definition
-of a standard \'etale algebra this also means that
-$\overline{f'}(a_0) \not = 0$.
+that $S = R[t]_g/(f)$ is standard \'etale (details omitted).
+Since the prime $\mathfrak q$ has residue field $\kappa$ it
+corresponds to a root $a_0$ of $\overline{f}$ which is not a
+root of $\overline{g}$. By definition of a standard \'etale algebra
+this also means that $\overline{f'}(a_0) \not = 0$.
 Since also $f$ is monic by definition of a standard \'etale algebra again we
 may use that $R$ is henselian to conclude that there exists an $a \in R$
 with $a_0 = \overline{a}$ such that $f(a) = 0$. This implies that
 $g(a)$ is a unit of $R$ and we obtain the desired map
 $\tau : S = R[t]_g/(f) \to R$ by the rule $t \mapsto a$. By construction
-$\tau^{-1}(\mathfrak q) = \mathfrak m$. This proves (8) holds.
+$\tau^{-1}(\mathfrak m) = \mathfrak q$. By Lemma \ref{lemma-uniqueness}
+the map $\tau$ is unique. This proves (8) holds.
 
 \medskip\noindent
 Proof of 7$\Rightarrow$8. (This is really unimportant and should be
@@ -41590,10 +41653,10 @@ for some $i$, but this cannot happen as the fiber of an
 \'etale morphism is discrete (use Lemma \ref{lemma-etale-over-field}
 for example).
 Apply (7) to the \'etale ring map
-$R \to S_g$ and the prime $\mathfrak qS_g$. This gives a section
+$R \to S_g$ and the prime $\mathfrak qS_g$. This gives a retraction
 $\tau_g : S_g \to R$ such that the composition $\tau : S \to S_g \to R$
 has the property $\tau^{-1}(\mathfrak m) = \mathfrak q$.
-Minor details omitted.
+Details omitted.
 
 \medskip\noindent
 Proof of 8$\Rightarrow$11. Assume (8) and let $R \to S$ be a finite type
@@ -41603,7 +41666,7 @@ We find an \'etale ring map $R \to R'$ and a prime $\mathfrak m' \subset R'$
 lying over $\mathfrak m$ with $\kappa = \kappa(\mathfrak m')$
 such that $R' \otimes_R S = A' \times B'$ with $A'$ finite over $R'$
 and $B'$ not quasi-finite over $R'$ at any prime lying over $\mathfrak m'$.
-Apply (8) to get a section $\tau : R' \to R$ with
+Apply (8) to get a retraction $\tau : R' \to R$ with
 $\mathfrak m = \tau^{-1}(\mathfrak m')$. Then use that
 $$
 S = (S \otimes_R R') \otimes_{R', \tau} R
@@ -41621,7 +41684,7 @@ lying over $\mathfrak m$ with $\kappa = \kappa(\mathfrak m')$
 such that $R' \otimes_R S = A'_1 \times \ldots \times A'_n \times B'$
 with $A'_i$ finite over $R'$ having exactly one prime over $\mathfrak m'$
 and $B'$ not quasi-finite over $R'$ at any prime lying over $\mathfrak m'$.
-Apply (8) to get a section $\tau : R' \to R$ with
+Apply (8) to get a retraction $\tau : R' \to R$ with
 $\mathfrak m' = \tau^{-1}(\mathfrak m)$. Then we obtain
 \begin{align*}
 S & = (S \otimes_R R') \otimes_{R', \tau} R \\
@@ -42448,10 +42511,11 @@ polynomial and $a_0 \in \kappa$ is a simple root of
 the reduction $\overline{P} \in \kappa[T]$.
 Then we can find a pair $(S, \mathfrak q)$ such that
 $P$ is the image of a monic polynomial $Q \in S[T]$.
-Since $S \to R^h$ induces an isomorphism of residue
-fields we see that $S' = S[T]/(Q)$ has a prime ideal
-$\mathfrak q' = (\mathfrak q, T - a_0)$ at which
-$S \to S'$ is standard \'etale. Moreover, $\kappa = \kappa(\mathfrak q')$.
+Set $S' = S[T]/(Q)$ and let $\mathfrak q' \subset S'$
+be the maximal ideal $\mathfrak q' = \mathfrak qS' + (T - a')S'$
+where $a' \in S$ is any element lifting $a_0$.
+By construction $S \to S'$ is \'etale at $\mathfrak q'$
+and $\kappa = \kappa(\mathfrak q')$.
 Pick $g \in S'$, $g \not \in \mathfrak q'$ such that
 $S'' = S'_g$ is \'etale over $S$. Then
 $(S, \mathfrak q) \to (S'', \mathfrak q'S'')$ is a morphism
@@ -43339,7 +43403,7 @@ Now $R_\mathfrak p[1/t]$ is contained in the product
 of its localizations at prime ideals, see
 Lemma \ref{lemma-characterize-zero-local}.
 This implies that $R_{\mathfrak p}$ is a subring of a product of
-localizations of $R$ at $\mathfrak q \supset \mathfrak p$ with
+localizations of $R$ at $\mathfrak p \supset \mathfrak q$ with
 $t \not \in \mathfrak q$. Since theses primes have smaller height
 by induction on the height we conclude that $R$ is reduced.
 \end{proof}

@@ -3382,6 +3382,27 @@ and the proof is done.
 \end{proof}
 
 \begin{lemma}
+\label{lemma-lift-smooth-henselian}
+Let $R$ be a ring and $S$ a smooth $R$-algebra. Assume that $A$
+is an $R$-algebra and $(A,I)$ is a henselian pair. Then any $R$-algebra
+map $S \to A/I$ can be lifted to an $R$-algebra map $S \to A$.
+\end{lemma}
+
+\begin{proof}
+Let $\tau : S \to A/I$ be an $R$-algebra map.
+Observe that $S \otimes_R A$ is a smooth $A$-algebra by
+Algebra, Lemma \ref{algebra-lemma-base-change-smooth}.
+Thus by Lemma \ref{lemma-lift-section-smooth-morphism} we can lift
+the induced map $S \otimes_R A \to A/I$ to an $A$-algebra
+homorphism $S \otimes_R A \to A'$ where $A \to A'$ is \'etale
+and induces an isomorphism $A/I \to A'/IA'$. Since $(A, I)$
+is henselian there is an $A$-algebra map $A' \to A$, see
+Lemma \ref{lemma-characterize-henselian-pair}.
+The composition $S \to S \otimes_R A \to A' \to A$ is the
+desired lift.
+\end{proof}
+
+\begin{lemma}
 \label{lemma-lim-finite-projective-gives-finite-projective}
 Let $A = \lim A_n$ be a limit of an inverse system $(A_n)$ of rings.
 Suppose given $A_n$-modules $M_n$ and $A_{n + 1}$-module maps
@@ -13368,7 +13389,7 @@ Let $I = \{f \in R \mid fx \in M\}$. This is an ideal of $R$.
 Define a homomorphism $\psi : I \to J$ by $f \mapsto \varphi(fx)$.
 Extend to a map $\tilde\psi : R \to J$ which is possible by assumption (3).
 By our choice of $I$ the kernel of
-$M \oplus R \to J$, $(y, f) \mapsto y - \tilde\psi(f)$
+$M \oplus R \to J$, $(y, f) \mapsto \varphi(y) + \tilde\psi(f)$
 contains the kernel of the map $M \oplus R \to N$,
 $(y, f) \mapsto y + fx$. Hence this homomorphism factors
 through the image $M' = M + Rx$ and this extends the given homomorphism
@@ -14527,7 +14548,7 @@ of rings. Given an object $K$ of $D(A)$ we can consider its derived
 base change $K \otimes_A^\mathbf{L} A'$ to an object of $D(A')$.
 Or we can take the restriction of $K$ to an object of $D(R)$ and
 consider the derived base change of this to an object of $D(R')$,
-denoted $K \otimes_R^\mathbf{L} R'$
+denoted $K \otimes_R^\mathbf{L} R'$.
 We claim there is a functorial comparison map
 \begin{equation}
 \label{equation-comparison-map}
@@ -16492,6 +16513,48 @@ tor dimension $\leq d$. The second statement follows from
 Lemma \ref{lemma-cohomology-tor-amplitude}
 and the definitions. The third statement is a rephrasing of the second.
 \end{proof}
+
+\begin{lemma}
+\label{lemma-check-tor-dimension-modulo-nilpotent}
+Let $R' \to R$ be a surjective ring map whose kernel is a nilpotent ideal.
+Let $K' \in D(R')$ and set $K = K' \otimes_{R'}^\mathbf{L} R$.
+Let $a, b \in \mathbf{Z}$.
+Then $K$ has tor amplitude in $[a, b]$ if and only if $K'$ does.
+\end{lemma}
+
+\begin{proof}
+One direction follows from Lemma \ref{lemma-pull-tor-amplitude}.
+For the other, assume $K$ has tor amplitude in $[a, b]$ and let
+$M'$ be an $R'$-module. We have to show that $K' \otimes_{R'}^\mathbf{L} M'$
+has nonzero cohomology only for degrees contained in the interval $[a, b]$.
+
+\medskip\noindent
+Let $I = \Ker(R' \to R)$. Then $I^n = 0$ for some $n$. If $IM' = 0$,
+then we can view $M'$ as an $R$-module and argue as follows
+$$
+K' \otimes_{R'}^\mathbf{L} M' =
+K' \otimes_{R'}^\mathbf{L} (R \otimes_R^\mathbf{L} M') =
+(K' \otimes_{R'}^\mathbf{L} R) \otimes_R^\mathbf{L} M' =
+K \otimes_R^\mathbf{L} M'
+$$
+which has nonvanishing cohomology only in the interval $[a, b]$
+by assumption on $K$. If $I^{t + 1}M' = 0$, then we consider the
+short exact sequence
+$$
+0 \to IM' \to M' \to M'/IM' \to 0
+$$
+By induction on $t$ we have that both $K' \otimes_{R'}^\mathbf{L} IM'$
+and $K' \otimes_{R'}^\mathbf{L} M'/IM'$ have nonzero cohomology only for
+degrees in the interval $[a, b]$. Then the distinguished triangle
+$$
+K' \otimes_{R'}^\mathbf{L} IM' \to
+K' \otimes_{R'}^\mathbf{L} M'
+K' \otimes_{R'}^\mathbf{L} M'/IM'
+(K' \otimes_{R'}^\mathbf{L} IM')[1]
+$$
+proves the same is true for $K' \otimes_{R'}^\mathbf{L} M'$ as desired.
+\end{proof}
+
 
 
 
@@ -18654,6 +18717,25 @@ The first cohomologies vanish above a certain degree
 by induction assumption and the second cohomologies vanish
 above a certain degree because $K^\bullet \otimes_R^\mathbf{L} R/I$
 is bounded above and $I^n/I^{n + 1}$ is in degree $0$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-check-pseudo-coherent-modulo-nilpotent}
+Let $R' \to R$ be a surjective ring map whose kernel is a nilpotent ideal.
+Let $K' \in D(R')$ and set $K = K' \otimes_{R'}^\mathbf{L} R$.
+Then $K$ is pseudo-coherent if and only if $K'$ is pseudo-coherent.
+\end{lemma}
+
+\begin{proof}
+One direction follows from Lemma \ref{lemma-pull-pseudo-coherent}.
+For the other direction, assume $K$ is pseudo-coherent. Then by
+Lemma \ref{lemma-pseudo-coherent} we can represent $K$ by a bounded
+above complex $E^\bullet$ of finite free $R$-modules. By
+Lemma \ref{lemma-lift-complex-projectives} we can represent
+$K'$ by a bounded above complex $P^\bullet$ of projective
+$R'$-modules such that $P^n \otimes_{R'} R = E^n$.
+By Nakayama's lemma we see that $P^n$ is finite free
+and we conclude that $K'$ is pseudo-coherent as well.
 \end{proof}
 
 \begin{lemma}
@@ -21313,48 +21395,11 @@ If $K$ is $R$-perfect, then $K'$ is $R'$-perfect.
 \end{lemma}
 
 \begin{proof}
-We can represent $K$ by a bounded above complex of finite free
-$A$-modules $E^\bullet$, see Lemma \ref{lemma-pseudo-coherent}.
-By Lemma \ref{lemma-lift-complex-projectives}
-we conclude that $K'$ is pseudo-coherent because it can be represented
-by a bounded above complex $P^\bullet$ of finite free $A'$-modules
-with $P^\bullet \otimes_{A'} A = E^\bullet$. Observe that
-this also means $P^\bullet \otimes_{R'} R = E^\bullet$
-(since $A = A' \otimes_{R'} R$).
-
-\medskip\noindent
-Let $I = \Ker(R' \to R)$. Then $I^n = 0$ for some $n$.
-Choose $[a, b]$ such that $K$ has tor amplitude in $[a, b]$
-as a complex of $R$-modules. We will show $K'$ has
-tor amplitude in $[a, b]$. To do this, let $M'$
-be an $R'$-module. If $IM' = 0$, then
-$$
-K' \otimes_{R'}^\mathbf{L} M' =
-P^\bullet \otimes_{R'} M' =
-E^\bullet \otimes_R M' = K \otimes_R^\mathbf{L} M'
-$$
-(because $A'$ is flat over $R'$ and $A$ is flat over $R$)
-which has nonzero cohomology only for degrees in $[a, b]$
-by choice of $a, b$.
-If $I^{t + 1}M' = 0$, then we consider the short exact sequence
-$$
-0 \to IM' \to M' \to M'/IM' \to 0
-$$
-with $M = M'/IM'$. By induction on $t$ we have that both
-$K' \otimes_{R'}^\mathbf{L} IM'$ and
-$K' \otimes_{R'}^\mathbf{L} M'/IM'$ have nonzero cohomology
-only for degrees in $[a, b]$. Then the distinguished
-triangle
-$$
-K' \otimes_{R'}^\mathbf{L} IM' \to
-K' \otimes_{R'}^\mathbf{L} M' \to
-K' \otimes_{R'}^\mathbf{L} M'/IM' \to
-(K' \otimes_{R'}^\mathbf{L} IM')[1]
-$$
-proves the same is true for
-$K' \otimes_{R'}^\mathbf{L} M'$.
-This proves the desired bound for all $M'$ and hence the
-desired bound on the tor amplitude of $K'$.
+Observe that $A' \to A$ has nilpotent kernel and that by flatness of
+$R' \to A'$ we have $K = K' \otimes_{R'}^\mathbf{L} R$ (see
+Section \ref{section-tor-independence}). Hence the lemma follows by combining
+Lemmas \ref{lemma-check-pseudo-coherent-modulo-nilpotent} and
+\ref{lemma-check-tor-dimension-modulo-nilpotent}.
 \end{proof}
 
 \begin{lemma}
@@ -23139,7 +23184,7 @@ exact sequence of modules with $M'$ and $M''$ both $I$-power torsion
 modules. Then $M[I^\infty] \supset M'$ and hence $M/M[I^\infty]$ is a
 quotient of $M''$ and therefore $I$-power torsion. Combined with
 the first statement and Lemma \ref{lemma-torsion-free} this implies
-that it is zero
+that it is zero.
 \end{proof}
 
 \begin{lemma}
@@ -23186,7 +23231,7 @@ The next lemma should probably go somewhere else.
 \begin{lemma}
 \label{lemma-derived-vanishing-mod-I}
 Let $R$ be a ring. Let $I \subset R$ be an ideal. Let $K$ be an object of
-$D(R)$ such hat $K \otimes_R^\mathbf{L} R/I = 0$ in $D(R)$. Then
+$D(R)$ such that $K \otimes_R^\mathbf{L} R/I = 0$ in $D(R)$. Then
 \begin{enumerate}
 \item $K \otimes_R^\mathbf{L} R/I^n = 0$ for all $n \geq 1$,
 \item $K \otimes_R^\mathbf{L} N = 0$ for any $I$-power torsion
@@ -23411,7 +23456,7 @@ Next we prove (2). If $N$ is $I$-power torsion, then
 $N \otimes_R S = N$ and the displayed map of (2) is an isomorphism by
 Algebra, Lemma \ref{algebra-lemma-adjoint-tensor-restrict}.
 If $M$ is $I$-power torsion, then the image of any map
-$M \to N$ factors through $M[I^\infty]$ and the image of any map
+$M \to N$ factors through $N[I^\infty]$ and the image of any map
 $M \otimes_R S \to N \otimes_R S$ factors through
 $(N \otimes_R S)[(IS)^\infty]$. Hence in this case
 part (1) guarantees that we may replace $N$ by $N[I^\infty]$
@@ -23585,6 +23630,7 @@ Lemma \ref{lemma-I-power-torsion-presentation}
 we can find a surjection $M' \to M$ with $M'$ a direct sum of
 modules of the form $R/I^n$. Using the long exact sequence of
 Homology, Lemma \ref{homology-lemma-six-term-sequence-ext}
+and using Lemma \ref{lemma-neighbourhood-equivalence}
 we see that it suffices to prove the lemma for $M'$.
 Using compatibility of $\Ext$ with direct sums (details omitted)
 we reduce to the case where $M = R/I^n$ for some $n$.
