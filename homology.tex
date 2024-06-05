@@ -602,7 +602,7 @@ is a coequalizer diagram, from $\Ker(f)=0$ we deduce $x=\Coim(f)$.
 
 Now suppose $\mathcal{A}$ is abelian.
 
-(4)$\Leftrightarrow$(6) The image-coimage factorization of $f$ is
+(4)$\Leftrightarrow$(6). The image-coimage factorization of $f$ is
 $$
 \xymatrix{
 x\ar[r]^f\ar[d]&y\\
@@ -611,7 +611,7 @@ x\ar[r]^f\ar[d]&y\\
 $$
 By the uniqueness of the image factorization, the left-bottom composite of this diagram must coincide with the canonical morphism $x\to\Im f$. Then we have that $x\to\Coim f$ is an isomorphism if and only if the composite $x\to\Coim f\xrightarrow{\cong}\Im f$ is an isomorphism.
 
-(6)$\Rightarrow$(7) Since the diagram
+(6)$\Rightarrow$(7). Since the diagram
 $$
 \xymatrix{
 	x\ar[rr]^f\ar[dr]_{\cong}&&y\\
@@ -620,7 +620,7 @@ $$
 $$
 commutes, $f$ and $\Im f\to y$ are isomorphic as objects over $y$. Thus $f$ is its own image.
 
-(7)$\Rightarrow$(6) By uniqueness of the image factorization, the canonical morphism $x\to\Im f=x$ must be the identity.
+(7)$\Rightarrow$(6). By uniqueness of the image factorization, the canonical morphism $x\to\Im f=x$ must be the identity.
 
 The proof of the other equivalences is dual.
 \end{proof}
@@ -662,7 +662,7 @@ for all morphisms $f\in\mathcal{A}$.
 Recall the canonical factorization through the (co)image explained
 before Lemma \ref{lemma-characterize-injective}.
 Recall as well the definition of a balanced category in Categories,
-Definition \ref{definition-balanced-category}.
+Definition \ref{categories-definition-balanced-category}.
 
 \begin{lemma}\label{lemma-characterize-abelian-categories}
 	Let $\mathcal{A}$ be a preabelian category. The following are equivalent:
@@ -676,6 +676,8 @@ Definition \ref{definition-balanced-category}.
 		$\mathcal{A}$, the canonical morphisms $x\to\Im f$ and $\Coim f\to y$ are surjective and injective, respectively.
 	\end{enumerate}
 \end{lemma}
+
+Let $x$ be an object of $\mathcal{A}$. The class of subobjects of $x$ is preordered with: $(z,i)\leq(w,j)$ if there is a morphism $f:z\to w$ such that $j\circ f=i$ (note there is at most one such $f$). Denote $S$ to the induced partially ordered class from this preorder (i.e., an element of $S$ is an isomorphism class of subobjects of $x$). Dually, denote $Q$ to the partially ordered class of isomorphism classes of quotients of $x$. We have order-reversing maps $\operatorname{coker}:S\to Q$ and $\operatorname{ker}:Q\to S$. Property (3) can be equivalently stated by saying that these maps are mutually inverse.
 
 \begin{proof}
 	(1)$\Rightarrow$(2). Let $f:x\to y$ be a monomorphism of $\mathcal{A}$.
