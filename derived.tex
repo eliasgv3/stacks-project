@@ -4573,7 +4573,7 @@ is an isomorphism.
 We only prove (1), for the proof of (2) is dual.
 The first claim follows from the fact that precomposition
 by $s$ induces a cofinal functor $Y/S\to X/S$ and
-by Categories, Lemma \ref{lemma-cofinal-essentially-constant}.
+by Categories, Lemma \ref{categories-lemma-cofinal-essentially-constant}.
 
 It is left to see that $RF(s)$ is an isomorphism. The diagram of functors
 
@@ -4587,7 +4587,7 @@ commutes, where the horizontal map is precomposition
 by $s$ and the vertical maps are the ones from
 Definition \ref{definition-right-derived-functor-defined}(1).
 Thus, we get a natural map of colimits $g:RF(Y)\to RF(X)$, that is an
-isomorphism by Categories, Lemma \ref{lemma-cofinal}.
+isomorphism by Categories, Lemma \ref{categories-lemma-cofinal}.
 We are going to show that $g^{-1}=RF(s)$.
 Suppose that we have a commutative diagram
 $$
@@ -4655,7 +4655,7 @@ Lemmas \ref{lemma-2-out-of-3-defined} and \ref{proposition-derived-functor}.
 	Suppose $RF$ is defined at $X,Y$. There are morphisms $s:S\to X'$,
 	$s':Y\to Y'$ in $S$, $f:X'\to Y'$ in $\mathcal{D}$ and
 	$\alpha:RF(X)\to F(X')$, $\beta: RF(Y)\to F(Y')$ as in
-	Categories, Definition \ref{definition-essentially-constant-diagram}
+	Categories, Definition \ref{categories-definition-essentially-constant-diagram}
 	such that the diagrams
 	\[
 	\xymatrix{
@@ -4674,13 +4674,13 @@ Lemmas \ref{lemma-2-out-of-3-defined} and \ref{proposition-derived-functor}.
 \begin{proof}
 	Pick objects $X\to X''$, $X\to X'''$ of $X/S$
 	for which there are maps $RF(X)\to F(X'')$, $RF(X)\to F( X''')$
-	satisfying Categories, Definition \ref{definition-essentially-constant-diagram}.
+	satisfying Categories, Definition \ref{categories-definition-essentially-constant-diagram}.
 	In particular, $F( X''')\to RF(X)$ is epic.
 	There are maps $X''\to X'$, $ X'''\to X'$ in $X/S$,
 	such that the map $F( X''')\to F(X')$ equals
 	$F( X''')\to RF(X)\to F(X'')\to F(X')$.
 	Note that the morphism $ X'''\to X'$ is in $S$,
-	for $S$ is saturated (Lemma \ref{lemma-what-gets-inverted}).
+	for $S$ is saturated (Categories, Lemma \ref{categories-lemma-what-gets-inverted}).
 	By MS2, there is a commutative diagram
 	\[
 	\xymatrix{
@@ -4691,7 +4691,7 @@ Lemmas \ref{lemma-2-out-of-3-defined} and \ref{proposition-derived-functor}.
 	with $Y\to  Y'''$ in $S$.
 	Pick an object $Y\to\tilde{Y}''$ of $Y/S$ for which there
 	is a morphism $RF(Y)\to F(\tilde{Y}'')$ satisfying
-	Categories, Definition \ref{definition-essentially-constant-diagram}.
+	Categories, Definition \ref{categories-definition-essentially-constant-diagram}.
 	There are morphisms $ Y'''\to Y''$,
 	$\tilde{Y}''\to Y''$ in $Y/S$ such that $F( Y''')\to F(Y'')$
 	equals the composite
@@ -4726,7 +4726,7 @@ Lemmas \ref{lemma-2-out-of-3-defined} and \ref{proposition-derived-functor}.
 	the composites $s:X\to X'''\to X'$, $s':Y\to Y'''\to Y''\to Y'$,
 	$\alpha:RF(X)\to F(X'')\to F(X')$,
 	$\beta:RF(Y)\to F(\tilde{Y}'')\to F(Y'')\to F(Y')$.
-	(Categories, Remark \ref{remark-essentially-constant-down-the-diagram}.)
+	(Categories, Remark \ref{categories-remark-essentially-constant-down-the-diagram}.)
 	
 	\medskip\noindent
 	We now show uniqueness of $RF(f)$.
@@ -4741,7 +4741,7 @@ Lemmas \ref{lemma-2-out-of-3-defined} and \ref{proposition-derived-functor}.
 			}
 	\]
 	where $s,s'\in S$ and $\alpha,\beta$ are as in
-	Categories, Definition \ref{definition-essentially-constant-diagram}.
+	Categories, Definition \ref{categories-definition-essentially-constant-diagram}.
 	Let
 	\begin{equation*}
 		\xymatrix{
@@ -4788,7 +4788,7 @@ Lemmas \ref{lemma-2-out-of-3-defined} and \ref{proposition-derived-functor}.
 	\]
 	commutes. At this stage, note that the composite
 	$RF(Y)\to F(Y')\to F(Y''')$ is a monomorphism
-	(Categories, Remark \ref{remark-essentially-constant-down-the-diagram}).
+	(Categories, Remark \ref{categories-remark-essentially-constant-down-the-diagram}).
 	However, it is not clear that if we add $F(X'')\to F(Y'')$,
 	then the outer square will commute.
 	For this reason, we do the following:
@@ -4845,7 +4845,7 @@ Lemmas \ref{lemma-2-out-of-3-defined} and \ref{proposition-derived-functor}.
 	It then follows that the left square commutes after
 	postcomposition with $RF(Y)\to F(Y')\to F(Y''')$.
 	But this last composite is a monomorphism
-	(Categories, Remark \ref{remark-essentially-constant-down-the-diagram}),
+	(Categories, Remark \ref{categories-remark-essentially-constant-down-the-diagram}),
 	and we win.
 \end{proof}
 
@@ -4892,7 +4892,7 @@ By
 Lemma \ref{lemma-derived-inverts}
 it suffices to prove that $RF(Z')$ is defined and has value $C$.
 We will actually prove that the morphism $\gamma$ is as in
-Categories, Definition \ref{definition-essentially-constant-diagram};
+Categories, Definition \ref{categories-definition-essentially-constant-diagram};
 from the uniqueness in Lemma \ref{lemma-derived-functor-second-definition}
 it will follow that $b=RF(g)$, $c=RF(h)$.
 Consider the category $\mathcal{I}$ of
@@ -4936,7 +4936,7 @@ $$
 $$
 is bijective.
 We finish by Categories,
-Lemma \ref{lemma-characterize-essentially-constant-ind}.
+Lemma \ref{categories-lemma-characterize-essentially-constant-ind}.
 The proof for $LF$ is dual.
 \end{proof}
 
