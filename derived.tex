@@ -255,6 +255,11 @@ $$
 commutes.
 
 \begin{definition}
+	Let $\mathcal{D}$, $\mathcal{D}'$ be triangulated categories. A contravariant triangulated functor from $\mathcal{D}$ to $\mathcal{D}'$ is a triangulated functor $F:\mathcal{D}^\mathrm{op}\to\mathcal{D}'$, where $\mathcal{D}^\mathrm{op}$ is defined in Lemma \ref{lemma-opposite-triangulated-category}.
+\end{definition}
+Equivalently, a contravariant triangulated functor from $\mathcal{D}$ to $\mathcal{D}'$ is a contravariant functor $F$ from $\mathcal{D}$ to $\mathcal{D}'$ equipped with an isomorphism of functors $\xi:F\circ[-1]^\mathrm{op}\to [1]\circ F$ (where $[-1]^\mathrm{op}$ is the opposite functor of some quasi-inverse of $[1]:\mathcal{D}\to\mathcal{D}$) such that for every distinguished triangle $A\to B\to C\to A[1]$ in $\mathcal{D}$ we have that $F(C)[1]\xleftarrow{-\xi_C\circ F(h[-1])}F(A)\leftarrow F(B)\leftarrow F(C)$ is a distinguished triangle in $\mathcal{D}'$.
+
+\begin{definition}
 \label{definition-triangulated-subcategory}
 Let $(\mathcal{D}, [\ ], \mathcal{T})$ be a pre-triangulated category.
 A {\it pre-triangulated subcategory}\footnote{This definition may be
