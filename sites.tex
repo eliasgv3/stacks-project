@@ -2093,8 +2093,22 @@ $$
 \Mor_{\Sh(\mathcal{C})}(\mathcal{F}^\#, \mathcal{G}).
 $$
 In other words, the functor of sheafification is the left adjoint
-to the inclusion functor $i$. We finish this section with a couple
-of lemmas.
+to the inclusion functor $i$.
+
+\begin{example}
+\label{example-constant-sheaf}
+Let $\mathcal{C}$ be a site. Let $E$ be a set.
+The {\it constant sheaf $\underline{E}$ with value $E$}
+is the sheafification of the presheaf given by the constant
+functor with value $E$. It is characterized by the rule
+$\Mor_{\Sh(\mathcal{C})}(\underline{E}, \mathcal{F}) =
+\Mor_{\textit{Sets}}(E, \Gamma(\mathcal{C}, \mathcal{F}))$
+for every sheaf $\mathcal{F}$ on $\mathcal{C}$ where the
+notation is from Definition \ref{definition-global-sections}.
+\end{example}
+
+\noindent
+We finish this section with a couple of lemmas.
 
 \begin{lemma}
 \label{lemma-colimit-sheaves}
@@ -3490,7 +3504,7 @@ and we see that there exists an $i_{jj'} \in I$,
 $i_{jj'} \geq i_j$, $i_{jj'} \geq i_{j'}$ such that
 $\varphi_{i_ji_{jj'}}(s_j)$ and $\varphi_{i_{j'}i_{jj'}}(s_{j'})$
 agree over $U_j \times_U U_{j'}$. Choose an index $i \in I$
-wich is bigger or equal than all the $i_{jj'}$. Then we see that
+which is bigger or equal than all the $i_{jj'}$. Then we see that
 the sections $\varphi_{i_ji}(s_j)$ of $\mathcal{F}_i$ glue
 to a section of $\mathcal{F}_i$ over $U$. This section is mapped
 to the element $s$ as desired.
@@ -3546,7 +3560,7 @@ for all $\mathcal{F}$ in $\Sh(\mathcal{C})$.
 Let $a_i, b_i : * \to \mathcal{F}_i$ and for
 $i' \geq i$ denote $a_{i'}, b_{i'} : * \to \mathcal{F}_{i'}$
 the composition with the transition maps of the system.
-Set $a = \colim_{i' \geq i} a_{i'}$ and similary for $b$.
+Set $a = \colim_{i' \geq i} a_{i'}$ and similarly for $b$.
 For $i' \geq i$ denote
 $$
 E_{i'} = \text{Equalizer}(a_{i'}, b_{i'}) \subset *
@@ -3617,7 +3631,7 @@ For $i' \geq i$ denote
 $a_{i'}, b_{i'} : \mathcal{K} \times \mathcal{K} \to \mathcal{F}_{i'}$
 the composition of $a_i, b_i$ with the transition maps of the system.
 Set $a = \colim_{i' \geq i} a_{i'} :
-\mathcal{K} \times \mathcal{K} \to \mathcal{F}$ and similary for $b$.
+\mathcal{K} \times \mathcal{K} \to \mathcal{F}$ and similarly for $b$.
 We have $a = b$ by the commutativity of the diagram above.
 For $i' \geq i$ denote
 $$
@@ -4922,7 +4936,7 @@ Assume $v$ has a left adjoint $u : \mathcal{C} \to \mathcal{D}$. Then
 \ref{lemma-have-functor-other-way-morphism} hold.
 \end{enumerate}
 In particular, $v$ defines a morphism of sites
-$f : \mathcal{D} \to \mathcal{C}$.
+$f : \mathcal{C} \to \mathcal{D}$.
 \end{lemma}
 
 \begin{proof}
@@ -4950,17 +4964,19 @@ be functors of the underlying categories such that $v$ is right adjoint to $u$.
 Lemma \ref{lemma-continuous-with-continuous-left-adjoint}
 shows that if $v$ is continuous, then $u$ is cocontinous.
 Conversely, if $u$ is cocontinuous, then we can't conclude that $v$
-is continuous. Namely, consider a topological space $X$ and
-the site $X_{Zar}$ of Example \ref{example-site-topological}.
-On the other hand, given an open covering $X = W \cup V$
-we can consider the site $X'_{Zar}$ defined in exactly the
-same manner, except that we declare $U = \bigcup U_i$ to be
-a covering if and only if for each $i$ either $U_i \subset W$
-or $U_i \subset V$. Set $u = v = \text{id}$. Then
-$v$ viewed as functor $X'_{Zar} \to X_{Zar}$ is continuous
-(as any covering in $X_{Zar}$ can be refined by a covering in
-$X'_{Zar}$) but $u$ viewed as a functor $X_{Zar} \to X'_{Zar}$
-is not continuous (provided neither $W \not = X$ and $V \not = X$).
+is continuous. We will give an example of this phenomenon using
+the big \'etale and smooth sites of a scheme, but presumably there is an
+elementary example as well. Namely, consider a scheme $S$ and the sites
+$(\Sch/S)_\etale$ and $(\Sch/S)_{smooth}$. We may assume these
+sites have the same underlying category, see
+Topologies, Remark \ref{topologies-remark-choice-sites}.
+Let $u = v = \text{id}$. Then $u$ as a functor
+from $(\Sch/S)_\etale$ to $(\Sch/S)_{smooth}$ is cocontinuous
+as every smooth covering of a scheme can be refined by an \'etale
+covering, see More on Morphisms, Lemma
+\ref{more-morphisms-lemma-etale-dominates-smooth}.
+Conversely, the functor $v$ from $(\Sch/S)_{smooth}$ to $(\Sch/S)_\etale$
+is not continuous as a smooth covering is not an \'etale covering in general.
 \end{example}
 
 
@@ -11016,7 +11032,7 @@ Let $U \in \Ob(\mathcal{C})$.
 
 \begin{proof}
 Let $S, S' \in J(U)$. Consider $S'' = S \cap S'$. For every
-$V \to U$ in $S(U)$ we have
+$V \to U$ in $S(V)$ we have
 $$
 S' \times_U V = S'' \times_U V
 $$
@@ -11025,7 +11041,7 @@ axiom of the definition we see that $S'' \in J(U)$.
 
 \medskip\noindent
 Let $S \in J(U)$ and $S' \supset S$. For every
-$V \to U$ in $S(U)$ we have $S' \times_U V = h_V$ by
+$V \to U$ in $S(V)$ we have $S' \times_U V = h_V$ by
 Lemma \ref{lemma-pullback-sieve-section}. Thus
 $S' \times_U V \in J(V)$ by the third axiom. Hence
 $S' \in J(U)$ by the second axiom.
@@ -11681,7 +11697,7 @@ we will also denote $\text{id}_U$.
 Suppose $S$ is a covering sieve. It clearly suffices to
 find a morphism $h_U \to S^\#$ such that the composition
 $h_U \to h_U^\#$ is the canonical map. To find such a map
-it suffices to find a section $s \in S^\#(U)$ wich restricts
+it suffices to find a section $s \in S^\#(U)$ which restricts
 to $\text{id}_U$. But since $S$ is a
 covering sieve, the element
 $\text{id}_S \in \Mor_{\textit{PSh}(\mathcal{C})}(S, S)$

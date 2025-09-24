@@ -1157,7 +1157,7 @@ We will apply Cohomology, Lemma
 \ref{cohomology-lemma-higher-direct-image-colimit}.
 Since the affine opens form a basis for the topology of $S$,
 it suffices to show that for $U \subset S$ affine open we have
-$H^p(f^{-1}U, \mathcal{F}) = \colim H^p(f^{-1}U, \mathcal{F}_i$.
+$H^p(f^{-1}U, \mathcal{F}) = \colim H^p(f^{-1}U, \mathcal{F}_i)$.
 Since $f^{-1}U$ is quasi-compact and quasi-separated we conclude
 using
 Cohomology, Lemma \ref{cohomology-lemma-quasi-separated-cohomology-colimit}.
@@ -1611,10 +1611,10 @@ $$
 H^q(\mathbf{P}^n, \mathcal{O}_{\mathbf{P}^n_R}(d)) =
 \left\{
 \begin{matrix}
-(R[T_0, \ldots, T_n])_d & \text{if} & q = 0 \\
-0 & \text{if} & q \not = 0, n \\
+(R[T_0, \ldots, T_n])_d & \text{if} & q = 0,\ d \geq 0 \\
 \left(\frac{1}{T_0 \ldots T_n} R[\frac{1}{T_0}, \ldots, \frac{1}{T_n}]\right)_d
-& \text{if} & q = n
+& \text{if} & q = n,\ d < 0 \\
+0 & \text{if} & q, n, d\text{ not as above}
 \end{matrix}
 \right.
 $$
@@ -1780,7 +1780,8 @@ h(s)_{i_0 \ldots i_p} =
 s_{i_{\text{fix}} i_0 \ldots i_p} & \text{if} & i_{\text{fix}} < i_0 \\
 (-1)^a s_{i_0 \ldots i_{a - 1} i_{\text{fix}} i_a \ldots i_p} &
 \text{if} & i_{a - 1} < i_{\text{fix}} < i_a \\
-(-1)^p s_{i_0 \ldots i_p} & \text{if} & i_p < i_{\text{fix}}
+(-1)^{p + 1} s_{i_0 \ldots i_p i_{\text{fix}}} &
+\text{if} & i_p < i_{\text{fix}}
 \end{matrix}
 \right.
 $$

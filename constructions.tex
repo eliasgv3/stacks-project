@@ -400,7 +400,8 @@ $$
 $$
 is the open immersion of Lemma \ref{lemma-spec-inclusion} above.
 \end{enumerate}
-Moreover, $\underline{\Spec}_S(\mathcal{A})$ is unique up to unique isomorphism over $S$.
+Moreover, $\underline{\Spec}_S(\mathcal{A})$
+is unique up to unique isomorphism over $S$.
 \end{lemma}
 
 \begin{proof}
@@ -798,8 +799,7 @@ By Modules, Lemma \ref{modules-lemma-whole-tensor-algebra-permanence}
 the symmetric algebra $\text{Sym}(\mathcal{E})$ of
 $\mathcal{E}$ over $\mathcal{O}_S$
 is a quasi-coherent sheaf of $\mathcal{O}_S$-algebras.
-Hence it makes sense to apply the construction of the
-previous section to it.
+Hence it makes sense to apply the relative spectrum.
 
 \begin{definition}
 \label{definition-vector-bundle}
@@ -1429,11 +1429,11 @@ If $e_i > 0$ for some $i > r$, then
 $\varphi'(x_1^{e_1} \ldots x_n^{e_n}/x_0^{e_0}) = 0$.
 If $e_i = 0$ for $i > r$, then we have
 \begin{align*}
-\deg(f) v(\varphi'(x_1^{e_1} \ldots x_r^{e_r}/x_0^{e_0}))
+d \deg(f) v(\varphi'(x_1^{e_1} \ldots x_r^{e_r}/x_0^{e_0}))
 & =
-v(\varphi'(x_1^{e_1 \deg(f)} \ldots x_r^{e_r \deg(f)}/x_0^{e_0 \deg(f)})) \\
+d v(\varphi'(x_1^{e_1 \deg(f)} \ldots x_r^{e_r \deg(f)}/x_0^{e_0 \deg(f)})) \\
 & =
-\sum e_i v(\varphi'(x_i^{\deg(f)}/f^{d_i}))
+d \sum e_i v(\varphi'(x_i^{\deg(f)}/f^{d_i}))
 - e_0 v(\varphi'(x_0^{\deg(f)}/f^{d_0})) \\
 & =
 \sum e_i d_i \gamma_i - e_0 d_0 \gamma_0 \\
@@ -1889,7 +1889,7 @@ as a module over $S_{(h)}$ for all $n \in \mathbf{Z}$.
 We may write
 $s = f/h^m$ for some $m \geq 1$ and $f \in S_{d + m \deg(h)}$.
 Set $g = h^m$ so $s = f/g$. Note that $x \in D_{+}(g)$ by construction.
-Note that $g^d \in (S_h)_{-d\deg(g)}$.
+Note that $g^d \in (S_h)_{d\deg(g)}$.
 By assumption we can write this as a multiple of
 $s^{\deg(g)} = f^{\deg(g)}/g^{\deg(g)}$, say
 $g^d = a/g^e \cdot f^{\deg(g)}/g^{\deg(g)}$.
@@ -4222,7 +4222,7 @@ By assumption we may even cover $T$ by affine opens
 $V$ such that there exists some $a \in A_d$ such that
 $\gamma(a) \in L$ is a $C$-basis for the module $L$.
 In that case any element of $N_{R, C, A, M, \gamma}$ is a sum
-of pure tensors $\sum m_i \otimes \gamma(a)^{-n_i}$ with $m \in M_{n_id}$.
+of pure tensors $\sum m_i \otimes \gamma(a)^{-n_i}$ with $m_i \in M_{n_id}$.
 In fact we may multiply each $m_i$ with a suitable positive power
 of $a$ and collect terms to see that each element of $N_{R, C, A, M, \gamma}$
 can be written as $m \otimes \gamma(a)^{-n}$ with $m \in M_{nd}$ and
@@ -5011,7 +5011,7 @@ $$
 s_i : \mathcal{O}_S^{\oplus n - k} \longrightarrow \mathcal{O}_S^{\oplus n}
 $$
 which is the direct sum of the coprojections
-$\mathcal{O}_S \to \mathcal{O}_S^{\oplus n}$ corresponding to elements of $i$.
+$\mathcal{O}_S \to \mathcal{O}_S^{\oplus n}$ corresponding to elements of $I$.
 More precisely, if $i = \{i_1, \ldots, i_{n - k}\}$ with
 $i_1 < i_2 < \ldots < i_{n - k}$
 then $s_i$ maps $f_j$ to $e_{i_j}$ for $j \in \{1, \ldots, n - k\}$.

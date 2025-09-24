@@ -2240,7 +2240,7 @@ If $\dim(\mathcal{O}_{X, x}) = 2$, then $\mathcal{O}_{X, x}$
 is a regular local ring of dimension $2$. By
 More on Algebra, Lemma \ref{more-algebra-lemma-reflexive-over-normal}
 we see that $\mathcal{F}_x$ has depth $\geq 2$.
-Hence $\mathcal{F}$ is free by
+Hence $\mathcal{F}_x$ is free by
 Algebra, Lemma \ref{algebra-lemma-regular-mcm-free}.
 \end{proof}
 
@@ -2962,16 +2962,28 @@ Lemma \ref{lemma-effective-Cartier-in-points}.
 \begin{lemma}
 \label{lemma-codim-1-part}
 Let $X$ be a Noetherian scheme. Let $Z \subset X$ be a closed subscheme.
-Assume there exist integral effective Cartier divisors $D_i \subset X$
-and a closed subset $Z' \subset X$ of codimension $\geq 2$ such that
-$Z \subset Z' \cup \bigcup D_i$ set-theoretically.
-Then there exists an effective Cartier divisor of the form
+Assume there exist
+\begin{enumerate}
+\item a collection of integral effective Cartier divisors
+$D_i \subset X$, $i \in I$
+\item a closed subset $Z' \subset X$ all of whose irreducible components
+have codimension $\geq 2$ in $X$
+(Topology, Definition \ref{topology-definition-codimension})
+\end{enumerate}
+such that $Z \subset Z' \cup \bigcup_{i \in I} D_i$ set-theoretically.
+Then there exist integers $a_i \geq 0$ with $a_i = 0$ for almost all $i \in I$
+such that the effective Cartier divisor
 $$
-D = \sum a_i D_i \subset Z
+D = \sum a_i D_i
 $$
-such that $D \to Z$ is an isomorphism away from codimension $2$ in $X$.
-The existence of the $D_i$ is guaranteed if $\mathcal{O}_{X, x}$
-is a UFD for all $x \in Z$ or if $X$ is regular.
+is contained in $Z$ and such that the inclusion morphism $D \to Z$
+is an isomorphism away from codimension $2$ in $X$
+(in the sense that there exists an open $U \subset Z$ such that
+$D \cap U \to Z \cap U$ is an isomorphism and such that every
+irreducible component of $Z \setminus U$ has codimension $\geq 2$ in $X$).
+When $Z$ is nowhere dense in $X$ existence of the $D_i$, $i \in I$ and $Z'$
+is guaranteed if $\mathcal{O}_{X, x}$ is a UFD for all $x \in Z$
+or if $X$ is regular.
 \end{lemma}
 
 \begin{proof}
@@ -2981,12 +2993,14 @@ which is a discrete valuation ring by
 Lemma \ref{lemma-integral-effective-Cartier-divisor-dvr}.
 Let $a_i \geq 0$ be the minimal valuation of an element of
 $\mathcal{I}_{Z, \xi_i} \subset \mathcal{O}_i$.
+Of course $a_i > 0$ only if $D_i$ is an irreducible component
+of $Z$ and hence $a_i > 0$ only for a finite number of $i \in I$.
 We claim that the effective Cartier divisor $D = \sum a_i D_i$ works.
 
 \medskip\noindent
 Namely, suppose that $x \in X$. Let $A = \mathcal{O}_{X, x}$.
 Let $D_1, \ldots, D_n$ be the pairwise distinct divisors
-$D_i$ such that $x \in D_i$.
+$D_i$ such that $x \in D_i$ and $a_i > 0$.
 For $1 \leq i \leq n$ let $f_i \in A$ be a local equation for $D_i$.
 Then $f_i$ is a prime element of $A$ and $\mathcal{O}_i = A_{(f_i)}$. Let
 $I = \mathcal{I}_{Z, x} \subset A$ be the stalk of the
@@ -3121,8 +3135,8 @@ by construction we are done in this case.
 
 \medskip\noindent
 Returning to the general case, let $\mathcal{L}$ be an ample invertible sheaf
-on $X$. There exists an $n > 0$ and a section
-$s \in \Gamma(X, \mathcal{L}^{\otimes n})$ such that $X_s$
+on $X$. There exists an $m > 0$ and a section
+$s \in \Gamma(X, \mathcal{L}^{\otimes m})$ such that $X_s$
 is affine and such that $E \cup \{x_1, \ldots, x_n\} \subset X_s$
 (Properties, Lemma \ref{properties-lemma-ample-finite-set-in-principal-affine}).
 
@@ -3133,14 +3147,14 @@ $t \in \mathcal{N}(X_s)$ which does not vanish at any point
 of $E \cup \{x_1, \ldots, x_n\}$.
 By Properties, Lemma \ref{properties-lemma-invert-s-sections}
 we see that for some $e \geq 0$ the section $s^e|_{X_s} t$ extends to
-a global section $\tau$ of $\mathcal{L}^{\otimes e} \otimes \mathcal{N}$.
-Thus both $\mathcal{L}^{\otimes e} \otimes \mathcal{N}$ and
-$\mathcal{L}^{\otimes e}$ are invertible sheaves which have global sections
+a global section $\tau$ of $\mathcal{L}^{\otimes me} \otimes \mathcal{N}$.
+Thus both $\mathcal{L}^{\otimes me} \otimes \mathcal{N}$ and
+$\mathcal{L}^{\otimes me}$ are invertible sheaves which have global sections
 which do not vanish at any point of $E \cup \{x_1, \ldots, x_n\}$.
 Thus these are regular sections by
 Lemma \ref{lemma-regular-section-associated-points}.
-Hence $\mathcal{L}^{\otimes e} \otimes \mathcal{N} \cong \mathcal{O}_X(D)$
-and $\mathcal{L}^{\otimes e} \cong \mathcal{O}_X(D')$ for some
+Hence $\mathcal{L}^{\otimes me} \otimes \mathcal{N} \cong \mathcal{O}_X(D)$
+and $\mathcal{L}^{\otimes me} \cong \mathcal{O}_X(D')$ for some
 effective Cartier divisors $D$ and $D'$, see Lemma \ref{lemma-characterize-OD}.
 By construction $E \cap D = \emptyset$ and $E \cap D' = \emptyset$
 and the proof is complete.
@@ -3596,7 +3610,7 @@ $s_j$ and $s'_j$ of $\mathcal{L}$ and $\mathcal{L}'$
 over the opens $\pi^{-1}V_j$. Then $\varphi(s_j) = f_js'_j$
 for some $f_j \in \mathcal{O}_X(\pi^{-1}V_j)$.
 Define $\text{Norm}_\pi(\varphi)$ to be multiplication
-by $\text{Norm}_\pi(f_j)$ on $V_j$. An simple
+by $\text{Norm}_\pi(f_j)$ on $V_j$. A simple
 calculation involving the cocycles used to construct
 $\text{Norm}_\pi(\mathcal{L})$, $\text{Norm}_\pi(\mathcal{L}')$
 in the proof of Lemma \ref{lemma-norm-invertible}
@@ -4269,7 +4283,7 @@ f^*\mathcal{C}_{Z'/X', *}
 $$
 characterized by the following property: For every pair of affine opens
 $(\Spec(R) = U \subset X, \Spec(R') = U' \subset X')$ with
-$f(U) \subset U'$ such that
+$g(U) \subset U'$ such that
 $Z \cap U = \Spec(R/I)$ and $Z' \cap U' = \Spec(R'/I')$
 the induced map
 $$
@@ -6028,7 +6042,7 @@ There is a canonical pullback map
 $f^* : \Gamma(Y, \mathcal{K}_Y(\mathcal{F})) \to
 \Gamma(X, \mathcal{K}_X(f^*\mathcal{F}))$
 for meromorphic sections of $\mathcal{F}$.
-\item Let $\mathcal{L}$ be an invertible $\mathcal{O}_X$-module.
+\item Let $\mathcal{L}$ be an invertible $\mathcal{O}_Y$-module.
 A regular meromorphic section $s$ of $\mathcal{L}$ pulls back
 to a regular meromorphic section $f^*s$ of $f^*\mathcal{L}$.
 \end{enumerate}
@@ -6724,9 +6738,9 @@ for $(\mathcal{L} \otimes \mathcal{N})_\xi$.
 So $st/(s_\xi t_\xi) = (s/s_\xi)(t/t_\xi)$.
 Hence we see that
 $$
-\text{div}_{\mathcal{L} \otimes \mathcal{N}, Z}(st)
+\text{ord}_{Z, \mathcal{L} \otimes \mathcal{N}}(st)
 =
-\text{div}_{\mathcal{L}, Z}(s) + \text{div}_{\mathcal{N}, Z}(t)
+\text{ord}_{Z, \mathcal{L}}(s) + \text{ord}_{Z, \mathcal{N}}(t)
 $$
 by the additivity of the $\text{ord}_Z$ function.
 \end{proof}
@@ -7986,7 +8000,8 @@ $\mathcal{A}|_{U_i}$ correspond to the graded $R_i$-algebra $A_i$ and
 $\mathcal{I}|_{U_i}$ to the graded ideal $I_i \subset A_i$. Note that
 $p^{-1}(U_i) = \text{Proj}(A_i)$ as schemes over $R_i$.
 Since $p$ is quasi-compact we can choose finitely many homogeneous
-elements $f_{i, j} \in A_{i, +}$ such that $p^{-1}(U_i) = D_{+}(f_{i, j})$.
+elements $f_{i, j} \in A_{i, +}$ such that
+$p^{-1}(U_i) = \bigcup_j D_{+}(f_{i, j})$.
 The condition on $Z \to X$ means that the ideal sheaf of $Z$ in
 $\mathcal{O}_X$ is of finite type, see
 Morphisms, Lemma \ref{morphisms-lemma-closed-immersion-finite-presentation}.
