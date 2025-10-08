@@ -465,7 +465,7 @@ in the proof of Lemma \ref{lemma-generated-by-local-sections}.
 \label{lemma-pullback-section}
 Let $f : (X, \mathcal{O}_X) \to (Y, \mathcal{O}_Y)$ be a morphism of
 ringed spaces. Let $\mathcal{G}$ be a sheaf of
-$\mathcal{O}_Y$-modules. Let $V\subset Y$ be and open subset. Let
+$\mathcal{O}_Y$-modules. Let $V\subset Y$ be an open subset. Let
 $s\in\mathcal{G}(V)$ be a section. Denote $g:f^{-1}(V)\to V$ to the
 restriction of $f$. The following two sections in $f^*G(f^{-1}(V))$
 are the same:
@@ -482,7 +482,7 @@ where $\mathcal{O}_V\to\mathcal{G}|_V$ is the map associated with $s$
 \end{lemma}
 
 \begin{proof}
-Naturality of the adjunction between $g_*$ and $g^*$ gives a
+Naturality of the unit of the adjunction between $g_*$ and $g^*$ gives a
 commutative diagram
 $$
 \xymatrix{
@@ -492,19 +492,19 @@ g_*\mathcal{O}_{f^{-1}(V)}\cong g_*g^*\mathcal{O}_V \ar@{->}[r]
 }
 $$
 The result follows then from the fact that the restriction of the unit
-$\mathcal{G}\to f_*f^*\mathcal{G}$ between $f_*$ and $f^*$ to $V$
+$\mathcal{G}\to f_*f^*\mathcal{G}$ of the adjunction between $f_*$ and $f^*$ to $V$
 equals $\mathcal{G}|_V\to g_*g^*(\mathcal{G}|_V)$,
-the unit between $g_*$ and $g^*$.
+the unit of the adjunction between $g_*$ and $g^*$.
 \end{proof}
 
 \begin{definition}
 \label{definition-pullback-section}
 Let $f : (X, \mathcal{O}_X) \to (Y, \mathcal{O}_Y)$ be a morphism of
 ringed spaces. Let $\mathcal{G}$ be a sheaf of
-$\mathcal{O}_Y$-modules. Let $V\subset Y$ be and open subset. Let
+$\mathcal{O}_Y$-modules. Let $V\subset Y$ be an open subset. Let
 $s\in\mathcal{G}(V)$ be a section. The {\it pullback section of $s$
 along $f$}, denoted $f^*s$, is defined to be the section in
-$f^*G(f^{-1}(V))$ from Lemma \ref{lemma-pullback-section}.
+$f^*\mathcal{G}(f^{-1}(V))$ from Lemma \ref{lemma-pullback-section}.
 \end{definition}
 
 \begin{lemma}
@@ -512,7 +512,7 @@ $f^*G(f^{-1}(V))$ from Lemma \ref{lemma-pullback-section}.
 Let $f : (X, \mathcal{O}_X) \to (Y, \mathcal{O}_Y)$ be a morphism of
 ringed spaces. Let $\mathcal{G}$ be a sheaf of
 $\mathcal{O}_Y$-modules.
-Let $V\subset Y$ be and open subset.
+Let $V\subset Y$ be an open subset.
 Let $s\in\mathcal{G}(V)$ be a section.
 Let $x\in f^{-1}(V)$ be a point.
 By means of the isomorphism in
@@ -534,7 +534,7 @@ Let $f : (X, \mathcal{O}_X) \to (Y, \mathcal{O}_Y)$
 be a morphism of ringed spaces.
 Let $\varphi:\mathcal{G}\to\mathcal{G}'$ be a morphism of
 sheaves of $\mathcal{O}_Y$-modules.
-Let $V\subset Y$ be and open subset.
+Let $V\subset Y$ be an open subset.
 Let $s\in\mathcal{G}(V)$ be a section.
 Then $f^*(\varphi(s))=(f^*\varphi)(f^*s)$.
 \end{lemma}
@@ -560,7 +560,7 @@ $(X,\mathcal{O}_X)
 \xrightarrow{f}(Y,\mathcal{O}_Y)
 \xrightarrow{g}(Z,\mathcal{O}_Z)$ be morphisms of ringed spaces.
 Let $\mathcal{H}$ be a sheaf of $\mathcal{O}_Z$-modules.
-Let $W\subset Z$ be and open subset.
+Let $W\subset Z$ be an open subset.
 Let $t\in\mathcal{G}(W)$ be a section.
 By the means of the isomorphism of functors
 $(g\circ f)^*\cong f^*\circ g^*$
